@@ -10,11 +10,12 @@ public final class ReceivedMessage {
     public String inReplyTo;
     public CustomerNumber.Provider provider;
     public String appId;
+    public Cash cost;
     // Parts
     public List<String> texts = new ArrayList<>();
     public List<Media> media = new ArrayList<>();
     public List<Location> locations = new ArrayList<>();
     public List<Email> emails = new ArrayList<>();
     public List<VoiceCallInput> voice = new ArrayList<>();
-    public List<String> ussd = new ArrayList<>();
+    public List<UssdInput> ussd = new ArrayList<>();
 }

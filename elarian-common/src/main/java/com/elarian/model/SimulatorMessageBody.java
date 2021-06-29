@@ -6,7 +6,7 @@ public final class SimulatorMessageBody {
     public Location location = null;
     public Email email = null;
     public VoiceCallInput voice = null;
-    public String ussd = null;
+    public UssdInput ussd = null;
 
     enum StringType {
         TEXT,
@@ -18,7 +18,7 @@ public final class SimulatorMessageBody {
     public SimulatorMessageBody(String entry, SimulatorMessageBody.StringType type) {
         switch (type) {
             case USSD:
-                this.ussd = entry;
+                this.ussd = new UssdInput(entry, UssdInput.UssdStatus.ACTIVE);
                 break;
             case TEXT:
                 this.text = entry;

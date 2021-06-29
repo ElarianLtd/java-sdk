@@ -6,6 +6,8 @@ import java.util.List;
 public final class CompleteMessagingSession {
     public String sessionId;
     public long duration;
+    public long startedAt;
+    public Cash cost;
     public List<String> appIds = new ArrayList<>();
     public MessagingSessionEndReason endReason;
 }

@@ -575,7 +575,11 @@ public final class Elarian extends Client<AppSocket.ServerToAppNotification, App
                         ussd.sessionId = msg.getSessionId().getValue();
                         ussd.input = null;
                         if (msg.getPartsCount() > 0) {
-                            ussd.input = msg.getParts(0).getUssd().getValue();
+                            MessagingModel.UssdInputMessageBody rawInput = msg.getParts(0).getUssd();
+                            ussd.input = new UssdInput(
+                                    rawInput.getText().getValue(),
+                                    UssdInput.UssdStatus.valueOf(rawInput.getStatusValue())
+                            );
                         }
                         onUssdSessionBaseNotificationHandler.handle(ussd, customer, appData, (message, data) -> {
                             MessageBody body = new MessageBody();

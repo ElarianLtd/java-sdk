@@ -53,6 +53,7 @@ import com.elarian.model.Say;
 import com.elarian.model.SentMessage;
 import com.elarian.model.Template;
 import com.elarian.model.TextToSpeechVoice;
+import com.elarian.model.UssdInput;
 import com.elarian.model.UssdMenu;
 import com.elarian.model.VoiceCallDialInput;
 import com.elarian.model.VoiceCallDirection;
@@ -231,7 +232,9 @@ class Utils {
                                 }
 
                                 if (part.hasUssd()) {
-                                    target.ussd.add(part.getUssd().getValue());
+                                    target.ussd.add(
+                                            new UssdInput(part.getUssd().getText().getValue(),
+                                                    UssdInput.UssdStatus.valueOf(part.getUssd().getStatusValue())));
                                 }
 
                                 if (part.hasVoice()) {
@@ -334,7 +337,9 @@ class Utils {
                                 }
 
                                 if (part.hasUssd()) {
-                                    target.ussd.add(part.getUssd().getValue());
+                                    target.ussd.add(
+                                            new UssdInput(part.getUssd().getText().getValue(),
+                                                    UssdInput.UssdStatus.valueOf(part.getUssd().getStatusValue())));
                                 }
 
                                 if (part.hasVoice()) {
@@ -441,7 +446,9 @@ class Utils {
                                 }
 
                                 if (part.hasUssd()) {
-                                    target.ussd.add(part.getUssd().getValue());
+                                    target.ussd.add(
+                                            new UssdInput(part.getUssd().getText().getValue(),
+                                                    UssdInput.UssdStatus.valueOf(part.getUssd().getStatusValue())));
                                 }
 
                                 if (part.hasVoice()) {

@@ -53,6 +53,7 @@ import com.elarian.model.Say;
 import com.elarian.model.SentMessage;
 import com.elarian.model.Template;
 import com.elarian.model.TextToSpeechVoice;
+import com.elarian.model.UssdInput;
 import com.elarian.model.UssdMenu;
 import com.elarian.model.VoiceCallDialInput;
 import com.elarian.model.VoiceCallDirection;
@@ -193,6 +194,7 @@ class Utils {
                         if (item.hasReceived()) {
                             MessagingStateOuterClass.ReceivedMessage received = item.getReceived();
                             ReceivedMessage target = new ReceivedMessage();
+                            target.cost = new Cash(received.getCost().getCurrencyCode(), received.getCost().getAmount());
                             target.messageId = received.getMessageId();
                             target.createdAt = received.getCreatedAt().getSeconds();
                             target.sessionId = received.getSessionId().getValue();
@@ -231,7 +233,11 @@ class Utils {
                                 }
 
                                 if (part.hasUssd()) {
-                                    target.ussd.add(part.getUssd().getValue());
+                                    UssdInput ussdInput = new UssdInput(
+                                            part.getUssd().getText().getValue(),
+                                            UssdInput.UssdStatus.valueOf(part.getUssd().getStatusValue())
+                                    );
+                                    target.ussd.add(ussdInput);
                                 }
 
                                 if (part.hasVoice()) {
@@ -246,6 +252,7 @@ class Utils {
                         if (item.hasSent()) {
                             MessagingStateOuterClass.SentMessage sent = item.getSent();
                             SentMessage target = new SentMessage();
+                            target.cost = new Cash(sent.getCost().getCurrencyCode(), sent.getCost().getAmount());
                             target.messageId = sent.getMessageId();
                             target.createdAt = sent.getCreatedAt().getSeconds();
                             target.sessionId = sent.getSessionId().getValue();
@@ -277,6 +284,8 @@ class Utils {
                         session.sessionId = item.getSessionId();
                         session.appIds = item.getAppIdsList();
                         session.duration = item.getDuration().getSeconds();
+                        session.startedAt = item.getStartedAt().getSeconds();
+                        session.cost = new Cash(item.getCost().getCurrencyCode(), item.getCost().getAmount());
                         session.endReason = MessagingSessionEndReason.valueOf(item.getEndReasonValue());
                         return session;
                     })
@@ -296,6 +305,7 @@ class Utils {
                         if (item.hasReceived()) {
                             MessagingStateOuterClass.ReceivedMessage received = item.getReceived();
                             ReceivedMessage target = new ReceivedMessage();
+                            target.cost = new Cash(received.getCost().getCurrencyCode(), received.getCost().getAmount());
                             target.messageId = received.getMessageId();
                             target.createdAt = received.getCreatedAt().getSeconds();
                             target.sessionId = received.getSessionId().getValue();
@@ -334,7 +344,11 @@ class Utils {
                                 }
 
                                 if (part.hasUssd()) {
-                                    target.ussd.add(part.getUssd().getValue());
+                                    UssdInput ussdInput = new UssdInput(
+                                            part.getUssd().getText().getValue(),
+                                            UssdInput.UssdStatus.valueOf(part.getUssd().getStatusValue())
+                                    );
+                                    target.ussd.add(ussdInput);
                                 }
 
                                 if (part.hasVoice()) {
@@ -349,6 +363,7 @@ class Utils {
                         if (item.hasSent()) {
                             MessagingStateOuterClass.SentMessage sent = item.getSent();
                             SentMessage target = new SentMessage();
+                            target.cost = new Cash(sent.getCost().getCurrencyCode(), sent.getCost().getAmount());
                             target.messageId = sent.getMessageId();
                             target.createdAt = sent.getCreatedAt().getSeconds();
                             target.sessionId = sent.getSessionId().getValue();
@@ -380,6 +395,8 @@ class Utils {
                         session.sessionId = item.getSessionId();
                         session.appIds = item.getAppIdsList();
                         session.duration = item.getDuration().getSeconds();
+                        session.startedAt = item.getStartedAt().getSeconds();
+                        session.cost = new Cash(item.getCost().getCurrencyCode(), item.getCost().getAmount());
                         session.endReason = MessagingSessionEndReason.valueOf(item.getEndReasonValue());
                         return session;
                     })
@@ -403,6 +420,7 @@ class Utils {
                         if (item.hasReceived()) {
                             MessagingStateOuterClass.ReceivedMessage received = item.getReceived();
                             ReceivedMessage target = new ReceivedMessage();
+                            target.cost = new Cash(received.getCost().getCurrencyCode(), received.getCost().getAmount());
                             target.messageId = received.getMessageId();
                             target.createdAt = received.getCreatedAt().getSeconds();
                             target.sessionId = received.getSessionId().getValue();
@@ -441,7 +459,11 @@ class Utils {
                                 }
 
                                 if (part.hasUssd()) {
-                                    target.ussd.add(part.getUssd().getValue());
+                                    UssdInput ussdInput = new UssdInput(
+                                            part.getUssd().getText().getValue(),
+                                            UssdInput.UssdStatus.valueOf(part.getUssd().getStatusValue())
+                                    );
+                                    target.ussd.add(ussdInput);
                                 }
 
                                 if (part.hasVoice()) {
@@ -456,6 +478,7 @@ class Utils {
                         if (item.hasSent()) {
                             MessagingStateOuterClass.SentMessage sent = item.getSent();
                             SentMessage target = new SentMessage();
+                            target.cost = new Cash(sent.getCost().getCurrencyCode(), sent.getCost().getAmount());
                             target.messageId = sent.getMessageId();
                             target.createdAt = sent.getCreatedAt().getSeconds();
                             target.sessionId = sent.getSessionId().getValue();
@@ -487,6 +510,8 @@ class Utils {
                         session.sessionId = item.getSessionId();
                         session.appIds = item.getAppIdsList();
                         session.duration = item.getDuration().getSeconds();
+                        session.startedAt = item.getStartedAt().getSeconds();
+                        session.cost = new Cash(item.getCost().getCurrencyCode(), item.getCost().getAmount());
                         session.endReason = MessagingSessionEndReason.valueOf(item.getEndReasonValue());
                         return session;
                     })

@@ -277,7 +277,10 @@ public final class Simulator extends Client<SimulatorSocket.ServerToSimulatorNot
                                 .build()).build();
                     }
                     if (item.ussd != null) {
-                        return result.setUssd(StringValue.of(item.ussd)).build();
+                        return result.setUssd(MessagingModel.UssdInputMessageBody.newBuilder()
+                                .setStatusValue(item.ussd.status.getValue())
+                                .setText(StringValue.of(item.ussd.text))
+                        ).build();
                     }
                     return result.build();
                 }).collect(Collectors.toList()))

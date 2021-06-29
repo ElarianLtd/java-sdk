@@ -14,4 +14,5 @@ public final class SentMessage {
     public MessageDeliveryStatus status;
     public List<MessageReactionState> reaction = new ArrayList<>();
     public Message message;
+    public Cash cost;
 }

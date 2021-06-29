@@ -39,7 +39,7 @@ public class SimulatorTest {
         List<SimulatorMessageBody> parts = new ArrayList<>();
         parts.add(new SimulatorMessageBody("Hello"));
         parts.add(new SimulatorMessageBody(new Media("https://some-url/img.png", Media.MediaType.IMAGE)));
-        SimulatorReply reply = client.receiveMessage("+254718769000", Fixtures.telegramChannel, parts, "some-session-id").block(Duration.ofSeconds(5));
+        SimulatorReply reply = client.receiveMessage("+254718769000", Fixtures.telegramChannel, "some-session-id", parts).block(Duration.ofSeconds(5));
         assertNotNull(reply);
         assertTrue(reply.status);
     }

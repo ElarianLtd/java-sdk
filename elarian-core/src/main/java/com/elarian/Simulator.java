@@ -205,11 +205,11 @@ public final class Simulator extends Client<SimulatorSocket.ServerToSimulatorNot
      *
      * @param customerNumber
      * @param channelNumber
-     * @param messageParts
      * @param sessionId
+     * @param messageParts
      * @return
      */
-    public Mono<SimulatorReply> receiveMessage(String customerNumber, MessagingChannel channelNumber, List<SimulatorMessageBody> messageParts, String sessionId) {
+    public Mono<SimulatorReply> receiveMessage(String customerNumber, MessagingChannel channelNumber, String sessionId, List<SimulatorMessageBody> messageParts, Cash cost) {
         SimulatorSocket.ReceiveMessageSimulatorCommand cmd = SimulatorSocket.ReceiveMessageSimulatorCommand
                 .newBuilder()
                 .setCustomerNumber(customerNumber)
@@ -277,17 +277,33 @@ public final class Simulator extends Client<SimulatorSocket.ServerToSimulatorNot
                                 .build()).build();
                     }
                     if (item.ussd != null) {
-                        return result.setUssd(StringValue.of(item.ussd)).build();
+                        return result.setUssd(MessagingModel.UssdInputMessageBody.newBuilder()
+                                .setStatusValue(item.ussd.status.getValue())
+                                .setText(StringValue.of(item.ussd.text))
+                        ).build();
                     }
                     return result.build();
                 }).collect(Collectors.toList()))
                 .setSessionId(StringValue.newBuilder().setValue(sessionId))
+                .setCost(CommonModel.Cash.newBuilder().setAmount(cost.amount).setCurrencyCode(cost.currencyCode).build())
                 .build();
         SimulatorSocket.SimulatorToServerCommand req = SimulatorSocket.SimulatorToServerCommand
                 .newBuilder()
                 .setReceiveMessage(cmd)
                 .build();
         return buildCommandReply(req.toByteArray(), replyDeserializer);
+    }
+
+    /**
+     * Receive a message
+     * @param customerNumber
+     * @param channelNumber
+     * @param sessionId
+     * @param messageParts
+     * @return
+     */
+    public Mono<SimulatorReply> receiveMessage(String customerNumber, MessagingChannel channelNumber, String sessionId, List<SimulatorMessageBody> messageParts) {
+        return receiveMessage(customerNumber, channelNumber, sessionId, messageParts, new Cash("KES", 0));
     }
 
     /**
