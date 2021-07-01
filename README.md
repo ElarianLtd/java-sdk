@@ -15,19 +15,19 @@ You can depend on the [.jar]() through Maven:
 <dependency>
   <groupId>com.elarian</groupId>
   <artifactId>elarian-core</artifactId>
-  <version>0.2.5</version>
+  <version>0.2.6</version>
 </dependency>
 ```
 or sbt:
 
 ```
-libraryDependencies += "com.elarian" % "elarian-core" % "0.2.5"
+libraryDependencies += "com.elarian" % "elarian-core" % "0.2.6"
 ```
 
 or Gradle:
 ```groovy
 dependencies{
-  implementation 'com.elarian:elarian-core:0.2.5'
+  implementation 'com.elarian:elarian-core:0.2.6'
 }
 ```
 
