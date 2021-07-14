@@ -716,738 +716,6 @@ public final class CommonModel {
     // @@protoc_insertion_point(enum_scope:com.elarian.hera.proto.CustomerRequestOrigin)
   }
 
-  /**
-   * Protobuf enum {@code com.elarian.hera.proto.MemoryUnit}
-   */
-  public enum MemoryUnit
-      implements com.google.protobuf.ProtocolMessageEnum {
-    /**
-     * <code>MEMORY_UNIT_UNSPECIFIED = 0;</code>
-     */
-    MEMORY_UNIT_UNSPECIFIED(0),
-    /**
-     * <code>MEMORY_UNIT_BYTES = 1;</code>
-     */
-    MEMORY_UNIT_BYTES(1),
-    /**
-     * <code>MEMORY_UNIT_KILOBYTES = 2;</code>
-     */
-    MEMORY_UNIT_KILOBYTES(2),
-    /**
-     * <code>MEMORY_UNIT_MEGABYTES = 3;</code>
-     */
-    MEMORY_UNIT_MEGABYTES(3),
-    /**
-     * <code>MEMORY_UNIT_GIGABYTES = 4;</code>
-     */
-    MEMORY_UNIT_GIGABYTES(4),
-    UNRECOGNIZED(-1),
-    ;
-
-    /**
-     * <code>MEMORY_UNIT_UNSPECIFIED = 0;</code>
-     */
-    public static final int MEMORY_UNIT_UNSPECIFIED_VALUE = 0;
-    /**
-     * <code>MEMORY_UNIT_BYTES = 1;</code>
-     */
-    public static final int MEMORY_UNIT_BYTES_VALUE = 1;
-    /**
-     * <code>MEMORY_UNIT_KILOBYTES = 2;</code>
-     */
-    public static final int MEMORY_UNIT_KILOBYTES_VALUE = 2;
-    /**
-     * <code>MEMORY_UNIT_MEGABYTES = 3;</code>
-     */
-    public static final int MEMORY_UNIT_MEGABYTES_VALUE = 3;
-    /**
-     * <code>MEMORY_UNIT_GIGABYTES = 4;</code>
-     */
-    public static final int MEMORY_UNIT_GIGABYTES_VALUE = 4;
-
-
-    public final int getNumber() {
-      if (this == UNRECOGNIZED) {
-        throw new java.lang.IllegalArgumentException(
-            "Can't get the number of an unknown enum value.");
-      }
-      return value;
-    }
-
-    /**
-     * @param value The numeric wire value of the corresponding enum entry.
-     * @return The enum associated with the given numeric wire value.
-     * @deprecated Use {@link #forNumber(int)} instead.
-     */
-    @java.lang.Deprecated
-    public static MemoryUnit valueOf(int value) {
-      return forNumber(value);
-    }
-
-    /**
-     * @param value The numeric wire value of the corresponding enum entry.
-     * @return The enum associated with the given numeric wire value.
-     */
-    public static MemoryUnit forNumber(int value) {
-      switch (value) {
-        case 0: return MEMORY_UNIT_UNSPECIFIED;
-        case 1: return MEMORY_UNIT_BYTES;
-        case 2: return MEMORY_UNIT_KILOBYTES;
-        case 3: return MEMORY_UNIT_MEGABYTES;
-        case 4: return MEMORY_UNIT_GIGABYTES;
-        default: return null;
-      }
-    }
-
-    public static com.google.protobuf.Internal.EnumLiteMap<MemoryUnit>
-        internalGetValueMap() {
-      return internalValueMap;
-    }
-    private static final com.google.protobuf.Internal.EnumLiteMap<
-        MemoryUnit> internalValueMap =
-          new com.google.protobuf.Internal.EnumLiteMap<MemoryUnit>() {
-            public MemoryUnit findValueByNumber(int number) {
-              return MemoryUnit.forNumber(number);
-            }
-          };
-
-    public final com.google.protobuf.Descriptors.EnumValueDescriptor
-        getValueDescriptor() {
-      if (this == UNRECOGNIZED) {
-        throw new java.lang.IllegalStateException(
-            "Can't get the descriptor of an unrecognized enum value.");
-      }
-      return getDescriptor().getValues().get(ordinal());
-    }
-    public final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptorForType() {
-      return getDescriptor();
-    }
-    public static final com.google.protobuf.Descriptors.EnumDescriptor
-        getDescriptor() {
-      return com.elarian.hera.proto.CommonModel.getDescriptor().getEnumTypes().get(5);
-    }
-
-    private static final MemoryUnit[] VALUES = values();
-
-    public static MemoryUnit valueOf(
-        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-      if (desc.getType() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException(
-          "EnumValueDescriptor is not for this type.");
-      }
-      if (desc.getIndex() == -1) {
-        return UNRECOGNIZED;
-      }
-      return VALUES[desc.getIndex()];
-    }
-
-    private final int value;
-
-    private MemoryUnit(int value) {
-      this.value = value;
-    }
-
-    // @@protoc_insertion_point(enum_scope:com.elarian.hera.proto.MemoryUnit)
-  }
-
-  public interface MemoryOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:com.elarian.hera.proto.Memory)
-      com.google.protobuf.MessageOrBuilder {
-
-    /**
-     * <code>.com.elarian.hera.proto.MemoryUnit unit = 1;</code>
-     * @return The enum numeric value on the wire for unit.
-     */
-    int getUnitValue();
-    /**
-     * <code>.com.elarian.hera.proto.MemoryUnit unit = 1;</code>
-     * @return The unit.
-     */
-    com.elarian.hera.proto.CommonModel.MemoryUnit getUnit();
-
-    /**
-     * <code>double value = 2;</code>
-     * @return The value.
-     */
-    double getValue();
-  }
-  /**
-   * Protobuf type {@code com.elarian.hera.proto.Memory}
-   */
-  public static final class Memory extends
-      com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:com.elarian.hera.proto.Memory)
-      MemoryOrBuilder {
-  private static final long serialVersionUID = 0L;
-    // Use Memory.newBuilder() to construct.
-    private Memory(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
-      super(builder);
-    }
-    private Memory() {
-      unit_ = 0;
-    }
-
-    @java.lang.Override
-    @SuppressWarnings({"unused"})
-    protected java.lang.Object newInstance(
-        UnusedPrivateParameter unused) {
-      return new Memory();
-    }
-
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-    getUnknownFields() {
-      return this.unknownFields;
-    }
-    private Memory(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      this();
-      if (extensionRegistry == null) {
-        throw new java.lang.NullPointerException();
-      }
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            case 8: {
-              int rawValue = input.readEnum();
-
-              unit_ = rawValue;
-              break;
-            }
-            case 17: {
-
-              value_ = input.readDouble();
-              break;
-            }
-            default: {
-              if (!parseUnknownField(
-                  input, unknownFields, extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.elarian.hera.proto.CommonModel.internal_static_com_elarian_hera_proto_Memory_descriptor;
-    }
-
-    @java.lang.Override
-    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.elarian.hera.proto.CommonModel.internal_static_com_elarian_hera_proto_Memory_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              com.elarian.hera.proto.CommonModel.Memory.class, com.elarian.hera.proto.CommonModel.Memory.Builder.class);
-    }
-
-    public static final int UNIT_FIELD_NUMBER = 1;
-    private int unit_;
-    /**
-     * <code>.com.elarian.hera.proto.MemoryUnit unit = 1;</code>
-     * @return The enum numeric value on the wire for unit.
-     */
-    @java.lang.Override public int getUnitValue() {
-      return unit_;
-    }
-    /**
-     * <code>.com.elarian.hera.proto.MemoryUnit unit = 1;</code>
-     * @return The unit.
-     */
-    @java.lang.Override public com.elarian.hera.proto.CommonModel.MemoryUnit getUnit() {
-      @SuppressWarnings("deprecation")
-      com.elarian.hera.proto.CommonModel.MemoryUnit result = com.elarian.hera.proto.CommonModel.MemoryUnit.valueOf(unit_);
-      return result == null ? com.elarian.hera.proto.CommonModel.MemoryUnit.UNRECOGNIZED : result;
-    }
-
-    public static final int VALUE_FIELD_NUMBER = 2;
-    private double value_;
-    /**
-     * <code>double value = 2;</code>
-     * @return The value.
-     */
-    @java.lang.Override
-    public double getValue() {
-      return value_;
-    }
-
-    private byte memoizedIsInitialized = -1;
-    @java.lang.Override
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized == 1) return true;
-      if (isInitialized == 0) return false;
-
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    @java.lang.Override
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      if (unit_ != com.elarian.hera.proto.CommonModel.MemoryUnit.MEMORY_UNIT_UNSPECIFIED.getNumber()) {
-        output.writeEnum(1, unit_);
-      }
-      if (value_ != 0D) {
-        output.writeDouble(2, value_);
-      }
-      unknownFields.writeTo(output);
-    }
-
-    @java.lang.Override
-    public int getSerializedSize() {
-      int size = memoizedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (unit_ != com.elarian.hera.proto.CommonModel.MemoryUnit.MEMORY_UNIT_UNSPECIFIED.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(1, unit_);
-      }
-      if (value_ != 0D) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(2, value_);
-      }
-      size += unknownFields.getSerializedSize();
-      memoizedSize = size;
-      return size;
-    }
-
-    @java.lang.Override
-    public boolean equals(final java.lang.Object obj) {
-      if (obj == this) {
-       return true;
-      }
-      if (!(obj instanceof com.elarian.hera.proto.CommonModel.Memory)) {
-        return super.equals(obj);
-      }
-      com.elarian.hera.proto.CommonModel.Memory other = (com.elarian.hera.proto.CommonModel.Memory) obj;
-
-      if (unit_ != other.unit_) return false;
-      if (java.lang.Double.doubleToLongBits(getValue())
-          != java.lang.Double.doubleToLongBits(
-              other.getValue())) return false;
-      if (!unknownFields.equals(other.unknownFields)) return false;
-      return true;
-    }
-
-    @java.lang.Override
-    public int hashCode() {
-      if (memoizedHashCode != 0) {
-        return memoizedHashCode;
-      }
-      int hash = 41;
-      hash = (19 * hash) + getDescriptor().hashCode();
-      hash = (37 * hash) + UNIT_FIELD_NUMBER;
-      hash = (53 * hash) + unit_;
-      hash = (37 * hash) + VALUE_FIELD_NUMBER;
-      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-          java.lang.Double.doubleToLongBits(getValue()));
-      hash = (29 * hash) + unknownFields.hashCode();
-      memoizedHashCode = hash;
-      return hash;
-    }
-
-    public static com.elarian.hera.proto.CommonModel.Memory parseFrom(
-        java.nio.ByteBuffer data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.elarian.hera.proto.CommonModel.Memory parseFrom(
-        java.nio.ByteBuffer data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.elarian.hera.proto.CommonModel.Memory parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.elarian.hera.proto.CommonModel.Memory parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.elarian.hera.proto.CommonModel.Memory parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static com.elarian.hera.proto.CommonModel.Memory parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static com.elarian.hera.proto.CommonModel.Memory parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.elarian.hera.proto.CommonModel.Memory parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.elarian.hera.proto.CommonModel.Memory parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input);
-    }
-    public static com.elarian.hera.proto.CommonModel.Memory parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
-    }
-    public static com.elarian.hera.proto.CommonModel.Memory parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input);
-    }
-    public static com.elarian.hera.proto.CommonModel.Memory parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return com.google.protobuf.GeneratedMessageV3
-          .parseWithIOException(PARSER, input, extensionRegistry);
-    }
-
-    @java.lang.Override
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder() {
-      return DEFAULT_INSTANCE.toBuilder();
-    }
-    public static Builder newBuilder(com.elarian.hera.proto.CommonModel.Memory prototype) {
-      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
-    }
-    @java.lang.Override
-    public Builder toBuilder() {
-      return this == DEFAULT_INSTANCE
-          ? new Builder() : new Builder().mergeFrom(this);
-    }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    /**
-     * Protobuf type {@code com.elarian.hera.proto.Memory}
-     */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:com.elarian.hera.proto.Memory)
-        com.elarian.hera.proto.CommonModel.MemoryOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.elarian.hera.proto.CommonModel.internal_static_com_elarian_hera_proto_Memory_descriptor;
-      }
-
-      @java.lang.Override
-      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.elarian.hera.proto.CommonModel.internal_static_com_elarian_hera_proto_Memory_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                com.elarian.hera.proto.CommonModel.Memory.class, com.elarian.hera.proto.CommonModel.Memory.Builder.class);
-      }
-
-      // Construct using com.elarian.hera.proto.CommonModel.Memory.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessageV3
-                .alwaysUseFieldBuilders) {
-        }
-      }
-      @java.lang.Override
-      public Builder clear() {
-        super.clear();
-        unit_ = 0;
-
-        value_ = 0D;
-
-        return this;
-      }
-
-      @java.lang.Override
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.elarian.hera.proto.CommonModel.internal_static_com_elarian_hera_proto_Memory_descriptor;
-      }
-
-      @java.lang.Override
-      public com.elarian.hera.proto.CommonModel.Memory getDefaultInstanceForType() {
-        return com.elarian.hera.proto.CommonModel.Memory.getDefaultInstance();
-      }
-
-      @java.lang.Override
-      public com.elarian.hera.proto.CommonModel.Memory build() {
-        com.elarian.hera.proto.CommonModel.Memory result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-
-      @java.lang.Override
-      public com.elarian.hera.proto.CommonModel.Memory buildPartial() {
-        com.elarian.hera.proto.CommonModel.Memory result = new com.elarian.hera.proto.CommonModel.Memory(this);
-        result.unit_ = unit_;
-        result.value_ = value_;
-        onBuilt();
-        return result;
-      }
-
-      @java.lang.Override
-      public Builder clone() {
-        return super.clone();
-      }
-      @java.lang.Override
-      public Builder setField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.setField(field, value);
-      }
-      @java.lang.Override
-      public Builder clearField(
-          com.google.protobuf.Descriptors.FieldDescriptor field) {
-        return super.clearField(field);
-      }
-      @java.lang.Override
-      public Builder clearOneof(
-          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
-        return super.clearOneof(oneof);
-      }
-      @java.lang.Override
-      public Builder setRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          int index, java.lang.Object value) {
-        return super.setRepeatedField(field, index, value);
-      }
-      @java.lang.Override
-      public Builder addRepeatedField(
-          com.google.protobuf.Descriptors.FieldDescriptor field,
-          java.lang.Object value) {
-        return super.addRepeatedField(field, value);
-      }
-      @java.lang.Override
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.elarian.hera.proto.CommonModel.Memory) {
-          return mergeFrom((com.elarian.hera.proto.CommonModel.Memory)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-
-      public Builder mergeFrom(com.elarian.hera.proto.CommonModel.Memory other) {
-        if (other == com.elarian.hera.proto.CommonModel.Memory.getDefaultInstance()) return this;
-        if (other.unit_ != 0) {
-          setUnitValue(other.getUnitValue());
-        }
-        if (other.getValue() != 0D) {
-          setValue(other.getValue());
-        }
-        this.mergeUnknownFields(other.unknownFields);
-        onChanged();
-        return this;
-      }
-
-      @java.lang.Override
-      public final boolean isInitialized() {
-        return true;
-      }
-
-      @java.lang.Override
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.elarian.hera.proto.CommonModel.Memory parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (com.elarian.hera.proto.CommonModel.Memory) e.getUnfinishedMessage();
-          throw e.unwrapIOException();
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-
-      private int unit_ = 0;
-      /**
-       * <code>.com.elarian.hera.proto.MemoryUnit unit = 1;</code>
-       * @return The enum numeric value on the wire for unit.
-       */
-      @java.lang.Override public int getUnitValue() {
-        return unit_;
-      }
-      /**
-       * <code>.com.elarian.hera.proto.MemoryUnit unit = 1;</code>
-       * @param value The enum numeric value on the wire for unit to set.
-       * @return This builder for chaining.
-       */
-      public Builder setUnitValue(int value) {
-        
-        unit_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.com.elarian.hera.proto.MemoryUnit unit = 1;</code>
-       * @return The unit.
-       */
-      @java.lang.Override
-      public com.elarian.hera.proto.CommonModel.MemoryUnit getUnit() {
-        @SuppressWarnings("deprecation")
-        com.elarian.hera.proto.CommonModel.MemoryUnit result = com.elarian.hera.proto.CommonModel.MemoryUnit.valueOf(unit_);
-        return result == null ? com.elarian.hera.proto.CommonModel.MemoryUnit.UNRECOGNIZED : result;
-      }
-      /**
-       * <code>.com.elarian.hera.proto.MemoryUnit unit = 1;</code>
-       * @param value The unit to set.
-       * @return This builder for chaining.
-       */
-      public Builder setUnit(com.elarian.hera.proto.CommonModel.MemoryUnit value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        
-        unit_ = value.getNumber();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.com.elarian.hera.proto.MemoryUnit unit = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearUnit() {
-        
-        unit_ = 0;
-        onChanged();
-        return this;
-      }
-
-      private double value_ ;
-      /**
-       * <code>double value = 2;</code>
-       * @return The value.
-       */
-      @java.lang.Override
-      public double getValue() {
-        return value_;
-      }
-      /**
-       * <code>double value = 2;</code>
-       * @param value The value to set.
-       * @return This builder for chaining.
-       */
-      public Builder setValue(double value) {
-        
-        value_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>double value = 2;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearValue() {
-        
-        value_ = 0D;
-        onChanged();
-        return this;
-      }
-      @java.lang.Override
-      public final Builder setUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.setUnknownFields(unknownFields);
-      }
-
-      @java.lang.Override
-      public final Builder mergeUnknownFields(
-          final com.google.protobuf.UnknownFieldSet unknownFields) {
-        return super.mergeUnknownFields(unknownFields);
-      }
-
-
-      // @@protoc_insertion_point(builder_scope:com.elarian.hera.proto.Memory)
-    }
-
-    // @@protoc_insertion_point(class_scope:com.elarian.hera.proto.Memory)
-    private static final com.elarian.hera.proto.CommonModel.Memory DEFAULT_INSTANCE;
-    static {
-      DEFAULT_INSTANCE = new com.elarian.hera.proto.CommonModel.Memory();
-    }
-
-    public static com.elarian.hera.proto.CommonModel.Memory getDefaultInstance() {
-      return DEFAULT_INSTANCE;
-    }
-
-    private static final com.google.protobuf.Parser<Memory>
-        PARSER = new com.google.protobuf.AbstractParser<Memory>() {
-      @java.lang.Override
-      public Memory parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Memory(input, extensionRegistry);
-      }
-    };
-
-    public static com.google.protobuf.Parser<Memory> parser() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Memory> getParserForType() {
-      return PARSER;
-    }
-
-    @java.lang.Override
-    public com.elarian.hera.proto.CommonModel.Memory getDefaultInstanceForType() {
-      return DEFAULT_INSTANCE;
-    }
-
-  }
-
   public interface DataMapValueOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.elarian.hera.proto.DataMapValue)
       com.google.protobuf.MessageOrBuilder {
@@ -6360,11 +5628,6 @@ public final class CommonModel {
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_elarian_hera_proto_Memory_descriptor;
-  private static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_com_elarian_hera_proto_Memory_fieldAccessorTable;
-  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_elarian_hera_proto_DataMapValue_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -6405,56 +5668,50 @@ public final class CommonModel {
     java.lang.String[] descriptorData = {
       "\n\022common_model.proto\022\026com.elarian.hera.p" +
       "roto\032\036google/protobuf/wrappers.proto\032\037go" +
-      "ogle/protobuf/timestamp.proto\"I\n\006Memory\022" +
-      "0\n\004unit\030\001 \001(\0162\".com.elarian.hera.proto.M" +
-      "emoryUnit\022\r\n\005value\030\002 \001(\001\"B\n\014DataMapValue" +
-      "\022\024\n\nstring_val\030\002 \001(\tH\000\022\023\n\tbytes_val\030\003 \001(" +
-      "\014H\000B\007\n\005value\"-\n\004Cash\022\025\n\rcurrency_code\030\001 " +
-      "\001(\t\022\016\n\006amount\030\002 \001(\001\"H\n\014IndexMapping\022\013\n\003k" +
-      "ey\030\001 \001(\t\022+\n\005value\030\002 \001(\0132\034.google.protobu" +
-      "f.StringValue\"v\n\rCustomerIndex\0225\n\007mappin" +
-      "g\030\001 \001(\0132$.com.elarian.hera.proto.IndexMa" +
-      "pping\022.\n\nexpires_at\030\002 \001(\0132\032.google.proto" +
-      "buf.Timestamp\"\250\001\n\022AppConnectionProps\022\025\n\r" +
-      "connection_id\030\001 \001(\t\0223\n\017connection_time\030\002" +
-      " \001(\0132\032.google.protobuf.Timestamp\0220\n\nip_a" +
-      "ddress\030\003 \001(\0132\034.google.protobuf.StringVal" +
-      "ue\022\024\n\014simplex_mode\030\004 \001(\010\"\223\001\n\016CustomerNum" +
-      "ber\022@\n\010provider\030\001 \001(\0162..com.elarian.hera" +
-      ".proto.CustomerNumberProvider\022\016\n\006number\030" +
-      "\002 \001(\t\022/\n\tpartition\030\003 \001(\0132\034.google.protob" +
-      "uf.StringValue*\375\001\n\026CustomerNumberProvide" +
-      "r\022(\n$CUSTOMER_NUMBER_PROVIDER_UNSPECIFIE" +
-      "D\020\000\022%\n!CUSTOMER_NUMBER_PROVIDER_FACEBOOK" +
-      "\020\001\022%\n!CUSTOMER_NUMBER_PROVIDER_CELLULAR\020" +
-      "\002\022%\n!CUSTOMER_NUMBER_PROVIDER_TELEGRAM\020\003" +
-      "\022 \n\034CUSTOMER_NUMBER_PROVIDER_WEB\020\004\022\"\n\036CU" +
-      "STOMER_NUMBER_PROVIDER_EMAIL\020\005*\300\002\n\025Chann" +
-      "elNumberProvider\022\'\n#CHANNEL_NUMBER_PROVI" +
-      "DER_UNSPECIFIED\020\000\022\036\n\032CHANNEL_NUMBER_PROV" +
-      "IDER_AT\020\001\022\"\n\036CHANNEL_NUMBER_PROVIDER_TWI" +
-      "LIO\020\002\022#\n\037CHANNEL_NUMBER_PROVIDER_MAILGUN" +
-      "\020\003\022\"\n\036CHANNEL_NUMBER_PROVIDER_WEBAPP\020\004\022$" +
-      "\n CHANNEL_NUMBER_PROVIDER_FACEBOOK\020\005\022$\n " +
-      "CHANNEL_NUMBER_PROVIDER_TELEGRAM\020\006\022%\n!CH" +
-      "ANNEL_NUMBER_PROVIDER_SIMULATOR\020\007*\310\001\n\tMe" +
-      "diaType\022\032\n\026MEDIA_TYPE_UNSPECIFIED\020\000\022\024\n\020M" +
-      "EDIA_TYPE_IMAGE\020\001\022\024\n\020MEDIA_TYPE_AUDIO\020\002\022" +
-      "\024\n\020MEDIA_TYPE_VIDEO\020\003\022\027\n\023MEDIA_TYPE_DOCU" +
-      "MENT\020\004\022\024\n\020MEDIA_TYPE_VOICE\020\005\022\026\n\022MEDIA_TY" +
-      "PE_STICKER\020\006\022\026\n\022MEDIA_TYPE_CONTACT\020\007*\217\001\n" +
-      "\026CustomerEventDirection\022(\n$CUSTOMER_EVEN" +
-      "T_DIRECTION_UNSPECIFIED\020\000\022$\n CUSTOMER_EV" +
-      "ENT_DIRECTION_INBOUND\020\001\022%\n!CUSTOMER_EVEN" +
-      "T_DIRECTION_OUTBOUND\020\002*\223\001\n\025CustomerReque" +
-      "stOrigin\022\'\n#CUSTOMER_REQUEST_ORIGIN_UNSP" +
-      "ECIFIED\020\000\022\'\n#CUSTOMER_REQUEST_ORIGIN_API" +
-      "_REQUEST\020\001\022(\n$CUSTOMER_REQUEST_ORIGIN_CU" +
-      "STOMER_TAG\020\002*\221\001\n\nMemoryUnit\022\033\n\027MEMORY_UN" +
-      "IT_UNSPECIFIED\020\000\022\025\n\021MEMORY_UNIT_BYTES\020\001\022" +
-      "\031\n\025MEMORY_UNIT_KILOBYTES\020\002\022\031\n\025MEMORY_UNI" +
-      "T_MEGABYTES\020\003\022\031\n\025MEMORY_UNIT_GIGABYTES\020\004" +
-      "b\006proto3"
+      "ogle/protobuf/timestamp.proto\"B\n\014DataMap" +
+      "Value\022\024\n\nstring_val\030\002 \001(\tH\000\022\023\n\tbytes_val" +
+      "\030\003 \001(\014H\000B\007\n\005value\"-\n\004Cash\022\025\n\rcurrency_co" +
+      "de\030\001 \001(\t\022\016\n\006amount\030\002 \001(\001\"H\n\014IndexMapping" +
+      "\022\013\n\003key\030\001 \001(\t\022+\n\005value\030\002 \001(\0132\034.google.pr" +
+      "otobuf.StringValue\"v\n\rCustomerIndex\0225\n\007m" +
+      "apping\030\001 \001(\0132$.com.elarian.hera.proto.In" +
+      "dexMapping\022.\n\nexpires_at\030\002 \001(\0132\032.google." +
+      "protobuf.Timestamp\"\250\001\n\022AppConnectionProp" +
+      "s\022\025\n\rconnection_id\030\001 \001(\t\0223\n\017connection_t" +
+      "ime\030\002 \001(\0132\032.google.protobuf.Timestamp\0220\n" +
+      "\nip_address\030\003 \001(\0132\034.google.protobuf.Stri" +
+      "ngValue\022\024\n\014simplex_mode\030\004 \001(\010\"\223\001\n\016Custom" +
+      "erNumber\022@\n\010provider\030\001 \001(\0162..com.elarian" +
+      ".hera.proto.CustomerNumberProvider\022\016\n\006nu" +
+      "mber\030\002 \001(\t\022/\n\tpartition\030\003 \001(\0132\034.google.p" +
+      "rotobuf.StringValue*\375\001\n\026CustomerNumberPr" +
+      "ovider\022(\n$CUSTOMER_NUMBER_PROVIDER_UNSPE" +
+      "CIFIED\020\000\022%\n!CUSTOMER_NUMBER_PROVIDER_FAC" +
+      "EBOOK\020\001\022%\n!CUSTOMER_NUMBER_PROVIDER_CELL" +
+      "ULAR\020\002\022%\n!CUSTOMER_NUMBER_PROVIDER_TELEG" +
+      "RAM\020\003\022 \n\034CUSTOMER_NUMBER_PROVIDER_WEB\020\004\022" +
+      "\"\n\036CUSTOMER_NUMBER_PROVIDER_EMAIL\020\005*\300\002\n\025" +
+      "ChannelNumberProvider\022\'\n#CHANNEL_NUMBER_" +
+      "PROVIDER_UNSPECIFIED\020\000\022\036\n\032CHANNEL_NUMBER" +
+      "_PROVIDER_AT\020\001\022\"\n\036CHANNEL_NUMBER_PROVIDE" +
+      "R_TWILIO\020\002\022#\n\037CHANNEL_NUMBER_PROVIDER_MA" +
+      "ILGUN\020\003\022\"\n\036CHANNEL_NUMBER_PROVIDER_WEBAP" +
+      "P\020\004\022$\n CHANNEL_NUMBER_PROVIDER_FACEBOOK\020" +
+      "\005\022$\n CHANNEL_NUMBER_PROVIDER_TELEGRAM\020\006\022" +
+      "%\n!CHANNEL_NUMBER_PROVIDER_SIMULATOR\020\007*\310" +
+      "\001\n\tMediaType\022\032\n\026MEDIA_TYPE_UNSPECIFIED\020\000" +
+      "\022\024\n\020MEDIA_TYPE_IMAGE\020\001\022\024\n\020MEDIA_TYPE_AUD" +
+      "IO\020\002\022\024\n\020MEDIA_TYPE_VIDEO\020\003\022\027\n\023MEDIA_TYPE" +
+      "_DOCUMENT\020\004\022\024\n\020MEDIA_TYPE_VOICE\020\005\022\026\n\022MED" +
+      "IA_TYPE_STICKER\020\006\022\026\n\022MEDIA_TYPE_CONTACT\020" +
+      "\007*\217\001\n\026CustomerEventDirection\022(\n$CUSTOMER" +
+      "_EVENT_DIRECTION_UNSPECIFIED\020\000\022$\n CUSTOM" +
+      "ER_EVENT_DIRECTION_INBOUND\020\001\022%\n!CUSTOMER" +
+      "_EVENT_DIRECTION_OUTBOUND\020\002*\223\001\n\025Customer" +
+      "RequestOrigin\022\'\n#CUSTOMER_REQUEST_ORIGIN" +
+      "_UNSPECIFIED\020\000\022\'\n#CUSTOMER_REQUEST_ORIGI" +
+      "N_API_REQUEST\020\001\022(\n$CUSTOMER_REQUEST_ORIG" +
+      "IN_CUSTOMER_TAG\020\002b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -6462,44 +5719,38 @@ public final class CommonModel {
           com.google.protobuf.WrappersProto.getDescriptor(),
           com.google.protobuf.TimestampProto.getDescriptor(),
         });
-    internal_static_com_elarian_hera_proto_Memory_descriptor =
-      getDescriptor().getMessageTypes().get(0);
-    internal_static_com_elarian_hera_proto_Memory_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_com_elarian_hera_proto_Memory_descriptor,
-        new java.lang.String[] { "Unit", "Value", });
     internal_static_com_elarian_hera_proto_DataMapValue_descriptor =
-      getDescriptor().getMessageTypes().get(1);
+      getDescriptor().getMessageTypes().get(0);
     internal_static_com_elarian_hera_proto_DataMapValue_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_elarian_hera_proto_DataMapValue_descriptor,
         new java.lang.String[] { "StringVal", "BytesVal", "Value", });
     internal_static_com_elarian_hera_proto_Cash_descriptor =
-      getDescriptor().getMessageTypes().get(2);
+      getDescriptor().getMessageTypes().get(1);
     internal_static_com_elarian_hera_proto_Cash_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_elarian_hera_proto_Cash_descriptor,
         new java.lang.String[] { "CurrencyCode", "Amount", });
     internal_static_com_elarian_hera_proto_IndexMapping_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(2);
     internal_static_com_elarian_hera_proto_IndexMapping_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_elarian_hera_proto_IndexMapping_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_com_elarian_hera_proto_CustomerIndex_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_com_elarian_hera_proto_CustomerIndex_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_elarian_hera_proto_CustomerIndex_descriptor,
         new java.lang.String[] { "Mapping", "ExpiresAt", });
     internal_static_com_elarian_hera_proto_AppConnectionProps_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_com_elarian_hera_proto_AppConnectionProps_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_elarian_hera_proto_AppConnectionProps_descriptor,
         new java.lang.String[] { "ConnectionId", "ConnectionTime", "IpAddress", "SimplexMode", });
     internal_static_com_elarian_hera_proto_CustomerNumber_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_com_elarian_hera_proto_CustomerNumber_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_elarian_hera_proto_CustomerNumber_descriptor,
