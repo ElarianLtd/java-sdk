@@ -7,6 +7,7 @@ import com.elarian.model.Activity;
 import com.elarian.model.ConsentAction;
 import com.elarian.model.ConsentUpdateReply;
 import com.elarian.model.CustomerNumber;
+import com.elarian.model.ConnectionConfig;
 import com.elarian.model.CustomerState;
 import com.elarian.model.CustomerStateUpdateReply;
 import com.elarian.model.DataValue;
@@ -42,8 +43,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class CustomerTests {
 
     private static Customer customer;
-    private static final Elarian client = new Elarian(Fixtures.API_KEY, Fixtures.ORG_ID, Fixtures.APP_ID);
-    private static final Simulator simulator = new Simulator(Fixtures.API_KEY, Fixtures.ORG_ID, Fixtures.APP_ID);
+    private static final Elarian client = new Elarian(Fixtures.API_KEY, Fixtures.ORG_ID, Fixtures.APP_ID, new ConnectionConfig(10000, 1000, false, "tcp.elarian.dev", 8082), true);
+    private static final Simulator simulator = new Simulator(Fixtures.API_KEY, Fixtures.ORG_ID, Fixtures.APP_ID, new ConnectionConfig(10000, 1000, false, "tcp.elarian.dev", 8082));
 
     @BeforeAll
     static void connect() {

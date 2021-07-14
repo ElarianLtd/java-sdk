@@ -13,8 +13,7 @@
 <!--[if IE]>
 <script type="text/javascript" src="../../../jquery/jszip-utils/dist/jszip-utils-ie.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="../../../jquery/jquery-3.3.1.js"></script>
-<script type="text/javascript" src="../../../jquery/jquery-migrate-3.0.1.js"></script>
+<script type="text/javascript" src="../../../jquery/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="../../../jquery/jquery-ui.js"></script>
 </head>
 <body>
@@ -148,18 +147,28 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#host">host</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isResumable">isResumable</a></span></code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr class="rowColor">
+<tr class="altColor">
 <td class="colFirst"><code>long</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#keepAlive">keepAlive</a></span></code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr class="altColor">
+<tr class="rowColor">
 <td class="colFirst"><code>long</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#lifetime">lifetime</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#port">port</a></span></code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
@@ -184,9 +193,11 @@ extends java.lang.Object</pre>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(long,long,boolean)">ConnectionConfig</a></span>&#8203;(long&nbsp;lifetime,
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(long,long,boolean,java.lang.String,int)">ConnectionConfig</a></span>&#8203;(long&nbsp;lifetime,
                 long&nbsp;keepAlive,
-                boolean&nbsp;resumable)</code></th>
+                boolean&nbsp;resumable,
+                java.lang.String&nbsp;host,
+                int&nbsp;port)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
@@ -223,6 +234,24 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Field Detail</h3>
+<a id="port">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>port</h4>
+<pre>public&nbsp;int port</pre>
+</li>
+</ul>
+<a id="host">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>host</h4>
+<pre>public&nbsp;java.lang.String host</pre>
+</li>
+</ul>
 <a id="lifetime">
 <!--   -->
 </a>
@@ -260,7 +289,7 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a id="&lt;init&gt;(long,long,boolean)">
+<a id="&lt;init&gt;(long,long,boolean,java.lang.String,int)">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -268,7 +297,9 @@ extends java.lang.Object</pre>
 <h4>ConnectionConfig</h4>
 <pre>public&nbsp;ConnectionConfig&#8203;(long&nbsp;lifetime,
                         long&nbsp;keepAlive,
-                        boolean&nbsp;resumable)</pre>
+                        boolean&nbsp;resumable,
+                        java.lang.String&nbsp;host,
+                        int&nbsp;port)</pre>
 </li>
 </ul>
 <a id="&lt;init&gt;()">

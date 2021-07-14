@@ -3,10 +3,10 @@ package com.elarian.model;
 import reactor.util.annotation.NonNull;
 
 public final class ClientConfig {
+    public String authToken;
     public final String appId;
     public final String orgId;
     public final String apiKey;
-    public String authToken;
     public boolean allowNotifications;
     public ConnectionConfig connectionConfig;
 

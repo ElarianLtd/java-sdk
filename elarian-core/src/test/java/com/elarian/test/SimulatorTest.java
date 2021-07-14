@@ -3,6 +3,7 @@ package com.elarian.test;
 import com.elarian.Simulator;
 import com.elarian.model.Cash;
 import com.elarian.model.Media;
+import com.elarian.model.ConnectionConfig;
 import com.elarian.model.PaymentStatus;
 import com.elarian.model.SimulatorMessageBody;
 import com.elarian.model.SimulatorReply;
@@ -24,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class SimulatorTest {
 
-    private static final Simulator client = new Simulator(Fixtures.API_KEY, Fixtures.ORG_ID, Fixtures.APP_ID);
+    private static final Simulator client = new Simulator(Fixtures.API_KEY, Fixtures.ORG_ID, Fixtures.APP_ID, new ConnectionConfig(10000, 1000, false, "tcp.elarian.dev", 8082));
 
     @Test
     @Order(1)

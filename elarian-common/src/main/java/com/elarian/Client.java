@@ -89,8 +89,8 @@ abstract class Client<B, C> {
                 TcpClient
                     .create()
                     .secure()
-                    .host("tcp.elarian.dev")
-                    .port(8082)
+                    .host(clientOpts.connectionConfig.host)
+                    .port(clientOpts.connectionConfig.port)
                     .doOnConnect(tcpClientConfig -> {
                         log("Connecting");
                         listener.onConnecting();

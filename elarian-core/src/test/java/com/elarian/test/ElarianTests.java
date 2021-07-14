@@ -3,6 +3,7 @@ package com.elarian.test;
 import com.elarian.Elarian;
 import com.elarian.model.AuthToken;
 import com.elarian.model.Cash;
+import com.elarian.model.ConnectionConfig;
 import com.elarian.model.CustomerNumber;
 import com.elarian.model.InitiatePaymentReply;
 import com.elarian.model.Message;
@@ -27,7 +28,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @TestMethodOrder(OrderAnnotation.class)
 public class ElarianTests {
 
-    private static final Elarian client = new Elarian(Fixtures.API_KEY, Fixtures.ORG_ID, Fixtures.APP_ID);
+    private static final Elarian client = new Elarian(Fixtures.API_KEY, Fixtures.ORG_ID, Fixtures.APP_ID, new ConnectionConfig(10000, 1000, false, "tcp.elarian.dev", 8082), true);
 
     static {
         client.setOnReceivedSmsNotificationHandler((notification, customer, appData, callback) -> {
