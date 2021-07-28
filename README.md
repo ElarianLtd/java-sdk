@@ -97,7 +97,3 @@ See [SDK Spec](https://github.com/ElarianLtd/sdk-spec) for reference.
 ## Issues
 
 If you find a bug, please file an issue on [our issue tracker on GitHub](https://github.com/ElarianLtd/java-sdk/issues).
-
-## Known Issues
-
-- Elarian domain name not resolving on Android

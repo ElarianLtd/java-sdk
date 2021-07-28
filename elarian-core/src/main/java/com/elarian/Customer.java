@@ -294,6 +294,19 @@ public final class Customer implements ICustomer {
 
                     if (data.hasMessagingState()) {
                         state.messagingState = new MessagingState();
+
+                        state.messagingState.messages = data.getMessagingState()
+                                .getMessagesList()
+                                .stream()
+                                .map(Utils::makeChannelMessage)
+                                .collect(Collectors.toList());
+
+                        state.messagingState.sessions = data.getMessagingState()
+                                .getSessionsList()
+                                .stream()
+                                .map(Utils::makeCompleteMessagingSession)
+                                .collect(Collectors.toList());
+
                         state.messagingState.channels = data.getMessagingState()
                                 .getChannelsList()
                                 .stream()

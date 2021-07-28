@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class SentMessage {
+    public CustomerNumber customerNumber;
+    public MessagingChannel channelNumber;
     public String messageId;
     public long createdAt;
     public String sessionId;
     public String inReplyTo;
-    public CustomerNumber.Provider provider;
+    public MessagingChannel.Channel provider;
     public String appId;
     public long updatedAt;
     public MessageDeliveryStatus status;

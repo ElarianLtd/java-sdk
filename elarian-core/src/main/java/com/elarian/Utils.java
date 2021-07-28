@@ -135,6 +135,100 @@ class Utils {
         return new CustomerNumber(num.getNumber(), CustomerNumber.Provider.valueOf(num.getProviderValue()));
     }
 
+    public static CompleteMessagingSession makeCompleteMessagingSession(MessagingStateOuterClass.CompleteMessagingSession item) {
+        CompleteMessagingSession session = new CompleteMessagingSession();
+        session.sessionId = item.getSessionId();
+        session.appIds = item.getAppIdsList();
+        session.duration = item.getDuration().getSeconds();
+        session.endReason = MessagingSessionEndReason.valueOf(item.getEndReasonValue());
+        return session;
+    }
+
+    public static ChannelMessage makeChannelMessage(MessagingStateOuterClass.ChannelMessage item){
+        if (item.hasReceived()) {
+            MessagingStateOuterClass.ReceivedMessage received = item.getReceived();
+            ReceivedMessage target = new ReceivedMessage();
+            target.customerNumber = makeCustomerNumber(received.getCustomerNumber());
+            target.channelNumber = makeMessagingChannel(received.getChannelNumber());
+            target.messageId = received.getMessageId();
+            target.createdAt = received.getCreatedAt().getSeconds();
+            target.sessionId = received.getSessionId().getValue();
+            target.inReplyTo = received.getInReplyTo().getValue();
+            target.provider = MessagingChannel.Channel.valueOf(received.getProviderValue());
+            target.appId = received.getAppId().getValue();
+
+            received.getPartsList().forEach((part) -> {
+                if (!part.getText().isEmpty()) {
+                    target.texts.add(part.getText());
+                }
+                if (part.hasMedia()) {
+                    target.media.add(new Media(part.getMedia().getUrl(), Media.MediaType.valueOf(part.getMedia().getMediaValue())));
+                }
+
+                if (part.hasLocation()) {
+                    Location loc = new Location(
+                            part.getLocation().getLatitude(),
+                            part.getLocation().getLongitude(),
+                            part.getLocation().getLabel().getValue(),
+                            part.getLocation().getAddress().getValue()
+                    );
+                    target.locations.add(loc);
+                }
+
+                if (part.hasEmail()) {
+                    Email email = new Email(
+                            part.getEmail().getSubject(),
+                            part.getEmail().getBodyPlain(),
+                            part.getEmail().getBodyHtml()
+                    );
+                    email.cc = part.getEmail().getCcListList();
+                    email.bcc = part.getEmail().getBccListList();
+                    email.attachments = part.getEmail().getAttachmentsList();
+                    target.emails.add(email);
+                }
+
+                if (part.hasUssd()) {
+                    target.ussd.add(
+                            new UssdInput(part.getUssd().getText().getValue(),
+                                    UssdInput.UssdStatus.valueOf(part.getUssd().getStatusValue())));
+                }
+
+                if (part.hasVoice()) {
+                    target.voice.add(makeVoiceCallInput(part.getVoice()));
+                }
+
+            });
+
+            return new ChannelMessage(target);
+        }
+
+        if (item.hasSent()) {
+            MessagingStateOuterClass.SentMessage sent = item.getSent();
+            SentMessage target = new SentMessage();
+            target.customerNumber = makeCustomerNumber(sent.getCustomerNumber());
+            target.channelNumber = makeMessagingChannel(sent.getChannelNumber());
+            target.messageId = sent.getMessageId();
+            target.createdAt = sent.getCreatedAt().getSeconds();
+            target.sessionId = sent.getSessionId().getValue();
+            target.inReplyTo = sent.getInReplyTo().getValue();
+            target.provider = MessagingChannel.Channel.valueOf(sent.getProviderValue());
+            target.appId = sent.getAppId().getValue();
+            target.message = makeMessage(sent.getMessage());
+            target.updatedAt = sent.getUpdatedAt().getSeconds();
+            target.status = MessageDeliveryStatus.valueOf(sent.getStatusValue());
+            target.reaction = sent.getReactionsList()
+                    .stream()
+                    .map((reaction) -> new MessageReactionState(
+                            MessageReaction.valueOf(reaction.getReactionValue()),
+                            reaction.getCreatedAt().getSeconds()
+                    ))
+                    .collect(Collectors.toList());
+            return new ChannelMessage(target);
+        }
+
+        return null;
+    }
+
     public static PaymentState.PaymentTransaction makeTransactionLog(PaymentModel.PaymentTransaction transaction) {
         PaymentState.PaymentTransaction txn = new PaymentState.PaymentTransaction();
         txn.appId = transaction.getAppId().getValue();
@@ -188,108 +282,6 @@ class Utils {
             ch.active.customerNumber = makeCustomerNumber(chState.getCustomerNumber());
             ch.active.channelNumber = makeMessagingChannel(chState.getChannelNumber());
             ch.active.replyToken = new MessageReplyToken(chState.getReplyToken().getToken(), chState.getReplyToken().getExpiresAt().getSeconds());
-            ch.active.messages = chState.getMessagesList()
-                    .stream()
-                    .map((item) -> {
-                        if (item.hasReceived()) {
-                            MessagingStateOuterClass.ReceivedMessage received = item.getReceived();
-                            ReceivedMessage target = new ReceivedMessage();
-                            target.cost = new Cash(received.getCost().getCurrencyCode(), received.getCost().getAmount());
-                            target.messageId = received.getMessageId();
-                            target.createdAt = received.getCreatedAt().getSeconds();
-                            target.sessionId = received.getSessionId().getValue();
-                            target.inReplyTo = received.getInReplyTo().getValue();
-                            target.provider = CustomerNumber.Provider.valueOf(received.getProviderValue());
-                            target.appId = received.getAppId().getValue();
-
-                            received.getPartsList().forEach((part) -> {
-                                if (!part.getText().isEmpty()) {
-                                    target.texts.add(part.getText());
-                                }
-                                if (part.hasMedia()) {
-                                    target.media.add(new Media(part.getMedia().getUrl(), Media.MediaType.valueOf(part.getMedia().getMediaValue())));
-                                }
-
-                                if (part.hasLocation()) {
-                                    Location loc = new Location(
-                                            part.getLocation().getLatitude(),
-                                            part.getLocation().getLongitude(),
-                                            part.getLocation().getLabel().getValue(),
-                                            part.getLocation().getAddress().getValue()
-                                    );
-                                    target.locations.add(loc);
-                                }
-
-                                if (part.hasEmail()) {
-                                    Email email = new Email(
-                                            part.getEmail().getSubject(),
-                                            part.getEmail().getBodyPlain(),
-                                            part.getEmail().getBodyHtml()
-                                    );
-                                    email.cc = part.getEmail().getCcListList();
-                                    email.bcc = part.getEmail().getBccListList();
-                                    email.attachments = part.getEmail().getAttachmentsList();
-                                    target.emails.add(email);
-                                }
-
-                                if (part.hasUssd()) {
-                                    UssdInput ussdInput = new UssdInput(
-                                            part.getUssd().getText().getValue(),
-                                            UssdInput.UssdStatus.valueOf(part.getUssd().getStatusValue())
-                                    );
-                                    target.ussd.add(ussdInput);
-                                }
-
-                                if (part.hasVoice()) {
-                                    target.voice.add(makeVoiceCallInput(part.getVoice()));
-                                }
-
-                            });
-
-                            return new ChannelMessage(target);
-                        }
-
-                        if (item.hasSent()) {
-                            MessagingStateOuterClass.SentMessage sent = item.getSent();
-                            SentMessage target = new SentMessage();
-                            target.cost = new Cash(sent.getCost().getCurrencyCode(), sent.getCost().getAmount());
-                            target.messageId = sent.getMessageId();
-                            target.createdAt = sent.getCreatedAt().getSeconds();
-                            target.sessionId = sent.getSessionId().getValue();
-                            target.inReplyTo = sent.getInReplyTo().getValue();
-                            target.provider = CustomerNumber.Provider.valueOf(sent.getProviderValue());
-                            target.appId = sent.getAppId().getValue();
-                            target.message = makeMessage(sent.getMessage());
-                            target.updatedAt = sent.getUpdatedAt().getSeconds();
-                            target.status = MessageDeliveryStatus.valueOf(sent.getStatusValue());
-                            target.reaction = sent.getReactionsList()
-                                    .stream()
-                                    .map((reaction) -> new MessageReactionState(
-                                            MessageReaction.valueOf(reaction.getReactionValue()),
-                                            reaction.getCreatedAt().getSeconds()
-                                    ))
-                                    .collect(Collectors.toList());
-                            return new ChannelMessage(target);
-                        }
-
-                        return null;
-                    })
-                    .filter(Objects::nonNull)
-                    .collect(Collectors.toList());
-
-            ch.active.sessions = chState.getSessionsList()
-                    .stream()
-                    .map((item) -> {
-                        CompleteMessagingSession session = new CompleteMessagingSession();
-                        session.sessionId = item.getSessionId();
-                        session.appIds = item.getAppIdsList();
-                        session.duration = item.getDuration().getSeconds();
-                        session.startedAt = item.getStartedAt().getSeconds();
-                        session.cost = new Cash(item.getCost().getCurrencyCode(), item.getCost().getAmount());
-                        session.endReason = MessagingSessionEndReason.valueOf(item.getEndReasonValue());
-                        return session;
-                    })
-                    .collect(Collectors.toList());
         }
 
         if (state.hasBlocked()) {
@@ -299,108 +291,6 @@ class Utils {
             ch.blocked.customerNumber = makeCustomerNumber(chState.getCustomerNumber());
             ch.blocked.channelNumber = makeMessagingChannel(chState.getChannelNumber());
             ch.blocked.replyToken = new MessageReplyToken(chState.getReplyToken().getToken(), chState.getReplyToken().getExpiresAt().getSeconds());
-            ch.blocked.messages = chState.getMessagesList()
-                    .stream()
-                    .map((item) -> {
-                        if (item.hasReceived()) {
-                            MessagingStateOuterClass.ReceivedMessage received = item.getReceived();
-                            ReceivedMessage target = new ReceivedMessage();
-                            target.cost = new Cash(received.getCost().getCurrencyCode(), received.getCost().getAmount());
-                            target.messageId = received.getMessageId();
-                            target.createdAt = received.getCreatedAt().getSeconds();
-                            target.sessionId = received.getSessionId().getValue();
-                            target.inReplyTo = received.getInReplyTo().getValue();
-                            target.provider = CustomerNumber.Provider.valueOf(received.getProviderValue());
-                            target.appId = received.getAppId().getValue();
-
-                            received.getPartsList().forEach((part) -> {
-                                if (!part.getText().isEmpty()) {
-                                    target.texts.add(part.getText());
-                                }
-                                if (part.hasMedia()) {
-                                    target.media.add(new Media(part.getMedia().getUrl(), Media.MediaType.valueOf(part.getMedia().getMediaValue())));
-                                }
-
-                                if (part.hasLocation()) {
-                                    Location loc = new Location(
-                                            part.getLocation().getLatitude(),
-                                            part.getLocation().getLongitude(),
-                                            part.getLocation().getLabel().getValue(),
-                                            part.getLocation().getAddress().getValue()
-                                    );
-                                    target.locations.add(loc);
-                                }
-
-                                if (part.hasEmail()) {
-                                    Email email = new Email(
-                                            part.getEmail().getSubject(),
-                                            part.getEmail().getBodyPlain(),
-                                            part.getEmail().getBodyHtml()
-                                    );
-                                    email.cc = part.getEmail().getCcListList();
-                                    email.bcc = part.getEmail().getBccListList();
-                                    email.attachments = part.getEmail().getAttachmentsList();
-                                    target.emails.add(email);
-                                }
-
-                                if (part.hasUssd()) {
-                                    UssdInput ussdInput = new UssdInput(
-                                            part.getUssd().getText().getValue(),
-                                            UssdInput.UssdStatus.valueOf(part.getUssd().getStatusValue())
-                                    );
-                                    target.ussd.add(ussdInput);
-                                }
-
-                                if (part.hasVoice()) {
-                                    target.voice.add(makeVoiceCallInput(part.getVoice()));
-                                }
-
-                            });
-
-                            return new ChannelMessage(target);
-                        }
-
-                        if (item.hasSent()) {
-                            MessagingStateOuterClass.SentMessage sent = item.getSent();
-                            SentMessage target = new SentMessage();
-                            target.cost = new Cash(sent.getCost().getCurrencyCode(), sent.getCost().getAmount());
-                            target.messageId = sent.getMessageId();
-                            target.createdAt = sent.getCreatedAt().getSeconds();
-                            target.sessionId = sent.getSessionId().getValue();
-                            target.inReplyTo = sent.getInReplyTo().getValue();
-                            target.provider = CustomerNumber.Provider.valueOf(sent.getProviderValue());
-                            target.appId = sent.getAppId().getValue();
-                            target.message = makeMessage(sent.getMessage());
-                            target.updatedAt = sent.getUpdatedAt().getSeconds();
-                            target.status = MessageDeliveryStatus.valueOf(sent.getStatusValue());
-                            target.reaction = sent.getReactionsList()
-                                    .stream()
-                                    .map((reaction) -> new MessageReactionState(
-                                            MessageReaction.valueOf(reaction.getReactionValue()),
-                                            reaction.getCreatedAt().getSeconds()
-                                    ))
-                                    .collect(Collectors.toList());
-                            return new ChannelMessage(target);
-                        }
-
-                        return null;
-                    })
-                    .filter(Objects::nonNull)
-                    .collect(Collectors.toList());
-
-            ch.blocked.sessions = chState.getSessionsList()
-                    .stream()
-                    .map((item) -> {
-                        CompleteMessagingSession session = new CompleteMessagingSession();
-                        session.sessionId = item.getSessionId();
-                        session.appIds = item.getAppIdsList();
-                        session.duration = item.getDuration().getSeconds();
-                        session.startedAt = item.getStartedAt().getSeconds();
-                        session.cost = new Cash(item.getCost().getCurrencyCode(), item.getCost().getAmount());
-                        session.endReason = MessagingSessionEndReason.valueOf(item.getEndReasonValue());
-                        return session;
-                    })
-                    .collect(Collectors.toList());
         }
 
         if (state.hasInSession()) {
@@ -414,108 +304,6 @@ class Utils {
             ch.inSession.customerNumber = makeCustomerNumber(chState.getCustomerNumber());
             ch.inSession.channelNumber = makeMessagingChannel(chState.getChannelNumber());
             ch.inSession.replyToken = new MessageReplyToken(chState.getReplyToken().getToken(), chState.getReplyToken().getExpiresAt().getSeconds());
-            ch.inSession.messages = chState.getMessagesList()
-                    .stream()
-                    .map((item) -> {
-                        if (item.hasReceived()) {
-                            MessagingStateOuterClass.ReceivedMessage received = item.getReceived();
-                            ReceivedMessage target = new ReceivedMessage();
-                            target.cost = new Cash(received.getCost().getCurrencyCode(), received.getCost().getAmount());
-                            target.messageId = received.getMessageId();
-                            target.createdAt = received.getCreatedAt().getSeconds();
-                            target.sessionId = received.getSessionId().getValue();
-                            target.inReplyTo = received.getInReplyTo().getValue();
-                            target.provider = CustomerNumber.Provider.valueOf(received.getProviderValue());
-                            target.appId = received.getAppId().getValue();
-
-                            received.getPartsList().forEach((part) -> {
-                                if (!part.getText().isEmpty()) {
-                                    target.texts.add(part.getText());
-                                }
-                                if (part.hasMedia()) {
-                                    target.media.add(new Media(part.getMedia().getUrl(), Media.MediaType.valueOf(part.getMedia().getMediaValue())));
-                                }
-
-                                if (part.hasLocation()) {
-                                    Location loc = new Location(
-                                            part.getLocation().getLatitude(),
-                                            part.getLocation().getLongitude(),
-                                            part.getLocation().getLabel().getValue(),
-                                            part.getLocation().getAddress().getValue()
-                                    );
-                                    target.locations.add(loc);
-                                }
-
-                                if (part.hasEmail()) {
-                                    Email email = new Email(
-                                            part.getEmail().getSubject(),
-                                            part.getEmail().getBodyPlain(),
-                                            part.getEmail().getBodyHtml()
-                                    );
-                                    email.cc = part.getEmail().getCcListList();
-                                    email.bcc = part.getEmail().getBccListList();
-                                    email.attachments = part.getEmail().getAttachmentsList();
-                                    target.emails.add(email);
-                                }
-
-                                if (part.hasUssd()) {
-                                    UssdInput ussdInput = new UssdInput(
-                                            part.getUssd().getText().getValue(),
-                                            UssdInput.UssdStatus.valueOf(part.getUssd().getStatusValue())
-                                    );
-                                    target.ussd.add(ussdInput);
-                                }
-
-                                if (part.hasVoice()) {
-                                    target.voice.add(makeVoiceCallInput(part.getVoice()));
-                                }
-
-                            });
-
-                            return new ChannelMessage(target);
-                        }
-
-                        if (item.hasSent()) {
-                            MessagingStateOuterClass.SentMessage sent = item.getSent();
-                            SentMessage target = new SentMessage();
-                            target.cost = new Cash(sent.getCost().getCurrencyCode(), sent.getCost().getAmount());
-                            target.messageId = sent.getMessageId();
-                            target.createdAt = sent.getCreatedAt().getSeconds();
-                            target.sessionId = sent.getSessionId().getValue();
-                            target.inReplyTo = sent.getInReplyTo().getValue();
-                            target.provider = CustomerNumber.Provider.valueOf(sent.getProviderValue());
-                            target.appId = sent.getAppId().getValue();
-                            target.message = makeMessage(sent.getMessage());
-                            target.updatedAt = sent.getUpdatedAt().getSeconds();
-                            target.status = MessageDeliveryStatus.valueOf(sent.getStatusValue());
-                            target.reaction = sent.getReactionsList()
-                                    .stream()
-                                    .map((reaction) -> new MessageReactionState(
-                                            MessageReaction.valueOf(reaction.getReactionValue()),
-                                            reaction.getCreatedAt().getSeconds()
-                                    ))
-                                    .collect(Collectors.toList());
-                            return new ChannelMessage(target);
-                        }
-
-                        return null;
-                    })
-                    .filter(Objects::nonNull)
-                    .collect(Collectors.toList());
-
-            ch.inSession.sessions = chState.getSessionsList()
-                    .stream()
-                    .map((item) -> {
-                        CompleteMessagingSession session = new CompleteMessagingSession();
-                        session.sessionId = item.getSessionId();
-                        session.appIds = item.getAppIdsList();
-                        session.duration = item.getDuration().getSeconds();
-                        session.startedAt = item.getStartedAt().getSeconds();
-                        session.cost = new Cash(item.getCost().getCurrencyCode(), item.getCost().getAmount());
-                        session.endReason = MessagingSessionEndReason.valueOf(item.getEndReasonValue());
-                        return session;
-                    })
-                    .collect(Collectors.toList());
         }
 
         return ch;

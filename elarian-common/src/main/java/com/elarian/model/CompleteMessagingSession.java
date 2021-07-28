@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class CompleteMessagingSession {
+    public CustomerNumber customerNumber;
+    public MessagingChannel channelNumber;
     public String sessionId;
     public long duration;
     public long startedAt;
