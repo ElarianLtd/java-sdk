@@ -40640,6 +40640,17 @@ public final class AppSocket {
      * <code>.com.elarian.hera.proto.Cash value = 3;</code>
      */
     com.elarian.hera.proto.CommonModel.CashOrBuilder getValueOrBuilder();
+
+    /**
+     * <code>.com.elarian.hera.proto.PaymentMode mode = 4;</code>
+     * @return The enum numeric value on the wire for mode.
+     */
+    int getModeValue();
+    /**
+     * <code>.com.elarian.hera.proto.PaymentMode mode = 4;</code>
+     * @return The mode.
+     */
+    com.elarian.hera.proto.PaymentModel.PaymentMode getMode();
   }
   /**
    * Protobuf type {@code com.elarian.hera.proto.InitiatePaymentCommand}
@@ -40654,6 +40665,7 @@ public final class AppSocket {
       super(builder);
     }
     private InitiatePaymentCommand() {
+      mode_ = 0;
     }
 
     @java.lang.Override
@@ -40723,6 +40735,12 @@ public final class AppSocket {
                 value_ = subBuilder.buildPartial();
               }
 
+              break;
+            }
+            case 32: {
+              int rawValue = input.readEnum();
+
+              mode_ = rawValue;
               break;
             }
             default: {
@@ -40835,6 +40853,25 @@ public final class AppSocket {
       return getValue();
     }
 
+    public static final int MODE_FIELD_NUMBER = 4;
+    private int mode_;
+    /**
+     * <code>.com.elarian.hera.proto.PaymentMode mode = 4;</code>
+     * @return The enum numeric value on the wire for mode.
+     */
+    @java.lang.Override public int getModeValue() {
+      return mode_;
+    }
+    /**
+     * <code>.com.elarian.hera.proto.PaymentMode mode = 4;</code>
+     * @return The mode.
+     */
+    @java.lang.Override public com.elarian.hera.proto.PaymentModel.PaymentMode getMode() {
+      @SuppressWarnings("deprecation")
+      com.elarian.hera.proto.PaymentModel.PaymentMode result = com.elarian.hera.proto.PaymentModel.PaymentMode.valueOf(mode_);
+      return result == null ? com.elarian.hera.proto.PaymentModel.PaymentMode.UNRECOGNIZED : result;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -40858,6 +40895,9 @@ public final class AppSocket {
       if (value_ != null) {
         output.writeMessage(3, getValue());
       }
+      if (mode_ != com.elarian.hera.proto.PaymentModel.PaymentMode.PAYMENT_MODE_UNSPECIFIED.getNumber()) {
+        output.writeEnum(4, mode_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -40878,6 +40918,10 @@ public final class AppSocket {
       if (value_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, getValue());
+      }
+      if (mode_ != com.elarian.hera.proto.PaymentModel.PaymentMode.PAYMENT_MODE_UNSPECIFIED.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(4, mode_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -40909,6 +40953,7 @@ public final class AppSocket {
         if (!getValue()
             .equals(other.getValue())) return false;
       }
+      if (mode_ != other.mode_) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -40932,6 +40977,8 @@ public final class AppSocket {
         hash = (37 * hash) + VALUE_FIELD_NUMBER;
         hash = (53 * hash) + getValue().hashCode();
       }
+      hash = (37 * hash) + MODE_FIELD_NUMBER;
+      hash = (53 * hash) + mode_;
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -41083,6 +41130,8 @@ public final class AppSocket {
           value_ = null;
           valueBuilder_ = null;
         }
+        mode_ = 0;
+
         return this;
       }
 
@@ -41124,6 +41173,7 @@ public final class AppSocket {
         } else {
           result.value_ = valueBuilder_.build();
         }
+        result.mode_ = mode_;
         onBuilt();
         return result;
       }
@@ -41180,6 +41230,9 @@ public final class AppSocket {
         }
         if (other.hasValue()) {
           mergeValue(other.getValue());
+        }
+        if (other.mode_ != 0) {
+          setModeValue(other.getModeValue());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -41565,6 +41618,60 @@ public final class AppSocket {
           value_ = null;
         }
         return valueBuilder_;
+      }
+
+      private int mode_ = 0;
+      /**
+       * <code>.com.elarian.hera.proto.PaymentMode mode = 4;</code>
+       * @return The enum numeric value on the wire for mode.
+       */
+      @java.lang.Override public int getModeValue() {
+        return mode_;
+      }
+      /**
+       * <code>.com.elarian.hera.proto.PaymentMode mode = 4;</code>
+       * @param value The enum numeric value on the wire for mode to set.
+       * @return This builder for chaining.
+       */
+      public Builder setModeValue(int value) {
+        
+        mode_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.com.elarian.hera.proto.PaymentMode mode = 4;</code>
+       * @return The mode.
+       */
+      @java.lang.Override
+      public com.elarian.hera.proto.PaymentModel.PaymentMode getMode() {
+        @SuppressWarnings("deprecation")
+        com.elarian.hera.proto.PaymentModel.PaymentMode result = com.elarian.hera.proto.PaymentModel.PaymentMode.valueOf(mode_);
+        return result == null ? com.elarian.hera.proto.PaymentModel.PaymentMode.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.com.elarian.hera.proto.PaymentMode mode = 4;</code>
+       * @param value The mode to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMode(com.elarian.hera.proto.PaymentModel.PaymentMode value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        mode_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.com.elarian.hera.proto.PaymentMode mode = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMode() {
+        
+        mode_ = 0;
+        onChanged();
+        return this;
       }
       @java.lang.Override
       public final Builder setUnknownFields(
@@ -67715,149 +67822,150 @@ public final class AppSocket {
       "\01624.com.elarian.hera.proto.MessagingCons" +
       "entUpdateStatus\022\023\n\013description\030\002 \001(\t\0221\n\013" +
       "customer_id\030\003 \001(\0132\034.google.protobuf.Stri" +
-      "ngValue\"\312\001\n\026InitiatePaymentCommand\022@\n\013de" +
+      "ngValue\"\375\001\n\026InitiatePaymentCommand\022@\n\013de" +
       "bit_party\030\001 \001(\0132+.com.elarian.hera.proto" +
       ".PaymentCounterParty\022A\n\014credit_party\030\002 \001" +
       "(\0132+.com.elarian.hera.proto.PaymentCount" +
       "erParty\022+\n\005value\030\003 \001(\0132\034.com.elarian.her" +
-      "a.proto.Cash\"\213\002\n\024InitiatePaymentReply\0225\n" +
-      "\006status\030\001 \001(\0162%.com.elarian.hera.proto.P" +
-      "aymentStatus\022\023\n\013description\030\002 \001(\t\0224\n\016tra" +
-      "nsaction_id\030\003 \001(\0132\034.google.protobuf.Stri" +
-      "ngValue\0227\n\021debit_customer_id\030\004 \001(\0132\034.goo" +
-      "gle.protobuf.StringValue\0228\n\022credit_custo" +
-      "mer_id\030\005 \001(\0132\034.google.protobuf.StringVal" +
-      "ue\"e\n\017TagCommandReply\022\016\n\006status\030\001 \001(\010\022\023\n" +
-      "\013description\030\002 \001(\t\022-\n\007work_id\030\003 \001(\0132\034.go" +
-      "ogle.protobuf.StringValue\"\312\002\n\027CustomerAc" +
-      "tivityCommand\022?\n\017customer_number\030\001 \001(\0132&" +
-      ".com.elarian.hera.proto.CustomerNumber\022E" +
-      "\n\016channel_number\030\002 \001(\0132-.com.elarian.her" +
-      "a.proto.ActivityChannelNumber\022\022\n\nsession" +
-      "_id\030\003 \001(\t\022\013\n\003key\030\004 \001(\t\022S\n\nproperties\030\005 \003" +
-      "(\0132?.com.elarian.hera.proto.CustomerActi" +
-      "vityCommand.PropertiesEntry\0321\n\017Propertie" +
-      "sEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"o" +
-      "\n\025CustomerActivityReply\022\016\n\006status\030\001 \001(\010\022" +
-      "\023\n\013description\030\002 \001(\t\0221\n\013customer_id\030\003 \001(" +
-      "\0132\034.google.protobuf.StringValue\"\266\001\n\027Serv" +
-      "erToAppNotification\022K\n\010customer\030\001 \001(\01327." +
-      "com.elarian.hera.proto.ServerToAppCustom" +
-      "erNotificationH\000\022E\n\005purse\030\002 \001(\01324.com.el" +
-      "arian.hera.proto.ServerToAppPurseNotific" +
-      "ationH\000B\007\n\005entry\"\316\t\n\037ServerToAppCustomer" +
-      "Notification\022\016\n\006org_id\030\001 \001(\t\022\016\n\006app_id\030\002" +
-      " \001(\t\022\023\n\013customer_id\030\003 \001(\t\0226\n\010app_data\030\004 " +
-      "\001(\0132$.com.elarian.hera.proto.DataMapValu" +
-      "e\022.\n\ncreated_at\030\005 \001(\0132\032.google.protobuf." +
-      "Timestamp\022@\n\010reminder\030\006 \001(\0132,.com.elaria" +
-      "n.hera.proto.ReminderNotificationH\000\022`\n\031m" +
-      "essaging_session_started\030\007 \001(\0132;.com.ela" +
-      "rian.hera.proto.MessagingSessionStartedN" +
-      "otificationH\000\022`\n\031messaging_session_renew" +
-      "ed\030\010 \001(\0132;.com.elarian.hera.proto.Messag" +
-      "ingSessionRenewedNotificationH\000\022\\\n\027messa" +
-      "ging_session_ended\030\t \001(\01329.com.elarian.h" +
-      "era.proto.MessagingSessionEndedNotificat" +
-      "ionH\000\022^\n\030messaging_consent_update\030\n \001(\0132" +
-      ":.com.elarian.hera.proto.MessagingConsen" +
-      "tUpdateNotificationH\000\022O\n\020received_messag" +
-      "e\030\013 \001(\01323.com.elarian.hera.proto.Receive" +
-      "dMessageNotificationH\000\022K\n\016message_status" +
-      "\030\014 \001(\01321.com.elarian.hera.proto.MessageS" +
-      "tatusNotificationH\000\022X\n\025sent_message_reac" +
-      "tion\030\r \001(\01327.com.elarian.hera.proto.Sent" +
-      "MessageReactionNotificationH\000\022O\n\020receive" +
-      "d_payment\030\016 \001(\01323.com.elarian.hera.proto" +
-      ".ReceivedPaymentNotificationH\000\022K\n\016paymen" +
-      "t_status\030\017 \001(\01321.com.elarian.hera.proto." +
-      "PaymentStatusNotificationH\000\022X\n\025wallet_pa" +
-      "yment_status\030\020 \001(\01327.com.elarian.hera.pr" +
-      "oto.WalletPaymentStatusNotificationH\000\022Q\n" +
-      "\021customer_activity\030\021 \001(\01324.com.elarian.h" +
-      "era.proto.CustomerActivityNotificationH\000" +
-      "B\007\n\005entry\"\326\001\n\034ServerToAppPurseNotificati" +
-      "on\022\016\n\006org_id\030\001 \001(\t\022\016\n\006app_id\030\002 \001(\t\022\020\n\010pu" +
-      "rse_id\030\003 \001(\t\022.\n\ncreated_at\030\004 \001(\0132\032.googl" +
-      "e.protobuf.Timestamp\022K\n\016payment_status\030\005" +
-      " \001(\01321.com.elarian.hera.proto.PaymentSta" +
-      "tusNotificationH\000B\007\n\005entry\"C\n\rAppDataUpd" +
-      "ate\0222\n\004data\030\001 \001(\0132$.com.elarian.hera.pro" +
-      "to.DataMapValue\"\224\001\n\034ServerToAppNotificat" +
-      "ionReply\022:\n\013data_update\030\001 \001(\0132%.com.elar" +
-      "ian.hera.proto.AppDataUpdate\0228\n\007message\030" +
-      "\002 \001(\0132\'.com.elarian.hera.proto.OutboundM" +
-      "essage\"\265\001\n\024ReminderNotification\022:\n\010remin" +
-      "der\030\001 \001(\0132(.com.elarian.hera.proto.Custo" +
-      "merReminder\0222\n\003tag\030\002 \001(\0132%.com.elarian.h" +
-      "era.proto.CustomerIndex\022-\n\007work_id\030\003 \001(\013" +
-      "2\034.google.protobuf.StringValue\"\362\001\n#Messa" +
-      "gingSessionStartedNotification\022?\n\017custom" +
-      "er_number\030\001 \001(\0132&.com.elarian.hera.proto" +
-      ".CustomerNumber\022F\n\016channel_number\030\002 \001(\0132" +
-      "..com.elarian.hera.proto.MessagingChanne" +
-      "lNumber\022\022\n\nsession_id\030\003 \001(\t\022.\n\nexpires_a" +
-      "t\030\004 \001(\0132\032.google.protobuf.Timestamp\"\362\001\n#" +
-      "MessagingSessionRenewedNotification\022?\n\017c" +
-      "ustomer_number\030\001 \001(\0132&.com.elarian.hera." +
-      "proto.CustomerNumber\022F\n\016channel_number\030\002" +
-      " \001(\0132..com.elarian.hera.proto.MessagingC" +
-      "hannelNumber\022\022\n\nsession_id\030\003 \001(\t\022.\n\nexpi" +
-      "res_at\030\004 \001(\0132\032.google.protobuf.Timestamp" +
-      "\"\260\002\n!MessagingSessionEndedNotification\022?" +
-      "\n\017customer_number\030\001 \001(\0132&.com.elarian.he" +
-      "ra.proto.CustomerNumber\022F\n\016channel_numbe" +
-      "r\030\002 \001(\0132..com.elarian.hera.proto.Messagi" +
-      "ngChannelNumber\022\022\n\nsession_id\030\003 \001(\t\022+\n\010d" +
-      "uration\030\004 \001(\0132\031.google.protobuf.Duration" +
-      "\022A\n\006reason\030\005 \001(\01621.com.elarian.hera.prot" +
-      "o.MessagingSessionEndReason\"\263\002\n\"Messagin" +
-      "gConsentUpdateNotification\022?\n\017customer_n" +
-      "umber\030\001 \001(\0132&.com.elarian.hera.proto.Cus" +
-      "tomerNumber\022F\n\016channel_number\030\002 \001(\0132..co" +
-      "m.elarian.hera.proto.MessagingChannelNum" +
-      "ber\022>\n\006update\030\003 \001(\0162..com.elarian.hera.p" +
-      "roto.MessagingConsentUpdate\022D\n\006status\030\004 " +
-      "\001(\01624.com.elarian.hera.proto.MessagingCo" +
-      "nsentUpdateStatus\"\332\002\n\033ReceivedMessageNot" +
-      "ification\022\022\n\nmessage_id\030\001 \001(\t\022?\n\017custome" +
-      "r_number\030\002 \001(\0132&.com.elarian.hera.proto." +
-      "CustomerNumber\022F\n\016channel_number\030\003 \001(\0132." +
-      ".com.elarian.hera.proto.MessagingChannel" +
-      "Number\0229\n\005parts\030\004 \003(\0132*.com.elarian.hera" +
-      ".proto.InboundMessageBody\0220\n\nsession_id\030" +
-      "\005 \001(\0132\034.google.protobuf.StringValue\0221\n\013i" +
-      "n_reply_to\030\006 \001(\0132\034.google.protobuf.Strin" +
-      "gValue\"n\n\031MessageStatusNotification\022\022\n\nm" +
-      "essage_id\030\001 \001(\t\022=\n\006status\030\002 \001(\0162-.com.el" +
-      "arian.hera.proto.MessageDeliveryStatus\"\371" +
-      "\001\n\037SentMessageReactionNotification\022\022\n\nme" +
-      "ssage_id\030\001 \001(\t\022?\n\017customer_number\030\002 \001(\0132" +
-      "&.com.elarian.hera.proto.CustomerNumber\022" +
-      "F\n\016channel_number\030\003 \001(\0132..com.elarian.he" +
-      "ra.proto.MessagingChannelNumber\0229\n\010react" +
-      "ion\030\004 \001(\0162\'.com.elarian.hera.proto.Messa" +
-      "geReaction\"\262\002\n\033ReceivedPaymentNotificati" +
-      "on\022\020\n\010purse_id\030\001 \001(\t\022\026\n\016transaction_id\030\002" +
-      " \001(\t\022?\n\017customer_number\030\003 \001(\0132&.com.elar" +
-      "ian.hera.proto.CustomerNumber\022D\n\016channel" +
-      "_number\030\004 \001(\0132,.com.elarian.hera.proto.P" +
-      "aymentChannelNumber\022+\n\005value\030\005 \001(\0132\034.com" +
-      ".elarian.hera.proto.Cash\0225\n\006status\030\006 \001(\016" +
-      "2%.com.elarian.hera.proto.PaymentStatus\"" +
-      "j\n\031PaymentStatusNotification\022\026\n\016transact" +
-      "ion_id\030\001 \001(\t\0225\n\006status\030\002 \001(\0162%.com.elari" +
-      "an.hera.proto.PaymentStatus\"\203\001\n\037WalletPa" +
-      "ymentStatusNotification\022\021\n\twallet_id\030\001 \001" +
-      "(\t\022\026\n\016transaction_id\030\002 \001(\t\0225\n\006status\030\003 \001" +
-      "(\0162%.com.elarian.hera.proto.PaymentStatu" +
-      "s\"\366\001\n\034CustomerActivityNotification\022?\n\017cu" +
-      "stomer_number\030\001 \001(\0132&.com.elarian.hera.p" +
-      "roto.CustomerNumber\022E\n\016channel_number\030\002 " +
-      "\001(\0132-.com.elarian.hera.proto.ActivityCha" +
-      "nnelNumber\022\022\n\nsession_id\030\003 \001(\t\022:\n\010activi" +
-      "ty\030\004 \001(\0132(.com.elarian.hera.proto.Custom" +
-      "erActivityb\006proto3"
+      "a.proto.Cash\0221\n\004mode\030\004 \001(\0162#.com.elarian" +
+      ".hera.proto.PaymentMode\"\213\002\n\024InitiatePaym" +
+      "entReply\0225\n\006status\030\001 \001(\0162%.com.elarian.h" +
+      "era.proto.PaymentStatus\022\023\n\013description\030\002" +
+      " \001(\t\0224\n\016transaction_id\030\003 \001(\0132\034.google.pr" +
+      "otobuf.StringValue\0227\n\021debit_customer_id\030" +
+      "\004 \001(\0132\034.google.protobuf.StringValue\0228\n\022c" +
+      "redit_customer_id\030\005 \001(\0132\034.google.protobu" +
+      "f.StringValue\"e\n\017TagCommandReply\022\016\n\006stat" +
+      "us\030\001 \001(\010\022\023\n\013description\030\002 \001(\t\022-\n\007work_id" +
+      "\030\003 \001(\0132\034.google.protobuf.StringValue\"\312\002\n" +
+      "\027CustomerActivityCommand\022?\n\017customer_num" +
+      "ber\030\001 \001(\0132&.com.elarian.hera.proto.Custo" +
+      "merNumber\022E\n\016channel_number\030\002 \001(\0132-.com." +
+      "elarian.hera.proto.ActivityChannelNumber" +
+      "\022\022\n\nsession_id\030\003 \001(\t\022\013\n\003key\030\004 \001(\t\022S\n\npro" +
+      "perties\030\005 \003(\0132?.com.elarian.hera.proto.C" +
+      "ustomerActivityCommand.PropertiesEntry\0321" +
+      "\n\017PropertiesEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030" +
+      "\002 \001(\t:\0028\001\"o\n\025CustomerActivityReply\022\016\n\006st" +
+      "atus\030\001 \001(\010\022\023\n\013description\030\002 \001(\t\0221\n\013custo" +
+      "mer_id\030\003 \001(\0132\034.google.protobuf.StringVal" +
+      "ue\"\266\001\n\027ServerToAppNotification\022K\n\010custom" +
+      "er\030\001 \001(\01327.com.elarian.hera.proto.Server" +
+      "ToAppCustomerNotificationH\000\022E\n\005purse\030\002 \001" +
+      "(\01324.com.elarian.hera.proto.ServerToAppP" +
+      "urseNotificationH\000B\007\n\005entry\"\316\t\n\037ServerTo" +
+      "AppCustomerNotification\022\016\n\006org_id\030\001 \001(\t\022" +
+      "\016\n\006app_id\030\002 \001(\t\022\023\n\013customer_id\030\003 \001(\t\0226\n\010" +
+      "app_data\030\004 \001(\0132$.com.elarian.hera.proto." +
+      "DataMapValue\022.\n\ncreated_at\030\005 \001(\0132\032.googl" +
+      "e.protobuf.Timestamp\022@\n\010reminder\030\006 \001(\0132," +
+      ".com.elarian.hera.proto.ReminderNotifica" +
+      "tionH\000\022`\n\031messaging_session_started\030\007 \001(" +
+      "\0132;.com.elarian.hera.proto.MessagingSess" +
+      "ionStartedNotificationH\000\022`\n\031messaging_se" +
+      "ssion_renewed\030\010 \001(\0132;.com.elarian.hera.p" +
+      "roto.MessagingSessionRenewedNotification" +
+      "H\000\022\\\n\027messaging_session_ended\030\t \001(\01329.co" +
+      "m.elarian.hera.proto.MessagingSessionEnd" +
+      "edNotificationH\000\022^\n\030messaging_consent_up" +
+      "date\030\n \001(\0132:.com.elarian.hera.proto.Mess" +
+      "agingConsentUpdateNotificationH\000\022O\n\020rece" +
+      "ived_message\030\013 \001(\01323.com.elarian.hera.pr" +
+      "oto.ReceivedMessageNotificationH\000\022K\n\016mes" +
+      "sage_status\030\014 \001(\01321.com.elarian.hera.pro" +
+      "to.MessageStatusNotificationH\000\022X\n\025sent_m" +
+      "essage_reaction\030\r \001(\01327.com.elarian.hera" +
+      ".proto.SentMessageReactionNotificationH\000" +
+      "\022O\n\020received_payment\030\016 \001(\01323.com.elarian" +
+      ".hera.proto.ReceivedPaymentNotificationH" +
+      "\000\022K\n\016payment_status\030\017 \001(\01321.com.elarian." +
+      "hera.proto.PaymentStatusNotificationH\000\022X" +
+      "\n\025wallet_payment_status\030\020 \001(\01327.com.elar" +
+      "ian.hera.proto.WalletPaymentStatusNotifi" +
+      "cationH\000\022Q\n\021customer_activity\030\021 \001(\01324.co" +
+      "m.elarian.hera.proto.CustomerActivityNot" +
+      "ificationH\000B\007\n\005entry\"\326\001\n\034ServerToAppPurs" +
+      "eNotification\022\016\n\006org_id\030\001 \001(\t\022\016\n\006app_id\030" +
+      "\002 \001(\t\022\020\n\010purse_id\030\003 \001(\t\022.\n\ncreated_at\030\004 " +
+      "\001(\0132\032.google.protobuf.Timestamp\022K\n\016payme" +
+      "nt_status\030\005 \001(\01321.com.elarian.hera.proto" +
+      ".PaymentStatusNotificationH\000B\007\n\005entry\"C\n" +
+      "\rAppDataUpdate\0222\n\004data\030\001 \001(\0132$.com.elari" +
+      "an.hera.proto.DataMapValue\"\224\001\n\034ServerToA" +
+      "ppNotificationReply\022:\n\013data_update\030\001 \001(\013" +
+      "2%.com.elarian.hera.proto.AppDataUpdate\022" +
+      "8\n\007message\030\002 \001(\0132\'.com.elarian.hera.prot" +
+      "o.OutboundMessage\"\265\001\n\024ReminderNotificati" +
+      "on\022:\n\010reminder\030\001 \001(\0132(.com.elarian.hera." +
+      "proto.CustomerReminder\0222\n\003tag\030\002 \001(\0132%.co" +
+      "m.elarian.hera.proto.CustomerIndex\022-\n\007wo" +
+      "rk_id\030\003 \001(\0132\034.google.protobuf.StringValu" +
+      "e\"\362\001\n#MessagingSessionStartedNotificatio" +
+      "n\022?\n\017customer_number\030\001 \001(\0132&.com.elarian" +
+      ".hera.proto.CustomerNumber\022F\n\016channel_nu" +
+      "mber\030\002 \001(\0132..com.elarian.hera.proto.Mess" +
+      "agingChannelNumber\022\022\n\nsession_id\030\003 \001(\t\022." +
+      "\n\nexpires_at\030\004 \001(\0132\032.google.protobuf.Tim" +
+      "estamp\"\362\001\n#MessagingSessionRenewedNotifi" +
+      "cation\022?\n\017customer_number\030\001 \001(\0132&.com.el" +
+      "arian.hera.proto.CustomerNumber\022F\n\016chann" +
+      "el_number\030\002 \001(\0132..com.elarian.hera.proto" +
+      ".MessagingChannelNumber\022\022\n\nsession_id\030\003 " +
+      "\001(\t\022.\n\nexpires_at\030\004 \001(\0132\032.google.protobu" +
+      "f.Timestamp\"\260\002\n!MessagingSessionEndedNot" +
+      "ification\022?\n\017customer_number\030\001 \001(\0132&.com" +
+      ".elarian.hera.proto.CustomerNumber\022F\n\016ch" +
+      "annel_number\030\002 \001(\0132..com.elarian.hera.pr" +
+      "oto.MessagingChannelNumber\022\022\n\nsession_id" +
+      "\030\003 \001(\t\022+\n\010duration\030\004 \001(\0132\031.google.protob" +
+      "uf.Duration\022A\n\006reason\030\005 \001(\01621.com.elaria" +
+      "n.hera.proto.MessagingSessionEndReason\"\263" +
+      "\002\n\"MessagingConsentUpdateNotification\022?\n" +
+      "\017customer_number\030\001 \001(\0132&.com.elarian.her" +
+      "a.proto.CustomerNumber\022F\n\016channel_number" +
+      "\030\002 \001(\0132..com.elarian.hera.proto.Messagin" +
+      "gChannelNumber\022>\n\006update\030\003 \001(\0162..com.ela" +
+      "rian.hera.proto.MessagingConsentUpdate\022D" +
+      "\n\006status\030\004 \001(\01624.com.elarian.hera.proto." +
+      "MessagingConsentUpdateStatus\"\332\002\n\033Receive" +
+      "dMessageNotification\022\022\n\nmessage_id\030\001 \001(\t" +
+      "\022?\n\017customer_number\030\002 \001(\0132&.com.elarian." +
+      "hera.proto.CustomerNumber\022F\n\016channel_num" +
+      "ber\030\003 \001(\0132..com.elarian.hera.proto.Messa" +
+      "gingChannelNumber\0229\n\005parts\030\004 \003(\0132*.com.e" +
+      "larian.hera.proto.InboundMessageBody\0220\n\n" +
+      "session_id\030\005 \001(\0132\034.google.protobuf.Strin" +
+      "gValue\0221\n\013in_reply_to\030\006 \001(\0132\034.google.pro" +
+      "tobuf.StringValue\"n\n\031MessageStatusNotifi" +
+      "cation\022\022\n\nmessage_id\030\001 \001(\t\022=\n\006status\030\002 \001" +
+      "(\0162-.com.elarian.hera.proto.MessageDeliv" +
+      "eryStatus\"\371\001\n\037SentMessageReactionNotific" +
+      "ation\022\022\n\nmessage_id\030\001 \001(\t\022?\n\017customer_nu" +
+      "mber\030\002 \001(\0132&.com.elarian.hera.proto.Cust" +
+      "omerNumber\022F\n\016channel_number\030\003 \001(\0132..com" +
+      ".elarian.hera.proto.MessagingChannelNumb" +
+      "er\0229\n\010reaction\030\004 \001(\0162\'.com.elarian.hera." +
+      "proto.MessageReaction\"\262\002\n\033ReceivedPaymen" +
+      "tNotification\022\020\n\010purse_id\030\001 \001(\t\022\026\n\016trans" +
+      "action_id\030\002 \001(\t\022?\n\017customer_number\030\003 \001(\013" +
+      "2&.com.elarian.hera.proto.CustomerNumber" +
+      "\022D\n\016channel_number\030\004 \001(\0132,.com.elarian.h" +
+      "era.proto.PaymentChannelNumber\022+\n\005value\030" +
+      "\005 \001(\0132\034.com.elarian.hera.proto.Cash\0225\n\006s" +
+      "tatus\030\006 \001(\0162%.com.elarian.hera.proto.Pay" +
+      "mentStatus\"j\n\031PaymentStatusNotification\022" +
+      "\026\n\016transaction_id\030\001 \001(\t\0225\n\006status\030\002 \001(\0162" +
+      "%.com.elarian.hera.proto.PaymentStatus\"\203" +
+      "\001\n\037WalletPaymentStatusNotification\022\021\n\twa" +
+      "llet_id\030\001 \001(\t\022\026\n\016transaction_id\030\002 \001(\t\0225\n" +
+      "\006status\030\003 \001(\0162%.com.elarian.hera.proto.P" +
+      "aymentStatus\"\366\001\n\034CustomerActivityNotific" +
+      "ation\022?\n\017customer_number\030\001 \001(\0132&.com.ela" +
+      "rian.hera.proto.CustomerNumber\022E\n\016channe" +
+      "l_number\030\002 \001(\0132-.com.elarian.hera.proto." +
+      "ActivityChannelNumber\022\022\n\nsession_id\030\003 \001(" +
+      "\t\022:\n\010activity\030\004 \001(\0132(.com.elarian.hera.p" +
+      "roto.CustomerActivityb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -68072,7 +68180,7 @@ public final class AppSocket {
     internal_static_com_elarian_hera_proto_InitiatePaymentCommand_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_elarian_hera_proto_InitiatePaymentCommand_descriptor,
-        new java.lang.String[] { "DebitParty", "CreditParty", "Value", });
+        new java.lang.String[] { "DebitParty", "CreditParty", "Value", "Mode", });
     internal_static_com_elarian_hera_proto_InitiatePaymentReply_descriptor =
       getDescriptor().getMessageTypes().get(32);
     internal_static_com_elarian_hera_proto_InitiatePaymentReply_fieldAccessorTable = new
