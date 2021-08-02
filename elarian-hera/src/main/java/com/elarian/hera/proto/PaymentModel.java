@@ -27,6 +27,10 @@ public final class PaymentModel {
      * <code>PAYMENT_CHANNEL_CELLULAR = 1;</code>
      */
     PAYMENT_CHANNEL_CELLULAR(1),
+    /**
+     * <code>PAYMENT_CHANNEL_AIRTIME = 2;</code>
+     */
+    PAYMENT_CHANNEL_AIRTIME(2),
     UNRECOGNIZED(-1),
     ;
 
@@ -38,6 +42,10 @@ public final class PaymentModel {
      * <code>PAYMENT_CHANNEL_CELLULAR = 1;</code>
      */
     public static final int PAYMENT_CHANNEL_CELLULAR_VALUE = 1;
+    /**
+     * <code>PAYMENT_CHANNEL_AIRTIME = 2;</code>
+     */
+    public static final int PAYMENT_CHANNEL_AIRTIME_VALUE = 2;
 
 
     public final int getNumber() {
@@ -66,6 +74,7 @@ public final class PaymentModel {
       switch (value) {
         case 0: return PAYMENT_CHANNEL_UNSPECIFIED;
         case 1: return PAYMENT_CHANNEL_CELLULAR;
+        case 2: return PAYMENT_CHANNEL_AIRTIME;
         default: return null;
       }
     }
@@ -120,6 +129,123 @@ public final class PaymentModel {
     }
 
     // @@protoc_insertion_point(enum_scope:com.elarian.hera.proto.PaymentChannel)
+  }
+
+  /**
+   * Protobuf enum {@code com.elarian.hera.proto.PaymentMode}
+   */
+  public enum PaymentMode
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>PAYMENT_MODE_UNSPECIFIED = 0;</code>
+     */
+    PAYMENT_MODE_UNSPECIFIED(0),
+    /**
+     * <code>PAYMENT_MODE_HOSTED = 1;</code>
+     */
+    PAYMENT_MODE_HOSTED(1),
+    /**
+     * <code>PAYMENT_MODE_VIRTUAL = 2;</code>
+     */
+    PAYMENT_MODE_VIRTUAL(2),
+    UNRECOGNIZED(-1),
+    ;
+
+    /**
+     * <code>PAYMENT_MODE_UNSPECIFIED = 0;</code>
+     */
+    public static final int PAYMENT_MODE_UNSPECIFIED_VALUE = 0;
+    /**
+     * <code>PAYMENT_MODE_HOSTED = 1;</code>
+     */
+    public static final int PAYMENT_MODE_HOSTED_VALUE = 1;
+    /**
+     * <code>PAYMENT_MODE_VIRTUAL = 2;</code>
+     */
+    public static final int PAYMENT_MODE_VIRTUAL_VALUE = 2;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static PaymentMode valueOf(int value) {
+      return forNumber(value);
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     */
+    public static PaymentMode forNumber(int value) {
+      switch (value) {
+        case 0: return PAYMENT_MODE_UNSPECIFIED;
+        case 1: return PAYMENT_MODE_HOSTED;
+        case 2: return PAYMENT_MODE_VIRTUAL;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<PaymentMode>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        PaymentMode> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<PaymentMode>() {
+            public PaymentMode findValueByNumber(int number) {
+              return PaymentMode.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalStateException(
+            "Can't get the descriptor of an unrecognized enum value.");
+      }
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.elarian.hera.proto.PaymentModel.getDescriptor().getEnumTypes().get(1);
+    }
+
+    private static final PaymentMode[] VALUES = values();
+
+    public static PaymentMode valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private PaymentMode(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:com.elarian.hera.proto.PaymentMode)
   }
 
   /**
@@ -375,7 +501,7 @@ public final class PaymentModel {
     }
     public static final com.google.protobuf.Descriptors.EnumDescriptor
         getDescriptor() {
-      return com.elarian.hera.proto.PaymentModel.getDescriptor().getEnumTypes().get(1);
+      return com.elarian.hera.proto.PaymentModel.getDescriptor().getEnumTypes().get(2);
     }
 
     private static final PaymentStatus[] VALUES = values();
@@ -1124,6 +1250,17 @@ public final class PaymentModel {
      * <code>.com.elarian.hera.proto.Cash converted = 3;</code>
      */
     com.elarian.hera.proto.CommonModel.CashOrBuilder getConvertedOrBuilder();
+
+    /**
+     * <code>.com.elarian.hera.proto.PaymentMode mode = 4;</code>
+     * @return The enum numeric value on the wire for mode.
+     */
+    int getModeValue();
+    /**
+     * <code>.com.elarian.hera.proto.PaymentMode mode = 4;</code>
+     * @return The mode.
+     */
+    com.elarian.hera.proto.PaymentModel.PaymentMode getMode();
   }
   /**
    * Protobuf type {@code com.elarian.hera.proto.PendingPaymentTransaction}
@@ -1138,6 +1275,7 @@ public final class PaymentModel {
       super(builder);
     }
     private PendingPaymentTransaction() {
+      mode_ = 0;
     }
 
     @java.lang.Override
@@ -1207,6 +1345,12 @@ public final class PaymentModel {
                 converted_ = subBuilder.buildPartial();
               }
 
+              break;
+            }
+            case 32: {
+              int rawValue = input.readEnum();
+
+              mode_ = rawValue;
               break;
             }
             default: {
@@ -1319,6 +1463,25 @@ public final class PaymentModel {
       return getConverted();
     }
 
+    public static final int MODE_FIELD_NUMBER = 4;
+    private int mode_;
+    /**
+     * <code>.com.elarian.hera.proto.PaymentMode mode = 4;</code>
+     * @return The enum numeric value on the wire for mode.
+     */
+    @java.lang.Override public int getModeValue() {
+      return mode_;
+    }
+    /**
+     * <code>.com.elarian.hera.proto.PaymentMode mode = 4;</code>
+     * @return The mode.
+     */
+    @java.lang.Override public com.elarian.hera.proto.PaymentModel.PaymentMode getMode() {
+      @SuppressWarnings("deprecation")
+      com.elarian.hera.proto.PaymentModel.PaymentMode result = com.elarian.hera.proto.PaymentModel.PaymentMode.valueOf(mode_);
+      return result == null ? com.elarian.hera.proto.PaymentModel.PaymentMode.UNRECOGNIZED : result;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -1342,6 +1505,9 @@ public final class PaymentModel {
       if (converted_ != null) {
         output.writeMessage(3, getConverted());
       }
+      if (mode_ != com.elarian.hera.proto.PaymentModel.PaymentMode.PAYMENT_MODE_UNSPECIFIED.getNumber()) {
+        output.writeEnum(4, mode_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -1362,6 +1528,10 @@ public final class PaymentModel {
       if (converted_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, getConverted());
+      }
+      if (mode_ != com.elarian.hera.proto.PaymentModel.PaymentMode.PAYMENT_MODE_UNSPECIFIED.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(4, mode_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1393,6 +1563,7 @@ public final class PaymentModel {
         if (!getConverted()
             .equals(other.getConverted())) return false;
       }
+      if (mode_ != other.mode_) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -1416,6 +1587,8 @@ public final class PaymentModel {
         hash = (37 * hash) + CONVERTED_FIELD_NUMBER;
         hash = (53 * hash) + getConverted().hashCode();
       }
+      hash = (37 * hash) + MODE_FIELD_NUMBER;
+      hash = (53 * hash) + mode_;
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1567,6 +1740,8 @@ public final class PaymentModel {
           converted_ = null;
           convertedBuilder_ = null;
         }
+        mode_ = 0;
+
         return this;
       }
 
@@ -1608,6 +1783,7 @@ public final class PaymentModel {
         } else {
           result.converted_ = convertedBuilder_.build();
         }
+        result.mode_ = mode_;
         onBuilt();
         return result;
       }
@@ -1664,6 +1840,9 @@ public final class PaymentModel {
         }
         if (other.hasConverted()) {
           mergeConverted(other.getConverted());
+        }
+        if (other.mode_ != 0) {
+          setModeValue(other.getModeValue());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -2050,6 +2229,60 @@ public final class PaymentModel {
         }
         return convertedBuilder_;
       }
+
+      private int mode_ = 0;
+      /**
+       * <code>.com.elarian.hera.proto.PaymentMode mode = 4;</code>
+       * @return The enum numeric value on the wire for mode.
+       */
+      @java.lang.Override public int getModeValue() {
+        return mode_;
+      }
+      /**
+       * <code>.com.elarian.hera.proto.PaymentMode mode = 4;</code>
+       * @param value The enum numeric value on the wire for mode to set.
+       * @return This builder for chaining.
+       */
+      public Builder setModeValue(int value) {
+        
+        mode_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.com.elarian.hera.proto.PaymentMode mode = 4;</code>
+       * @return The mode.
+       */
+      @java.lang.Override
+      public com.elarian.hera.proto.PaymentModel.PaymentMode getMode() {
+        @SuppressWarnings("deprecation")
+        com.elarian.hera.proto.PaymentModel.PaymentMode result = com.elarian.hera.proto.PaymentModel.PaymentMode.valueOf(mode_);
+        return result == null ? com.elarian.hera.proto.PaymentModel.PaymentMode.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.com.elarian.hera.proto.PaymentMode mode = 4;</code>
+       * @param value The mode to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMode(com.elarian.hera.proto.PaymentModel.PaymentMode value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        mode_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.com.elarian.hera.proto.PaymentMode mode = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMode() {
+        
+        mode_ = 0;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -2103,6 +2336,830 @@ public final class PaymentModel {
 
   }
 
+  public interface LedgerBalanceOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:com.elarian.hera.proto.LedgerBalance)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.com.elarian.hera.proto.Cash available = 1;</code>
+     * @return Whether the available field is set.
+     */
+    boolean hasAvailable();
+    /**
+     * <code>.com.elarian.hera.proto.Cash available = 1;</code>
+     * @return The available.
+     */
+    com.elarian.hera.proto.CommonModel.Cash getAvailable();
+    /**
+     * <code>.com.elarian.hera.proto.Cash available = 1;</code>
+     */
+    com.elarian.hera.proto.CommonModel.CashOrBuilder getAvailableOrBuilder();
+
+    /**
+     * <code>.com.elarian.hera.proto.Cash actual = 2;</code>
+     * @return Whether the actual field is set.
+     */
+    boolean hasActual();
+    /**
+     * <code>.com.elarian.hera.proto.Cash actual = 2;</code>
+     * @return The actual.
+     */
+    com.elarian.hera.proto.CommonModel.Cash getActual();
+    /**
+     * <code>.com.elarian.hera.proto.Cash actual = 2;</code>
+     */
+    com.elarian.hera.proto.CommonModel.CashOrBuilder getActualOrBuilder();
+  }
+  /**
+   * Protobuf type {@code com.elarian.hera.proto.LedgerBalance}
+   */
+  public static final class LedgerBalance extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:com.elarian.hera.proto.LedgerBalance)
+      LedgerBalanceOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use LedgerBalance.newBuilder() to construct.
+    private LedgerBalance(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private LedgerBalance() {
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new LedgerBalance();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private LedgerBalance(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              com.elarian.hera.proto.CommonModel.Cash.Builder subBuilder = null;
+              if (available_ != null) {
+                subBuilder = available_.toBuilder();
+              }
+              available_ = input.readMessage(com.elarian.hera.proto.CommonModel.Cash.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(available_);
+                available_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            case 18: {
+              com.elarian.hera.proto.CommonModel.Cash.Builder subBuilder = null;
+              if (actual_ != null) {
+                subBuilder = actual_.toBuilder();
+              }
+              actual_ = input.readMessage(com.elarian.hera.proto.CommonModel.Cash.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(actual_);
+                actual_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.elarian.hera.proto.PaymentModel.internal_static_com_elarian_hera_proto_LedgerBalance_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.elarian.hera.proto.PaymentModel.internal_static_com_elarian_hera_proto_LedgerBalance_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.elarian.hera.proto.PaymentModel.LedgerBalance.class, com.elarian.hera.proto.PaymentModel.LedgerBalance.Builder.class);
+    }
+
+    public static final int AVAILABLE_FIELD_NUMBER = 1;
+    private com.elarian.hera.proto.CommonModel.Cash available_;
+    /**
+     * <code>.com.elarian.hera.proto.Cash available = 1;</code>
+     * @return Whether the available field is set.
+     */
+    @java.lang.Override
+    public boolean hasAvailable() {
+      return available_ != null;
+    }
+    /**
+     * <code>.com.elarian.hera.proto.Cash available = 1;</code>
+     * @return The available.
+     */
+    @java.lang.Override
+    public com.elarian.hera.proto.CommonModel.Cash getAvailable() {
+      return available_ == null ? com.elarian.hera.proto.CommonModel.Cash.getDefaultInstance() : available_;
+    }
+    /**
+     * <code>.com.elarian.hera.proto.Cash available = 1;</code>
+     */
+    @java.lang.Override
+    public com.elarian.hera.proto.CommonModel.CashOrBuilder getAvailableOrBuilder() {
+      return getAvailable();
+    }
+
+    public static final int ACTUAL_FIELD_NUMBER = 2;
+    private com.elarian.hera.proto.CommonModel.Cash actual_;
+    /**
+     * <code>.com.elarian.hera.proto.Cash actual = 2;</code>
+     * @return Whether the actual field is set.
+     */
+    @java.lang.Override
+    public boolean hasActual() {
+      return actual_ != null;
+    }
+    /**
+     * <code>.com.elarian.hera.proto.Cash actual = 2;</code>
+     * @return The actual.
+     */
+    @java.lang.Override
+    public com.elarian.hera.proto.CommonModel.Cash getActual() {
+      return actual_ == null ? com.elarian.hera.proto.CommonModel.Cash.getDefaultInstance() : actual_;
+    }
+    /**
+     * <code>.com.elarian.hera.proto.Cash actual = 2;</code>
+     */
+    @java.lang.Override
+    public com.elarian.hera.proto.CommonModel.CashOrBuilder getActualOrBuilder() {
+      return getActual();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (available_ != null) {
+        output.writeMessage(1, getAvailable());
+      }
+      if (actual_ != null) {
+        output.writeMessage(2, getActual());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (available_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getAvailable());
+      }
+      if (actual_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getActual());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.elarian.hera.proto.PaymentModel.LedgerBalance)) {
+        return super.equals(obj);
+      }
+      com.elarian.hera.proto.PaymentModel.LedgerBalance other = (com.elarian.hera.proto.PaymentModel.LedgerBalance) obj;
+
+      if (hasAvailable() != other.hasAvailable()) return false;
+      if (hasAvailable()) {
+        if (!getAvailable()
+            .equals(other.getAvailable())) return false;
+      }
+      if (hasActual() != other.hasActual()) return false;
+      if (hasActual()) {
+        if (!getActual()
+            .equals(other.getActual())) return false;
+      }
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasAvailable()) {
+        hash = (37 * hash) + AVAILABLE_FIELD_NUMBER;
+        hash = (53 * hash) + getAvailable().hashCode();
+      }
+      if (hasActual()) {
+        hash = (37 * hash) + ACTUAL_FIELD_NUMBER;
+        hash = (53 * hash) + getActual().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.elarian.hera.proto.PaymentModel.LedgerBalance parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.elarian.hera.proto.PaymentModel.LedgerBalance parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.elarian.hera.proto.PaymentModel.LedgerBalance parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.elarian.hera.proto.PaymentModel.LedgerBalance parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.elarian.hera.proto.PaymentModel.LedgerBalance parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.elarian.hera.proto.PaymentModel.LedgerBalance parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.elarian.hera.proto.PaymentModel.LedgerBalance parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.elarian.hera.proto.PaymentModel.LedgerBalance parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.elarian.hera.proto.PaymentModel.LedgerBalance parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.elarian.hera.proto.PaymentModel.LedgerBalance parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.elarian.hera.proto.PaymentModel.LedgerBalance parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.elarian.hera.proto.PaymentModel.LedgerBalance parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.elarian.hera.proto.PaymentModel.LedgerBalance prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.elarian.hera.proto.LedgerBalance}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:com.elarian.hera.proto.LedgerBalance)
+        com.elarian.hera.proto.PaymentModel.LedgerBalanceOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.elarian.hera.proto.PaymentModel.internal_static_com_elarian_hera_proto_LedgerBalance_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.elarian.hera.proto.PaymentModel.internal_static_com_elarian_hera_proto_LedgerBalance_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.elarian.hera.proto.PaymentModel.LedgerBalance.class, com.elarian.hera.proto.PaymentModel.LedgerBalance.Builder.class);
+      }
+
+      // Construct using com.elarian.hera.proto.PaymentModel.LedgerBalance.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        if (availableBuilder_ == null) {
+          available_ = null;
+        } else {
+          available_ = null;
+          availableBuilder_ = null;
+        }
+        if (actualBuilder_ == null) {
+          actual_ = null;
+        } else {
+          actual_ = null;
+          actualBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.elarian.hera.proto.PaymentModel.internal_static_com_elarian_hera_proto_LedgerBalance_descriptor;
+      }
+
+      @java.lang.Override
+      public com.elarian.hera.proto.PaymentModel.LedgerBalance getDefaultInstanceForType() {
+        return com.elarian.hera.proto.PaymentModel.LedgerBalance.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.elarian.hera.proto.PaymentModel.LedgerBalance build() {
+        com.elarian.hera.proto.PaymentModel.LedgerBalance result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.elarian.hera.proto.PaymentModel.LedgerBalance buildPartial() {
+        com.elarian.hera.proto.PaymentModel.LedgerBalance result = new com.elarian.hera.proto.PaymentModel.LedgerBalance(this);
+        if (availableBuilder_ == null) {
+          result.available_ = available_;
+        } else {
+          result.available_ = availableBuilder_.build();
+        }
+        if (actualBuilder_ == null) {
+          result.actual_ = actual_;
+        } else {
+          result.actual_ = actualBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.elarian.hera.proto.PaymentModel.LedgerBalance) {
+          return mergeFrom((com.elarian.hera.proto.PaymentModel.LedgerBalance)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.elarian.hera.proto.PaymentModel.LedgerBalance other) {
+        if (other == com.elarian.hera.proto.PaymentModel.LedgerBalance.getDefaultInstance()) return this;
+        if (other.hasAvailable()) {
+          mergeAvailable(other.getAvailable());
+        }
+        if (other.hasActual()) {
+          mergeActual(other.getActual());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.elarian.hera.proto.PaymentModel.LedgerBalance parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.elarian.hera.proto.PaymentModel.LedgerBalance) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private com.elarian.hera.proto.CommonModel.Cash available_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.elarian.hera.proto.CommonModel.Cash, com.elarian.hera.proto.CommonModel.Cash.Builder, com.elarian.hera.proto.CommonModel.CashOrBuilder> availableBuilder_;
+      /**
+       * <code>.com.elarian.hera.proto.Cash available = 1;</code>
+       * @return Whether the available field is set.
+       */
+      public boolean hasAvailable() {
+        return availableBuilder_ != null || available_ != null;
+      }
+      /**
+       * <code>.com.elarian.hera.proto.Cash available = 1;</code>
+       * @return The available.
+       */
+      public com.elarian.hera.proto.CommonModel.Cash getAvailable() {
+        if (availableBuilder_ == null) {
+          return available_ == null ? com.elarian.hera.proto.CommonModel.Cash.getDefaultInstance() : available_;
+        } else {
+          return availableBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.com.elarian.hera.proto.Cash available = 1;</code>
+       */
+      public Builder setAvailable(com.elarian.hera.proto.CommonModel.Cash value) {
+        if (availableBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          available_ = value;
+          onChanged();
+        } else {
+          availableBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.elarian.hera.proto.Cash available = 1;</code>
+       */
+      public Builder setAvailable(
+          com.elarian.hera.proto.CommonModel.Cash.Builder builderForValue) {
+        if (availableBuilder_ == null) {
+          available_ = builderForValue.build();
+          onChanged();
+        } else {
+          availableBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.elarian.hera.proto.Cash available = 1;</code>
+       */
+      public Builder mergeAvailable(com.elarian.hera.proto.CommonModel.Cash value) {
+        if (availableBuilder_ == null) {
+          if (available_ != null) {
+            available_ =
+              com.elarian.hera.proto.CommonModel.Cash.newBuilder(available_).mergeFrom(value).buildPartial();
+          } else {
+            available_ = value;
+          }
+          onChanged();
+        } else {
+          availableBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.elarian.hera.proto.Cash available = 1;</code>
+       */
+      public Builder clearAvailable() {
+        if (availableBuilder_ == null) {
+          available_ = null;
+          onChanged();
+        } else {
+          available_ = null;
+          availableBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.elarian.hera.proto.Cash available = 1;</code>
+       */
+      public com.elarian.hera.proto.CommonModel.Cash.Builder getAvailableBuilder() {
+        
+        onChanged();
+        return getAvailableFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.com.elarian.hera.proto.Cash available = 1;</code>
+       */
+      public com.elarian.hera.proto.CommonModel.CashOrBuilder getAvailableOrBuilder() {
+        if (availableBuilder_ != null) {
+          return availableBuilder_.getMessageOrBuilder();
+        } else {
+          return available_ == null ?
+              com.elarian.hera.proto.CommonModel.Cash.getDefaultInstance() : available_;
+        }
+      }
+      /**
+       * <code>.com.elarian.hera.proto.Cash available = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.elarian.hera.proto.CommonModel.Cash, com.elarian.hera.proto.CommonModel.Cash.Builder, com.elarian.hera.proto.CommonModel.CashOrBuilder> 
+          getAvailableFieldBuilder() {
+        if (availableBuilder_ == null) {
+          availableBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.elarian.hera.proto.CommonModel.Cash, com.elarian.hera.proto.CommonModel.Cash.Builder, com.elarian.hera.proto.CommonModel.CashOrBuilder>(
+                  getAvailable(),
+                  getParentForChildren(),
+                  isClean());
+          available_ = null;
+        }
+        return availableBuilder_;
+      }
+
+      private com.elarian.hera.proto.CommonModel.Cash actual_;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.elarian.hera.proto.CommonModel.Cash, com.elarian.hera.proto.CommonModel.Cash.Builder, com.elarian.hera.proto.CommonModel.CashOrBuilder> actualBuilder_;
+      /**
+       * <code>.com.elarian.hera.proto.Cash actual = 2;</code>
+       * @return Whether the actual field is set.
+       */
+      public boolean hasActual() {
+        return actualBuilder_ != null || actual_ != null;
+      }
+      /**
+       * <code>.com.elarian.hera.proto.Cash actual = 2;</code>
+       * @return The actual.
+       */
+      public com.elarian.hera.proto.CommonModel.Cash getActual() {
+        if (actualBuilder_ == null) {
+          return actual_ == null ? com.elarian.hera.proto.CommonModel.Cash.getDefaultInstance() : actual_;
+        } else {
+          return actualBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.com.elarian.hera.proto.Cash actual = 2;</code>
+       */
+      public Builder setActual(com.elarian.hera.proto.CommonModel.Cash value) {
+        if (actualBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          actual_ = value;
+          onChanged();
+        } else {
+          actualBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.elarian.hera.proto.Cash actual = 2;</code>
+       */
+      public Builder setActual(
+          com.elarian.hera.proto.CommonModel.Cash.Builder builderForValue) {
+        if (actualBuilder_ == null) {
+          actual_ = builderForValue.build();
+          onChanged();
+        } else {
+          actualBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.elarian.hera.proto.Cash actual = 2;</code>
+       */
+      public Builder mergeActual(com.elarian.hera.proto.CommonModel.Cash value) {
+        if (actualBuilder_ == null) {
+          if (actual_ != null) {
+            actual_ =
+              com.elarian.hera.proto.CommonModel.Cash.newBuilder(actual_).mergeFrom(value).buildPartial();
+          } else {
+            actual_ = value;
+          }
+          onChanged();
+        } else {
+          actualBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.elarian.hera.proto.Cash actual = 2;</code>
+       */
+      public Builder clearActual() {
+        if (actualBuilder_ == null) {
+          actual_ = null;
+          onChanged();
+        } else {
+          actual_ = null;
+          actualBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.com.elarian.hera.proto.Cash actual = 2;</code>
+       */
+      public com.elarian.hera.proto.CommonModel.Cash.Builder getActualBuilder() {
+        
+        onChanged();
+        return getActualFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.com.elarian.hera.proto.Cash actual = 2;</code>
+       */
+      public com.elarian.hera.proto.CommonModel.CashOrBuilder getActualOrBuilder() {
+        if (actualBuilder_ != null) {
+          return actualBuilder_.getMessageOrBuilder();
+        } else {
+          return actual_ == null ?
+              com.elarian.hera.proto.CommonModel.Cash.getDefaultInstance() : actual_;
+        }
+      }
+      /**
+       * <code>.com.elarian.hera.proto.Cash actual = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.elarian.hera.proto.CommonModel.Cash, com.elarian.hera.proto.CommonModel.Cash.Builder, com.elarian.hera.proto.CommonModel.CashOrBuilder> 
+          getActualFieldBuilder() {
+        if (actualBuilder_ == null) {
+          actualBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.elarian.hera.proto.CommonModel.Cash, com.elarian.hera.proto.CommonModel.Cash.Builder, com.elarian.hera.proto.CommonModel.CashOrBuilder>(
+                  getActual(),
+                  getParentForChildren(),
+                  isClean());
+          actual_ = null;
+        }
+        return actualBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:com.elarian.hera.proto.LedgerBalance)
+    }
+
+    // @@protoc_insertion_point(class_scope:com.elarian.hera.proto.LedgerBalance)
+    private static final com.elarian.hera.proto.PaymentModel.LedgerBalance DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.elarian.hera.proto.PaymentModel.LedgerBalance();
+    }
+
+    public static com.elarian.hera.proto.PaymentModel.LedgerBalance getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<LedgerBalance>
+        PARSER = new com.google.protobuf.AbstractParser<LedgerBalance>() {
+      @java.lang.Override
+      public LedgerBalance parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new LedgerBalance(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<LedgerBalance> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<LedgerBalance> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.elarian.hera.proto.PaymentModel.LedgerBalance getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface PaymentBalanceOrBuilder extends
       // @@protoc_insertion_point(interface_extends:com.elarian.hera.proto.PaymentBalance)
       com.google.protobuf.MessageOrBuilder {
@@ -2120,34 +3177,34 @@ public final class PaymentModel {
         getCurrencyCodeBytes();
 
     /**
-     * <code>.com.elarian.hera.proto.Cash available = 2;</code>
-     * @return Whether the available field is set.
+     * <code>.com.elarian.hera.proto.LedgerBalance hosted = 2;</code>
+     * @return Whether the hosted field is set.
      */
-    boolean hasAvailable();
+    boolean hasHosted();
     /**
-     * <code>.com.elarian.hera.proto.Cash available = 2;</code>
-     * @return The available.
+     * <code>.com.elarian.hera.proto.LedgerBalance hosted = 2;</code>
+     * @return The hosted.
      */
-    com.elarian.hera.proto.CommonModel.Cash getAvailable();
+    com.elarian.hera.proto.PaymentModel.LedgerBalance getHosted();
     /**
-     * <code>.com.elarian.hera.proto.Cash available = 2;</code>
+     * <code>.com.elarian.hera.proto.LedgerBalance hosted = 2;</code>
      */
-    com.elarian.hera.proto.CommonModel.CashOrBuilder getAvailableOrBuilder();
+    com.elarian.hera.proto.PaymentModel.LedgerBalanceOrBuilder getHostedOrBuilder();
 
     /**
-     * <code>.com.elarian.hera.proto.Cash actual = 3;</code>
-     * @return Whether the actual field is set.
+     * <code>.com.elarian.hera.proto.LedgerBalance virtual = 3;</code>
+     * @return Whether the virtual field is set.
      */
-    boolean hasActual();
+    boolean hasVirtual();
     /**
-     * <code>.com.elarian.hera.proto.Cash actual = 3;</code>
-     * @return The actual.
+     * <code>.com.elarian.hera.proto.LedgerBalance virtual = 3;</code>
+     * @return The virtual.
      */
-    com.elarian.hera.proto.CommonModel.Cash getActual();
+    com.elarian.hera.proto.PaymentModel.LedgerBalance getVirtual();
     /**
-     * <code>.com.elarian.hera.proto.Cash actual = 3;</code>
+     * <code>.com.elarian.hera.proto.LedgerBalance virtual = 3;</code>
      */
-    com.elarian.hera.proto.CommonModel.CashOrBuilder getActualOrBuilder();
+    com.elarian.hera.proto.PaymentModel.LedgerBalanceOrBuilder getVirtualOrBuilder();
 
     /**
      * <code>map&lt;string, .com.elarian.hera.proto.PendingPaymentTransaction&gt; pending = 4;</code>
@@ -2243,27 +3300,27 @@ public final class PaymentModel {
               break;
             }
             case 18: {
-              com.elarian.hera.proto.CommonModel.Cash.Builder subBuilder = null;
-              if (available_ != null) {
-                subBuilder = available_.toBuilder();
+              com.elarian.hera.proto.PaymentModel.LedgerBalance.Builder subBuilder = null;
+              if (hosted_ != null) {
+                subBuilder = hosted_.toBuilder();
               }
-              available_ = input.readMessage(com.elarian.hera.proto.CommonModel.Cash.parser(), extensionRegistry);
+              hosted_ = input.readMessage(com.elarian.hera.proto.PaymentModel.LedgerBalance.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(available_);
-                available_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(hosted_);
+                hosted_ = subBuilder.buildPartial();
               }
 
               break;
             }
             case 26: {
-              com.elarian.hera.proto.CommonModel.Cash.Builder subBuilder = null;
-              if (actual_ != null) {
-                subBuilder = actual_.toBuilder();
+              com.elarian.hera.proto.PaymentModel.LedgerBalance.Builder subBuilder = null;
+              if (virtual_ != null) {
+                subBuilder = virtual_.toBuilder();
               }
-              actual_ = input.readMessage(com.elarian.hera.proto.CommonModel.Cash.parser(), extensionRegistry);
+              virtual_ = input.readMessage(com.elarian.hera.proto.PaymentModel.LedgerBalance.parser(), extensionRegistry);
               if (subBuilder != null) {
-                subBuilder.mergeFrom(actual_);
-                actual_ = subBuilder.buildPartial();
+                subBuilder.mergeFrom(virtual_);
+                virtual_ = subBuilder.buildPartial();
               }
 
               break;
@@ -2368,56 +3425,56 @@ public final class PaymentModel {
       }
     }
 
-    public static final int AVAILABLE_FIELD_NUMBER = 2;
-    private com.elarian.hera.proto.CommonModel.Cash available_;
+    public static final int HOSTED_FIELD_NUMBER = 2;
+    private com.elarian.hera.proto.PaymentModel.LedgerBalance hosted_;
     /**
-     * <code>.com.elarian.hera.proto.Cash available = 2;</code>
-     * @return Whether the available field is set.
+     * <code>.com.elarian.hera.proto.LedgerBalance hosted = 2;</code>
+     * @return Whether the hosted field is set.
      */
     @java.lang.Override
-    public boolean hasAvailable() {
-      return available_ != null;
+    public boolean hasHosted() {
+      return hosted_ != null;
     }
     /**
-     * <code>.com.elarian.hera.proto.Cash available = 2;</code>
-     * @return The available.
+     * <code>.com.elarian.hera.proto.LedgerBalance hosted = 2;</code>
+     * @return The hosted.
      */
     @java.lang.Override
-    public com.elarian.hera.proto.CommonModel.Cash getAvailable() {
-      return available_ == null ? com.elarian.hera.proto.CommonModel.Cash.getDefaultInstance() : available_;
+    public com.elarian.hera.proto.PaymentModel.LedgerBalance getHosted() {
+      return hosted_ == null ? com.elarian.hera.proto.PaymentModel.LedgerBalance.getDefaultInstance() : hosted_;
     }
     /**
-     * <code>.com.elarian.hera.proto.Cash available = 2;</code>
+     * <code>.com.elarian.hera.proto.LedgerBalance hosted = 2;</code>
      */
     @java.lang.Override
-    public com.elarian.hera.proto.CommonModel.CashOrBuilder getAvailableOrBuilder() {
-      return getAvailable();
+    public com.elarian.hera.proto.PaymentModel.LedgerBalanceOrBuilder getHostedOrBuilder() {
+      return getHosted();
     }
 
-    public static final int ACTUAL_FIELD_NUMBER = 3;
-    private com.elarian.hera.proto.CommonModel.Cash actual_;
+    public static final int VIRTUAL_FIELD_NUMBER = 3;
+    private com.elarian.hera.proto.PaymentModel.LedgerBalance virtual_;
     /**
-     * <code>.com.elarian.hera.proto.Cash actual = 3;</code>
-     * @return Whether the actual field is set.
+     * <code>.com.elarian.hera.proto.LedgerBalance virtual = 3;</code>
+     * @return Whether the virtual field is set.
      */
     @java.lang.Override
-    public boolean hasActual() {
-      return actual_ != null;
+    public boolean hasVirtual() {
+      return virtual_ != null;
     }
     /**
-     * <code>.com.elarian.hera.proto.Cash actual = 3;</code>
-     * @return The actual.
+     * <code>.com.elarian.hera.proto.LedgerBalance virtual = 3;</code>
+     * @return The virtual.
      */
     @java.lang.Override
-    public com.elarian.hera.proto.CommonModel.Cash getActual() {
-      return actual_ == null ? com.elarian.hera.proto.CommonModel.Cash.getDefaultInstance() : actual_;
+    public com.elarian.hera.proto.PaymentModel.LedgerBalance getVirtual() {
+      return virtual_ == null ? com.elarian.hera.proto.PaymentModel.LedgerBalance.getDefaultInstance() : virtual_;
     }
     /**
-     * <code>.com.elarian.hera.proto.Cash actual = 3;</code>
+     * <code>.com.elarian.hera.proto.LedgerBalance virtual = 3;</code>
      */
     @java.lang.Override
-    public com.elarian.hera.proto.CommonModel.CashOrBuilder getActualOrBuilder() {
-      return getActual();
+    public com.elarian.hera.proto.PaymentModel.LedgerBalanceOrBuilder getVirtualOrBuilder() {
+      return getVirtual();
     }
 
     public static final int PENDING_FIELD_NUMBER = 4;
@@ -2529,11 +3586,11 @@ public final class PaymentModel {
       if (!getCurrencyCodeBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, currencyCode_);
       }
-      if (available_ != null) {
-        output.writeMessage(2, getAvailable());
+      if (hosted_ != null) {
+        output.writeMessage(2, getHosted());
       }
-      if (actual_ != null) {
-        output.writeMessage(3, getActual());
+      if (virtual_ != null) {
+        output.writeMessage(3, getVirtual());
       }
       com.google.protobuf.GeneratedMessageV3
         .serializeStringMapTo(
@@ -2556,13 +3613,13 @@ public final class PaymentModel {
       if (!getCurrencyCodeBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, currencyCode_);
       }
-      if (available_ != null) {
+      if (hosted_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getAvailable());
+          .computeMessageSize(2, getHosted());
       }
-      if (actual_ != null) {
+      if (virtual_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, getActual());
+          .computeMessageSize(3, getVirtual());
       }
       for (java.util.Map.Entry<java.lang.String, com.elarian.hera.proto.PaymentModel.PendingPaymentTransaction> entry
            : internalGetPending().getMap().entrySet()) {
@@ -2595,15 +3652,15 @@ public final class PaymentModel {
 
       if (!getCurrencyCode()
           .equals(other.getCurrencyCode())) return false;
-      if (hasAvailable() != other.hasAvailable()) return false;
-      if (hasAvailable()) {
-        if (!getAvailable()
-            .equals(other.getAvailable())) return false;
+      if (hasHosted() != other.hasHosted()) return false;
+      if (hasHosted()) {
+        if (!getHosted()
+            .equals(other.getHosted())) return false;
       }
-      if (hasActual() != other.hasActual()) return false;
-      if (hasActual()) {
-        if (!getActual()
-            .equals(other.getActual())) return false;
+      if (hasVirtual() != other.hasVirtual()) return false;
+      if (hasVirtual()) {
+        if (!getVirtual()
+            .equals(other.getVirtual())) return false;
       }
       if (!internalGetPending().equals(
           other.internalGetPending())) return false;
@@ -2622,13 +3679,13 @@ public final class PaymentModel {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + CURRENCY_CODE_FIELD_NUMBER;
       hash = (53 * hash) + getCurrencyCode().hashCode();
-      if (hasAvailable()) {
-        hash = (37 * hash) + AVAILABLE_FIELD_NUMBER;
-        hash = (53 * hash) + getAvailable().hashCode();
+      if (hasHosted()) {
+        hash = (37 * hash) + HOSTED_FIELD_NUMBER;
+        hash = (53 * hash) + getHosted().hashCode();
       }
-      if (hasActual()) {
-        hash = (37 * hash) + ACTUAL_FIELD_NUMBER;
-        hash = (53 * hash) + getActual().hashCode();
+      if (hasVirtual()) {
+        hash = (37 * hash) + VIRTUAL_FIELD_NUMBER;
+        hash = (53 * hash) + getVirtual().hashCode();
       }
       if (!internalGetPending().getMap().isEmpty()) {
         hash = (37 * hash) + PENDING_FIELD_NUMBER;
@@ -2794,17 +3851,17 @@ public final class PaymentModel {
         super.clear();
         currencyCode_ = "";
 
-        if (availableBuilder_ == null) {
-          available_ = null;
+        if (hostedBuilder_ == null) {
+          hosted_ = null;
         } else {
-          available_ = null;
-          availableBuilder_ = null;
+          hosted_ = null;
+          hostedBuilder_ = null;
         }
-        if (actualBuilder_ == null) {
-          actual_ = null;
+        if (virtualBuilder_ == null) {
+          virtual_ = null;
         } else {
-          actual_ = null;
-          actualBuilder_ = null;
+          virtual_ = null;
+          virtualBuilder_ = null;
         }
         internalGetMutablePending().clear();
         sequenceNr_ = 0L;
@@ -2837,15 +3894,15 @@ public final class PaymentModel {
         com.elarian.hera.proto.PaymentModel.PaymentBalance result = new com.elarian.hera.proto.PaymentModel.PaymentBalance(this);
         int from_bitField0_ = bitField0_;
         result.currencyCode_ = currencyCode_;
-        if (availableBuilder_ == null) {
-          result.available_ = available_;
+        if (hostedBuilder_ == null) {
+          result.hosted_ = hosted_;
         } else {
-          result.available_ = availableBuilder_.build();
+          result.hosted_ = hostedBuilder_.build();
         }
-        if (actualBuilder_ == null) {
-          result.actual_ = actual_;
+        if (virtualBuilder_ == null) {
+          result.virtual_ = virtual_;
         } else {
-          result.actual_ = actualBuilder_.build();
+          result.virtual_ = virtualBuilder_.build();
         }
         result.pending_ = internalGetPending();
         result.pending_.makeImmutable();
@@ -2902,11 +3959,11 @@ public final class PaymentModel {
           currencyCode_ = other.currencyCode_;
           onChanged();
         }
-        if (other.hasAvailable()) {
-          mergeAvailable(other.getAvailable());
+        if (other.hasHosted()) {
+          mergeHosted(other.getHosted());
         }
-        if (other.hasActual()) {
-          mergeActual(other.getActual());
+        if (other.hasVirtual()) {
+          mergeVirtual(other.getVirtual());
         }
         internalGetMutablePending().mergeFrom(
             other.internalGetPending());
@@ -3019,242 +4076,242 @@ public final class PaymentModel {
         return this;
       }
 
-      private com.elarian.hera.proto.CommonModel.Cash available_;
+      private com.elarian.hera.proto.PaymentModel.LedgerBalance hosted_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.elarian.hera.proto.CommonModel.Cash, com.elarian.hera.proto.CommonModel.Cash.Builder, com.elarian.hera.proto.CommonModel.CashOrBuilder> availableBuilder_;
+          com.elarian.hera.proto.PaymentModel.LedgerBalance, com.elarian.hera.proto.PaymentModel.LedgerBalance.Builder, com.elarian.hera.proto.PaymentModel.LedgerBalanceOrBuilder> hostedBuilder_;
       /**
-       * <code>.com.elarian.hera.proto.Cash available = 2;</code>
-       * @return Whether the available field is set.
+       * <code>.com.elarian.hera.proto.LedgerBalance hosted = 2;</code>
+       * @return Whether the hosted field is set.
        */
-      public boolean hasAvailable() {
-        return availableBuilder_ != null || available_ != null;
+      public boolean hasHosted() {
+        return hostedBuilder_ != null || hosted_ != null;
       }
       /**
-       * <code>.com.elarian.hera.proto.Cash available = 2;</code>
-       * @return The available.
+       * <code>.com.elarian.hera.proto.LedgerBalance hosted = 2;</code>
+       * @return The hosted.
        */
-      public com.elarian.hera.proto.CommonModel.Cash getAvailable() {
-        if (availableBuilder_ == null) {
-          return available_ == null ? com.elarian.hera.proto.CommonModel.Cash.getDefaultInstance() : available_;
+      public com.elarian.hera.proto.PaymentModel.LedgerBalance getHosted() {
+        if (hostedBuilder_ == null) {
+          return hosted_ == null ? com.elarian.hera.proto.PaymentModel.LedgerBalance.getDefaultInstance() : hosted_;
         } else {
-          return availableBuilder_.getMessage();
+          return hostedBuilder_.getMessage();
         }
       }
       /**
-       * <code>.com.elarian.hera.proto.Cash available = 2;</code>
+       * <code>.com.elarian.hera.proto.LedgerBalance hosted = 2;</code>
        */
-      public Builder setAvailable(com.elarian.hera.proto.CommonModel.Cash value) {
-        if (availableBuilder_ == null) {
+      public Builder setHosted(com.elarian.hera.proto.PaymentModel.LedgerBalance value) {
+        if (hostedBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          available_ = value;
+          hosted_ = value;
           onChanged();
         } else {
-          availableBuilder_.setMessage(value);
+          hostedBuilder_.setMessage(value);
         }
 
         return this;
       }
       /**
-       * <code>.com.elarian.hera.proto.Cash available = 2;</code>
+       * <code>.com.elarian.hera.proto.LedgerBalance hosted = 2;</code>
        */
-      public Builder setAvailable(
-          com.elarian.hera.proto.CommonModel.Cash.Builder builderForValue) {
-        if (availableBuilder_ == null) {
-          available_ = builderForValue.build();
+      public Builder setHosted(
+          com.elarian.hera.proto.PaymentModel.LedgerBalance.Builder builderForValue) {
+        if (hostedBuilder_ == null) {
+          hosted_ = builderForValue.build();
           onChanged();
         } else {
-          availableBuilder_.setMessage(builderForValue.build());
+          hostedBuilder_.setMessage(builderForValue.build());
         }
 
         return this;
       }
       /**
-       * <code>.com.elarian.hera.proto.Cash available = 2;</code>
+       * <code>.com.elarian.hera.proto.LedgerBalance hosted = 2;</code>
        */
-      public Builder mergeAvailable(com.elarian.hera.proto.CommonModel.Cash value) {
-        if (availableBuilder_ == null) {
-          if (available_ != null) {
-            available_ =
-              com.elarian.hera.proto.CommonModel.Cash.newBuilder(available_).mergeFrom(value).buildPartial();
+      public Builder mergeHosted(com.elarian.hera.proto.PaymentModel.LedgerBalance value) {
+        if (hostedBuilder_ == null) {
+          if (hosted_ != null) {
+            hosted_ =
+              com.elarian.hera.proto.PaymentModel.LedgerBalance.newBuilder(hosted_).mergeFrom(value).buildPartial();
           } else {
-            available_ = value;
+            hosted_ = value;
           }
           onChanged();
         } else {
-          availableBuilder_.mergeFrom(value);
+          hostedBuilder_.mergeFrom(value);
         }
 
         return this;
       }
       /**
-       * <code>.com.elarian.hera.proto.Cash available = 2;</code>
+       * <code>.com.elarian.hera.proto.LedgerBalance hosted = 2;</code>
        */
-      public Builder clearAvailable() {
-        if (availableBuilder_ == null) {
-          available_ = null;
+      public Builder clearHosted() {
+        if (hostedBuilder_ == null) {
+          hosted_ = null;
           onChanged();
         } else {
-          available_ = null;
-          availableBuilder_ = null;
+          hosted_ = null;
+          hostedBuilder_ = null;
         }
 
         return this;
       }
       /**
-       * <code>.com.elarian.hera.proto.Cash available = 2;</code>
+       * <code>.com.elarian.hera.proto.LedgerBalance hosted = 2;</code>
        */
-      public com.elarian.hera.proto.CommonModel.Cash.Builder getAvailableBuilder() {
+      public com.elarian.hera.proto.PaymentModel.LedgerBalance.Builder getHostedBuilder() {
         
         onChanged();
-        return getAvailableFieldBuilder().getBuilder();
+        return getHostedFieldBuilder().getBuilder();
       }
       /**
-       * <code>.com.elarian.hera.proto.Cash available = 2;</code>
+       * <code>.com.elarian.hera.proto.LedgerBalance hosted = 2;</code>
        */
-      public com.elarian.hera.proto.CommonModel.CashOrBuilder getAvailableOrBuilder() {
-        if (availableBuilder_ != null) {
-          return availableBuilder_.getMessageOrBuilder();
+      public com.elarian.hera.proto.PaymentModel.LedgerBalanceOrBuilder getHostedOrBuilder() {
+        if (hostedBuilder_ != null) {
+          return hostedBuilder_.getMessageOrBuilder();
         } else {
-          return available_ == null ?
-              com.elarian.hera.proto.CommonModel.Cash.getDefaultInstance() : available_;
+          return hosted_ == null ?
+              com.elarian.hera.proto.PaymentModel.LedgerBalance.getDefaultInstance() : hosted_;
         }
       }
       /**
-       * <code>.com.elarian.hera.proto.Cash available = 2;</code>
+       * <code>.com.elarian.hera.proto.LedgerBalance hosted = 2;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.elarian.hera.proto.CommonModel.Cash, com.elarian.hera.proto.CommonModel.Cash.Builder, com.elarian.hera.proto.CommonModel.CashOrBuilder> 
-          getAvailableFieldBuilder() {
-        if (availableBuilder_ == null) {
-          availableBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.elarian.hera.proto.CommonModel.Cash, com.elarian.hera.proto.CommonModel.Cash.Builder, com.elarian.hera.proto.CommonModel.CashOrBuilder>(
-                  getAvailable(),
+          com.elarian.hera.proto.PaymentModel.LedgerBalance, com.elarian.hera.proto.PaymentModel.LedgerBalance.Builder, com.elarian.hera.proto.PaymentModel.LedgerBalanceOrBuilder> 
+          getHostedFieldBuilder() {
+        if (hostedBuilder_ == null) {
+          hostedBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.elarian.hera.proto.PaymentModel.LedgerBalance, com.elarian.hera.proto.PaymentModel.LedgerBalance.Builder, com.elarian.hera.proto.PaymentModel.LedgerBalanceOrBuilder>(
+                  getHosted(),
                   getParentForChildren(),
                   isClean());
-          available_ = null;
+          hosted_ = null;
         }
-        return availableBuilder_;
+        return hostedBuilder_;
       }
 
-      private com.elarian.hera.proto.CommonModel.Cash actual_;
+      private com.elarian.hera.proto.PaymentModel.LedgerBalance virtual_;
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.elarian.hera.proto.CommonModel.Cash, com.elarian.hera.proto.CommonModel.Cash.Builder, com.elarian.hera.proto.CommonModel.CashOrBuilder> actualBuilder_;
+          com.elarian.hera.proto.PaymentModel.LedgerBalance, com.elarian.hera.proto.PaymentModel.LedgerBalance.Builder, com.elarian.hera.proto.PaymentModel.LedgerBalanceOrBuilder> virtualBuilder_;
       /**
-       * <code>.com.elarian.hera.proto.Cash actual = 3;</code>
-       * @return Whether the actual field is set.
+       * <code>.com.elarian.hera.proto.LedgerBalance virtual = 3;</code>
+       * @return Whether the virtual field is set.
        */
-      public boolean hasActual() {
-        return actualBuilder_ != null || actual_ != null;
+      public boolean hasVirtual() {
+        return virtualBuilder_ != null || virtual_ != null;
       }
       /**
-       * <code>.com.elarian.hera.proto.Cash actual = 3;</code>
-       * @return The actual.
+       * <code>.com.elarian.hera.proto.LedgerBalance virtual = 3;</code>
+       * @return The virtual.
        */
-      public com.elarian.hera.proto.CommonModel.Cash getActual() {
-        if (actualBuilder_ == null) {
-          return actual_ == null ? com.elarian.hera.proto.CommonModel.Cash.getDefaultInstance() : actual_;
+      public com.elarian.hera.proto.PaymentModel.LedgerBalance getVirtual() {
+        if (virtualBuilder_ == null) {
+          return virtual_ == null ? com.elarian.hera.proto.PaymentModel.LedgerBalance.getDefaultInstance() : virtual_;
         } else {
-          return actualBuilder_.getMessage();
+          return virtualBuilder_.getMessage();
         }
       }
       /**
-       * <code>.com.elarian.hera.proto.Cash actual = 3;</code>
+       * <code>.com.elarian.hera.proto.LedgerBalance virtual = 3;</code>
        */
-      public Builder setActual(com.elarian.hera.proto.CommonModel.Cash value) {
-        if (actualBuilder_ == null) {
+      public Builder setVirtual(com.elarian.hera.proto.PaymentModel.LedgerBalance value) {
+        if (virtualBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          actual_ = value;
+          virtual_ = value;
           onChanged();
         } else {
-          actualBuilder_.setMessage(value);
+          virtualBuilder_.setMessage(value);
         }
 
         return this;
       }
       /**
-       * <code>.com.elarian.hera.proto.Cash actual = 3;</code>
+       * <code>.com.elarian.hera.proto.LedgerBalance virtual = 3;</code>
        */
-      public Builder setActual(
-          com.elarian.hera.proto.CommonModel.Cash.Builder builderForValue) {
-        if (actualBuilder_ == null) {
-          actual_ = builderForValue.build();
+      public Builder setVirtual(
+          com.elarian.hera.proto.PaymentModel.LedgerBalance.Builder builderForValue) {
+        if (virtualBuilder_ == null) {
+          virtual_ = builderForValue.build();
           onChanged();
         } else {
-          actualBuilder_.setMessage(builderForValue.build());
+          virtualBuilder_.setMessage(builderForValue.build());
         }
 
         return this;
       }
       /**
-       * <code>.com.elarian.hera.proto.Cash actual = 3;</code>
+       * <code>.com.elarian.hera.proto.LedgerBalance virtual = 3;</code>
        */
-      public Builder mergeActual(com.elarian.hera.proto.CommonModel.Cash value) {
-        if (actualBuilder_ == null) {
-          if (actual_ != null) {
-            actual_ =
-              com.elarian.hera.proto.CommonModel.Cash.newBuilder(actual_).mergeFrom(value).buildPartial();
+      public Builder mergeVirtual(com.elarian.hera.proto.PaymentModel.LedgerBalance value) {
+        if (virtualBuilder_ == null) {
+          if (virtual_ != null) {
+            virtual_ =
+              com.elarian.hera.proto.PaymentModel.LedgerBalance.newBuilder(virtual_).mergeFrom(value).buildPartial();
           } else {
-            actual_ = value;
+            virtual_ = value;
           }
           onChanged();
         } else {
-          actualBuilder_.mergeFrom(value);
+          virtualBuilder_.mergeFrom(value);
         }
 
         return this;
       }
       /**
-       * <code>.com.elarian.hera.proto.Cash actual = 3;</code>
+       * <code>.com.elarian.hera.proto.LedgerBalance virtual = 3;</code>
        */
-      public Builder clearActual() {
-        if (actualBuilder_ == null) {
-          actual_ = null;
+      public Builder clearVirtual() {
+        if (virtualBuilder_ == null) {
+          virtual_ = null;
           onChanged();
         } else {
-          actual_ = null;
-          actualBuilder_ = null;
+          virtual_ = null;
+          virtualBuilder_ = null;
         }
 
         return this;
       }
       /**
-       * <code>.com.elarian.hera.proto.Cash actual = 3;</code>
+       * <code>.com.elarian.hera.proto.LedgerBalance virtual = 3;</code>
        */
-      public com.elarian.hera.proto.CommonModel.Cash.Builder getActualBuilder() {
+      public com.elarian.hera.proto.PaymentModel.LedgerBalance.Builder getVirtualBuilder() {
         
         onChanged();
-        return getActualFieldBuilder().getBuilder();
+        return getVirtualFieldBuilder().getBuilder();
       }
       /**
-       * <code>.com.elarian.hera.proto.Cash actual = 3;</code>
+       * <code>.com.elarian.hera.proto.LedgerBalance virtual = 3;</code>
        */
-      public com.elarian.hera.proto.CommonModel.CashOrBuilder getActualOrBuilder() {
-        if (actualBuilder_ != null) {
-          return actualBuilder_.getMessageOrBuilder();
+      public com.elarian.hera.proto.PaymentModel.LedgerBalanceOrBuilder getVirtualOrBuilder() {
+        if (virtualBuilder_ != null) {
+          return virtualBuilder_.getMessageOrBuilder();
         } else {
-          return actual_ == null ?
-              com.elarian.hera.proto.CommonModel.Cash.getDefaultInstance() : actual_;
+          return virtual_ == null ?
+              com.elarian.hera.proto.PaymentModel.LedgerBalance.getDefaultInstance() : virtual_;
         }
       }
       /**
-       * <code>.com.elarian.hera.proto.Cash actual = 3;</code>
+       * <code>.com.elarian.hera.proto.LedgerBalance virtual = 3;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
-          com.elarian.hera.proto.CommonModel.Cash, com.elarian.hera.proto.CommonModel.Cash.Builder, com.elarian.hera.proto.CommonModel.CashOrBuilder> 
-          getActualFieldBuilder() {
-        if (actualBuilder_ == null) {
-          actualBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.elarian.hera.proto.CommonModel.Cash, com.elarian.hera.proto.CommonModel.Cash.Builder, com.elarian.hera.proto.CommonModel.CashOrBuilder>(
-                  getActual(),
+          com.elarian.hera.proto.PaymentModel.LedgerBalance, com.elarian.hera.proto.PaymentModel.LedgerBalance.Builder, com.elarian.hera.proto.PaymentModel.LedgerBalanceOrBuilder> 
+          getVirtualFieldBuilder() {
+        if (virtualBuilder_ == null) {
+          virtualBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.elarian.hera.proto.PaymentModel.LedgerBalance, com.elarian.hera.proto.PaymentModel.LedgerBalance.Builder, com.elarian.hera.proto.PaymentModel.LedgerBalanceOrBuilder>(
+                  getVirtual(),
                   getParentForChildren(),
                   isClean());
-          actual_ = null;
+          virtual_ = null;
         }
-        return actualBuilder_;
+        return virtualBuilder_;
       }
 
       private com.google.protobuf.MapField<
@@ -7954,43 +9011,54 @@ public final class PaymentModel {
     com.elarian.hera.proto.CommonModel.CashOrBuilder getValueOrBuilder();
 
     /**
-     * <code>.com.elarian.hera.proto.PaymentStatus status = 7;</code>
+     * <code>.com.elarian.hera.proto.PaymentMode mode = 7;</code>
+     * @return The enum numeric value on the wire for mode.
+     */
+    int getModeValue();
+    /**
+     * <code>.com.elarian.hera.proto.PaymentMode mode = 7;</code>
+     * @return The mode.
+     */
+    com.elarian.hera.proto.PaymentModel.PaymentMode getMode();
+
+    /**
+     * <code>.com.elarian.hera.proto.PaymentStatus status = 8;</code>
      * @return The enum numeric value on the wire for status.
      */
     int getStatusValue();
     /**
-     * <code>.com.elarian.hera.proto.PaymentStatus status = 7;</code>
+     * <code>.com.elarian.hera.proto.PaymentStatus status = 8;</code>
      * @return The status.
      */
     com.elarian.hera.proto.PaymentModel.PaymentStatus getStatus();
 
     /**
-     * <code>.google.protobuf.Timestamp created_at = 8;</code>
+     * <code>.google.protobuf.Timestamp created_at = 9;</code>
      * @return Whether the createdAt field is set.
      */
     boolean hasCreatedAt();
     /**
-     * <code>.google.protobuf.Timestamp created_at = 8;</code>
+     * <code>.google.protobuf.Timestamp created_at = 9;</code>
      * @return The createdAt.
      */
     com.google.protobuf.Timestamp getCreatedAt();
     /**
-     * <code>.google.protobuf.Timestamp created_at = 8;</code>
+     * <code>.google.protobuf.Timestamp created_at = 9;</code>
      */
     com.google.protobuf.TimestampOrBuilder getCreatedAtOrBuilder();
 
     /**
-     * <code>.google.protobuf.Timestamp updated_at = 9;</code>
+     * <code>.google.protobuf.Timestamp updated_at = 10;</code>
      * @return Whether the updatedAt field is set.
      */
     boolean hasUpdatedAt();
     /**
-     * <code>.google.protobuf.Timestamp updated_at = 9;</code>
+     * <code>.google.protobuf.Timestamp updated_at = 10;</code>
      * @return The updatedAt.
      */
     com.google.protobuf.Timestamp getUpdatedAt();
     /**
-     * <code>.google.protobuf.Timestamp updated_at = 9;</code>
+     * <code>.google.protobuf.Timestamp updated_at = 10;</code>
      */
     com.google.protobuf.TimestampOrBuilder getUpdatedAtOrBuilder();
   }
@@ -8008,6 +9076,7 @@ public final class PaymentModel {
     }
     private PaymentTransaction() {
       transactionId_ = "";
+      mode_ = 0;
       status_ = 0;
     }
 
@@ -8102,10 +9171,16 @@ public final class PaymentModel {
             case 56: {
               int rawValue = input.readEnum();
 
+              mode_ = rawValue;
+              break;
+            }
+            case 64: {
+              int rawValue = input.readEnum();
+
               status_ = rawValue;
               break;
             }
-            case 66: {
+            case 74: {
               com.google.protobuf.Timestamp.Builder subBuilder = null;
               if (createdAt_ != null) {
                 subBuilder = createdAt_.toBuilder();
@@ -8118,7 +9193,7 @@ public final class PaymentModel {
 
               break;
             }
-            case 74: {
+            case 82: {
               com.google.protobuf.Timestamp.Builder subBuilder = null;
               if (updatedAt_ != null) {
                 subBuilder = updatedAt_.toBuilder();
@@ -8305,17 +9380,36 @@ public final class PaymentModel {
       return getValue();
     }
 
-    public static final int STATUS_FIELD_NUMBER = 7;
+    public static final int MODE_FIELD_NUMBER = 7;
+    private int mode_;
+    /**
+     * <code>.com.elarian.hera.proto.PaymentMode mode = 7;</code>
+     * @return The enum numeric value on the wire for mode.
+     */
+    @java.lang.Override public int getModeValue() {
+      return mode_;
+    }
+    /**
+     * <code>.com.elarian.hera.proto.PaymentMode mode = 7;</code>
+     * @return The mode.
+     */
+    @java.lang.Override public com.elarian.hera.proto.PaymentModel.PaymentMode getMode() {
+      @SuppressWarnings("deprecation")
+      com.elarian.hera.proto.PaymentModel.PaymentMode result = com.elarian.hera.proto.PaymentModel.PaymentMode.valueOf(mode_);
+      return result == null ? com.elarian.hera.proto.PaymentModel.PaymentMode.UNRECOGNIZED : result;
+    }
+
+    public static final int STATUS_FIELD_NUMBER = 8;
     private int status_;
     /**
-     * <code>.com.elarian.hera.proto.PaymentStatus status = 7;</code>
+     * <code>.com.elarian.hera.proto.PaymentStatus status = 8;</code>
      * @return The enum numeric value on the wire for status.
      */
     @java.lang.Override public int getStatusValue() {
       return status_;
     }
     /**
-     * <code>.com.elarian.hera.proto.PaymentStatus status = 7;</code>
+     * <code>.com.elarian.hera.proto.PaymentStatus status = 8;</code>
      * @return The status.
      */
     @java.lang.Override public com.elarian.hera.proto.PaymentModel.PaymentStatus getStatus() {
@@ -8324,10 +9418,10 @@ public final class PaymentModel {
       return result == null ? com.elarian.hera.proto.PaymentModel.PaymentStatus.UNRECOGNIZED : result;
     }
 
-    public static final int CREATED_AT_FIELD_NUMBER = 8;
+    public static final int CREATED_AT_FIELD_NUMBER = 9;
     private com.google.protobuf.Timestamp createdAt_;
     /**
-     * <code>.google.protobuf.Timestamp created_at = 8;</code>
+     * <code>.google.protobuf.Timestamp created_at = 9;</code>
      * @return Whether the createdAt field is set.
      */
     @java.lang.Override
@@ -8335,7 +9429,7 @@ public final class PaymentModel {
       return createdAt_ != null;
     }
     /**
-     * <code>.google.protobuf.Timestamp created_at = 8;</code>
+     * <code>.google.protobuf.Timestamp created_at = 9;</code>
      * @return The createdAt.
      */
     @java.lang.Override
@@ -8343,17 +9437,17 @@ public final class PaymentModel {
       return createdAt_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : createdAt_;
     }
     /**
-     * <code>.google.protobuf.Timestamp created_at = 8;</code>
+     * <code>.google.protobuf.Timestamp created_at = 9;</code>
      */
     @java.lang.Override
     public com.google.protobuf.TimestampOrBuilder getCreatedAtOrBuilder() {
       return getCreatedAt();
     }
 
-    public static final int UPDATED_AT_FIELD_NUMBER = 9;
+    public static final int UPDATED_AT_FIELD_NUMBER = 10;
     private com.google.protobuf.Timestamp updatedAt_;
     /**
-     * <code>.google.protobuf.Timestamp updated_at = 9;</code>
+     * <code>.google.protobuf.Timestamp updated_at = 10;</code>
      * @return Whether the updatedAt field is set.
      */
     @java.lang.Override
@@ -8361,7 +9455,7 @@ public final class PaymentModel {
       return updatedAt_ != null;
     }
     /**
-     * <code>.google.protobuf.Timestamp updated_at = 9;</code>
+     * <code>.google.protobuf.Timestamp updated_at = 10;</code>
      * @return The updatedAt.
      */
     @java.lang.Override
@@ -8369,7 +9463,7 @@ public final class PaymentModel {
       return updatedAt_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : updatedAt_;
     }
     /**
-     * <code>.google.protobuf.Timestamp updated_at = 9;</code>
+     * <code>.google.protobuf.Timestamp updated_at = 10;</code>
      */
     @java.lang.Override
     public com.google.protobuf.TimestampOrBuilder getUpdatedAtOrBuilder() {
@@ -8405,14 +9499,17 @@ public final class PaymentModel {
       if (value_ != null) {
         output.writeMessage(6, getValue());
       }
+      if (mode_ != com.elarian.hera.proto.PaymentModel.PaymentMode.PAYMENT_MODE_UNSPECIFIED.getNumber()) {
+        output.writeEnum(7, mode_);
+      }
       if (status_ != com.elarian.hera.proto.PaymentModel.PaymentStatus.PAYMENT_STATUS_UNSPECIFIED.getNumber()) {
-        output.writeEnum(7, status_);
+        output.writeEnum(8, status_);
       }
       if (createdAt_ != null) {
-        output.writeMessage(8, getCreatedAt());
+        output.writeMessage(9, getCreatedAt());
       }
       if (updatedAt_ != null) {
-        output.writeMessage(9, getUpdatedAt());
+        output.writeMessage(10, getUpdatedAt());
       }
       unknownFields.writeTo(output);
     }
@@ -8442,17 +9539,21 @@ public final class PaymentModel {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(6, getValue());
       }
+      if (mode_ != com.elarian.hera.proto.PaymentModel.PaymentMode.PAYMENT_MODE_UNSPECIFIED.getNumber()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(7, mode_);
+      }
       if (status_ != com.elarian.hera.proto.PaymentModel.PaymentStatus.PAYMENT_STATUS_UNSPECIFIED.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(7, status_);
+          .computeEnumSize(8, status_);
       }
       if (createdAt_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(8, getCreatedAt());
+          .computeMessageSize(9, getCreatedAt());
       }
       if (updatedAt_ != null) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(9, getUpdatedAt());
+          .computeMessageSize(10, getUpdatedAt());
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -8491,6 +9592,7 @@ public final class PaymentModel {
         if (!getValue()
             .equals(other.getValue())) return false;
       }
+      if (mode_ != other.mode_) return false;
       if (status_ != other.status_) return false;
       if (hasCreatedAt() != other.hasCreatedAt()) return false;
       if (hasCreatedAt()) {
@@ -8531,6 +9633,8 @@ public final class PaymentModel {
         hash = (37 * hash) + VALUE_FIELD_NUMBER;
         hash = (53 * hash) + getValue().hashCode();
       }
+      hash = (37 * hash) + MODE_FIELD_NUMBER;
+      hash = (53 * hash) + mode_;
       hash = (37 * hash) + STATUS_FIELD_NUMBER;
       hash = (53 * hash) + status_;
       if (hasCreatedAt()) {
@@ -8700,6 +9804,8 @@ public final class PaymentModel {
           value_ = null;
           valueBuilder_ = null;
         }
+        mode_ = 0;
+
         status_ = 0;
 
         if (createdAtBuilder_ == null) {
@@ -8761,6 +9867,7 @@ public final class PaymentModel {
         } else {
           result.value_ = valueBuilder_.build();
         }
+        result.mode_ = mode_;
         result.status_ = status_;
         if (createdAtBuilder_ == null) {
           result.createdAt_ = createdAt_;
@@ -8835,6 +9942,9 @@ public final class PaymentModel {
         }
         if (other.hasValue()) {
           mergeValue(other.getValue());
+        }
+        if (other.mode_ != 0) {
+          setModeValue(other.getModeValue());
         }
         if (other.status_ != 0) {
           setStatusValue(other.getStatusValue());
@@ -9426,16 +10536,70 @@ public final class PaymentModel {
         return valueBuilder_;
       }
 
+      private int mode_ = 0;
+      /**
+       * <code>.com.elarian.hera.proto.PaymentMode mode = 7;</code>
+       * @return The enum numeric value on the wire for mode.
+       */
+      @java.lang.Override public int getModeValue() {
+        return mode_;
+      }
+      /**
+       * <code>.com.elarian.hera.proto.PaymentMode mode = 7;</code>
+       * @param value The enum numeric value on the wire for mode to set.
+       * @return This builder for chaining.
+       */
+      public Builder setModeValue(int value) {
+        
+        mode_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.com.elarian.hera.proto.PaymentMode mode = 7;</code>
+       * @return The mode.
+       */
+      @java.lang.Override
+      public com.elarian.hera.proto.PaymentModel.PaymentMode getMode() {
+        @SuppressWarnings("deprecation")
+        com.elarian.hera.proto.PaymentModel.PaymentMode result = com.elarian.hera.proto.PaymentModel.PaymentMode.valueOf(mode_);
+        return result == null ? com.elarian.hera.proto.PaymentModel.PaymentMode.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.com.elarian.hera.proto.PaymentMode mode = 7;</code>
+       * @param value The mode to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMode(com.elarian.hera.proto.PaymentModel.PaymentMode value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        
+        mode_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.com.elarian.hera.proto.PaymentMode mode = 7;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMode() {
+        
+        mode_ = 0;
+        onChanged();
+        return this;
+      }
+
       private int status_ = 0;
       /**
-       * <code>.com.elarian.hera.proto.PaymentStatus status = 7;</code>
+       * <code>.com.elarian.hera.proto.PaymentStatus status = 8;</code>
        * @return The enum numeric value on the wire for status.
        */
       @java.lang.Override public int getStatusValue() {
         return status_;
       }
       /**
-       * <code>.com.elarian.hera.proto.PaymentStatus status = 7;</code>
+       * <code>.com.elarian.hera.proto.PaymentStatus status = 8;</code>
        * @param value The enum numeric value on the wire for status to set.
        * @return This builder for chaining.
        */
@@ -9446,7 +10610,7 @@ public final class PaymentModel {
         return this;
       }
       /**
-       * <code>.com.elarian.hera.proto.PaymentStatus status = 7;</code>
+       * <code>.com.elarian.hera.proto.PaymentStatus status = 8;</code>
        * @return The status.
        */
       @java.lang.Override
@@ -9456,7 +10620,7 @@ public final class PaymentModel {
         return result == null ? com.elarian.hera.proto.PaymentModel.PaymentStatus.UNRECOGNIZED : result;
       }
       /**
-       * <code>.com.elarian.hera.proto.PaymentStatus status = 7;</code>
+       * <code>.com.elarian.hera.proto.PaymentStatus status = 8;</code>
        * @param value The status to set.
        * @return This builder for chaining.
        */
@@ -9470,7 +10634,7 @@ public final class PaymentModel {
         return this;
       }
       /**
-       * <code>.com.elarian.hera.proto.PaymentStatus status = 7;</code>
+       * <code>.com.elarian.hera.proto.PaymentStatus status = 8;</code>
        * @return This builder for chaining.
        */
       public Builder clearStatus() {
@@ -9484,14 +10648,14 @@ public final class PaymentModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> createdAtBuilder_;
       /**
-       * <code>.google.protobuf.Timestamp created_at = 8;</code>
+       * <code>.google.protobuf.Timestamp created_at = 9;</code>
        * @return Whether the createdAt field is set.
        */
       public boolean hasCreatedAt() {
         return createdAtBuilder_ != null || createdAt_ != null;
       }
       /**
-       * <code>.google.protobuf.Timestamp created_at = 8;</code>
+       * <code>.google.protobuf.Timestamp created_at = 9;</code>
        * @return The createdAt.
        */
       public com.google.protobuf.Timestamp getCreatedAt() {
@@ -9502,7 +10666,7 @@ public final class PaymentModel {
         }
       }
       /**
-       * <code>.google.protobuf.Timestamp created_at = 8;</code>
+       * <code>.google.protobuf.Timestamp created_at = 9;</code>
        */
       public Builder setCreatedAt(com.google.protobuf.Timestamp value) {
         if (createdAtBuilder_ == null) {
@@ -9518,7 +10682,7 @@ public final class PaymentModel {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp created_at = 8;</code>
+       * <code>.google.protobuf.Timestamp created_at = 9;</code>
        */
       public Builder setCreatedAt(
           com.google.protobuf.Timestamp.Builder builderForValue) {
@@ -9532,7 +10696,7 @@ public final class PaymentModel {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp created_at = 8;</code>
+       * <code>.google.protobuf.Timestamp created_at = 9;</code>
        */
       public Builder mergeCreatedAt(com.google.protobuf.Timestamp value) {
         if (createdAtBuilder_ == null) {
@@ -9550,7 +10714,7 @@ public final class PaymentModel {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp created_at = 8;</code>
+       * <code>.google.protobuf.Timestamp created_at = 9;</code>
        */
       public Builder clearCreatedAt() {
         if (createdAtBuilder_ == null) {
@@ -9564,7 +10728,7 @@ public final class PaymentModel {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp created_at = 8;</code>
+       * <code>.google.protobuf.Timestamp created_at = 9;</code>
        */
       public com.google.protobuf.Timestamp.Builder getCreatedAtBuilder() {
         
@@ -9572,7 +10736,7 @@ public final class PaymentModel {
         return getCreatedAtFieldBuilder().getBuilder();
       }
       /**
-       * <code>.google.protobuf.Timestamp created_at = 8;</code>
+       * <code>.google.protobuf.Timestamp created_at = 9;</code>
        */
       public com.google.protobuf.TimestampOrBuilder getCreatedAtOrBuilder() {
         if (createdAtBuilder_ != null) {
@@ -9583,7 +10747,7 @@ public final class PaymentModel {
         }
       }
       /**
-       * <code>.google.protobuf.Timestamp created_at = 8;</code>
+       * <code>.google.protobuf.Timestamp created_at = 9;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
@@ -9603,14 +10767,14 @@ public final class PaymentModel {
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> updatedAtBuilder_;
       /**
-       * <code>.google.protobuf.Timestamp updated_at = 9;</code>
+       * <code>.google.protobuf.Timestamp updated_at = 10;</code>
        * @return Whether the updatedAt field is set.
        */
       public boolean hasUpdatedAt() {
         return updatedAtBuilder_ != null || updatedAt_ != null;
       }
       /**
-       * <code>.google.protobuf.Timestamp updated_at = 9;</code>
+       * <code>.google.protobuf.Timestamp updated_at = 10;</code>
        * @return The updatedAt.
        */
       public com.google.protobuf.Timestamp getUpdatedAt() {
@@ -9621,7 +10785,7 @@ public final class PaymentModel {
         }
       }
       /**
-       * <code>.google.protobuf.Timestamp updated_at = 9;</code>
+       * <code>.google.protobuf.Timestamp updated_at = 10;</code>
        */
       public Builder setUpdatedAt(com.google.protobuf.Timestamp value) {
         if (updatedAtBuilder_ == null) {
@@ -9637,7 +10801,7 @@ public final class PaymentModel {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp updated_at = 9;</code>
+       * <code>.google.protobuf.Timestamp updated_at = 10;</code>
        */
       public Builder setUpdatedAt(
           com.google.protobuf.Timestamp.Builder builderForValue) {
@@ -9651,7 +10815,7 @@ public final class PaymentModel {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp updated_at = 9;</code>
+       * <code>.google.protobuf.Timestamp updated_at = 10;</code>
        */
       public Builder mergeUpdatedAt(com.google.protobuf.Timestamp value) {
         if (updatedAtBuilder_ == null) {
@@ -9669,7 +10833,7 @@ public final class PaymentModel {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp updated_at = 9;</code>
+       * <code>.google.protobuf.Timestamp updated_at = 10;</code>
        */
       public Builder clearUpdatedAt() {
         if (updatedAtBuilder_ == null) {
@@ -9683,7 +10847,7 @@ public final class PaymentModel {
         return this;
       }
       /**
-       * <code>.google.protobuf.Timestamp updated_at = 9;</code>
+       * <code>.google.protobuf.Timestamp updated_at = 10;</code>
        */
       public com.google.protobuf.Timestamp.Builder getUpdatedAtBuilder() {
         
@@ -9691,7 +10855,7 @@ public final class PaymentModel {
         return getUpdatedAtFieldBuilder().getBuilder();
       }
       /**
-       * <code>.google.protobuf.Timestamp updated_at = 9;</code>
+       * <code>.google.protobuf.Timestamp updated_at = 10;</code>
        */
       public com.google.protobuf.TimestampOrBuilder getUpdatedAtOrBuilder() {
         if (updatedAtBuilder_ != null) {
@@ -9702,7 +10866,7 @@ public final class PaymentModel {
         }
       }
       /**
-       * <code>.google.protobuf.Timestamp updated_at = 9;</code>
+       * <code>.google.protobuf.Timestamp updated_at = 10;</code>
        */
       private com.google.protobuf.SingleFieldBuilderV3<
           com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
@@ -9781,6 +10945,11 @@ public final class PaymentModel {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_com_elarian_hera_proto_PendingPaymentTransaction_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_elarian_hera_proto_LedgerBalance_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_com_elarian_hera_proto_LedgerBalance_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_com_elarian_hera_proto_PaymentBalance_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -9834,70 +11003,79 @@ public final class PaymentModel {
       "oogle/protobuf/timestamp.proto\032\022common_m" +
       "odel.proto\"_\n\024PaymentChannelNumber\0227\n\007ch" +
       "annel\030\001 \001(\0162&.com.elarian.hera.proto.Pay" +
-      "mentChannel\022\016\n\006number\030\002 \001(\t\"\251\001\n\031PendingP" +
+      "mentChannel\022\016\n\006number\030\002 \001(\t\"\334\001\n\031PendingP" +
       "aymentTransaction\022.\n\ncreated_at\030\001 \001(\0132\032." +
       "google.protobuf.Timestamp\022+\n\005value\030\002 \001(\013" +
       "2\034.com.elarian.hera.proto.Cash\022/\n\tconver" +
-      "ted\030\003 \001(\0132\034.com.elarian.hera.proto.Cash\"" +
-      "\304\002\n\016PaymentBalance\022\025\n\rcurrency_code\030\001 \001(" +
-      "\t\022/\n\tavailable\030\002 \001(\0132\034.com.elarian.hera." +
-      "proto.Cash\022,\n\006actual\030\003 \001(\0132\034.com.elarian" +
-      ".hera.proto.Cash\022D\n\007pending\030\004 \003(\01323.com." +
-      "elarian.hera.proto.PaymentBalance.Pendin" +
-      "gEntry\022\023\n\013sequence_nr\030\005 \001(\004\032a\n\014PendingEn" +
-      "try\022\013\n\003key\030\001 \001(\t\022@\n\005value\030\002 \001(\01321.com.el" +
-      "arian.hera.proto.PendingPaymentTransacti" +
-      "on:\0028\001\",\n\030PaymentPurseCounterParty\022\020\n\010pu" +
-      "rse_id\030\001 \001(\t\"C\n\031PaymentWalletCounterPart" +
-      "y\022\023\n\013customer_id\030\001 \001(\t\022\021\n\twallet_id\030\002 \001(" +
-      "\t\"\244\001\n\033PaymentCustomerCounterParty\022?\n\017cus" +
-      "tomer_number\030\001 \001(\0132&.com.elarian.hera.pr" +
-      "oto.CustomerNumber\022D\n\016channel_number\030\002 \001" +
+      "ted\030\003 \001(\0132\034.com.elarian.hera.proto.Cash\022" +
+      "1\n\004mode\030\004 \001(\0162#.com.elarian.hera.proto.P" +
+      "aymentMode\"n\n\rLedgerBalance\022/\n\tavailable" +
+      "\030\001 \001(\0132\034.com.elarian.hera.proto.Cash\022,\n\006" +
+      "actual\030\002 \001(\0132\034.com.elarian.hera.proto.Ca" +
+      "sh\"\324\002\n\016PaymentBalance\022\025\n\rcurrency_code\030\001" +
+      " \001(\t\0225\n\006hosted\030\002 \001(\0132%.com.elarian.hera." +
+      "proto.LedgerBalance\0226\n\007virtual\030\003 \001(\0132%.c" +
+      "om.elarian.hera.proto.LedgerBalance\022D\n\007p" +
+      "ending\030\004 \003(\01323.com.elarian.hera.proto.Pa" +
+      "ymentBalance.PendingEntry\022\023\n\013sequence_nr" +
+      "\030\005 \001(\004\032a\n\014PendingEntry\022\013\n\003key\030\001 \001(\t\022@\n\005v" +
+      "alue\030\002 \001(\01321.com.elarian.hera.proto.Pend" +
+      "ingPaymentTransaction:\0028\001\",\n\030PaymentPurs" +
+      "eCounterParty\022\020\n\010purse_id\030\001 \001(\t\"C\n\031Payme" +
+      "ntWalletCounterParty\022\023\n\013customer_id\030\001 \001(" +
+      "\t\022\021\n\twallet_id\030\002 \001(\t\"\244\001\n\033PaymentCustomer" +
+      "CounterParty\022?\n\017customer_number\030\001 \001(\0132&." +
+      "com.elarian.hera.proto.CustomerNumber\022D\n" +
+      "\016channel_number\030\002 \001(\0132,.com.elarian.hera" +
+      ".proto.PaymentChannelNumber\"\247\001\n\032PaymentC" +
+      "hannelCounterParty\022D\n\016channel_number\030\001 \001" +
       "(\0132,.com.elarian.hera.proto.PaymentChann" +
-      "elNumber\"\247\001\n\032PaymentChannelCounterParty\022" +
-      "D\n\016channel_number\030\001 \001(\0132,.com.elarian.he" +
-      "ra.proto.PaymentChannelNumber\022\024\n\014channel" +
-      "_code\030\002 \001(\005\022-\n\007account\030\003 \001(\0132\034.google.pr" +
-      "otobuf.StringValue\"\266\002\n\023PaymentCounterPar" +
-      "ty\022G\n\010customer\030\001 \001(\01323.com.elarian.hera." +
-      "proto.PaymentCustomerCounterPartyH\000\022A\n\005p" +
-      "urse\030\002 \001(\01320.com.elarian.hera.proto.Paym" +
-      "entPurseCounterPartyH\000\022C\n\006wallet\030\003 \001(\01321" +
-      ".com.elarian.hera.proto.PaymentWalletCou" +
-      "nterPartyH\000\022E\n\007channel\030\004 \001(\01322.com.elari" +
-      "an.hera.proto.PaymentChannelCounterParty" +
-      "H\000B\007\n\005party\"\243\003\n\022PaymentTransaction\022\026\n\016tr" +
-      "ansaction_id\030\001 \001(\t\022,\n\006app_id\030\002 \001(\0132\034.goo" +
-      "gle.protobuf.StringValue\022@\n\013debit_party\030" +
-      "\004 \001(\0132+.com.elarian.hera.proto.PaymentCo" +
-      "unterParty\022A\n\014credit_party\030\005 \001(\0132+.com.e" +
-      "larian.hera.proto.PaymentCounterParty\022+\n" +
-      "\005value\030\006 \001(\0132\034.com.elarian.hera.proto.Ca" +
-      "sh\0225\n\006status\030\007 \001(\0162%.com.elarian.hera.pr" +
-      "oto.PaymentStatus\022.\n\ncreated_at\030\010 \001(\0132\032." +
-      "google.protobuf.Timestamp\022.\n\nupdated_at\030" +
-      "\t \001(\0132\032.google.protobuf.Timestamp*O\n\016Pay" +
-      "mentChannel\022\037\n\033PAYMENT_CHANNEL_UNSPECIFI" +
-      "ED\020\000\022\034\n\030PAYMENT_CHANNEL_CELLULAR\020\001*\341\005\n\rP" +
-      "aymentStatus\022\036\n\032PAYMENT_STATUS_UNSPECIFI" +
-      "ED\020\000\022\031\n\025PAYMENT_STATUS_QUEUED\020d\022\'\n#PAYME" +
-      "NT_STATUS_PENDING_CONFIRMATION\020e\022%\n!PAYM" +
-      "ENT_STATUS_PENDING_VALIDATION\020f\022\034\n\030PAYME" +
-      "NT_STATUS_VALIDATED\020g\022#\n\036PAYMENT_STATUS_" +
-      "INVALID_REQUEST\020\310\001\022!\n\034PAYMENT_STATUS_NOT" +
-      "_SUPPORTED\020\311\001\022&\n!PAYMENT_STATUS_INSUFFIC" +
-      "IENT_FUNDS\020\312\001\022%\n PAYMENT_STATUS_APPLICAT" +
-      "ION_ERROR\020\313\001\022\037\n\032PAYMENT_STATUS_NOT_ALLOW" +
-      "ED\020\314\001\022%\n PAYMENT_STATUS_DUPLICATE_REQUES" +
-      "T\020\315\001\022!\n\034PAYMENT_STATUS_INVALID_PURSE\020\316\001\022" +
-      "\"\n\035PAYMENT_STATUS_INVALID_WALLET\020\317\001\022.\n)P" +
-      "AYMENT_STATUS_DECOMMISSIONED_CUSTOMER_ID" +
-      "\020\253\002\022\033\n\026PAYMENT_STATUS_SUCCESS\020\254\002\022 \n\033PAYM" +
-      "ENT_STATUS_PASS_THROUGH\020\255\002\022\032\n\025PAYMENT_ST" +
-      "ATUS_FAILED\020\220\003\022\035\n\030PAYMENT_STATUS_THROTTL" +
-      "ED\020\221\003\022\033\n\026PAYMENT_STATUS_EXPIRED\020\222\003\022\034\n\027PA" +
-      "YMENT_STATUS_REJECTED\020\223\003\022\034\n\027PAYMENT_STAT" +
-      "US_REVERSED\020\364\003b\006proto3"
+      "elNumber\022\024\n\014channel_code\030\002 \001(\005\022-\n\007accoun" +
+      "t\030\003 \001(\0132\034.google.protobuf.StringValue\"\266\002" +
+      "\n\023PaymentCounterParty\022G\n\010customer\030\001 \001(\0132" +
+      "3.com.elarian.hera.proto.PaymentCustomer" +
+      "CounterPartyH\000\022A\n\005purse\030\002 \001(\01320.com.elar" +
+      "ian.hera.proto.PaymentPurseCounterPartyH" +
+      "\000\022C\n\006wallet\030\003 \001(\01321.com.elarian.hera.pro" +
+      "to.PaymentWalletCounterPartyH\000\022E\n\007channe" +
+      "l\030\004 \001(\01322.com.elarian.hera.proto.Payment" +
+      "ChannelCounterPartyH\000B\007\n\005party\"\326\003\n\022Payme" +
+      "ntTransaction\022\026\n\016transaction_id\030\001 \001(\t\022,\n" +
+      "\006app_id\030\002 \001(\0132\034.google.protobuf.StringVa" +
+      "lue\022@\n\013debit_party\030\004 \001(\0132+.com.elarian.h" +
+      "era.proto.PaymentCounterParty\022A\n\014credit_" +
+      "party\030\005 \001(\0132+.com.elarian.hera.proto.Pay" +
+      "mentCounterParty\022+\n\005value\030\006 \001(\0132\034.com.el" +
+      "arian.hera.proto.Cash\0221\n\004mode\030\007 \001(\0162#.co" +
+      "m.elarian.hera.proto.PaymentMode\0225\n\006stat" +
+      "us\030\010 \001(\0162%.com.elarian.hera.proto.Paymen" +
+      "tStatus\022.\n\ncreated_at\030\t \001(\0132\032.google.pro" +
+      "tobuf.Timestamp\022.\n\nupdated_at\030\n \001(\0132\032.go" +
+      "ogle.protobuf.Timestamp*l\n\016PaymentChanne" +
+      "l\022\037\n\033PAYMENT_CHANNEL_UNSPECIFIED\020\000\022\034\n\030PA" +
+      "YMENT_CHANNEL_CELLULAR\020\001\022\033\n\027PAYMENT_CHAN" +
+      "NEL_AIRTIME\020\002*^\n\013PaymentMode\022\034\n\030PAYMENT_" +
+      "MODE_UNSPECIFIED\020\000\022\027\n\023PAYMENT_MODE_HOSTE" +
+      "D\020\001\022\030\n\024PAYMENT_MODE_VIRTUAL\020\002*\341\005\n\rPaymen" +
+      "tStatus\022\036\n\032PAYMENT_STATUS_UNSPECIFIED\020\000\022" +
+      "\031\n\025PAYMENT_STATUS_QUEUED\020d\022\'\n#PAYMENT_ST" +
+      "ATUS_PENDING_CONFIRMATION\020e\022%\n!PAYMENT_S" +
+      "TATUS_PENDING_VALIDATION\020f\022\034\n\030PAYMENT_ST" +
+      "ATUS_VALIDATED\020g\022#\n\036PAYMENT_STATUS_INVAL" +
+      "ID_REQUEST\020\310\001\022!\n\034PAYMENT_STATUS_NOT_SUPP" +
+      "ORTED\020\311\001\022&\n!PAYMENT_STATUS_INSUFFICIENT_" +
+      "FUNDS\020\312\001\022%\n PAYMENT_STATUS_APPLICATION_E" +
+      "RROR\020\313\001\022\037\n\032PAYMENT_STATUS_NOT_ALLOWED\020\314\001" +
+      "\022%\n PAYMENT_STATUS_DUPLICATE_REQUEST\020\315\001\022" +
+      "!\n\034PAYMENT_STATUS_INVALID_PURSE\020\316\001\022\"\n\035PA" +
+      "YMENT_STATUS_INVALID_WALLET\020\317\001\022.\n)PAYMEN" +
+      "T_STATUS_DECOMMISSIONED_CUSTOMER_ID\020\253\002\022\033" +
+      "\n\026PAYMENT_STATUS_SUCCESS\020\254\002\022 \n\033PAYMENT_S" +
+      "TATUS_PASS_THROUGH\020\255\002\022\032\n\025PAYMENT_STATUS_" +
+      "FAILED\020\220\003\022\035\n\030PAYMENT_STATUS_THROTTLED\020\221\003" +
+      "\022\033\n\026PAYMENT_STATUS_EXPIRED\020\222\003\022\034\n\027PAYMENT" +
+      "_STATUS_REJECTED\020\223\003\022\034\n\027PAYMENT_STATUS_RE" +
+      "VERSED\020\364\003b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -9917,13 +11095,19 @@ public final class PaymentModel {
     internal_static_com_elarian_hera_proto_PendingPaymentTransaction_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_elarian_hera_proto_PendingPaymentTransaction_descriptor,
-        new java.lang.String[] { "CreatedAt", "Value", "Converted", });
-    internal_static_com_elarian_hera_proto_PaymentBalance_descriptor =
+        new java.lang.String[] { "CreatedAt", "Value", "Converted", "Mode", });
+    internal_static_com_elarian_hera_proto_LedgerBalance_descriptor =
       getDescriptor().getMessageTypes().get(2);
+    internal_static_com_elarian_hera_proto_LedgerBalance_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_com_elarian_hera_proto_LedgerBalance_descriptor,
+        new java.lang.String[] { "Available", "Actual", });
+    internal_static_com_elarian_hera_proto_PaymentBalance_descriptor =
+      getDescriptor().getMessageTypes().get(3);
     internal_static_com_elarian_hera_proto_PaymentBalance_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_elarian_hera_proto_PaymentBalance_descriptor,
-        new java.lang.String[] { "CurrencyCode", "Available", "Actual", "Pending", "SequenceNr", });
+        new java.lang.String[] { "CurrencyCode", "Hosted", "Virtual", "Pending", "SequenceNr", });
     internal_static_com_elarian_hera_proto_PaymentBalance_PendingEntry_descriptor =
       internal_static_com_elarian_hera_proto_PaymentBalance_descriptor.getNestedTypes().get(0);
     internal_static_com_elarian_hera_proto_PaymentBalance_PendingEntry_fieldAccessorTable = new
@@ -9931,41 +11115,41 @@ public final class PaymentModel {
         internal_static_com_elarian_hera_proto_PaymentBalance_PendingEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     internal_static_com_elarian_hera_proto_PaymentPurseCounterParty_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_com_elarian_hera_proto_PaymentPurseCounterParty_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_elarian_hera_proto_PaymentPurseCounterParty_descriptor,
         new java.lang.String[] { "PurseId", });
     internal_static_com_elarian_hera_proto_PaymentWalletCounterParty_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_com_elarian_hera_proto_PaymentWalletCounterParty_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_elarian_hera_proto_PaymentWalletCounterParty_descriptor,
         new java.lang.String[] { "CustomerId", "WalletId", });
     internal_static_com_elarian_hera_proto_PaymentCustomerCounterParty_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_com_elarian_hera_proto_PaymentCustomerCounterParty_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_elarian_hera_proto_PaymentCustomerCounterParty_descriptor,
         new java.lang.String[] { "CustomerNumber", "ChannelNumber", });
     internal_static_com_elarian_hera_proto_PaymentChannelCounterParty_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(7);
     internal_static_com_elarian_hera_proto_PaymentChannelCounterParty_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_elarian_hera_proto_PaymentChannelCounterParty_descriptor,
         new java.lang.String[] { "ChannelNumber", "ChannelCode", "Account", });
     internal_static_com_elarian_hera_proto_PaymentCounterParty_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(8);
     internal_static_com_elarian_hera_proto_PaymentCounterParty_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_elarian_hera_proto_PaymentCounterParty_descriptor,
         new java.lang.String[] { "Customer", "Purse", "Wallet", "Channel", "Party", });
     internal_static_com_elarian_hera_proto_PaymentTransaction_descriptor =
-      getDescriptor().getMessageTypes().get(8);
+      getDescriptor().getMessageTypes().get(9);
     internal_static_com_elarian_hera_proto_PaymentTransaction_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_elarian_hera_proto_PaymentTransaction_descriptor,
-        new java.lang.String[] { "TransactionId", "AppId", "DebitParty", "CreditParty", "Value", "Status", "CreatedAt", "UpdatedAt", });
+        new java.lang.String[] { "TransactionId", "AppId", "DebitParty", "CreditParty", "Value", "Mode", "Status", "CreatedAt", "UpdatedAt", });
     com.google.protobuf.WrappersProto.getDescriptor();
     com.google.protobuf.TimestampProto.getDescriptor();
     com.elarian.hera.proto.CommonModel.getDescriptor();
