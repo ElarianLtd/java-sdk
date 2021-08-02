@@ -16,6 +16,6 @@ public final class ConnectionConfig {
     }
 
     public ConnectionConfig() {
-        this(60000, 1000, true, "tcp.elarian.com", 8082);
+        this(60000, 1000, true, "tcp.elarian.com", 443);
     }
 }

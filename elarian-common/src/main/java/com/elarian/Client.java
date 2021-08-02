@@ -85,26 +85,22 @@ abstract class Client<B, C> {
 
         byte[] payload = serializeSetupPayload(clientOpts);
 
-        transport = TcpClientTransport.create(
-                TcpClient
-                    .create()
-                    .secure()
-                    .host(clientOpts.connectionConfig.host)
-                    .port(clientOpts.connectionConfig.port)
-                    .doOnConnect(tcpClientConfig -> {
-                        log("Connecting");
-                        listener.onConnecting();
-
+    transport =
+        TcpClientTransport.create(
+            TcpClient.create()
+                .secure()
+                .host(clientOpts.connectionConfig.host)
+                .port(clientOpts.connectionConfig.port)
+                .doOnConnect(
+                    tcpClientConfig -> {
+                      log("Connecting");
+                      listener.onConnecting();
                     })
-                    .doOnConnected(connection -> {
-                        log("Connected");
-                        listener.onConnected();
-                    })
-                    .doOnDisconnected(connection -> {
-                        log("Disconnected");
-                        listener.onClosed();
-                    })
-        );
+                .doOnDisconnected(
+                    connection -> {
+                      log("Disconnected");
+                      listener.onClosed();
+                    }));
 
         resume = new Resume()
                 .sessionDuration(Duration.ofMillis(clientOpts.connectionConfig.lifetime))
@@ -126,23 +122,41 @@ abstract class Client<B, C> {
         }
 
         listener.onPending();
-        connector.connect(transport).subscribe(soc -> {
-            socket = soc;
-            socket.onClose()
-                    .subscribe(
-                            (signal) -> {
-                                log("Connection SIGNAL");
-                            },
-                            (err) -> {
-                                log("Connection ERROR: " + err.getMessage());
-                                this.disconnect(err.getMessage());
-                                listener.onError(err);
-                            },
-                            () -> {
-                                log("Connection CLOSED");
-                            }
-                    );
-            }, listener::onError);
+    connector
+        .connect(transport)
+        .subscribe(
+            soc -> {
+              Mono.delay(Duration.ofSeconds(1))
+                  .subscribe(
+                      (delay) -> {
+                        if (socket != null && !socket.isDisposed()) {
+                          log("Connected");
+                          listener.onConnected();
+                        }
+                      },
+                      (err) -> {});
+
+              socket = soc;
+              socket
+                  .onClose()
+                  .subscribe(
+                      (signal) -> {
+                        log("Connection SIGNAL");
+                      },
+                      (err) -> {
+                        log("Connection ERROR: " + err.getMessage());
+                        this.disconnect(err.getMessage());
+                        listener.onError(err);
+                      },
+                      () -> {
+                        log("Connection CLOSED");
+                      });
+            },
+            (err) -> {
+              log("Connection ERROR: " + err.getMessage());
+              this.disconnect(err.getMessage());
+              listener.onError(err);
+            });
     }
 
     /**

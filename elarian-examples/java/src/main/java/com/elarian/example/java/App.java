@@ -125,7 +125,7 @@ public class App {
   static BaseNotificationHandler<UssdSessionNotification, UssdMenu> ussdSessionHandler =
       (notification, customer, appData, responder) -> {
         try {
-          String input = notification.input;
+          String input = notification.input.text;
           log.info("Processing USSD from " + notification.customerNumber.number);
 
           customer
@@ -321,14 +321,14 @@ public class App {
           }
 
           @Override
-          public void onConnected() {
-            String ussCode = System.getenv("USSD_CODE");
-            log.info("App is connected, waiting for customers on " + ussCode);
+          public void onError(Throwable throwable) {
+            log.severe("Failed to connect: " + throwable.getMessage());
           }
 
           @Override
-          public void onError(Throwable throwable) {
-            log.warning("Failed to connect: " + throwable.getMessage());
+          public void onConnected() {
+              String ussCode = System.getenv("USSD_CODE");
+              log.info("App is connected, waiting for customers on " + ussCode);
           }
         });
 

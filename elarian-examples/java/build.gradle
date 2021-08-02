@@ -1,8 +1,7 @@
 apply plugin: 'application'
 
 dependencies {
-    // implementation(project(':elarian-core'))
-    compile "com.elarian:elarian-core:0.2.4"
+    implementation(project(':elarian-core'))
     implementation "org.slf4j:slf4j-jdk14:1.7.25"
 }
 
