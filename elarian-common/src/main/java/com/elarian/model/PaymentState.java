@@ -18,16 +18,27 @@ public final class PaymentState {
         public String appId;
         public PaymentCounterParty debitParty;
         public PaymentCounterParty creditParty;
+        public PaymentMode mode;
         public Cash value;
         public PaymentStatus status;
         public long createdAt;
         public long updatedAt;
     }
 
-    public static final class PaymentBalance {
-        public String currencyCode;
+    public static final class LedgerBalance {
         public Cash available;
         public Cash actual;
+
+        public LedgerBalance(Cash available, Cash actual) {
+            this.actual = actual;
+            this.available = available;
+        }
+    }
+
+    public static final class PaymentBalance {
+        public String currencyCode;
+        public LedgerBalance hosted;
+        public LedgerBalance virtual;
         public long sequenceNr;
         public Map<String, PendingPaymentTransaction> pending = new HashMap<>();
     }

@@ -11,7 +11,8 @@ public final class PaymentChannel {
 
     public enum Channel {
         UNKNOWN(0),
-        CELLULAR(1);
+        CELLULAR(1),
+        AIRTIME(2);
 
         private final int value;
 
@@ -33,6 +34,4 @@ public final class PaymentChannel {
             return UNKNOWN;
         }
     }
-
-
 }

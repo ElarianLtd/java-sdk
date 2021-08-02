@@ -246,8 +246,10 @@ class Utils {
             } else if (party.hasChannel()) {
                 PaymentModel.PaymentChannelCounterParty channel = party.getChannel();
                 result = new PaymentCounterParty(new PaymentChannelCounterParty(
-                        makePaymentChannel(channel.getChannelNumber()),
+                        PaymentChannel.Channel.valueOf(channel.getChannelValue()),
                         channel.getAccount().getValue(),
+                        channel.getSource(),
+                        channel.getDestination(),
                         channel.getChannelCode()));
             } else if (party.hasCustomer()) {
                 PaymentModel.PaymentCustomerCounterParty customer = party.getCustomer();
@@ -365,11 +367,9 @@ class Utils {
                     .newBuilder()
                     .setAccount(StringValue.of(party.account))
                     .setChannelCode(party.networkCode)
-                    .setChannelNumber(PaymentModel.PaymentChannelNumber
-                        .newBuilder()
-                        .setNumber(party.channelNumber.number)
-                        .setChannelValue(party.channelNumber.channel.getValue())
-                        .build())
+                    .setChannelValue(party.channel.getValue())
+                    .setSource(party.source)
+                    .setDestination(party.destination)
                     .build());
         } else if (counterParty.wallet != null) {
             PaymentWalletCounterParty party = counterParty.wallet;

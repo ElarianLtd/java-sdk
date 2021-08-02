@@ -166,182 +166,223 @@ public final class Customer implements ICustomer {
                 .setGetCustomerState(cmd)
                 .build();
 
-        return new Mono<CustomerState>() {
-            @Override
-            public void subscribe(CoreSubscriber<? super CustomerState> subscriber) {
-                client.buildCommandReply(req.toByteArray(), replyDeserializer).subscribe(reply -> {
-                    AppSocket.GetCustomerStateReply res = reply.getGetCustomerState();
-                    if (!res.getStatus()) {
-                        subscriber.onError(new RuntimeException(res.getDescription()));
-                        return;
-                    }
+    return new Mono<CustomerState>() {
+      @Override
+      public void subscribe(CoreSubscriber<? super CustomerState> subscriber) {
+        client
+            .buildCommandReply(req.toByteArray(), replyDeserializer)
+            .subscribe(
+                reply -> {
+                  AppSocket.GetCustomerStateReply res = reply.getGetCustomerState();
+                  if (!res.getStatus()) {
+                    subscriber.onError(new RuntimeException(res.getDescription()));
+                    return;
+                  }
 
-                    AppSocket.CustomerStateReplyData data = res.getData();
+                  AppSocket.CustomerStateReplyData data = res.getData();
 
-                    customerId = data.getCustomerId();
-                    CustomerState state = new CustomerState(customerId);
-                    if (data.hasIdentityState()) {
-                        IdentityStateOuterClass.IdentityState identity = data.getIdentityState();
-                        state.identityState = new IdentityState();
-                        state.identityState.secondaryIds = identity
-                                .getSecondaryIdsList()
-                                .stream()
-                                .map((item) -> new SecondaryId(
+                  customerId = data.getCustomerId();
+                  CustomerState state = new CustomerState(customerId);
+                  if (data.hasIdentityState()) {
+                    IdentityStateOuterClass.IdentityState identity = data.getIdentityState();
+                    state.identityState = new IdentityState();
+                    state.identityState.secondaryIds =
+                        identity.getSecondaryIdsList().stream()
+                            .map(
+                                (item) ->
+                                    new SecondaryId(
                                         item.getMapping().getKey(),
-                                        item.getMapping().getValue().getValue()
-                                ))
-                                .collect(Collectors.toList());
-                        state.identityState.tags = identity
-                                .getTagsList()
-                                .stream()
-                                .map((item) -> new Tag(
+                                        item.getMapping().getValue().getValue()))
+                            .collect(Collectors.toList());
+                    state.identityState.tags =
+                        identity.getTagsList().stream()
+                            .map(
+                                (item) ->
+                                    new Tag(
                                         item.getMapping().getKey(),
                                         item.getMapping().getValue().getValue(),
                                         item.getExpiresAt().getSeconds()))
-                                .collect(Collectors.toList());
-
-                        identity.getMetadataMap().forEach((key, value) -> {
-                            DataValue val = null;
-                            String strVal = value.getStringVal();
-                            ByteString byteString = value.getBytesVal();
-                            if (byteString != null && !byteString.isEmpty()) {
-                                val = DataValue.of(byteString.toByteArray());
-                            } else if (strVal != null && !strVal.isEmpty()) {
-                                val = DataValue.of(strVal);
-                            }
-                            state.identityState.metadata.put(key, val);
-                        });
-                    }
-
-                    if (data.hasActivityState()) {
-                        ActivityStateOuterClass.ActivityState activityState = data.getActivityState();
-                        state.activityState = new ActivityState();
-                        state.activityState.customerNumbers = activityState
-                                .getCustomerNumbersList()
-                                .stream()
-                                .map(Utils::makeCustomerNumber)
-                                .collect(Collectors.toList());
-                        state.activityState.sessions = activityState
-                                .getSessionsList()
-                                .stream()
-                                .map(item -> {
-                                    ActivityState.Session session = new ActivityState.Session();
-                                    session.sessionId = item.getSessionId();
-                                    session.appId = item.getAppId();
-                                    session.createdAt = item.getCreatedAt().getSeconds();
-                                    session.updatedAt = item.getUpdatedAt().getSeconds();
-                                    session.customerNumber = Utils.makeCustomerNumber(item.getCustomerNumber());
-                                    session.channelNumber = Utils.makeActivityChannel(item.getChannelNumber());
-                                    session.activities = item.getActivitiesList()
-                                            .stream()
-                                            .map((act) ->
-                                                    new Activity(
-                                                            act.getKey(),
-                                                            act.getPropertiesMap(),
-                                                            item.getSessionId(),
-                                                            act.getCreatedAt().getSeconds()))
-                                            .collect(Collectors.toList());
-                                    return session;
-                                })
-                                .collect(Collectors.toList());
-                    }
-
-                    if (data.hasPaymentState()) {
-                        PaymentStateOuterClass.PaymentState paymentState = data.getPaymentState();
-                        state.paymentState = new PaymentState();
-                        state.paymentState.customerNumbers = paymentState
-                                .getCustomerNumbersList()
-                                .stream()
-                                .map(Utils::makeCustomerNumber)
-                                .collect(Collectors.toList());
-
-                        if (customerNumber == null && state.paymentState.customerNumbers.size() > 0) {
-                            customerNumber = state.paymentState.customerNumbers.get(0);
-                        }
-
-                        state.paymentState.paymentChannels = paymentState
-                                .getChannelNumbersList()
-                                .stream()
-                                .map(Utils::makePaymentChannel)
-                                .collect(Collectors.toList());
-                        state.paymentState.transactionLog = paymentState
-                                .getTransactionLogList()
-                                .stream()
-                                .map(Utils::makeTransactionLog)
-                                .collect(Collectors.toList());
-                        state.paymentState.pendingTransactions = paymentState
-                                .getPendingTransactionsList()
-                                .stream()
-                                .map(Utils::makeTransactionLog)
-                                .collect(Collectors.toList());
-
-                        paymentState.getWalletsMap().forEach((key, val) -> {
-                            PaymentState.PaymentBalance balance = new PaymentState.PaymentBalance();
-                            balance.sequenceNr = val.getSequenceNr();
-                            balance.currencyCode = val.getCurrencyCode();
-                            balance.actual = new Cash(val.getActual().getCurrencyCode(), val.getActual().getAmount());
-                            balance.available = new Cash(val.getAvailable().getCurrencyCode(), val.getAvailable().getAmount());
-                            val.getPendingMap().forEach((k, v) -> {
-                                balance.pending.put(k, new PaymentState.PendingPaymentTransaction(
-                                        v.getCreatedAt().getSeconds(),
-                                        new Cash(v.getValue().getCurrencyCode(), v.getValue().getAmount()),
-                                        new Cash(v.getConverted().getCurrencyCode(), v.getConverted().getAmount())
-                                ));
-                            });
-                            state.paymentState.wallets.put(key, balance);
-                        });
-                    }
-
-                    if (data.hasMessagingState()) {
-                        state.messagingState = new MessagingState();
-
-                        state.messagingState.messages = data.getMessagingState()
-                                .getMessagesList()
-                                .stream()
-                                .map(Utils::makeChannelMessage)
-                                .collect(Collectors.toList());
-
-                        state.messagingState.sessions = data.getMessagingState()
-                                .getSessionsList()
-                                .stream()
-                                .map(Utils::makeCompleteMessagingSession)
-                                .collect(Collectors.toList());
-
-                        state.messagingState.channels = data.getMessagingState()
-                                .getChannelsList()
-                                .stream()
-                                .map(Utils::makeMessagingChannelState)
-                                .collect(Collectors.toList());
-
-                        if (customerNumber == null && state.messagingState.channels.size() > 0) {
-                            List<CustomerNumber> numbers = state.messagingState.channels.stream().map(st -> {
-                                if (st.active != null) {
-                                    return st.active.customerNumber;
-                                }
-
-                                if (st.blocked != null) {
-                                    return st.blocked.customerNumber;
-                                }
-
-                                if (st.inSession != null) {
-                                    return st.inSession.customerNumber;
-                                }
-
-                                return null;
-                            })
-                            .filter(Objects::nonNull)
                             .collect(Collectors.toList());
-                            if (numbers.size() > 0) {
-                                customerNumber = numbers.get(0);
-                            }
-                        }
+
+                    identity
+                        .getMetadataMap()
+                        .forEach(
+                            (key, value) -> {
+                              DataValue val = null;
+                              String strVal = value.getStringVal();
+                              ByteString byteString = value.getBytesVal();
+                              if (byteString != null && !byteString.isEmpty()) {
+                                val = DataValue.of(byteString.toByteArray());
+                              } else if (strVal != null && !strVal.isEmpty()) {
+                                val = DataValue.of(strVal);
+                              }
+                              state.identityState.metadata.put(key, val);
+                            });
+                  }
+
+                  if (data.hasActivityState()) {
+                    ActivityStateOuterClass.ActivityState activityState = data.getActivityState();
+                    state.activityState = new ActivityState();
+                    state.activityState.customerNumbers =
+                        activityState.getCustomerNumbersList().stream()
+                            .map(Utils::makeCustomerNumber)
+                            .collect(Collectors.toList());
+                    state.activityState.sessions =
+                        activityState.getSessionsList().stream()
+                            .map(
+                                item -> {
+                                  ActivityState.Session session = new ActivityState.Session();
+                                  session.sessionId = item.getSessionId();
+                                  session.appId = item.getAppId();
+                                  session.createdAt = item.getCreatedAt().getSeconds();
+                                  session.updatedAt = item.getUpdatedAt().getSeconds();
+                                  session.customerNumber =
+                                      Utils.makeCustomerNumber(item.getCustomerNumber());
+                                  session.channelNumber =
+                                      Utils.makeActivityChannel(item.getChannelNumber());
+                                  session.activities =
+                                      item.getActivitiesList().stream()
+                                          .map(
+                                              (act) ->
+                                                  new Activity(
+                                                      act.getKey(),
+                                                      act.getPropertiesMap(),
+                                                      item.getSessionId(),
+                                                      act.getCreatedAt().getSeconds()))
+                                          .collect(Collectors.toList());
+                                  return session;
+                                })
+                            .collect(Collectors.toList());
+                  }
+
+                  if (data.hasPaymentState()) {
+                    PaymentStateOuterClass.PaymentState paymentState = data.getPaymentState();
+                    state.paymentState = new PaymentState();
+                    state.paymentState.customerNumbers =
+                        paymentState.getCustomerNumbersList().stream()
+                            .map(Utils::makeCustomerNumber)
+                            .collect(Collectors.toList());
+
+                    if (customerNumber == null && state.paymentState.customerNumbers.size() > 0) {
+                      customerNumber = state.paymentState.customerNumbers.get(0);
                     }
 
-                    subscriber.onNext(state);
-                    subscriber.onComplete();
-                }, subscriber::onError);
-            }
-        };
+                    state.paymentState.paymentChannels =
+                        paymentState.getChannelNumbersList().stream()
+                            .map(Utils::makePaymentChannel)
+                            .collect(Collectors.toList());
+                    state.paymentState.transactionLog =
+                        paymentState.getTransactionLogList().stream()
+                            .map(Utils::makeTransactionLog)
+                            .collect(Collectors.toList());
+                    state.paymentState.pendingTransactions =
+                        paymentState.getPendingTransactionsList().stream()
+                            .map(Utils::makeTransactionLog)
+                            .collect(Collectors.toList());
+
+                    paymentState
+                        .getWalletsMap()
+                        .forEach(
+                            (key, val) -> {
+                              PaymentState.PaymentBalance balance =
+                                  new PaymentState.PaymentBalance();
+                              balance.sequenceNr = val.getSequenceNr();
+                              balance.currencyCode = val.getCurrencyCode();
+
+                              if (val.hasHosted()) {
+                                  Cash actual =
+                                          new Cash(
+                                                  val.getHosted().getActual().getCurrencyCode(),
+                                                  val.getHosted().getActual().getAmount());
+                                  Cash available =
+                                          new Cash(
+                                                  val.getHosted().getAvailable().getCurrencyCode(),
+                                                  val.getHosted().getAvailable().getAmount());
+                                  balance.hosted = new PaymentState.LedgerBalance(available, actual);
+                              }
+
+                              if (val.hasVirtual()) {
+                                  Cash actual =
+                                          new Cash(
+                                                  val.getVirtual().getActual().getCurrencyCode(),
+                                                  val.getVirtual().getActual().getAmount());
+                                  Cash available =
+                                          new Cash(
+                                                  val.getVirtual().getAvailable().getCurrencyCode(),
+                                                  val.getVirtual().getAvailable().getAmount());
+                                  balance.virtual = new PaymentState.LedgerBalance(available, actual);
+                              }
+
+
+                              val.getPendingMap()
+                                  .forEach(
+                                      (k, v) -> {
+                                        balance.pending.put(
+                                            k,
+                                            new PaymentState.PendingPaymentTransaction(
+                                                v.getCreatedAt().getSeconds(),
+                                                new Cash(
+                                                    v.getValue().getCurrencyCode(),
+                                                    v.getValue().getAmount()),
+                                                new Cash(
+                                                    v.getConverted().getCurrencyCode(),
+                                                    v.getConverted().getAmount())));
+                                      });
+                              state.paymentState.wallets.put(key, balance);
+                            });
+                  }
+
+                  if (data.hasMessagingState()) {
+                    state.messagingState = new MessagingState();
+
+                    state.messagingState.messages =
+                        data.getMessagingState().getMessagesList().stream()
+                            .map(Utils::makeChannelMessage)
+                            .collect(Collectors.toList());
+
+                    state.messagingState.sessions =
+                        data.getMessagingState().getSessionsList().stream()
+                            .map(Utils::makeCompleteMessagingSession)
+                            .collect(Collectors.toList());
+
+                    state.messagingState.channels =
+                        data.getMessagingState().getChannelsList().stream()
+                            .map(Utils::makeMessagingChannelState)
+                            .collect(Collectors.toList());
+
+                    if (customerNumber == null && state.messagingState.channels.size() > 0) {
+                      List<CustomerNumber> numbers =
+                          state.messagingState.channels.stream()
+                              .map(
+                                  st -> {
+                                    if (st.active != null) {
+                                      return st.active.customerNumber;
+                                    }
+
+                                    if (st.blocked != null) {
+                                      return st.blocked.customerNumber;
+                                    }
+
+                                    if (st.inSession != null) {
+                                      return st.inSession.customerNumber;
+                                    }
+
+                                    return null;
+                                  })
+                              .filter(Objects::nonNull)
+                              .collect(Collectors.toList());
+                      if (numbers.size() > 0) {
+                        customerNumber = numbers.get(0);
+                      }
+                    }
+                  }
+
+                  subscriber.onNext(state);
+                  subscriber.onComplete();
+                },
+                subscriber::onError);
+      }
+    };
     }
 
 

@@ -4,6 +4,7 @@ import com.elarian.Simulator;
 import com.elarian.model.Cash;
 import com.elarian.model.Media;
 import com.elarian.model.ConnectionConfig;
+import com.elarian.model.PaymentMode;
 import com.elarian.model.PaymentStatus;
 import com.elarian.model.SimulatorMessageBody;
 import com.elarian.model.SimulatorReply;
@@ -53,7 +54,8 @@ public class SimulatorTest {
                 Fixtures.mpesaChannel,
                 "+254718769000",
                 new Cash("KES", 100),
-                PaymentStatus.PENDING_CONFIRMATION)
+                PaymentStatus.PENDING_CONFIRMATION,
+                PaymentMode.HOSTED)
                 .block(Duration.ofSeconds(5));
         assertNotNull(reply);
         assertTrue(reply.status);

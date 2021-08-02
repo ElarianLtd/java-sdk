@@ -1,8 +1,5 @@
 package com.elarian.model;
 
-
-import java.util.Arrays;
-
 public enum PaymentStatus {
     UNKNOWN(0),
     QUEUED(100),
@@ -19,7 +16,6 @@ public enum PaymentStatus {
     INVALID_WALLET(207),
     DECOMMISSIONED_CUSTOMER_ID(299),
     SUCCESS(300),
-    PASS_THROUGH(301),
     FAILED(400),
     THROTTLED(401),
     EXPIRED(402),

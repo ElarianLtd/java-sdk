@@ -318,71 +318,71 @@ public final class Elarian extends Client<AppSocket.ServerToAppNotification, App
     }
 
     // From customer
-    public Mono<InitiatePaymentReply> initiatePayment(PaymentCustomerCounterParty debitParty, PaymentCustomerCounterParty creditParty, Cash value) {
-        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value);
+    public Mono<InitiatePaymentReply> initiatePayment(PaymentCustomerCounterParty debitParty, PaymentCustomerCounterParty creditParty, Cash value, PaymentMode mode) {
+        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, mode);
     }
 
-    public Mono<InitiatePaymentReply> initiatePayment(PaymentCustomerCounterParty debitParty, PaymentPurseCounterParty creditParty, Cash value) {
-        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value);
+    public Mono<InitiatePaymentReply> initiatePayment(PaymentCustomerCounterParty debitParty, PaymentPurseCounterParty creditParty, Cash value, PaymentMode mode) {
+        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, mode);
     }
 
-    public Mono<InitiatePaymentReply> initiatePayment(PaymentCustomerCounterParty debitParty, PaymentWalletCounterParty creditParty, Cash value) {
-        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value);
+    public Mono<InitiatePaymentReply> initiatePayment(PaymentCustomerCounterParty debitParty, PaymentWalletCounterParty creditParty, Cash value, PaymentMode mode) {
+        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, mode);
     }
 
-    public Mono<InitiatePaymentReply> initiatePayment(PaymentCustomerCounterParty debitParty, PaymentChannelCounterParty creditParty, Cash value) {
-        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value);
+    public Mono<InitiatePaymentReply> initiatePayment(PaymentCustomerCounterParty debitParty, PaymentChannelCounterParty creditParty, Cash value, PaymentMode mode) {
+        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, mode);
     }
 
     // From purse
-    public Mono<InitiatePaymentReply> initiatePayment(PaymentPurseCounterParty debitParty, PaymentCustomerCounterParty creditParty, Cash value) {
-        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value);
+    public Mono<InitiatePaymentReply> initiatePayment(PaymentPurseCounterParty debitParty, PaymentCustomerCounterParty creditParty, Cash value, PaymentMode mode) {
+        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, mode);
     }
 
-    public Mono<InitiatePaymentReply> initiatePayment(PaymentPurseCounterParty debitParty, PaymentPurseCounterParty creditParty, Cash value) {
-        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value);
+    public Mono<InitiatePaymentReply> initiatePayment(PaymentPurseCounterParty debitParty, PaymentPurseCounterParty creditParty, Cash value, PaymentMode mode) {
+        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, mode);
     }
 
-    public Mono<InitiatePaymentReply> initiatePayment(PaymentPurseCounterParty debitParty, PaymentWalletCounterParty creditParty, Cash value) {
-        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value);
+    public Mono<InitiatePaymentReply> initiatePayment(PaymentPurseCounterParty debitParty, PaymentWalletCounterParty creditParty, Cash value, PaymentMode mode) {
+        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, mode);
     }
 
-    public Mono<InitiatePaymentReply> initiatePayment(PaymentPurseCounterParty debitParty, PaymentChannelCounterParty creditParty, Cash value) {
-        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value);
+    public Mono<InitiatePaymentReply> initiatePayment(PaymentPurseCounterParty debitParty, PaymentChannelCounterParty creditParty, Cash value, PaymentMode mode) {
+        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, mode);
     }
 
     // From Wallet
-    public Mono<InitiatePaymentReply> initiatePayment(PaymentWalletCounterParty debitParty, PaymentCustomerCounterParty creditParty, Cash value) {
-        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value);
+    public Mono<InitiatePaymentReply> initiatePayment(PaymentWalletCounterParty debitParty, PaymentCustomerCounterParty creditParty, Cash value, PaymentMode mode) {
+        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, mode);
     }
 
-    public Mono<InitiatePaymentReply> initiatePayment(PaymentWalletCounterParty debitParty, PaymentPurseCounterParty creditParty, Cash value) {
-        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value);
+    public Mono<InitiatePaymentReply> initiatePayment(PaymentWalletCounterParty debitParty, PaymentPurseCounterParty creditParty, Cash value, PaymentMode mode) {
+        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, mode);
     }
 
-    public Mono<InitiatePaymentReply> initiatePayment(PaymentWalletCounterParty debitParty, PaymentWalletCounterParty creditParty, Cash value) {
-        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value);
+    public Mono<InitiatePaymentReply> initiatePayment(PaymentWalletCounterParty debitParty, PaymentWalletCounterParty creditParty, Cash value, PaymentMode mode) {
+        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, mode);
     }
 
-    public Mono<InitiatePaymentReply> initiatePayment(PaymentWalletCounterParty debitParty, PaymentChannelCounterParty creditParty, Cash value) {
-        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value);
+    public Mono<InitiatePaymentReply> initiatePayment(PaymentWalletCounterParty debitParty, PaymentChannelCounterParty creditParty, Cash value, PaymentMode mode) {
+        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, mode);
     }
 
     // From Channel
-    public Mono<InitiatePaymentReply> initiatePayment(PaymentChannelCounterParty debitParty, PaymentCustomerCounterParty creditParty, Cash value) {
-        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value);
+    public Mono<InitiatePaymentReply> initiatePayment(PaymentChannelCounterParty debitParty, PaymentCustomerCounterParty creditParty, Cash value, PaymentMode mode) {
+        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, mode);
     }
 
-    public Mono<InitiatePaymentReply> initiatePayment(PaymentChannelCounterParty debitParty, PaymentPurseCounterParty creditParty, Cash value) {
-        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value);
+    public Mono<InitiatePaymentReply> initiatePayment(PaymentChannelCounterParty debitParty, PaymentPurseCounterParty creditParty, Cash value, PaymentMode mode) {
+        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, mode);
     }
 
-    public Mono<InitiatePaymentReply> initiatePayment(PaymentChannelCounterParty debitParty, PaymentWalletCounterParty creditParty, Cash value) {
-        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value);
+    public Mono<InitiatePaymentReply> initiatePayment(PaymentChannelCounterParty debitParty, PaymentWalletCounterParty creditParty, Cash value, PaymentMode mode) {
+        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, mode);
     }
 
-    public Mono<InitiatePaymentReply> initiatePayment(PaymentChannelCounterParty debitParty, PaymentChannelCounterParty creditParty, Cash value) {
-        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value);
+    public Mono<InitiatePaymentReply> initiatePayment(PaymentChannelCounterParty debitParty, PaymentChannelCounterParty creditParty, Cash value, PaymentMode mode) {
+        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, mode);
     }
 
     /**
@@ -393,7 +393,7 @@ public final class Elarian extends Client<AppSocket.ServerToAppNotification, App
      * @param value
      * @return
      */
-    private Mono<InitiatePaymentReply> initiatePayment(PaymentCounterParty debitParty, PaymentCounterParty creditParty, Cash value) {
+    private Mono<InitiatePaymentReply> initiatePayment(PaymentCounterParty debitParty, PaymentCounterParty creditParty, Cash value, PaymentMode mode) {
         AppSocket.InitiatePaymentCommand cmd = AppSocket.InitiatePaymentCommand
                 .newBuilder()
                 .setDebitParty(Utils.buildPaymentCounterParty(debitParty))
@@ -403,6 +403,7 @@ public final class Elarian extends Client<AppSocket.ServerToAppNotification, App
                         .setAmount(value.amount)
                         .setCurrencyCode(value.currencyCode)
                         .build())
+                .setModeValue(mode.getValue())
                 .build();
         AppSocket.AppToServerCommand req = AppSocket.AppToServerCommand
                 .newBuilder()
@@ -673,6 +674,7 @@ public final class Elarian extends Client<AppSocket.ServerToAppNotification, App
                 payload.channelNumber = Utils.makePaymentChannel(notif.getReceivedPayment().getChannelNumber());
                 payload.customerNumber = Utils.makeCustomerNumber(notif.getReceivedPayment().getCustomerNumber());
                 payload.status = PaymentStatus.valueOf(notif.getReceivedPayment().getStatus().getNumber());
+                payload.mode = PaymentMode.valueOf(notif.getReceivedPayment().getModeValue());
                 payload.value = new Cash(notif.getReceivedPayment().getValue().getCurrencyCode(), notif.getReceivedPayment().getValue().getAmount());
 
                 customer.customerNumber = payload.customerNumber;

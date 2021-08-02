@@ -114,7 +114,9 @@ public final class Simulator extends Client<SimulatorSocket.ServerToSimulatorNot
                     payload.orgId = msg.getOrgId();
                     payload.appId = msg.getAppId();
                     payload.transactionId = msg.getTransactionId();
-                    payload.channelNumber = Utils.makePaymentChannel(msg.getChannelNumber());
+                    payload.source = msg.getSource();
+                    payload.destination = msg.getDestination();
+                    payload.channel = PaymentChannel.Channel.valueOf(msg.getChannelValue());
                     payload.account = msg.getAccount().getValue();
                     payload.value = new Cash(msg.getValue().getCurrencyCode(), msg.getValue().getAmount());
 
@@ -316,7 +318,7 @@ public final class Simulator extends Client<SimulatorSocket.ServerToSimulatorNot
      * @param status
      * @return
      */
-    public Mono<SimulatorReply> receivePayment(String transactionId, PaymentChannel channelNumber, String customerNumber, Cash value, PaymentStatus status) {
+    public Mono<SimulatorReply> receivePayment(String transactionId, PaymentChannel channelNumber, String customerNumber, Cash value, PaymentStatus status, PaymentMode mode) {
         SimulatorSocket.ReceivePaymentSimulatorCommand cmd = SimulatorSocket.ReceivePaymentSimulatorCommand
                 .newBuilder()
                 .setValue(CommonModel.Cash
@@ -325,6 +327,7 @@ public final class Simulator extends Client<SimulatorSocket.ServerToSimulatorNot
                         .setCurrencyCode(value.currencyCode)
                         .build())
                 .setStatusValue(status.getValue())
+                .setModeValue(mode.getValue())
                 .setTransactionId(transactionId)
                 .setChannelNumber(PaymentModel.PaymentChannelNumber
                         .newBuilder()

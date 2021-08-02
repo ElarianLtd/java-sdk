@@ -6,5 +6,6 @@ public final class ReceivedPaymentNotification extends Notification {
     public CustomerNumber customerNumber;
     public PaymentChannel channelNumber;
     public Cash value;
+    public PaymentMode mode;
     public PaymentStatus status;
 }

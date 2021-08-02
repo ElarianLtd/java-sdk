@@ -99,6 +99,7 @@ abstract class Client<B, C> {
                 .doOnDisconnected(
                     connection -> {
                       log("Disconnected");
+                      disconnect();
                       listener.onClosed();
                     }));
 
@@ -126,16 +127,6 @@ abstract class Client<B, C> {
         .connect(transport)
         .subscribe(
             soc -> {
-              Mono.delay(Duration.ofSeconds(1))
-                  .subscribe(
-                      (delay) -> {
-                        if (socket != null && !socket.isDisposed()) {
-                          log("Connected");
-                          listener.onConnected();
-                        }
-                      },
-                      (err) -> {});
-
               socket = soc;
               socket
                   .onClose()
@@ -151,6 +142,16 @@ abstract class Client<B, C> {
                       () -> {
                         log("Connection CLOSED");
                       });
+
+              Mono.delay(Duration.ofSeconds(1))
+                .subscribe(
+                        (delay) -> {
+                            if (isConnected()) {
+                                log("Connected");
+                                listener.onConnected();
+                            }
+                        },
+                        (err) -> {});
             },
             (err) -> {
               log("Connection ERROR: " + err.getMessage());
@@ -173,6 +174,7 @@ abstract class Client<B, C> {
             log("Disconnecting from server... ");
         }
         socket.dispose();
+        socket = null;
     }
 
     public boolean isConnected() {

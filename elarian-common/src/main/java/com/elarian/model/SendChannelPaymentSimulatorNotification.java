@@ -1,7 +1,9 @@
 package com.elarian.model;
 
 public final class SendChannelPaymentSimulatorNotification extends Notification {
-    public PaymentChannel channelNumber;
+    public PaymentChannel.Channel channel;
+    public String source;
+    public String destination;
     public Cash value;
     public String account;
     public String transactionId;
