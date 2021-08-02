@@ -270,10 +270,6 @@ public final class PaymentModel {
      */
     PAYMENT_STATUS_SUCCESS(300),
     /**
-     * <code>PAYMENT_STATUS_PASS_THROUGH = 301;</code>
-     */
-    PAYMENT_STATUS_PASS_THROUGH(301),
-    /**
      * <code>PAYMENT_STATUS_FAILED = 400;</code>
      */
     PAYMENT_STATUS_FAILED(400),
@@ -357,10 +353,6 @@ public final class PaymentModel {
      */
     public static final int PAYMENT_STATUS_SUCCESS_VALUE = 300;
     /**
-     * <code>PAYMENT_STATUS_PASS_THROUGH = 301;</code>
-     */
-    public static final int PAYMENT_STATUS_PASS_THROUGH_VALUE = 301;
-    /**
      * <code>PAYMENT_STATUS_FAILED = 400;</code>
      */
     public static final int PAYMENT_STATUS_FAILED_VALUE = 400;
@@ -418,7 +410,6 @@ public final class PaymentModel {
         case 207: return PAYMENT_STATUS_INVALID_WALLET;
         case 299: return PAYMENT_STATUS_DECOMMISSIONED_CUSTOMER_ID;
         case 300: return PAYMENT_STATUS_SUCCESS;
-        case 301: return PAYMENT_STATUS_PASS_THROUGH;
         case 400: return PAYMENT_STATUS_FAILED;
         case 401: return PAYMENT_STATUS_THROTTLED;
         case 402: return PAYMENT_STATUS_EXPIRED;
@@ -3730,15 +3721,15 @@ public final class PaymentModel {
       com.google.protobuf.MessageLiteOrBuilder {
 
     /**
-     * <code>.com.elarian.hera.proto.PaymentChannelNumber channel_number = 1;</code>
-     * @return Whether the channelNumber field is set.
+     * <code>.com.elarian.hera.proto.PaymentChannel channel = 1;</code>
+     * @return The enum numeric value on the wire for channel.
      */
-    boolean hasChannelNumber();
+    int getChannelValue();
     /**
-     * <code>.com.elarian.hera.proto.PaymentChannelNumber channel_number = 1;</code>
-     * @return The channelNumber.
+     * <code>.com.elarian.hera.proto.PaymentChannel channel = 1;</code>
+     * @return The channel.
      */
-    com.elarian.hera.proto.PaymentModel.PaymentChannelNumber getChannelNumber();
+    com.elarian.hera.proto.PaymentModel.PaymentChannel getChannel();
 
     /**
      * <code>int32 channel_code = 2;</code>
@@ -3747,12 +3738,36 @@ public final class PaymentModel {
     int getChannelCode();
 
     /**
-     * <code>.google.protobuf.StringValue account = 3;</code>
+     * <code>string source = 3;</code>
+     * @return The source.
+     */
+    java.lang.String getSource();
+    /**
+     * <code>string source = 3;</code>
+     * @return The bytes for source.
+     */
+    com.google.protobuf.ByteString
+        getSourceBytes();
+
+    /**
+     * <code>string destination = 4;</code>
+     * @return The destination.
+     */
+    java.lang.String getDestination();
+    /**
+     * <code>string destination = 4;</code>
+     * @return The bytes for destination.
+     */
+    com.google.protobuf.ByteString
+        getDestinationBytes();
+
+    /**
+     * <code>.google.protobuf.StringValue account = 5;</code>
      * @return Whether the account field is set.
      */
     boolean hasAccount();
     /**
-     * <code>.google.protobuf.StringValue account = 3;</code>
+     * <code>.google.protobuf.StringValue account = 5;</code>
      * @return The account.
      */
     com.google.protobuf.StringValue getAccount();
@@ -3766,51 +3781,49 @@ public final class PaymentModel {
       // @@protoc_insertion_point(message_implements:com.elarian.hera.proto.PaymentChannelCounterParty)
       PaymentChannelCounterPartyOrBuilder {
     private PaymentChannelCounterParty() {
+      source_ = "";
+      destination_ = "";
     }
-    public static final int CHANNEL_NUMBER_FIELD_NUMBER = 1;
-    private com.elarian.hera.proto.PaymentModel.PaymentChannelNumber channelNumber_;
+    public static final int CHANNEL_FIELD_NUMBER = 1;
+    private int channel_;
     /**
-     * <code>.com.elarian.hera.proto.PaymentChannelNumber channel_number = 1;</code>
+     * <code>.com.elarian.hera.proto.PaymentChannel channel = 1;</code>
+     * @return The enum numeric value on the wire for channel.
      */
     @java.lang.Override
-    public boolean hasChannelNumber() {
-      return channelNumber_ != null;
+    public int getChannelValue() {
+      return channel_;
     }
     /**
-     * <code>.com.elarian.hera.proto.PaymentChannelNumber channel_number = 1;</code>
+     * <code>.com.elarian.hera.proto.PaymentChannel channel = 1;</code>
+     * @return The channel.
      */
     @java.lang.Override
-    public com.elarian.hera.proto.PaymentModel.PaymentChannelNumber getChannelNumber() {
-      return channelNumber_ == null ? com.elarian.hera.proto.PaymentModel.PaymentChannelNumber.getDefaultInstance() : channelNumber_;
+    public com.elarian.hera.proto.PaymentModel.PaymentChannel getChannel() {
+      com.elarian.hera.proto.PaymentModel.PaymentChannel result = com.elarian.hera.proto.PaymentModel.PaymentChannel.forNumber(channel_);
+      return result == null ? com.elarian.hera.proto.PaymentModel.PaymentChannel.UNRECOGNIZED : result;
     }
     /**
-     * <code>.com.elarian.hera.proto.PaymentChannelNumber channel_number = 1;</code>
+     * <code>.com.elarian.hera.proto.PaymentChannel channel = 1;</code>
+     * @param value The enum numeric value on the wire for channel to set.
      */
-    private void setChannelNumber(com.elarian.hera.proto.PaymentModel.PaymentChannelNumber value) {
-      value.getClass();
-  channelNumber_ = value;
-      
-      }
+    private void setChannelValue(int value) {
+        channel_ = value;
+    }
     /**
-     * <code>.com.elarian.hera.proto.PaymentChannelNumber channel_number = 1;</code>
+     * <code>.com.elarian.hera.proto.PaymentChannel channel = 1;</code>
+     * @param value The channel to set.
      */
-    @java.lang.SuppressWarnings({"ReferenceEquality"})
-    private void mergeChannelNumber(com.elarian.hera.proto.PaymentModel.PaymentChannelNumber value) {
-      value.getClass();
-  if (channelNumber_ != null &&
-          channelNumber_ != com.elarian.hera.proto.PaymentModel.PaymentChannelNumber.getDefaultInstance()) {
-        channelNumber_ =
-          com.elarian.hera.proto.PaymentModel.PaymentChannelNumber.newBuilder(channelNumber_).mergeFrom(value).buildPartial();
-      } else {
-        channelNumber_ = value;
-      }
+    private void setChannel(com.elarian.hera.proto.PaymentModel.PaymentChannel value) {
+      channel_ = value.getNumber();
       
     }
     /**
-     * <code>.com.elarian.hera.proto.PaymentChannelNumber channel_number = 1;</code>
+     * <code>.com.elarian.hera.proto.PaymentChannel channel = 1;</code>
      */
-    private void clearChannelNumber() {  channelNumber_ = null;
+    private void clearChannel() {
       
+      channel_ = 0;
     }
 
     public static final int CHANNEL_CODE_FIELD_NUMBER = 2;
@@ -3839,24 +3852,118 @@ public final class PaymentModel {
       channelCode_ = 0;
     }
 
-    public static final int ACCOUNT_FIELD_NUMBER = 3;
+    public static final int SOURCE_FIELD_NUMBER = 3;
+    private java.lang.String source_;
+    /**
+     * <code>string source = 3;</code>
+     * @return The source.
+     */
+    @java.lang.Override
+    public java.lang.String getSource() {
+      return source_;
+    }
+    /**
+     * <code>string source = 3;</code>
+     * @return The bytes for source.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getSourceBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(source_);
+    }
+    /**
+     * <code>string source = 3;</code>
+     * @param value The source to set.
+     */
+    private void setSource(
+        java.lang.String value) {
+      value.getClass();
+  
+      source_ = value;
+    }
+    /**
+     * <code>string source = 3;</code>
+     */
+    private void clearSource() {
+      
+      source_ = getDefaultInstance().getSource();
+    }
+    /**
+     * <code>string source = 3;</code>
+     * @param value The bytes for source to set.
+     */
+    private void setSourceBytes(
+        com.google.protobuf.ByteString value) {
+      checkByteStringIsUtf8(value);
+      source_ = value.toStringUtf8();
+      
+    }
+
+    public static final int DESTINATION_FIELD_NUMBER = 4;
+    private java.lang.String destination_;
+    /**
+     * <code>string destination = 4;</code>
+     * @return The destination.
+     */
+    @java.lang.Override
+    public java.lang.String getDestination() {
+      return destination_;
+    }
+    /**
+     * <code>string destination = 4;</code>
+     * @return The bytes for destination.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getDestinationBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(destination_);
+    }
+    /**
+     * <code>string destination = 4;</code>
+     * @param value The destination to set.
+     */
+    private void setDestination(
+        java.lang.String value) {
+      value.getClass();
+  
+      destination_ = value;
+    }
+    /**
+     * <code>string destination = 4;</code>
+     */
+    private void clearDestination() {
+      
+      destination_ = getDefaultInstance().getDestination();
+    }
+    /**
+     * <code>string destination = 4;</code>
+     * @param value The bytes for destination to set.
+     */
+    private void setDestinationBytes(
+        com.google.protobuf.ByteString value) {
+      checkByteStringIsUtf8(value);
+      destination_ = value.toStringUtf8();
+      
+    }
+
+    public static final int ACCOUNT_FIELD_NUMBER = 5;
     private com.google.protobuf.StringValue account_;
     /**
-     * <code>.google.protobuf.StringValue account = 3;</code>
+     * <code>.google.protobuf.StringValue account = 5;</code>
      */
     @java.lang.Override
     public boolean hasAccount() {
       return account_ != null;
     }
     /**
-     * <code>.google.protobuf.StringValue account = 3;</code>
+     * <code>.google.protobuf.StringValue account = 5;</code>
      */
     @java.lang.Override
     public com.google.protobuf.StringValue getAccount() {
       return account_ == null ? com.google.protobuf.StringValue.getDefaultInstance() : account_;
     }
     /**
-     * <code>.google.protobuf.StringValue account = 3;</code>
+     * <code>.google.protobuf.StringValue account = 5;</code>
      */
     private void setAccount(com.google.protobuf.StringValue value) {
       value.getClass();
@@ -3864,7 +3971,7 @@ public final class PaymentModel {
       
       }
     /**
-     * <code>.google.protobuf.StringValue account = 3;</code>
+     * <code>.google.protobuf.StringValue account = 5;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeAccount(com.google.protobuf.StringValue value) {
@@ -3879,7 +3986,7 @@ public final class PaymentModel {
       
     }
     /**
-     * <code>.google.protobuf.StringValue account = 3;</code>
+     * <code>.google.protobuf.StringValue account = 5;</code>
      */
     private void clearAccount() {  account_ = null;
       
@@ -3981,49 +4088,48 @@ public final class PaymentModel {
 
 
       /**
-       * <code>.com.elarian.hera.proto.PaymentChannelNumber channel_number = 1;</code>
+       * <code>.com.elarian.hera.proto.PaymentChannel channel = 1;</code>
+       * @return The enum numeric value on the wire for channel.
        */
       @java.lang.Override
-      public boolean hasChannelNumber() {
-        return instance.hasChannelNumber();
+      public int getChannelValue() {
+        return instance.getChannelValue();
       }
       /**
-       * <code>.com.elarian.hera.proto.PaymentChannelNumber channel_number = 1;</code>
+       * <code>.com.elarian.hera.proto.PaymentChannel channel = 1;</code>
+       * @param value The channel to set.
+       * @return This builder for chaining.
+       */
+      public Builder setChannelValue(int value) {
+        copyOnWrite();
+        instance.setChannelValue(value);
+        return this;
+      }
+      /**
+       * <code>.com.elarian.hera.proto.PaymentChannel channel = 1;</code>
+       * @return The channel.
        */
       @java.lang.Override
-      public com.elarian.hera.proto.PaymentModel.PaymentChannelNumber getChannelNumber() {
-        return instance.getChannelNumber();
+      public com.elarian.hera.proto.PaymentModel.PaymentChannel getChannel() {
+        return instance.getChannel();
       }
       /**
-       * <code>.com.elarian.hera.proto.PaymentChannelNumber channel_number = 1;</code>
+       * <code>.com.elarian.hera.proto.PaymentChannel channel = 1;</code>
+       * @param value The enum numeric value on the wire for channel to set.
+       * @return This builder for chaining.
        */
-      public Builder setChannelNumber(com.elarian.hera.proto.PaymentModel.PaymentChannelNumber value) {
+      public Builder setChannel(com.elarian.hera.proto.PaymentModel.PaymentChannel value) {
         copyOnWrite();
-        instance.setChannelNumber(value);
-        return this;
-        }
-      /**
-       * <code>.com.elarian.hera.proto.PaymentChannelNumber channel_number = 1;</code>
-       */
-      public Builder setChannelNumber(
-          com.elarian.hera.proto.PaymentModel.PaymentChannelNumber.Builder builderForValue) {
-        copyOnWrite();
-        instance.setChannelNumber(builderForValue.build());
+        instance.setChannel(value);
         return this;
       }
       /**
-       * <code>.com.elarian.hera.proto.PaymentChannelNumber channel_number = 1;</code>
+       * <code>.com.elarian.hera.proto.PaymentChannel channel = 1;</code>
+       * @return This builder for chaining.
        */
-      public Builder mergeChannelNumber(com.elarian.hera.proto.PaymentModel.PaymentChannelNumber value) {
+      public Builder clearChannel() {
         copyOnWrite();
-        instance.mergeChannelNumber(value);
-        return this;
-      }
-      /**
-       * <code>.com.elarian.hera.proto.PaymentChannelNumber channel_number = 1;</code>
-       */
-      public Builder clearChannelNumber() {  copyOnWrite();
-        instance.clearChannelNumber();
+        instance.clearChannel();
         return this;
       }
 
@@ -4056,21 +4162,119 @@ public final class PaymentModel {
       }
 
       /**
-       * <code>.google.protobuf.StringValue account = 3;</code>
+       * <code>string source = 3;</code>
+       * @return The source.
+       */
+      @java.lang.Override
+      public java.lang.String getSource() {
+        return instance.getSource();
+      }
+      /**
+       * <code>string source = 3;</code>
+       * @return The bytes for source.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getSourceBytes() {
+        return instance.getSourceBytes();
+      }
+      /**
+       * <code>string source = 3;</code>
+       * @param value The source to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSource(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setSource(value);
+        return this;
+      }
+      /**
+       * <code>string source = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSource() {
+        copyOnWrite();
+        instance.clearSource();
+        return this;
+      }
+      /**
+       * <code>string source = 3;</code>
+       * @param value The bytes for source to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSourceBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setSourceBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>string destination = 4;</code>
+       * @return The destination.
+       */
+      @java.lang.Override
+      public java.lang.String getDestination() {
+        return instance.getDestination();
+      }
+      /**
+       * <code>string destination = 4;</code>
+       * @return The bytes for destination.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getDestinationBytes() {
+        return instance.getDestinationBytes();
+      }
+      /**
+       * <code>string destination = 4;</code>
+       * @param value The destination to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDestination(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setDestination(value);
+        return this;
+      }
+      /**
+       * <code>string destination = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDestination() {
+        copyOnWrite();
+        instance.clearDestination();
+        return this;
+      }
+      /**
+       * <code>string destination = 4;</code>
+       * @param value The bytes for destination to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDestinationBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setDestinationBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>.google.protobuf.StringValue account = 5;</code>
        */
       @java.lang.Override
       public boolean hasAccount() {
         return instance.hasAccount();
       }
       /**
-       * <code>.google.protobuf.StringValue account = 3;</code>
+       * <code>.google.protobuf.StringValue account = 5;</code>
        */
       @java.lang.Override
       public com.google.protobuf.StringValue getAccount() {
         return instance.getAccount();
       }
       /**
-       * <code>.google.protobuf.StringValue account = 3;</code>
+       * <code>.google.protobuf.StringValue account = 5;</code>
        */
       public Builder setAccount(com.google.protobuf.StringValue value) {
         copyOnWrite();
@@ -4078,7 +4282,7 @@ public final class PaymentModel {
         return this;
         }
       /**
-       * <code>.google.protobuf.StringValue account = 3;</code>
+       * <code>.google.protobuf.StringValue account = 5;</code>
        */
       public Builder setAccount(
           com.google.protobuf.StringValue.Builder builderForValue) {
@@ -4087,7 +4291,7 @@ public final class PaymentModel {
         return this;
       }
       /**
-       * <code>.google.protobuf.StringValue account = 3;</code>
+       * <code>.google.protobuf.StringValue account = 5;</code>
        */
       public Builder mergeAccount(com.google.protobuf.StringValue value) {
         copyOnWrite();
@@ -4095,7 +4299,7 @@ public final class PaymentModel {
         return this;
       }
       /**
-       * <code>.google.protobuf.StringValue account = 3;</code>
+       * <code>.google.protobuf.StringValue account = 5;</code>
        */
       public Builder clearAccount() {  copyOnWrite();
         instance.clearAccount();
@@ -4118,13 +4322,15 @@ public final class PaymentModel {
         }
         case BUILD_MESSAGE_INFO: {
             java.lang.Object[] objects = new java.lang.Object[] {
-              "channelNumber_",
+              "channel_",
               "channelCode_",
+              "source_",
+              "destination_",
               "account_",
             };
             java.lang.String info =
-                "\u0000\u0003\u0000\u0000\u0001\u0003\u0003\u0000\u0000\u0000\u0001\t\u0002\u0004" +
-                "\u0003\t";
+                "\u0000\u0005\u0000\u0000\u0001\u0005\u0005\u0000\u0000\u0000\u0001\f\u0002\u0004" +
+                "\u0003\u0208\u0004\u0208\u0005\t";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through
@@ -4184,37 +4390,37 @@ public final class PaymentModel {
       com.google.protobuf.MessageLiteOrBuilder {
 
     /**
-     * <code>.com.elarian.hera.proto.PaymentCustomerCounterParty customer = 1;</code>
-     * @return Whether the customer field is set.
-     */
-    boolean hasCustomer();
-    /**
-     * <code>.com.elarian.hera.proto.PaymentCustomerCounterParty customer = 1;</code>
-     * @return The customer.
-     */
-    com.elarian.hera.proto.PaymentModel.PaymentCustomerCounterParty getCustomer();
-
-    /**
-     * <code>.com.elarian.hera.proto.PaymentPurseCounterParty purse = 2;</code>
+     * <code>.com.elarian.hera.proto.PaymentPurseCounterParty purse = 1;</code>
      * @return Whether the purse field is set.
      */
     boolean hasPurse();
     /**
-     * <code>.com.elarian.hera.proto.PaymentPurseCounterParty purse = 2;</code>
+     * <code>.com.elarian.hera.proto.PaymentPurseCounterParty purse = 1;</code>
      * @return The purse.
      */
     com.elarian.hera.proto.PaymentModel.PaymentPurseCounterParty getPurse();
 
     /**
-     * <code>.com.elarian.hera.proto.PaymentWalletCounterParty wallet = 3;</code>
+     * <code>.com.elarian.hera.proto.PaymentWalletCounterParty wallet = 2;</code>
      * @return Whether the wallet field is set.
      */
     boolean hasWallet();
     /**
-     * <code>.com.elarian.hera.proto.PaymentWalletCounterParty wallet = 3;</code>
+     * <code>.com.elarian.hera.proto.PaymentWalletCounterParty wallet = 2;</code>
      * @return The wallet.
      */
     com.elarian.hera.proto.PaymentModel.PaymentWalletCounterParty getWallet();
+
+    /**
+     * <code>.com.elarian.hera.proto.PaymentCustomerCounterParty customer = 3;</code>
+     * @return Whether the customer field is set.
+     */
+    boolean hasCustomer();
+    /**
+     * <code>.com.elarian.hera.proto.PaymentCustomerCounterParty customer = 3;</code>
+     * @return The customer.
+     */
+    com.elarian.hera.proto.PaymentModel.PaymentCustomerCounterParty getCustomer();
 
     /**
      * <code>.com.elarian.hera.proto.PaymentChannelCounterParty channel = 4;</code>
@@ -4242,9 +4448,9 @@ public final class PaymentModel {
     private int partyCase_ = 0;
     private java.lang.Object party_;
     public enum PartyCase {
-      CUSTOMER(1),
-      PURSE(2),
-      WALLET(3),
+      PURSE(1),
+      WALLET(2),
+      CUSTOMER(3),
       CHANNEL(4),
       PARTY_NOT_SET(0);
       private final int value;
@@ -4261,9 +4467,9 @@ public final class PaymentModel {
 
       public static PartyCase forNumber(int value) {
         switch (value) {
-          case 1: return CUSTOMER;
-          case 2: return PURSE;
-          case 3: return WALLET;
+          case 1: return PURSE;
+          case 2: return WALLET;
+          case 3: return CUSTOMER;
           case 4: return CHANNEL;
           case 0: return PARTY_NOT_SET;
           default: return null;
@@ -4286,140 +4492,140 @@ public final class PaymentModel {
       party_ = null;
     }
 
-    public static final int CUSTOMER_FIELD_NUMBER = 1;
+    public static final int PURSE_FIELD_NUMBER = 1;
     /**
-     * <code>.com.elarian.hera.proto.PaymentCustomerCounterParty customer = 1;</code>
-     */
-    @java.lang.Override
-    public boolean hasCustomer() {
-      return partyCase_ == 1;
-    }
-    /**
-     * <code>.com.elarian.hera.proto.PaymentCustomerCounterParty customer = 1;</code>
-     */
-    @java.lang.Override
-    public com.elarian.hera.proto.PaymentModel.PaymentCustomerCounterParty getCustomer() {
-      if (partyCase_ == 1) {
-         return (com.elarian.hera.proto.PaymentModel.PaymentCustomerCounterParty) party_;
-      }
-      return com.elarian.hera.proto.PaymentModel.PaymentCustomerCounterParty.getDefaultInstance();
-    }
-    /**
-     * <code>.com.elarian.hera.proto.PaymentCustomerCounterParty customer = 1;</code>
-     */
-    private void setCustomer(com.elarian.hera.proto.PaymentModel.PaymentCustomerCounterParty value) {
-      value.getClass();
-  party_ = value;
-      partyCase_ = 1;
-    }
-    /**
-     * <code>.com.elarian.hera.proto.PaymentCustomerCounterParty customer = 1;</code>
-     */
-    private void mergeCustomer(com.elarian.hera.proto.PaymentModel.PaymentCustomerCounterParty value) {
-      value.getClass();
-  if (partyCase_ == 1 &&
-          party_ != com.elarian.hera.proto.PaymentModel.PaymentCustomerCounterParty.getDefaultInstance()) {
-        party_ = com.elarian.hera.proto.PaymentModel.PaymentCustomerCounterParty.newBuilder((com.elarian.hera.proto.PaymentModel.PaymentCustomerCounterParty) party_)
-            .mergeFrom(value).buildPartial();
-      } else {
-        party_ = value;
-      }
-      partyCase_ = 1;
-    }
-    /**
-     * <code>.com.elarian.hera.proto.PaymentCustomerCounterParty customer = 1;</code>
-     */
-    private void clearCustomer() {
-      if (partyCase_ == 1) {
-        partyCase_ = 0;
-        party_ = null;
-      }
-    }
-
-    public static final int PURSE_FIELD_NUMBER = 2;
-    /**
-     * <code>.com.elarian.hera.proto.PaymentPurseCounterParty purse = 2;</code>
+     * <code>.com.elarian.hera.proto.PaymentPurseCounterParty purse = 1;</code>
      */
     @java.lang.Override
     public boolean hasPurse() {
-      return partyCase_ == 2;
+      return partyCase_ == 1;
     }
     /**
-     * <code>.com.elarian.hera.proto.PaymentPurseCounterParty purse = 2;</code>
+     * <code>.com.elarian.hera.proto.PaymentPurseCounterParty purse = 1;</code>
      */
     @java.lang.Override
     public com.elarian.hera.proto.PaymentModel.PaymentPurseCounterParty getPurse() {
-      if (partyCase_ == 2) {
+      if (partyCase_ == 1) {
          return (com.elarian.hera.proto.PaymentModel.PaymentPurseCounterParty) party_;
       }
       return com.elarian.hera.proto.PaymentModel.PaymentPurseCounterParty.getDefaultInstance();
     }
     /**
-     * <code>.com.elarian.hera.proto.PaymentPurseCounterParty purse = 2;</code>
+     * <code>.com.elarian.hera.proto.PaymentPurseCounterParty purse = 1;</code>
      */
     private void setPurse(com.elarian.hera.proto.PaymentModel.PaymentPurseCounterParty value) {
       value.getClass();
   party_ = value;
-      partyCase_ = 2;
+      partyCase_ = 1;
     }
     /**
-     * <code>.com.elarian.hera.proto.PaymentPurseCounterParty purse = 2;</code>
+     * <code>.com.elarian.hera.proto.PaymentPurseCounterParty purse = 1;</code>
      */
     private void mergePurse(com.elarian.hera.proto.PaymentModel.PaymentPurseCounterParty value) {
       value.getClass();
-  if (partyCase_ == 2 &&
+  if (partyCase_ == 1 &&
           party_ != com.elarian.hera.proto.PaymentModel.PaymentPurseCounterParty.getDefaultInstance()) {
         party_ = com.elarian.hera.proto.PaymentModel.PaymentPurseCounterParty.newBuilder((com.elarian.hera.proto.PaymentModel.PaymentPurseCounterParty) party_)
             .mergeFrom(value).buildPartial();
       } else {
         party_ = value;
       }
+      partyCase_ = 1;
+    }
+    /**
+     * <code>.com.elarian.hera.proto.PaymentPurseCounterParty purse = 1;</code>
+     */
+    private void clearPurse() {
+      if (partyCase_ == 1) {
+        partyCase_ = 0;
+        party_ = null;
+      }
+    }
+
+    public static final int WALLET_FIELD_NUMBER = 2;
+    /**
+     * <code>.com.elarian.hera.proto.PaymentWalletCounterParty wallet = 2;</code>
+     */
+    @java.lang.Override
+    public boolean hasWallet() {
+      return partyCase_ == 2;
+    }
+    /**
+     * <code>.com.elarian.hera.proto.PaymentWalletCounterParty wallet = 2;</code>
+     */
+    @java.lang.Override
+    public com.elarian.hera.proto.PaymentModel.PaymentWalletCounterParty getWallet() {
+      if (partyCase_ == 2) {
+         return (com.elarian.hera.proto.PaymentModel.PaymentWalletCounterParty) party_;
+      }
+      return com.elarian.hera.proto.PaymentModel.PaymentWalletCounterParty.getDefaultInstance();
+    }
+    /**
+     * <code>.com.elarian.hera.proto.PaymentWalletCounterParty wallet = 2;</code>
+     */
+    private void setWallet(com.elarian.hera.proto.PaymentModel.PaymentWalletCounterParty value) {
+      value.getClass();
+  party_ = value;
       partyCase_ = 2;
     }
     /**
-     * <code>.com.elarian.hera.proto.PaymentPurseCounterParty purse = 2;</code>
+     * <code>.com.elarian.hera.proto.PaymentWalletCounterParty wallet = 2;</code>
      */
-    private void clearPurse() {
+    private void mergeWallet(com.elarian.hera.proto.PaymentModel.PaymentWalletCounterParty value) {
+      value.getClass();
+  if (partyCase_ == 2 &&
+          party_ != com.elarian.hera.proto.PaymentModel.PaymentWalletCounterParty.getDefaultInstance()) {
+        party_ = com.elarian.hera.proto.PaymentModel.PaymentWalletCounterParty.newBuilder((com.elarian.hera.proto.PaymentModel.PaymentWalletCounterParty) party_)
+            .mergeFrom(value).buildPartial();
+      } else {
+        party_ = value;
+      }
+      partyCase_ = 2;
+    }
+    /**
+     * <code>.com.elarian.hera.proto.PaymentWalletCounterParty wallet = 2;</code>
+     */
+    private void clearWallet() {
       if (partyCase_ == 2) {
         partyCase_ = 0;
         party_ = null;
       }
     }
 
-    public static final int WALLET_FIELD_NUMBER = 3;
+    public static final int CUSTOMER_FIELD_NUMBER = 3;
     /**
-     * <code>.com.elarian.hera.proto.PaymentWalletCounterParty wallet = 3;</code>
+     * <code>.com.elarian.hera.proto.PaymentCustomerCounterParty customer = 3;</code>
      */
     @java.lang.Override
-    public boolean hasWallet() {
+    public boolean hasCustomer() {
       return partyCase_ == 3;
     }
     /**
-     * <code>.com.elarian.hera.proto.PaymentWalletCounterParty wallet = 3;</code>
+     * <code>.com.elarian.hera.proto.PaymentCustomerCounterParty customer = 3;</code>
      */
     @java.lang.Override
-    public com.elarian.hera.proto.PaymentModel.PaymentWalletCounterParty getWallet() {
+    public com.elarian.hera.proto.PaymentModel.PaymentCustomerCounterParty getCustomer() {
       if (partyCase_ == 3) {
-         return (com.elarian.hera.proto.PaymentModel.PaymentWalletCounterParty) party_;
+         return (com.elarian.hera.proto.PaymentModel.PaymentCustomerCounterParty) party_;
       }
-      return com.elarian.hera.proto.PaymentModel.PaymentWalletCounterParty.getDefaultInstance();
+      return com.elarian.hera.proto.PaymentModel.PaymentCustomerCounterParty.getDefaultInstance();
     }
     /**
-     * <code>.com.elarian.hera.proto.PaymentWalletCounterParty wallet = 3;</code>
+     * <code>.com.elarian.hera.proto.PaymentCustomerCounterParty customer = 3;</code>
      */
-    private void setWallet(com.elarian.hera.proto.PaymentModel.PaymentWalletCounterParty value) {
+    private void setCustomer(com.elarian.hera.proto.PaymentModel.PaymentCustomerCounterParty value) {
       value.getClass();
   party_ = value;
       partyCase_ = 3;
     }
     /**
-     * <code>.com.elarian.hera.proto.PaymentWalletCounterParty wallet = 3;</code>
+     * <code>.com.elarian.hera.proto.PaymentCustomerCounterParty customer = 3;</code>
      */
-    private void mergeWallet(com.elarian.hera.proto.PaymentModel.PaymentWalletCounterParty value) {
+    private void mergeCustomer(com.elarian.hera.proto.PaymentModel.PaymentCustomerCounterParty value) {
       value.getClass();
   if (partyCase_ == 3 &&
-          party_ != com.elarian.hera.proto.PaymentModel.PaymentWalletCounterParty.getDefaultInstance()) {
-        party_ = com.elarian.hera.proto.PaymentModel.PaymentWalletCounterParty.newBuilder((com.elarian.hera.proto.PaymentModel.PaymentWalletCounterParty) party_)
+          party_ != com.elarian.hera.proto.PaymentModel.PaymentCustomerCounterParty.getDefaultInstance()) {
+        party_ = com.elarian.hera.proto.PaymentModel.PaymentCustomerCounterParty.newBuilder((com.elarian.hera.proto.PaymentModel.PaymentCustomerCounterParty) party_)
             .mergeFrom(value).buildPartial();
       } else {
         party_ = value;
@@ -4427,9 +4633,9 @@ public final class PaymentModel {
       partyCase_ = 3;
     }
     /**
-     * <code>.com.elarian.hera.proto.PaymentWalletCounterParty wallet = 3;</code>
+     * <code>.com.elarian.hera.proto.PaymentCustomerCounterParty customer = 3;</code>
      */
-    private void clearWallet() {
+    private void clearCustomer() {
       if (partyCase_ == 3) {
         partyCase_ = 0;
         party_ = null;
@@ -4594,69 +4800,21 @@ public final class PaymentModel {
 
 
       /**
-       * <code>.com.elarian.hera.proto.PaymentCustomerCounterParty customer = 1;</code>
-       */
-      @java.lang.Override
-      public boolean hasCustomer() {
-        return instance.hasCustomer();
-      }
-      /**
-       * <code>.com.elarian.hera.proto.PaymentCustomerCounterParty customer = 1;</code>
-       */
-      @java.lang.Override
-      public com.elarian.hera.proto.PaymentModel.PaymentCustomerCounterParty getCustomer() {
-        return instance.getCustomer();
-      }
-      /**
-       * <code>.com.elarian.hera.proto.PaymentCustomerCounterParty customer = 1;</code>
-       */
-      public Builder setCustomer(com.elarian.hera.proto.PaymentModel.PaymentCustomerCounterParty value) {
-        copyOnWrite();
-        instance.setCustomer(value);
-        return this;
-      }
-      /**
-       * <code>.com.elarian.hera.proto.PaymentCustomerCounterParty customer = 1;</code>
-       */
-      public Builder setCustomer(
-          com.elarian.hera.proto.PaymentModel.PaymentCustomerCounterParty.Builder builderForValue) {
-        copyOnWrite();
-        instance.setCustomer(builderForValue.build());
-        return this;
-      }
-      /**
-       * <code>.com.elarian.hera.proto.PaymentCustomerCounterParty customer = 1;</code>
-       */
-      public Builder mergeCustomer(com.elarian.hera.proto.PaymentModel.PaymentCustomerCounterParty value) {
-        copyOnWrite();
-        instance.mergeCustomer(value);
-        return this;
-      }
-      /**
-       * <code>.com.elarian.hera.proto.PaymentCustomerCounterParty customer = 1;</code>
-       */
-      public Builder clearCustomer() {
-        copyOnWrite();
-        instance.clearCustomer();
-        return this;
-      }
-
-      /**
-       * <code>.com.elarian.hera.proto.PaymentPurseCounterParty purse = 2;</code>
+       * <code>.com.elarian.hera.proto.PaymentPurseCounterParty purse = 1;</code>
        */
       @java.lang.Override
       public boolean hasPurse() {
         return instance.hasPurse();
       }
       /**
-       * <code>.com.elarian.hera.proto.PaymentPurseCounterParty purse = 2;</code>
+       * <code>.com.elarian.hera.proto.PaymentPurseCounterParty purse = 1;</code>
        */
       @java.lang.Override
       public com.elarian.hera.proto.PaymentModel.PaymentPurseCounterParty getPurse() {
         return instance.getPurse();
       }
       /**
-       * <code>.com.elarian.hera.proto.PaymentPurseCounterParty purse = 2;</code>
+       * <code>.com.elarian.hera.proto.PaymentPurseCounterParty purse = 1;</code>
        */
       public Builder setPurse(com.elarian.hera.proto.PaymentModel.PaymentPurseCounterParty value) {
         copyOnWrite();
@@ -4664,7 +4822,7 @@ public final class PaymentModel {
         return this;
       }
       /**
-       * <code>.com.elarian.hera.proto.PaymentPurseCounterParty purse = 2;</code>
+       * <code>.com.elarian.hera.proto.PaymentPurseCounterParty purse = 1;</code>
        */
       public Builder setPurse(
           com.elarian.hera.proto.PaymentModel.PaymentPurseCounterParty.Builder builderForValue) {
@@ -4673,7 +4831,7 @@ public final class PaymentModel {
         return this;
       }
       /**
-       * <code>.com.elarian.hera.proto.PaymentPurseCounterParty purse = 2;</code>
+       * <code>.com.elarian.hera.proto.PaymentPurseCounterParty purse = 1;</code>
        */
       public Builder mergePurse(com.elarian.hera.proto.PaymentModel.PaymentPurseCounterParty value) {
         copyOnWrite();
@@ -4681,7 +4839,7 @@ public final class PaymentModel {
         return this;
       }
       /**
-       * <code>.com.elarian.hera.proto.PaymentPurseCounterParty purse = 2;</code>
+       * <code>.com.elarian.hera.proto.PaymentPurseCounterParty purse = 1;</code>
        */
       public Builder clearPurse() {
         copyOnWrite();
@@ -4690,21 +4848,21 @@ public final class PaymentModel {
       }
 
       /**
-       * <code>.com.elarian.hera.proto.PaymentWalletCounterParty wallet = 3;</code>
+       * <code>.com.elarian.hera.proto.PaymentWalletCounterParty wallet = 2;</code>
        */
       @java.lang.Override
       public boolean hasWallet() {
         return instance.hasWallet();
       }
       /**
-       * <code>.com.elarian.hera.proto.PaymentWalletCounterParty wallet = 3;</code>
+       * <code>.com.elarian.hera.proto.PaymentWalletCounterParty wallet = 2;</code>
        */
       @java.lang.Override
       public com.elarian.hera.proto.PaymentModel.PaymentWalletCounterParty getWallet() {
         return instance.getWallet();
       }
       /**
-       * <code>.com.elarian.hera.proto.PaymentWalletCounterParty wallet = 3;</code>
+       * <code>.com.elarian.hera.proto.PaymentWalletCounterParty wallet = 2;</code>
        */
       public Builder setWallet(com.elarian.hera.proto.PaymentModel.PaymentWalletCounterParty value) {
         copyOnWrite();
@@ -4712,7 +4870,7 @@ public final class PaymentModel {
         return this;
       }
       /**
-       * <code>.com.elarian.hera.proto.PaymentWalletCounterParty wallet = 3;</code>
+       * <code>.com.elarian.hera.proto.PaymentWalletCounterParty wallet = 2;</code>
        */
       public Builder setWallet(
           com.elarian.hera.proto.PaymentModel.PaymentWalletCounterParty.Builder builderForValue) {
@@ -4721,7 +4879,7 @@ public final class PaymentModel {
         return this;
       }
       /**
-       * <code>.com.elarian.hera.proto.PaymentWalletCounterParty wallet = 3;</code>
+       * <code>.com.elarian.hera.proto.PaymentWalletCounterParty wallet = 2;</code>
        */
       public Builder mergeWallet(com.elarian.hera.proto.PaymentModel.PaymentWalletCounterParty value) {
         copyOnWrite();
@@ -4729,11 +4887,59 @@ public final class PaymentModel {
         return this;
       }
       /**
-       * <code>.com.elarian.hera.proto.PaymentWalletCounterParty wallet = 3;</code>
+       * <code>.com.elarian.hera.proto.PaymentWalletCounterParty wallet = 2;</code>
        */
       public Builder clearWallet() {
         copyOnWrite();
         instance.clearWallet();
+        return this;
+      }
+
+      /**
+       * <code>.com.elarian.hera.proto.PaymentCustomerCounterParty customer = 3;</code>
+       */
+      @java.lang.Override
+      public boolean hasCustomer() {
+        return instance.hasCustomer();
+      }
+      /**
+       * <code>.com.elarian.hera.proto.PaymentCustomerCounterParty customer = 3;</code>
+       */
+      @java.lang.Override
+      public com.elarian.hera.proto.PaymentModel.PaymentCustomerCounterParty getCustomer() {
+        return instance.getCustomer();
+      }
+      /**
+       * <code>.com.elarian.hera.proto.PaymentCustomerCounterParty customer = 3;</code>
+       */
+      public Builder setCustomer(com.elarian.hera.proto.PaymentModel.PaymentCustomerCounterParty value) {
+        copyOnWrite();
+        instance.setCustomer(value);
+        return this;
+      }
+      /**
+       * <code>.com.elarian.hera.proto.PaymentCustomerCounterParty customer = 3;</code>
+       */
+      public Builder setCustomer(
+          com.elarian.hera.proto.PaymentModel.PaymentCustomerCounterParty.Builder builderForValue) {
+        copyOnWrite();
+        instance.setCustomer(builderForValue.build());
+        return this;
+      }
+      /**
+       * <code>.com.elarian.hera.proto.PaymentCustomerCounterParty customer = 3;</code>
+       */
+      public Builder mergeCustomer(com.elarian.hera.proto.PaymentModel.PaymentCustomerCounterParty value) {
+        copyOnWrite();
+        instance.mergeCustomer(value);
+        return this;
+      }
+      /**
+       * <code>.com.elarian.hera.proto.PaymentCustomerCounterParty customer = 3;</code>
+       */
+      public Builder clearCustomer() {
+        copyOnWrite();
+        instance.clearCustomer();
         return this;
       }
 
@@ -4803,9 +5009,9 @@ public final class PaymentModel {
             java.lang.Object[] objects = new java.lang.Object[] {
               "party_",
               "partyCase_",
-              com.elarian.hera.proto.PaymentModel.PaymentCustomerCounterParty.class,
               com.elarian.hera.proto.PaymentModel.PaymentPurseCounterParty.class,
               com.elarian.hera.proto.PaymentModel.PaymentWalletCounterParty.class,
+              com.elarian.hera.proto.PaymentModel.PaymentCustomerCounterParty.class,
               com.elarian.hera.proto.PaymentModel.PaymentChannelCounterParty.class,
             };
             java.lang.String info =

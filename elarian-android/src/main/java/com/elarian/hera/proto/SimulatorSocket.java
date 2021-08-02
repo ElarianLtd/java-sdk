@@ -1559,12 +1559,23 @@ public final class SimulatorSocket {
     com.elarian.hera.proto.CommonModel.Cash getValue();
 
     /**
-     * <code>.com.elarian.hera.proto.PaymentStatus status = 5;</code>
+     * <code>.com.elarian.hera.proto.PaymentMode mode = 5;</code>
+     * @return The enum numeric value on the wire for mode.
+     */
+    int getModeValue();
+    /**
+     * <code>.com.elarian.hera.proto.PaymentMode mode = 5;</code>
+     * @return The mode.
+     */
+    com.elarian.hera.proto.PaymentModel.PaymentMode getMode();
+
+    /**
+     * <code>.com.elarian.hera.proto.PaymentStatus status = 6;</code>
      * @return The enum numeric value on the wire for status.
      */
     int getStatusValue();
     /**
-     * <code>.com.elarian.hera.proto.PaymentStatus status = 5;</code>
+     * <code>.com.elarian.hera.proto.PaymentStatus status = 6;</code>
      * @return The status.
      */
     com.elarian.hera.proto.PaymentModel.PaymentStatus getStatus();
@@ -1767,10 +1778,52 @@ public final class SimulatorSocket {
       
     }
 
-    public static final int STATUS_FIELD_NUMBER = 5;
+    public static final int MODE_FIELD_NUMBER = 5;
+    private int mode_;
+    /**
+     * <code>.com.elarian.hera.proto.PaymentMode mode = 5;</code>
+     * @return The enum numeric value on the wire for mode.
+     */
+    @java.lang.Override
+    public int getModeValue() {
+      return mode_;
+    }
+    /**
+     * <code>.com.elarian.hera.proto.PaymentMode mode = 5;</code>
+     * @return The mode.
+     */
+    @java.lang.Override
+    public com.elarian.hera.proto.PaymentModel.PaymentMode getMode() {
+      com.elarian.hera.proto.PaymentModel.PaymentMode result = com.elarian.hera.proto.PaymentModel.PaymentMode.forNumber(mode_);
+      return result == null ? com.elarian.hera.proto.PaymentModel.PaymentMode.UNRECOGNIZED : result;
+    }
+    /**
+     * <code>.com.elarian.hera.proto.PaymentMode mode = 5;</code>
+     * @param value The enum numeric value on the wire for mode to set.
+     */
+    private void setModeValue(int value) {
+        mode_ = value;
+    }
+    /**
+     * <code>.com.elarian.hera.proto.PaymentMode mode = 5;</code>
+     * @param value The mode to set.
+     */
+    private void setMode(com.elarian.hera.proto.PaymentModel.PaymentMode value) {
+      mode_ = value.getNumber();
+      
+    }
+    /**
+     * <code>.com.elarian.hera.proto.PaymentMode mode = 5;</code>
+     */
+    private void clearMode() {
+      
+      mode_ = 0;
+    }
+
+    public static final int STATUS_FIELD_NUMBER = 6;
     private int status_;
     /**
-     * <code>.com.elarian.hera.proto.PaymentStatus status = 5;</code>
+     * <code>.com.elarian.hera.proto.PaymentStatus status = 6;</code>
      * @return The enum numeric value on the wire for status.
      */
     @java.lang.Override
@@ -1778,7 +1831,7 @@ public final class SimulatorSocket {
       return status_;
     }
     /**
-     * <code>.com.elarian.hera.proto.PaymentStatus status = 5;</code>
+     * <code>.com.elarian.hera.proto.PaymentStatus status = 6;</code>
      * @return The status.
      */
     @java.lang.Override
@@ -1787,14 +1840,14 @@ public final class SimulatorSocket {
       return result == null ? com.elarian.hera.proto.PaymentModel.PaymentStatus.UNRECOGNIZED : result;
     }
     /**
-     * <code>.com.elarian.hera.proto.PaymentStatus status = 5;</code>
+     * <code>.com.elarian.hera.proto.PaymentStatus status = 6;</code>
      * @param value The enum numeric value on the wire for status to set.
      */
     private void setStatusValue(int value) {
         status_ = value;
     }
     /**
-     * <code>.com.elarian.hera.proto.PaymentStatus status = 5;</code>
+     * <code>.com.elarian.hera.proto.PaymentStatus status = 6;</code>
      * @param value The status to set.
      */
     private void setStatus(com.elarian.hera.proto.PaymentModel.PaymentStatus value) {
@@ -1802,7 +1855,7 @@ public final class SimulatorSocket {
       
     }
     /**
-     * <code>.com.elarian.hera.proto.PaymentStatus status = 5;</code>
+     * <code>.com.elarian.hera.proto.PaymentStatus status = 6;</code>
      */
     private void clearStatus() {
       
@@ -2097,7 +2150,53 @@ public final class SimulatorSocket {
       }
 
       /**
-       * <code>.com.elarian.hera.proto.PaymentStatus status = 5;</code>
+       * <code>.com.elarian.hera.proto.PaymentMode mode = 5;</code>
+       * @return The enum numeric value on the wire for mode.
+       */
+      @java.lang.Override
+      public int getModeValue() {
+        return instance.getModeValue();
+      }
+      /**
+       * <code>.com.elarian.hera.proto.PaymentMode mode = 5;</code>
+       * @param value The mode to set.
+       * @return This builder for chaining.
+       */
+      public Builder setModeValue(int value) {
+        copyOnWrite();
+        instance.setModeValue(value);
+        return this;
+      }
+      /**
+       * <code>.com.elarian.hera.proto.PaymentMode mode = 5;</code>
+       * @return The mode.
+       */
+      @java.lang.Override
+      public com.elarian.hera.proto.PaymentModel.PaymentMode getMode() {
+        return instance.getMode();
+      }
+      /**
+       * <code>.com.elarian.hera.proto.PaymentMode mode = 5;</code>
+       * @param value The enum numeric value on the wire for mode to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMode(com.elarian.hera.proto.PaymentModel.PaymentMode value) {
+        copyOnWrite();
+        instance.setMode(value);
+        return this;
+      }
+      /**
+       * <code>.com.elarian.hera.proto.PaymentMode mode = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMode() {
+        copyOnWrite();
+        instance.clearMode();
+        return this;
+      }
+
+      /**
+       * <code>.com.elarian.hera.proto.PaymentStatus status = 6;</code>
        * @return The enum numeric value on the wire for status.
        */
       @java.lang.Override
@@ -2105,7 +2204,7 @@ public final class SimulatorSocket {
         return instance.getStatusValue();
       }
       /**
-       * <code>.com.elarian.hera.proto.PaymentStatus status = 5;</code>
+       * <code>.com.elarian.hera.proto.PaymentStatus status = 6;</code>
        * @param value The status to set.
        * @return This builder for chaining.
        */
@@ -2115,7 +2214,7 @@ public final class SimulatorSocket {
         return this;
       }
       /**
-       * <code>.com.elarian.hera.proto.PaymentStatus status = 5;</code>
+       * <code>.com.elarian.hera.proto.PaymentStatus status = 6;</code>
        * @return The status.
        */
       @java.lang.Override
@@ -2123,7 +2222,7 @@ public final class SimulatorSocket {
         return instance.getStatus();
       }
       /**
-       * <code>.com.elarian.hera.proto.PaymentStatus status = 5;</code>
+       * <code>.com.elarian.hera.proto.PaymentStatus status = 6;</code>
        * @param value The enum numeric value on the wire for status to set.
        * @return This builder for chaining.
        */
@@ -2133,7 +2232,7 @@ public final class SimulatorSocket {
         return this;
       }
       /**
-       * <code>.com.elarian.hera.proto.PaymentStatus status = 5;</code>
+       * <code>.com.elarian.hera.proto.PaymentStatus status = 6;</code>
        * @return This builder for chaining.
        */
       public Builder clearStatus() {
@@ -2162,11 +2261,12 @@ public final class SimulatorSocket {
               "channelNumber_",
               "customerNumber_",
               "value_",
+              "mode_",
               "status_",
             };
             java.lang.String info =
-                "\u0000\u0005\u0000\u0000\u0001\u0005\u0005\u0000\u0000\u0000\u0001\u0208\u0002\t" +
-                "\u0003\u0208\u0004\t\u0005\f";
+                "\u0000\u0006\u0000\u0000\u0001\u0006\u0006\u0000\u0000\u0000\u0001\u0208\u0002\t" +
+                "\u0003\u0208\u0004\t\u0005\f\u0006\f";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through
@@ -6882,34 +6982,58 @@ public final class SimulatorSocket {
         getTransactionIdBytes();
 
     /**
-     * <code>.com.elarian.hera.proto.PaymentChannelNumber channel_number = 6;</code>
-     * @return Whether the channelNumber field is set.
+     * <code>.com.elarian.hera.proto.PaymentChannel channel = 6;</code>
+     * @return The enum numeric value on the wire for channel.
      */
-    boolean hasChannelNumber();
+    int getChannelValue();
     /**
-     * <code>.com.elarian.hera.proto.PaymentChannelNumber channel_number = 6;</code>
-     * @return The channelNumber.
+     * <code>.com.elarian.hera.proto.PaymentChannel channel = 6;</code>
+     * @return The channel.
      */
-    com.elarian.hera.proto.PaymentModel.PaymentChannelNumber getChannelNumber();
+    com.elarian.hera.proto.PaymentModel.PaymentChannel getChannel();
 
     /**
-     * <code>.google.protobuf.StringValue account = 7;</code>
+     * <code>string source = 7;</code>
+     * @return The source.
+     */
+    java.lang.String getSource();
+    /**
+     * <code>string source = 7;</code>
+     * @return The bytes for source.
+     */
+    com.google.protobuf.ByteString
+        getSourceBytes();
+
+    /**
+     * <code>string destination = 8;</code>
+     * @return The destination.
+     */
+    java.lang.String getDestination();
+    /**
+     * <code>string destination = 8;</code>
+     * @return The bytes for destination.
+     */
+    com.google.protobuf.ByteString
+        getDestinationBytes();
+
+    /**
+     * <code>.google.protobuf.StringValue account = 9;</code>
      * @return Whether the account field is set.
      */
     boolean hasAccount();
     /**
-     * <code>.google.protobuf.StringValue account = 7;</code>
+     * <code>.google.protobuf.StringValue account = 9;</code>
      * @return The account.
      */
     com.google.protobuf.StringValue getAccount();
 
     /**
-     * <code>.com.elarian.hera.proto.Cash value = 8;</code>
+     * <code>.com.elarian.hera.proto.Cash value = 10;</code>
      * @return Whether the value field is set.
      */
     boolean hasValue();
     /**
-     * <code>.com.elarian.hera.proto.Cash value = 8;</code>
+     * <code>.com.elarian.hera.proto.Cash value = 10;</code>
      * @return The value.
      */
     com.elarian.hera.proto.CommonModel.Cash getValue();
@@ -6928,6 +7052,8 @@ public final class SimulatorSocket {
       orgId_ = "";
       appId_ = "";
       transactionId_ = "";
+      source_ = "";
+      destination_ = "";
     }
     private int debitPartyCase_ = 0;
     private java.lang.Object debitParty_;
@@ -7213,70 +7339,160 @@ public final class SimulatorSocket {
       
     }
 
-    public static final int CHANNEL_NUMBER_FIELD_NUMBER = 6;
-    private com.elarian.hera.proto.PaymentModel.PaymentChannelNumber channelNumber_;
+    public static final int CHANNEL_FIELD_NUMBER = 6;
+    private int channel_;
     /**
-     * <code>.com.elarian.hera.proto.PaymentChannelNumber channel_number = 6;</code>
+     * <code>.com.elarian.hera.proto.PaymentChannel channel = 6;</code>
+     * @return The enum numeric value on the wire for channel.
      */
     @java.lang.Override
-    public boolean hasChannelNumber() {
-      return channelNumber_ != null;
+    public int getChannelValue() {
+      return channel_;
     }
     /**
-     * <code>.com.elarian.hera.proto.PaymentChannelNumber channel_number = 6;</code>
+     * <code>.com.elarian.hera.proto.PaymentChannel channel = 6;</code>
+     * @return The channel.
      */
     @java.lang.Override
-    public com.elarian.hera.proto.PaymentModel.PaymentChannelNumber getChannelNumber() {
-      return channelNumber_ == null ? com.elarian.hera.proto.PaymentModel.PaymentChannelNumber.getDefaultInstance() : channelNumber_;
+    public com.elarian.hera.proto.PaymentModel.PaymentChannel getChannel() {
+      com.elarian.hera.proto.PaymentModel.PaymentChannel result = com.elarian.hera.proto.PaymentModel.PaymentChannel.forNumber(channel_);
+      return result == null ? com.elarian.hera.proto.PaymentModel.PaymentChannel.UNRECOGNIZED : result;
     }
     /**
-     * <code>.com.elarian.hera.proto.PaymentChannelNumber channel_number = 6;</code>
+     * <code>.com.elarian.hera.proto.PaymentChannel channel = 6;</code>
+     * @param value The enum numeric value on the wire for channel to set.
      */
-    private void setChannelNumber(com.elarian.hera.proto.PaymentModel.PaymentChannelNumber value) {
-      value.getClass();
-  channelNumber_ = value;
-      
-      }
+    private void setChannelValue(int value) {
+        channel_ = value;
+    }
     /**
-     * <code>.com.elarian.hera.proto.PaymentChannelNumber channel_number = 6;</code>
+     * <code>.com.elarian.hera.proto.PaymentChannel channel = 6;</code>
+     * @param value The channel to set.
      */
-    @java.lang.SuppressWarnings({"ReferenceEquality"})
-    private void mergeChannelNumber(com.elarian.hera.proto.PaymentModel.PaymentChannelNumber value) {
-      value.getClass();
-  if (channelNumber_ != null &&
-          channelNumber_ != com.elarian.hera.proto.PaymentModel.PaymentChannelNumber.getDefaultInstance()) {
-        channelNumber_ =
-          com.elarian.hera.proto.PaymentModel.PaymentChannelNumber.newBuilder(channelNumber_).mergeFrom(value).buildPartial();
-      } else {
-        channelNumber_ = value;
-      }
+    private void setChannel(com.elarian.hera.proto.PaymentModel.PaymentChannel value) {
+      channel_ = value.getNumber();
       
     }
     /**
-     * <code>.com.elarian.hera.proto.PaymentChannelNumber channel_number = 6;</code>
+     * <code>.com.elarian.hera.proto.PaymentChannel channel = 6;</code>
      */
-    private void clearChannelNumber() {  channelNumber_ = null;
+    private void clearChannel() {
+      
+      channel_ = 0;
+    }
+
+    public static final int SOURCE_FIELD_NUMBER = 7;
+    private java.lang.String source_;
+    /**
+     * <code>string source = 7;</code>
+     * @return The source.
+     */
+    @java.lang.Override
+    public java.lang.String getSource() {
+      return source_;
+    }
+    /**
+     * <code>string source = 7;</code>
+     * @return The bytes for source.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getSourceBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(source_);
+    }
+    /**
+     * <code>string source = 7;</code>
+     * @param value The source to set.
+     */
+    private void setSource(
+        java.lang.String value) {
+      value.getClass();
+  
+      source_ = value;
+    }
+    /**
+     * <code>string source = 7;</code>
+     */
+    private void clearSource() {
+      
+      source_ = getDefaultInstance().getSource();
+    }
+    /**
+     * <code>string source = 7;</code>
+     * @param value The bytes for source to set.
+     */
+    private void setSourceBytes(
+        com.google.protobuf.ByteString value) {
+      checkByteStringIsUtf8(value);
+      source_ = value.toStringUtf8();
       
     }
 
-    public static final int ACCOUNT_FIELD_NUMBER = 7;
+    public static final int DESTINATION_FIELD_NUMBER = 8;
+    private java.lang.String destination_;
+    /**
+     * <code>string destination = 8;</code>
+     * @return The destination.
+     */
+    @java.lang.Override
+    public java.lang.String getDestination() {
+      return destination_;
+    }
+    /**
+     * <code>string destination = 8;</code>
+     * @return The bytes for destination.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getDestinationBytes() {
+      return com.google.protobuf.ByteString.copyFromUtf8(destination_);
+    }
+    /**
+     * <code>string destination = 8;</code>
+     * @param value The destination to set.
+     */
+    private void setDestination(
+        java.lang.String value) {
+      value.getClass();
+  
+      destination_ = value;
+    }
+    /**
+     * <code>string destination = 8;</code>
+     */
+    private void clearDestination() {
+      
+      destination_ = getDefaultInstance().getDestination();
+    }
+    /**
+     * <code>string destination = 8;</code>
+     * @param value The bytes for destination to set.
+     */
+    private void setDestinationBytes(
+        com.google.protobuf.ByteString value) {
+      checkByteStringIsUtf8(value);
+      destination_ = value.toStringUtf8();
+      
+    }
+
+    public static final int ACCOUNT_FIELD_NUMBER = 9;
     private com.google.protobuf.StringValue account_;
     /**
-     * <code>.google.protobuf.StringValue account = 7;</code>
+     * <code>.google.protobuf.StringValue account = 9;</code>
      */
     @java.lang.Override
     public boolean hasAccount() {
       return account_ != null;
     }
     /**
-     * <code>.google.protobuf.StringValue account = 7;</code>
+     * <code>.google.protobuf.StringValue account = 9;</code>
      */
     @java.lang.Override
     public com.google.protobuf.StringValue getAccount() {
       return account_ == null ? com.google.protobuf.StringValue.getDefaultInstance() : account_;
     }
     /**
-     * <code>.google.protobuf.StringValue account = 7;</code>
+     * <code>.google.protobuf.StringValue account = 9;</code>
      */
     private void setAccount(com.google.protobuf.StringValue value) {
       value.getClass();
@@ -7284,7 +7500,7 @@ public final class SimulatorSocket {
       
       }
     /**
-     * <code>.google.protobuf.StringValue account = 7;</code>
+     * <code>.google.protobuf.StringValue account = 9;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeAccount(com.google.protobuf.StringValue value) {
@@ -7299,30 +7515,30 @@ public final class SimulatorSocket {
       
     }
     /**
-     * <code>.google.protobuf.StringValue account = 7;</code>
+     * <code>.google.protobuf.StringValue account = 9;</code>
      */
     private void clearAccount() {  account_ = null;
       
     }
 
-    public static final int VALUE_FIELD_NUMBER = 8;
+    public static final int VALUE_FIELD_NUMBER = 10;
     private com.elarian.hera.proto.CommonModel.Cash value_;
     /**
-     * <code>.com.elarian.hera.proto.Cash value = 8;</code>
+     * <code>.com.elarian.hera.proto.Cash value = 10;</code>
      */
     @java.lang.Override
     public boolean hasValue() {
       return value_ != null;
     }
     /**
-     * <code>.com.elarian.hera.proto.Cash value = 8;</code>
+     * <code>.com.elarian.hera.proto.Cash value = 10;</code>
      */
     @java.lang.Override
     public com.elarian.hera.proto.CommonModel.Cash getValue() {
       return value_ == null ? com.elarian.hera.proto.CommonModel.Cash.getDefaultInstance() : value_;
     }
     /**
-     * <code>.com.elarian.hera.proto.Cash value = 8;</code>
+     * <code>.com.elarian.hera.proto.Cash value = 10;</code>
      */
     private void setValue(com.elarian.hera.proto.CommonModel.Cash value) {
       value.getClass();
@@ -7330,7 +7546,7 @@ public final class SimulatorSocket {
       
       }
     /**
-     * <code>.com.elarian.hera.proto.Cash value = 8;</code>
+     * <code>.com.elarian.hera.proto.Cash value = 10;</code>
      */
     @java.lang.SuppressWarnings({"ReferenceEquality"})
     private void mergeValue(com.elarian.hera.proto.CommonModel.Cash value) {
@@ -7345,7 +7561,7 @@ public final class SimulatorSocket {
       
     }
     /**
-     * <code>.com.elarian.hera.proto.Cash value = 8;</code>
+     * <code>.com.elarian.hera.proto.Cash value = 10;</code>
      */
     private void clearValue() {  value_ = null;
       
@@ -7702,68 +7918,165 @@ public final class SimulatorSocket {
       }
 
       /**
-       * <code>.com.elarian.hera.proto.PaymentChannelNumber channel_number = 6;</code>
+       * <code>.com.elarian.hera.proto.PaymentChannel channel = 6;</code>
+       * @return The enum numeric value on the wire for channel.
        */
       @java.lang.Override
-      public boolean hasChannelNumber() {
-        return instance.hasChannelNumber();
+      public int getChannelValue() {
+        return instance.getChannelValue();
       }
       /**
-       * <code>.com.elarian.hera.proto.PaymentChannelNumber channel_number = 6;</code>
+       * <code>.com.elarian.hera.proto.PaymentChannel channel = 6;</code>
+       * @param value The channel to set.
+       * @return This builder for chaining.
+       */
+      public Builder setChannelValue(int value) {
+        copyOnWrite();
+        instance.setChannelValue(value);
+        return this;
+      }
+      /**
+       * <code>.com.elarian.hera.proto.PaymentChannel channel = 6;</code>
+       * @return The channel.
        */
       @java.lang.Override
-      public com.elarian.hera.proto.PaymentModel.PaymentChannelNumber getChannelNumber() {
-        return instance.getChannelNumber();
+      public com.elarian.hera.proto.PaymentModel.PaymentChannel getChannel() {
+        return instance.getChannel();
       }
       /**
-       * <code>.com.elarian.hera.proto.PaymentChannelNumber channel_number = 6;</code>
+       * <code>.com.elarian.hera.proto.PaymentChannel channel = 6;</code>
+       * @param value The enum numeric value on the wire for channel to set.
+       * @return This builder for chaining.
        */
-      public Builder setChannelNumber(com.elarian.hera.proto.PaymentModel.PaymentChannelNumber value) {
+      public Builder setChannel(com.elarian.hera.proto.PaymentModel.PaymentChannel value) {
         copyOnWrite();
-        instance.setChannelNumber(value);
-        return this;
-        }
-      /**
-       * <code>.com.elarian.hera.proto.PaymentChannelNumber channel_number = 6;</code>
-       */
-      public Builder setChannelNumber(
-          com.elarian.hera.proto.PaymentModel.PaymentChannelNumber.Builder builderForValue) {
-        copyOnWrite();
-        instance.setChannelNumber(builderForValue.build());
+        instance.setChannel(value);
         return this;
       }
       /**
-       * <code>.com.elarian.hera.proto.PaymentChannelNumber channel_number = 6;</code>
+       * <code>.com.elarian.hera.proto.PaymentChannel channel = 6;</code>
+       * @return This builder for chaining.
        */
-      public Builder mergeChannelNumber(com.elarian.hera.proto.PaymentModel.PaymentChannelNumber value) {
+      public Builder clearChannel() {
         copyOnWrite();
-        instance.mergeChannelNumber(value);
-        return this;
-      }
-      /**
-       * <code>.com.elarian.hera.proto.PaymentChannelNumber channel_number = 6;</code>
-       */
-      public Builder clearChannelNumber() {  copyOnWrite();
-        instance.clearChannelNumber();
+        instance.clearChannel();
         return this;
       }
 
       /**
-       * <code>.google.protobuf.StringValue account = 7;</code>
+       * <code>string source = 7;</code>
+       * @return The source.
+       */
+      @java.lang.Override
+      public java.lang.String getSource() {
+        return instance.getSource();
+      }
+      /**
+       * <code>string source = 7;</code>
+       * @return The bytes for source.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getSourceBytes() {
+        return instance.getSourceBytes();
+      }
+      /**
+       * <code>string source = 7;</code>
+       * @param value The source to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSource(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setSource(value);
+        return this;
+      }
+      /**
+       * <code>string source = 7;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSource() {
+        copyOnWrite();
+        instance.clearSource();
+        return this;
+      }
+      /**
+       * <code>string source = 7;</code>
+       * @param value The bytes for source to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSourceBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setSourceBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>string destination = 8;</code>
+       * @return The destination.
+       */
+      @java.lang.Override
+      public java.lang.String getDestination() {
+        return instance.getDestination();
+      }
+      /**
+       * <code>string destination = 8;</code>
+       * @return The bytes for destination.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getDestinationBytes() {
+        return instance.getDestinationBytes();
+      }
+      /**
+       * <code>string destination = 8;</code>
+       * @param value The destination to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDestination(
+          java.lang.String value) {
+        copyOnWrite();
+        instance.setDestination(value);
+        return this;
+      }
+      /**
+       * <code>string destination = 8;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDestination() {
+        copyOnWrite();
+        instance.clearDestination();
+        return this;
+      }
+      /**
+       * <code>string destination = 8;</code>
+       * @param value The bytes for destination to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDestinationBytes(
+          com.google.protobuf.ByteString value) {
+        copyOnWrite();
+        instance.setDestinationBytes(value);
+        return this;
+      }
+
+      /**
+       * <code>.google.protobuf.StringValue account = 9;</code>
        */
       @java.lang.Override
       public boolean hasAccount() {
         return instance.hasAccount();
       }
       /**
-       * <code>.google.protobuf.StringValue account = 7;</code>
+       * <code>.google.protobuf.StringValue account = 9;</code>
        */
       @java.lang.Override
       public com.google.protobuf.StringValue getAccount() {
         return instance.getAccount();
       }
       /**
-       * <code>.google.protobuf.StringValue account = 7;</code>
+       * <code>.google.protobuf.StringValue account = 9;</code>
        */
       public Builder setAccount(com.google.protobuf.StringValue value) {
         copyOnWrite();
@@ -7771,7 +8084,7 @@ public final class SimulatorSocket {
         return this;
         }
       /**
-       * <code>.google.protobuf.StringValue account = 7;</code>
+       * <code>.google.protobuf.StringValue account = 9;</code>
        */
       public Builder setAccount(
           com.google.protobuf.StringValue.Builder builderForValue) {
@@ -7780,7 +8093,7 @@ public final class SimulatorSocket {
         return this;
       }
       /**
-       * <code>.google.protobuf.StringValue account = 7;</code>
+       * <code>.google.protobuf.StringValue account = 9;</code>
        */
       public Builder mergeAccount(com.google.protobuf.StringValue value) {
         copyOnWrite();
@@ -7788,7 +8101,7 @@ public final class SimulatorSocket {
         return this;
       }
       /**
-       * <code>.google.protobuf.StringValue account = 7;</code>
+       * <code>.google.protobuf.StringValue account = 9;</code>
        */
       public Builder clearAccount() {  copyOnWrite();
         instance.clearAccount();
@@ -7796,21 +8109,21 @@ public final class SimulatorSocket {
       }
 
       /**
-       * <code>.com.elarian.hera.proto.Cash value = 8;</code>
+       * <code>.com.elarian.hera.proto.Cash value = 10;</code>
        */
       @java.lang.Override
       public boolean hasValue() {
         return instance.hasValue();
       }
       /**
-       * <code>.com.elarian.hera.proto.Cash value = 8;</code>
+       * <code>.com.elarian.hera.proto.Cash value = 10;</code>
        */
       @java.lang.Override
       public com.elarian.hera.proto.CommonModel.Cash getValue() {
         return instance.getValue();
       }
       /**
-       * <code>.com.elarian.hera.proto.Cash value = 8;</code>
+       * <code>.com.elarian.hera.proto.Cash value = 10;</code>
        */
       public Builder setValue(com.elarian.hera.proto.CommonModel.Cash value) {
         copyOnWrite();
@@ -7818,7 +8131,7 @@ public final class SimulatorSocket {
         return this;
         }
       /**
-       * <code>.com.elarian.hera.proto.Cash value = 8;</code>
+       * <code>.com.elarian.hera.proto.Cash value = 10;</code>
        */
       public Builder setValue(
           com.elarian.hera.proto.CommonModel.Cash.Builder builderForValue) {
@@ -7827,7 +8140,7 @@ public final class SimulatorSocket {
         return this;
       }
       /**
-       * <code>.com.elarian.hera.proto.Cash value = 8;</code>
+       * <code>.com.elarian.hera.proto.Cash value = 10;</code>
        */
       public Builder mergeValue(com.elarian.hera.proto.CommonModel.Cash value) {
         copyOnWrite();
@@ -7835,7 +8148,7 @@ public final class SimulatorSocket {
         return this;
       }
       /**
-       * <code>.com.elarian.hera.proto.Cash value = 8;</code>
+       * <code>.com.elarian.hera.proto.Cash value = 10;</code>
        */
       public Builder clearValue() {  copyOnWrite();
         instance.clearValue();
@@ -7865,13 +8178,15 @@ public final class SimulatorSocket {
               com.elarian.hera.proto.PaymentModel.PaymentWalletCounterParty.class,
               com.elarian.hera.proto.PaymentModel.PaymentPurseCounterParty.class,
               "transactionId_",
-              "channelNumber_",
+              "channel_",
+              "source_",
+              "destination_",
               "account_",
               "value_",
             };
             java.lang.String info =
-                "\u0000\b\u0001\u0000\u0001\b\b\u0000\u0000\u0000\u0001\u0208\u0002\u0208\u0003<\u0000" +
-                "\u0004<\u0000\u0005\u0208\u0006\t\u0007\t\b\t";
+                "\u0000\n\u0001\u0000\u0001\n\n\u0000\u0000\u0000\u0001\u0208\u0002\u0208\u0003<\u0000" +
+                "\u0004<\u0000\u0005\u0208\u0006\f\u0007\u0208\b\u0208\t\t\n\t";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through

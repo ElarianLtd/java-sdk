@@ -33418,12 +33418,23 @@ public final class AppSocket {
     com.elarian.hera.proto.CommonModel.Cash getValue();
 
     /**
-     * <code>.com.elarian.hera.proto.PaymentStatus status = 6;</code>
+     * <code>.com.elarian.hera.proto.PaymentMode mode = 6;</code>
+     * @return The enum numeric value on the wire for mode.
+     */
+    int getModeValue();
+    /**
+     * <code>.com.elarian.hera.proto.PaymentMode mode = 6;</code>
+     * @return The mode.
+     */
+    com.elarian.hera.proto.PaymentModel.PaymentMode getMode();
+
+    /**
+     * <code>.com.elarian.hera.proto.PaymentStatus status = 7;</code>
      * @return The enum numeric value on the wire for status.
      */
     int getStatusValue();
     /**
-     * <code>.com.elarian.hera.proto.PaymentStatus status = 6;</code>
+     * <code>.com.elarian.hera.proto.PaymentStatus status = 7;</code>
      * @return The status.
      */
     com.elarian.hera.proto.PaymentModel.PaymentStatus getStatus();
@@ -33672,10 +33683,52 @@ public final class AppSocket {
       
     }
 
-    public static final int STATUS_FIELD_NUMBER = 6;
+    public static final int MODE_FIELD_NUMBER = 6;
+    private int mode_;
+    /**
+     * <code>.com.elarian.hera.proto.PaymentMode mode = 6;</code>
+     * @return The enum numeric value on the wire for mode.
+     */
+    @java.lang.Override
+    public int getModeValue() {
+      return mode_;
+    }
+    /**
+     * <code>.com.elarian.hera.proto.PaymentMode mode = 6;</code>
+     * @return The mode.
+     */
+    @java.lang.Override
+    public com.elarian.hera.proto.PaymentModel.PaymentMode getMode() {
+      com.elarian.hera.proto.PaymentModel.PaymentMode result = com.elarian.hera.proto.PaymentModel.PaymentMode.forNumber(mode_);
+      return result == null ? com.elarian.hera.proto.PaymentModel.PaymentMode.UNRECOGNIZED : result;
+    }
+    /**
+     * <code>.com.elarian.hera.proto.PaymentMode mode = 6;</code>
+     * @param value The enum numeric value on the wire for mode to set.
+     */
+    private void setModeValue(int value) {
+        mode_ = value;
+    }
+    /**
+     * <code>.com.elarian.hera.proto.PaymentMode mode = 6;</code>
+     * @param value The mode to set.
+     */
+    private void setMode(com.elarian.hera.proto.PaymentModel.PaymentMode value) {
+      mode_ = value.getNumber();
+      
+    }
+    /**
+     * <code>.com.elarian.hera.proto.PaymentMode mode = 6;</code>
+     */
+    private void clearMode() {
+      
+      mode_ = 0;
+    }
+
+    public static final int STATUS_FIELD_NUMBER = 7;
     private int status_;
     /**
-     * <code>.com.elarian.hera.proto.PaymentStatus status = 6;</code>
+     * <code>.com.elarian.hera.proto.PaymentStatus status = 7;</code>
      * @return The enum numeric value on the wire for status.
      */
     @java.lang.Override
@@ -33683,7 +33736,7 @@ public final class AppSocket {
       return status_;
     }
     /**
-     * <code>.com.elarian.hera.proto.PaymentStatus status = 6;</code>
+     * <code>.com.elarian.hera.proto.PaymentStatus status = 7;</code>
      * @return The status.
      */
     @java.lang.Override
@@ -33692,14 +33745,14 @@ public final class AppSocket {
       return result == null ? com.elarian.hera.proto.PaymentModel.PaymentStatus.UNRECOGNIZED : result;
     }
     /**
-     * <code>.com.elarian.hera.proto.PaymentStatus status = 6;</code>
+     * <code>.com.elarian.hera.proto.PaymentStatus status = 7;</code>
      * @param value The enum numeric value on the wire for status to set.
      */
     private void setStatusValue(int value) {
         status_ = value;
     }
     /**
-     * <code>.com.elarian.hera.proto.PaymentStatus status = 6;</code>
+     * <code>.com.elarian.hera.proto.PaymentStatus status = 7;</code>
      * @param value The status to set.
      */
     private void setStatus(com.elarian.hera.proto.PaymentModel.PaymentStatus value) {
@@ -33707,7 +33760,7 @@ public final class AppSocket {
       
     }
     /**
-     * <code>.com.elarian.hera.proto.PaymentStatus status = 6;</code>
+     * <code>.com.elarian.hera.proto.PaymentStatus status = 7;</code>
      */
     private void clearStatus() {
       
@@ -34049,7 +34102,53 @@ public final class AppSocket {
       }
 
       /**
-       * <code>.com.elarian.hera.proto.PaymentStatus status = 6;</code>
+       * <code>.com.elarian.hera.proto.PaymentMode mode = 6;</code>
+       * @return The enum numeric value on the wire for mode.
+       */
+      @java.lang.Override
+      public int getModeValue() {
+        return instance.getModeValue();
+      }
+      /**
+       * <code>.com.elarian.hera.proto.PaymentMode mode = 6;</code>
+       * @param value The mode to set.
+       * @return This builder for chaining.
+       */
+      public Builder setModeValue(int value) {
+        copyOnWrite();
+        instance.setModeValue(value);
+        return this;
+      }
+      /**
+       * <code>.com.elarian.hera.proto.PaymentMode mode = 6;</code>
+       * @return The mode.
+       */
+      @java.lang.Override
+      public com.elarian.hera.proto.PaymentModel.PaymentMode getMode() {
+        return instance.getMode();
+      }
+      /**
+       * <code>.com.elarian.hera.proto.PaymentMode mode = 6;</code>
+       * @param value The enum numeric value on the wire for mode to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMode(com.elarian.hera.proto.PaymentModel.PaymentMode value) {
+        copyOnWrite();
+        instance.setMode(value);
+        return this;
+      }
+      /**
+       * <code>.com.elarian.hera.proto.PaymentMode mode = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMode() {
+        copyOnWrite();
+        instance.clearMode();
+        return this;
+      }
+
+      /**
+       * <code>.com.elarian.hera.proto.PaymentStatus status = 7;</code>
        * @return The enum numeric value on the wire for status.
        */
       @java.lang.Override
@@ -34057,7 +34156,7 @@ public final class AppSocket {
         return instance.getStatusValue();
       }
       /**
-       * <code>.com.elarian.hera.proto.PaymentStatus status = 6;</code>
+       * <code>.com.elarian.hera.proto.PaymentStatus status = 7;</code>
        * @param value The status to set.
        * @return This builder for chaining.
        */
@@ -34067,7 +34166,7 @@ public final class AppSocket {
         return this;
       }
       /**
-       * <code>.com.elarian.hera.proto.PaymentStatus status = 6;</code>
+       * <code>.com.elarian.hera.proto.PaymentStatus status = 7;</code>
        * @return The status.
        */
       @java.lang.Override
@@ -34075,7 +34174,7 @@ public final class AppSocket {
         return instance.getStatus();
       }
       /**
-       * <code>.com.elarian.hera.proto.PaymentStatus status = 6;</code>
+       * <code>.com.elarian.hera.proto.PaymentStatus status = 7;</code>
        * @param value The enum numeric value on the wire for status to set.
        * @return This builder for chaining.
        */
@@ -34085,7 +34184,7 @@ public final class AppSocket {
         return this;
       }
       /**
-       * <code>.com.elarian.hera.proto.PaymentStatus status = 6;</code>
+       * <code>.com.elarian.hera.proto.PaymentStatus status = 7;</code>
        * @return This builder for chaining.
        */
       public Builder clearStatus() {
@@ -34115,11 +34214,12 @@ public final class AppSocket {
               "customerNumber_",
               "channelNumber_",
               "value_",
+              "mode_",
               "status_",
             };
             java.lang.String info =
-                "\u0000\u0006\u0000\u0000\u0001\u0006\u0006\u0000\u0000\u0000\u0001\u0208\u0002\u0208" +
-                "\u0003\t\u0004\t\u0005\t\u0006\f";
+                "\u0000\u0007\u0000\u0000\u0001\u0007\u0007\u0000\u0000\u0000\u0001\u0208\u0002\u0208" +
+                "\u0003\t\u0004\t\u0005\t\u0006\f\u0007\f";
             return newMessageInfo(DEFAULT_INSTANCE, info, objects);
         }
         // fall through
