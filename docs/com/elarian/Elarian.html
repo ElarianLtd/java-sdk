@@ -266,114 +266,130 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code>reactor.core.publisher.Mono&lt;<a href="model/InitiatePaymentReply.html" title="class in com.elarian.model">InitiatePaymentReply</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initiatePayment(com.elarian.model.PaymentChannelCounterParty,com.elarian.model.PaymentChannelCounterParty,com.elarian.model.Cash)">initiatePayment</a></span>&#8203;(<a href="model/PaymentChannelCounterParty.html" title="class in com.elarian.model">PaymentChannelCounterParty</a>&nbsp;debitParty,
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initiatePayment(com.elarian.model.PaymentChannelCounterParty,com.elarian.model.PaymentChannelCounterParty,com.elarian.model.Cash,com.elarian.model.PaymentMode)">initiatePayment</a></span>&#8203;(<a href="model/PaymentChannelCounterParty.html" title="class in com.elarian.model">PaymentChannelCounterParty</a>&nbsp;debitParty,
                <a href="model/PaymentChannelCounterParty.html" title="class in com.elarian.model">PaymentChannelCounterParty</a>&nbsp;creditParty,
-               <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value)</code></th>
+               <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value,
+               <a href="model/PaymentMode.html" title="enum in com.elarian.model">PaymentMode</a>&nbsp;mode)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i9" class="rowColor">
 <td class="colFirst"><code>reactor.core.publisher.Mono&lt;<a href="model/InitiatePaymentReply.html" title="class in com.elarian.model">InitiatePaymentReply</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initiatePayment(com.elarian.model.PaymentChannelCounterParty,com.elarian.model.PaymentCustomerCounterParty,com.elarian.model.Cash)">initiatePayment</a></span>&#8203;(<a href="model/PaymentChannelCounterParty.html" title="class in com.elarian.model">PaymentChannelCounterParty</a>&nbsp;debitParty,
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initiatePayment(com.elarian.model.PaymentChannelCounterParty,com.elarian.model.PaymentCustomerCounterParty,com.elarian.model.Cash,com.elarian.model.PaymentMode)">initiatePayment</a></span>&#8203;(<a href="model/PaymentChannelCounterParty.html" title="class in com.elarian.model">PaymentChannelCounterParty</a>&nbsp;debitParty,
                <a href="model/PaymentCustomerCounterParty.html" title="class in com.elarian.model">PaymentCustomerCounterParty</a>&nbsp;creditParty,
-               <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value)</code></th>
+               <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value,
+               <a href="model/PaymentMode.html" title="enum in com.elarian.model">PaymentMode</a>&nbsp;mode)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i10" class="altColor">
 <td class="colFirst"><code>reactor.core.publisher.Mono&lt;<a href="model/InitiatePaymentReply.html" title="class in com.elarian.model">InitiatePaymentReply</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initiatePayment(com.elarian.model.PaymentChannelCounterParty,com.elarian.model.PaymentPurseCounterParty,com.elarian.model.Cash)">initiatePayment</a></span>&#8203;(<a href="model/PaymentChannelCounterParty.html" title="class in com.elarian.model">PaymentChannelCounterParty</a>&nbsp;debitParty,
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initiatePayment(com.elarian.model.PaymentChannelCounterParty,com.elarian.model.PaymentPurseCounterParty,com.elarian.model.Cash,com.elarian.model.PaymentMode)">initiatePayment</a></span>&#8203;(<a href="model/PaymentChannelCounterParty.html" title="class in com.elarian.model">PaymentChannelCounterParty</a>&nbsp;debitParty,
                <a href="model/PaymentPurseCounterParty.html" title="class in com.elarian.model">PaymentPurseCounterParty</a>&nbsp;creditParty,
-               <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value)</code></th>
+               <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value,
+               <a href="model/PaymentMode.html" title="enum in com.elarian.model">PaymentMode</a>&nbsp;mode)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i11" class="rowColor">
 <td class="colFirst"><code>reactor.core.publisher.Mono&lt;<a href="model/InitiatePaymentReply.html" title="class in com.elarian.model">InitiatePaymentReply</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initiatePayment(com.elarian.model.PaymentChannelCounterParty,com.elarian.model.PaymentWalletCounterParty,com.elarian.model.Cash)">initiatePayment</a></span>&#8203;(<a href="model/PaymentChannelCounterParty.html" title="class in com.elarian.model">PaymentChannelCounterParty</a>&nbsp;debitParty,
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initiatePayment(com.elarian.model.PaymentChannelCounterParty,com.elarian.model.PaymentWalletCounterParty,com.elarian.model.Cash,com.elarian.model.PaymentMode)">initiatePayment</a></span>&#8203;(<a href="model/PaymentChannelCounterParty.html" title="class in com.elarian.model">PaymentChannelCounterParty</a>&nbsp;debitParty,
                <a href="model/PaymentWalletCounterParty.html" title="class in com.elarian.model">PaymentWalletCounterParty</a>&nbsp;creditParty,
-               <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value)</code></th>
+               <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value,
+               <a href="model/PaymentMode.html" title="enum in com.elarian.model">PaymentMode</a>&nbsp;mode)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i12" class="altColor">
 <td class="colFirst"><code>reactor.core.publisher.Mono&lt;<a href="model/InitiatePaymentReply.html" title="class in com.elarian.model">InitiatePaymentReply</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initiatePayment(com.elarian.model.PaymentCustomerCounterParty,com.elarian.model.PaymentChannelCounterParty,com.elarian.model.Cash)">initiatePayment</a></span>&#8203;(<a href="model/PaymentCustomerCounterParty.html" title="class in com.elarian.model">PaymentCustomerCounterParty</a>&nbsp;debitParty,
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initiatePayment(com.elarian.model.PaymentCustomerCounterParty,com.elarian.model.PaymentChannelCounterParty,com.elarian.model.Cash,com.elarian.model.PaymentMode)">initiatePayment</a></span>&#8203;(<a href="model/PaymentCustomerCounterParty.html" title="class in com.elarian.model">PaymentCustomerCounterParty</a>&nbsp;debitParty,
                <a href="model/PaymentChannelCounterParty.html" title="class in com.elarian.model">PaymentChannelCounterParty</a>&nbsp;creditParty,
-               <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value)</code></th>
+               <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value,
+               <a href="model/PaymentMode.html" title="enum in com.elarian.model">PaymentMode</a>&nbsp;mode)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i13" class="rowColor">
 <td class="colFirst"><code>reactor.core.publisher.Mono&lt;<a href="model/InitiatePaymentReply.html" title="class in com.elarian.model">InitiatePaymentReply</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initiatePayment(com.elarian.model.PaymentCustomerCounterParty,com.elarian.model.PaymentCustomerCounterParty,com.elarian.model.Cash)">initiatePayment</a></span>&#8203;(<a href="model/PaymentCustomerCounterParty.html" title="class in com.elarian.model">PaymentCustomerCounterParty</a>&nbsp;debitParty,
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initiatePayment(com.elarian.model.PaymentCustomerCounterParty,com.elarian.model.PaymentCustomerCounterParty,com.elarian.model.Cash,com.elarian.model.PaymentMode)">initiatePayment</a></span>&#8203;(<a href="model/PaymentCustomerCounterParty.html" title="class in com.elarian.model">PaymentCustomerCounterParty</a>&nbsp;debitParty,
                <a href="model/PaymentCustomerCounterParty.html" title="class in com.elarian.model">PaymentCustomerCounterParty</a>&nbsp;creditParty,
-               <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value)</code></th>
+               <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value,
+               <a href="model/PaymentMode.html" title="enum in com.elarian.model">PaymentMode</a>&nbsp;mode)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i14" class="altColor">
 <td class="colFirst"><code>reactor.core.publisher.Mono&lt;<a href="model/InitiatePaymentReply.html" title="class in com.elarian.model">InitiatePaymentReply</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initiatePayment(com.elarian.model.PaymentCustomerCounterParty,com.elarian.model.PaymentPurseCounterParty,com.elarian.model.Cash)">initiatePayment</a></span>&#8203;(<a href="model/PaymentCustomerCounterParty.html" title="class in com.elarian.model">PaymentCustomerCounterParty</a>&nbsp;debitParty,
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initiatePayment(com.elarian.model.PaymentCustomerCounterParty,com.elarian.model.PaymentPurseCounterParty,com.elarian.model.Cash,com.elarian.model.PaymentMode)">initiatePayment</a></span>&#8203;(<a href="model/PaymentCustomerCounterParty.html" title="class in com.elarian.model">PaymentCustomerCounterParty</a>&nbsp;debitParty,
                <a href="model/PaymentPurseCounterParty.html" title="class in com.elarian.model">PaymentPurseCounterParty</a>&nbsp;creditParty,
-               <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value)</code></th>
+               <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value,
+               <a href="model/PaymentMode.html" title="enum in com.elarian.model">PaymentMode</a>&nbsp;mode)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i15" class="rowColor">
 <td class="colFirst"><code>reactor.core.publisher.Mono&lt;<a href="model/InitiatePaymentReply.html" title="class in com.elarian.model">InitiatePaymentReply</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initiatePayment(com.elarian.model.PaymentCustomerCounterParty,com.elarian.model.PaymentWalletCounterParty,com.elarian.model.Cash)">initiatePayment</a></span>&#8203;(<a href="model/PaymentCustomerCounterParty.html" title="class in com.elarian.model">PaymentCustomerCounterParty</a>&nbsp;debitParty,
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initiatePayment(com.elarian.model.PaymentCustomerCounterParty,com.elarian.model.PaymentWalletCounterParty,com.elarian.model.Cash,com.elarian.model.PaymentMode)">initiatePayment</a></span>&#8203;(<a href="model/PaymentCustomerCounterParty.html" title="class in com.elarian.model">PaymentCustomerCounterParty</a>&nbsp;debitParty,
                <a href="model/PaymentWalletCounterParty.html" title="class in com.elarian.model">PaymentWalletCounterParty</a>&nbsp;creditParty,
-               <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value)</code></th>
+               <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value,
+               <a href="model/PaymentMode.html" title="enum in com.elarian.model">PaymentMode</a>&nbsp;mode)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i16" class="altColor">
 <td class="colFirst"><code>reactor.core.publisher.Mono&lt;<a href="model/InitiatePaymentReply.html" title="class in com.elarian.model">InitiatePaymentReply</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initiatePayment(com.elarian.model.PaymentPurseCounterParty,com.elarian.model.PaymentChannelCounterParty,com.elarian.model.Cash)">initiatePayment</a></span>&#8203;(<a href="model/PaymentPurseCounterParty.html" title="class in com.elarian.model">PaymentPurseCounterParty</a>&nbsp;debitParty,
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initiatePayment(com.elarian.model.PaymentPurseCounterParty,com.elarian.model.PaymentChannelCounterParty,com.elarian.model.Cash,com.elarian.model.PaymentMode)">initiatePayment</a></span>&#8203;(<a href="model/PaymentPurseCounterParty.html" title="class in com.elarian.model">PaymentPurseCounterParty</a>&nbsp;debitParty,
                <a href="model/PaymentChannelCounterParty.html" title="class in com.elarian.model">PaymentChannelCounterParty</a>&nbsp;creditParty,
-               <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value)</code></th>
+               <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value,
+               <a href="model/PaymentMode.html" title="enum in com.elarian.model">PaymentMode</a>&nbsp;mode)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i17" class="rowColor">
 <td class="colFirst"><code>reactor.core.publisher.Mono&lt;<a href="model/InitiatePaymentReply.html" title="class in com.elarian.model">InitiatePaymentReply</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initiatePayment(com.elarian.model.PaymentPurseCounterParty,com.elarian.model.PaymentCustomerCounterParty,com.elarian.model.Cash)">initiatePayment</a></span>&#8203;(<a href="model/PaymentPurseCounterParty.html" title="class in com.elarian.model">PaymentPurseCounterParty</a>&nbsp;debitParty,
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initiatePayment(com.elarian.model.PaymentPurseCounterParty,com.elarian.model.PaymentCustomerCounterParty,com.elarian.model.Cash,com.elarian.model.PaymentMode)">initiatePayment</a></span>&#8203;(<a href="model/PaymentPurseCounterParty.html" title="class in com.elarian.model">PaymentPurseCounterParty</a>&nbsp;debitParty,
                <a href="model/PaymentCustomerCounterParty.html" title="class in com.elarian.model">PaymentCustomerCounterParty</a>&nbsp;creditParty,
-               <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value)</code></th>
+               <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value,
+               <a href="model/PaymentMode.html" title="enum in com.elarian.model">PaymentMode</a>&nbsp;mode)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i18" class="altColor">
 <td class="colFirst"><code>reactor.core.publisher.Mono&lt;<a href="model/InitiatePaymentReply.html" title="class in com.elarian.model">InitiatePaymentReply</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initiatePayment(com.elarian.model.PaymentPurseCounterParty,com.elarian.model.PaymentPurseCounterParty,com.elarian.model.Cash)">initiatePayment</a></span>&#8203;(<a href="model/PaymentPurseCounterParty.html" title="class in com.elarian.model">PaymentPurseCounterParty</a>&nbsp;debitParty,
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initiatePayment(com.elarian.model.PaymentPurseCounterParty,com.elarian.model.PaymentPurseCounterParty,com.elarian.model.Cash,com.elarian.model.PaymentMode)">initiatePayment</a></span>&#8203;(<a href="model/PaymentPurseCounterParty.html" title="class in com.elarian.model">PaymentPurseCounterParty</a>&nbsp;debitParty,
                <a href="model/PaymentPurseCounterParty.html" title="class in com.elarian.model">PaymentPurseCounterParty</a>&nbsp;creditParty,
-               <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value)</code></th>
+               <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value,
+               <a href="model/PaymentMode.html" title="enum in com.elarian.model">PaymentMode</a>&nbsp;mode)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i19" class="rowColor">
 <td class="colFirst"><code>reactor.core.publisher.Mono&lt;<a href="model/InitiatePaymentReply.html" title="class in com.elarian.model">InitiatePaymentReply</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initiatePayment(com.elarian.model.PaymentPurseCounterParty,com.elarian.model.PaymentWalletCounterParty,com.elarian.model.Cash)">initiatePayment</a></span>&#8203;(<a href="model/PaymentPurseCounterParty.html" title="class in com.elarian.model">PaymentPurseCounterParty</a>&nbsp;debitParty,
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initiatePayment(com.elarian.model.PaymentPurseCounterParty,com.elarian.model.PaymentWalletCounterParty,com.elarian.model.Cash,com.elarian.model.PaymentMode)">initiatePayment</a></span>&#8203;(<a href="model/PaymentPurseCounterParty.html" title="class in com.elarian.model">PaymentPurseCounterParty</a>&nbsp;debitParty,
                <a href="model/PaymentWalletCounterParty.html" title="class in com.elarian.model">PaymentWalletCounterParty</a>&nbsp;creditParty,
-               <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value)</code></th>
+               <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value,
+               <a href="model/PaymentMode.html" title="enum in com.elarian.model">PaymentMode</a>&nbsp;mode)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i20" class="altColor">
 <td class="colFirst"><code>reactor.core.publisher.Mono&lt;<a href="model/InitiatePaymentReply.html" title="class in com.elarian.model">InitiatePaymentReply</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initiatePayment(com.elarian.model.PaymentWalletCounterParty,com.elarian.model.PaymentChannelCounterParty,com.elarian.model.Cash)">initiatePayment</a></span>&#8203;(<a href="model/PaymentWalletCounterParty.html" title="class in com.elarian.model">PaymentWalletCounterParty</a>&nbsp;debitParty,
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initiatePayment(com.elarian.model.PaymentWalletCounterParty,com.elarian.model.PaymentChannelCounterParty,com.elarian.model.Cash,com.elarian.model.PaymentMode)">initiatePayment</a></span>&#8203;(<a href="model/PaymentWalletCounterParty.html" title="class in com.elarian.model">PaymentWalletCounterParty</a>&nbsp;debitParty,
                <a href="model/PaymentChannelCounterParty.html" title="class in com.elarian.model">PaymentChannelCounterParty</a>&nbsp;creditParty,
-               <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value)</code></th>
+               <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value,
+               <a href="model/PaymentMode.html" title="enum in com.elarian.model">PaymentMode</a>&nbsp;mode)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i21" class="rowColor">
 <td class="colFirst"><code>reactor.core.publisher.Mono&lt;<a href="model/InitiatePaymentReply.html" title="class in com.elarian.model">InitiatePaymentReply</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initiatePayment(com.elarian.model.PaymentWalletCounterParty,com.elarian.model.PaymentCustomerCounterParty,com.elarian.model.Cash)">initiatePayment</a></span>&#8203;(<a href="model/PaymentWalletCounterParty.html" title="class in com.elarian.model">PaymentWalletCounterParty</a>&nbsp;debitParty,
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initiatePayment(com.elarian.model.PaymentWalletCounterParty,com.elarian.model.PaymentCustomerCounterParty,com.elarian.model.Cash,com.elarian.model.PaymentMode)">initiatePayment</a></span>&#8203;(<a href="model/PaymentWalletCounterParty.html" title="class in com.elarian.model">PaymentWalletCounterParty</a>&nbsp;debitParty,
                <a href="model/PaymentCustomerCounterParty.html" title="class in com.elarian.model">PaymentCustomerCounterParty</a>&nbsp;creditParty,
-               <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value)</code></th>
+               <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value,
+               <a href="model/PaymentMode.html" title="enum in com.elarian.model">PaymentMode</a>&nbsp;mode)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i22" class="altColor">
 <td class="colFirst"><code>reactor.core.publisher.Mono&lt;<a href="model/InitiatePaymentReply.html" title="class in com.elarian.model">InitiatePaymentReply</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initiatePayment(com.elarian.model.PaymentWalletCounterParty,com.elarian.model.PaymentPurseCounterParty,com.elarian.model.Cash)">initiatePayment</a></span>&#8203;(<a href="model/PaymentWalletCounterParty.html" title="class in com.elarian.model">PaymentWalletCounterParty</a>&nbsp;debitParty,
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initiatePayment(com.elarian.model.PaymentWalletCounterParty,com.elarian.model.PaymentPurseCounterParty,com.elarian.model.Cash,com.elarian.model.PaymentMode)">initiatePayment</a></span>&#8203;(<a href="model/PaymentWalletCounterParty.html" title="class in com.elarian.model">PaymentWalletCounterParty</a>&nbsp;debitParty,
                <a href="model/PaymentPurseCounterParty.html" title="class in com.elarian.model">PaymentPurseCounterParty</a>&nbsp;creditParty,
-               <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value)</code></th>
+               <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value,
+               <a href="model/PaymentMode.html" title="enum in com.elarian.model">PaymentMode</a>&nbsp;mode)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i23" class="rowColor">
 <td class="colFirst"><code>reactor.core.publisher.Mono&lt;<a href="model/InitiatePaymentReply.html" title="class in com.elarian.model">InitiatePaymentReply</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initiatePayment(com.elarian.model.PaymentWalletCounterParty,com.elarian.model.PaymentWalletCounterParty,com.elarian.model.Cash)">initiatePayment</a></span>&#8203;(<a href="model/PaymentWalletCounterParty.html" title="class in com.elarian.model">PaymentWalletCounterParty</a>&nbsp;debitParty,
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#initiatePayment(com.elarian.model.PaymentWalletCounterParty,com.elarian.model.PaymentWalletCounterParty,com.elarian.model.Cash,com.elarian.model.PaymentMode)">initiatePayment</a></span>&#8203;(<a href="model/PaymentWalletCounterParty.html" title="class in com.elarian.model">PaymentWalletCounterParty</a>&nbsp;debitParty,
                <a href="model/PaymentWalletCounterParty.html" title="class in com.elarian.model">PaymentWalletCounterParty</a>&nbsp;creditParty,
-               <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value)</code></th>
+               <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value,
+               <a href="model/PaymentMode.html" title="enum in com.elarian.model">PaymentMode</a>&nbsp;mode)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i24" class="altColor">
@@ -809,7 +825,7 @@ extends java.lang.Object</pre>
 </dl>
 </li>
 </ul>
-<a id="initiatePayment(com.elarian.model.PaymentCustomerCounterParty,com.elarian.model.PaymentCustomerCounterParty,com.elarian.model.Cash)">
+<a id="initiatePayment(com.elarian.model.PaymentCustomerCounterParty,com.elarian.model.PaymentCustomerCounterParty,com.elarian.model.Cash,com.elarian.model.PaymentMode)">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -817,10 +833,11 @@ extends java.lang.Object</pre>
 <h4>initiatePayment</h4>
 <pre class="methodSignature">public&nbsp;reactor.core.publisher.Mono&lt;<a href="model/InitiatePaymentReply.html" title="class in com.elarian.model">InitiatePaymentReply</a>&gt;&nbsp;initiatePayment&#8203;(<a href="model/PaymentCustomerCounterParty.html" title="class in com.elarian.model">PaymentCustomerCounterParty</a>&nbsp;debitParty,
                                                                          <a href="model/PaymentCustomerCounterParty.html" title="class in com.elarian.model">PaymentCustomerCounterParty</a>&nbsp;creditParty,
-                                                                         <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value)</pre>
+                                                                         <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value,
+                                                                         <a href="model/PaymentMode.html" title="enum in com.elarian.model">PaymentMode</a>&nbsp;mode)</pre>
 </li>
 </ul>
-<a id="initiatePayment(com.elarian.model.PaymentCustomerCounterParty,com.elarian.model.PaymentPurseCounterParty,com.elarian.model.Cash)">
+<a id="initiatePayment(com.elarian.model.PaymentCustomerCounterParty,com.elarian.model.PaymentPurseCounterParty,com.elarian.model.Cash,com.elarian.model.PaymentMode)">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -828,10 +845,11 @@ extends java.lang.Object</pre>
 <h4>initiatePayment</h4>
 <pre class="methodSignature">public&nbsp;reactor.core.publisher.Mono&lt;<a href="model/InitiatePaymentReply.html" title="class in com.elarian.model">InitiatePaymentReply</a>&gt;&nbsp;initiatePayment&#8203;(<a href="model/PaymentCustomerCounterParty.html" title="class in com.elarian.model">PaymentCustomerCounterParty</a>&nbsp;debitParty,
                                                                          <a href="model/PaymentPurseCounterParty.html" title="class in com.elarian.model">PaymentPurseCounterParty</a>&nbsp;creditParty,
-                                                                         <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value)</pre>
+                                                                         <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value,
+                                                                         <a href="model/PaymentMode.html" title="enum in com.elarian.model">PaymentMode</a>&nbsp;mode)</pre>
 </li>
 </ul>
-<a id="initiatePayment(com.elarian.model.PaymentCustomerCounterParty,com.elarian.model.PaymentWalletCounterParty,com.elarian.model.Cash)">
+<a id="initiatePayment(com.elarian.model.PaymentCustomerCounterParty,com.elarian.model.PaymentWalletCounterParty,com.elarian.model.Cash,com.elarian.model.PaymentMode)">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -839,10 +857,11 @@ extends java.lang.Object</pre>
 <h4>initiatePayment</h4>
 <pre class="methodSignature">public&nbsp;reactor.core.publisher.Mono&lt;<a href="model/InitiatePaymentReply.html" title="class in com.elarian.model">InitiatePaymentReply</a>&gt;&nbsp;initiatePayment&#8203;(<a href="model/PaymentCustomerCounterParty.html" title="class in com.elarian.model">PaymentCustomerCounterParty</a>&nbsp;debitParty,
                                                                          <a href="model/PaymentWalletCounterParty.html" title="class in com.elarian.model">PaymentWalletCounterParty</a>&nbsp;creditParty,
-                                                                         <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value)</pre>
+                                                                         <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value,
+                                                                         <a href="model/PaymentMode.html" title="enum in com.elarian.model">PaymentMode</a>&nbsp;mode)</pre>
 </li>
 </ul>
-<a id="initiatePayment(com.elarian.model.PaymentCustomerCounterParty,com.elarian.model.PaymentChannelCounterParty,com.elarian.model.Cash)">
+<a id="initiatePayment(com.elarian.model.PaymentCustomerCounterParty,com.elarian.model.PaymentChannelCounterParty,com.elarian.model.Cash,com.elarian.model.PaymentMode)">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -850,10 +869,11 @@ extends java.lang.Object</pre>
 <h4>initiatePayment</h4>
 <pre class="methodSignature">public&nbsp;reactor.core.publisher.Mono&lt;<a href="model/InitiatePaymentReply.html" title="class in com.elarian.model">InitiatePaymentReply</a>&gt;&nbsp;initiatePayment&#8203;(<a href="model/PaymentCustomerCounterParty.html" title="class in com.elarian.model">PaymentCustomerCounterParty</a>&nbsp;debitParty,
                                                                          <a href="model/PaymentChannelCounterParty.html" title="class in com.elarian.model">PaymentChannelCounterParty</a>&nbsp;creditParty,
-                                                                         <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value)</pre>
+                                                                         <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value,
+                                                                         <a href="model/PaymentMode.html" title="enum in com.elarian.model">PaymentMode</a>&nbsp;mode)</pre>
 </li>
 </ul>
-<a id="initiatePayment(com.elarian.model.PaymentPurseCounterParty,com.elarian.model.PaymentCustomerCounterParty,com.elarian.model.Cash)">
+<a id="initiatePayment(com.elarian.model.PaymentPurseCounterParty,com.elarian.model.PaymentCustomerCounterParty,com.elarian.model.Cash,com.elarian.model.PaymentMode)">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -861,10 +881,11 @@ extends java.lang.Object</pre>
 <h4>initiatePayment</h4>
 <pre class="methodSignature">public&nbsp;reactor.core.publisher.Mono&lt;<a href="model/InitiatePaymentReply.html" title="class in com.elarian.model">InitiatePaymentReply</a>&gt;&nbsp;initiatePayment&#8203;(<a href="model/PaymentPurseCounterParty.html" title="class in com.elarian.model">PaymentPurseCounterParty</a>&nbsp;debitParty,
                                                                          <a href="model/PaymentCustomerCounterParty.html" title="class in com.elarian.model">PaymentCustomerCounterParty</a>&nbsp;creditParty,
-                                                                         <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value)</pre>
+                                                                         <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value,
+                                                                         <a href="model/PaymentMode.html" title="enum in com.elarian.model">PaymentMode</a>&nbsp;mode)</pre>
 </li>
 </ul>
-<a id="initiatePayment(com.elarian.model.PaymentPurseCounterParty,com.elarian.model.PaymentPurseCounterParty,com.elarian.model.Cash)">
+<a id="initiatePayment(com.elarian.model.PaymentPurseCounterParty,com.elarian.model.PaymentPurseCounterParty,com.elarian.model.Cash,com.elarian.model.PaymentMode)">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -872,10 +893,11 @@ extends java.lang.Object</pre>
 <h4>initiatePayment</h4>
 <pre class="methodSignature">public&nbsp;reactor.core.publisher.Mono&lt;<a href="model/InitiatePaymentReply.html" title="class in com.elarian.model">InitiatePaymentReply</a>&gt;&nbsp;initiatePayment&#8203;(<a href="model/PaymentPurseCounterParty.html" title="class in com.elarian.model">PaymentPurseCounterParty</a>&nbsp;debitParty,
                                                                          <a href="model/PaymentPurseCounterParty.html" title="class in com.elarian.model">PaymentPurseCounterParty</a>&nbsp;creditParty,
-                                                                         <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value)</pre>
+                                                                         <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value,
+                                                                         <a href="model/PaymentMode.html" title="enum in com.elarian.model">PaymentMode</a>&nbsp;mode)</pre>
 </li>
 </ul>
-<a id="initiatePayment(com.elarian.model.PaymentPurseCounterParty,com.elarian.model.PaymentWalletCounterParty,com.elarian.model.Cash)">
+<a id="initiatePayment(com.elarian.model.PaymentPurseCounterParty,com.elarian.model.PaymentWalletCounterParty,com.elarian.model.Cash,com.elarian.model.PaymentMode)">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -883,10 +905,11 @@ extends java.lang.Object</pre>
 <h4>initiatePayment</h4>
 <pre class="methodSignature">public&nbsp;reactor.core.publisher.Mono&lt;<a href="model/InitiatePaymentReply.html" title="class in com.elarian.model">InitiatePaymentReply</a>&gt;&nbsp;initiatePayment&#8203;(<a href="model/PaymentPurseCounterParty.html" title="class in com.elarian.model">PaymentPurseCounterParty</a>&nbsp;debitParty,
                                                                          <a href="model/PaymentWalletCounterParty.html" title="class in com.elarian.model">PaymentWalletCounterParty</a>&nbsp;creditParty,
-                                                                         <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value)</pre>
+                                                                         <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value,
+                                                                         <a href="model/PaymentMode.html" title="enum in com.elarian.model">PaymentMode</a>&nbsp;mode)</pre>
 </li>
 </ul>
-<a id="initiatePayment(com.elarian.model.PaymentPurseCounterParty,com.elarian.model.PaymentChannelCounterParty,com.elarian.model.Cash)">
+<a id="initiatePayment(com.elarian.model.PaymentPurseCounterParty,com.elarian.model.PaymentChannelCounterParty,com.elarian.model.Cash,com.elarian.model.PaymentMode)">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -894,10 +917,11 @@ extends java.lang.Object</pre>
 <h4>initiatePayment</h4>
 <pre class="methodSignature">public&nbsp;reactor.core.publisher.Mono&lt;<a href="model/InitiatePaymentReply.html" title="class in com.elarian.model">InitiatePaymentReply</a>&gt;&nbsp;initiatePayment&#8203;(<a href="model/PaymentPurseCounterParty.html" title="class in com.elarian.model">PaymentPurseCounterParty</a>&nbsp;debitParty,
                                                                          <a href="model/PaymentChannelCounterParty.html" title="class in com.elarian.model">PaymentChannelCounterParty</a>&nbsp;creditParty,
-                                                                         <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value)</pre>
+                                                                         <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value,
+                                                                         <a href="model/PaymentMode.html" title="enum in com.elarian.model">PaymentMode</a>&nbsp;mode)</pre>
 </li>
 </ul>
-<a id="initiatePayment(com.elarian.model.PaymentWalletCounterParty,com.elarian.model.PaymentCustomerCounterParty,com.elarian.model.Cash)">
+<a id="initiatePayment(com.elarian.model.PaymentWalletCounterParty,com.elarian.model.PaymentCustomerCounterParty,com.elarian.model.Cash,com.elarian.model.PaymentMode)">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -905,10 +929,11 @@ extends java.lang.Object</pre>
 <h4>initiatePayment</h4>
 <pre class="methodSignature">public&nbsp;reactor.core.publisher.Mono&lt;<a href="model/InitiatePaymentReply.html" title="class in com.elarian.model">InitiatePaymentReply</a>&gt;&nbsp;initiatePayment&#8203;(<a href="model/PaymentWalletCounterParty.html" title="class in com.elarian.model">PaymentWalletCounterParty</a>&nbsp;debitParty,
                                                                          <a href="model/PaymentCustomerCounterParty.html" title="class in com.elarian.model">PaymentCustomerCounterParty</a>&nbsp;creditParty,
-                                                                         <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value)</pre>
+                                                                         <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value,
+                                                                         <a href="model/PaymentMode.html" title="enum in com.elarian.model">PaymentMode</a>&nbsp;mode)</pre>
 </li>
 </ul>
-<a id="initiatePayment(com.elarian.model.PaymentWalletCounterParty,com.elarian.model.PaymentPurseCounterParty,com.elarian.model.Cash)">
+<a id="initiatePayment(com.elarian.model.PaymentWalletCounterParty,com.elarian.model.PaymentPurseCounterParty,com.elarian.model.Cash,com.elarian.model.PaymentMode)">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -916,10 +941,11 @@ extends java.lang.Object</pre>
 <h4>initiatePayment</h4>
 <pre class="methodSignature">public&nbsp;reactor.core.publisher.Mono&lt;<a href="model/InitiatePaymentReply.html" title="class in com.elarian.model">InitiatePaymentReply</a>&gt;&nbsp;initiatePayment&#8203;(<a href="model/PaymentWalletCounterParty.html" title="class in com.elarian.model">PaymentWalletCounterParty</a>&nbsp;debitParty,
                                                                          <a href="model/PaymentPurseCounterParty.html" title="class in com.elarian.model">PaymentPurseCounterParty</a>&nbsp;creditParty,
-                                                                         <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value)</pre>
+                                                                         <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value,
+                                                                         <a href="model/PaymentMode.html" title="enum in com.elarian.model">PaymentMode</a>&nbsp;mode)</pre>
 </li>
 </ul>
-<a id="initiatePayment(com.elarian.model.PaymentWalletCounterParty,com.elarian.model.PaymentWalletCounterParty,com.elarian.model.Cash)">
+<a id="initiatePayment(com.elarian.model.PaymentWalletCounterParty,com.elarian.model.PaymentWalletCounterParty,com.elarian.model.Cash,com.elarian.model.PaymentMode)">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -927,10 +953,11 @@ extends java.lang.Object</pre>
 <h4>initiatePayment</h4>
 <pre class="methodSignature">public&nbsp;reactor.core.publisher.Mono&lt;<a href="model/InitiatePaymentReply.html" title="class in com.elarian.model">InitiatePaymentReply</a>&gt;&nbsp;initiatePayment&#8203;(<a href="model/PaymentWalletCounterParty.html" title="class in com.elarian.model">PaymentWalletCounterParty</a>&nbsp;debitParty,
                                                                          <a href="model/PaymentWalletCounterParty.html" title="class in com.elarian.model">PaymentWalletCounterParty</a>&nbsp;creditParty,
-                                                                         <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value)</pre>
+                                                                         <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value,
+                                                                         <a href="model/PaymentMode.html" title="enum in com.elarian.model">PaymentMode</a>&nbsp;mode)</pre>
 </li>
 </ul>
-<a id="initiatePayment(com.elarian.model.PaymentWalletCounterParty,com.elarian.model.PaymentChannelCounterParty,com.elarian.model.Cash)">
+<a id="initiatePayment(com.elarian.model.PaymentWalletCounterParty,com.elarian.model.PaymentChannelCounterParty,com.elarian.model.Cash,com.elarian.model.PaymentMode)">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -938,10 +965,11 @@ extends java.lang.Object</pre>
 <h4>initiatePayment</h4>
 <pre class="methodSignature">public&nbsp;reactor.core.publisher.Mono&lt;<a href="model/InitiatePaymentReply.html" title="class in com.elarian.model">InitiatePaymentReply</a>&gt;&nbsp;initiatePayment&#8203;(<a href="model/PaymentWalletCounterParty.html" title="class in com.elarian.model">PaymentWalletCounterParty</a>&nbsp;debitParty,
                                                                          <a href="model/PaymentChannelCounterParty.html" title="class in com.elarian.model">PaymentChannelCounterParty</a>&nbsp;creditParty,
-                                                                         <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value)</pre>
+                                                                         <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value,
+                                                                         <a href="model/PaymentMode.html" title="enum in com.elarian.model">PaymentMode</a>&nbsp;mode)</pre>
 </li>
 </ul>
-<a id="initiatePayment(com.elarian.model.PaymentChannelCounterParty,com.elarian.model.PaymentCustomerCounterParty,com.elarian.model.Cash)">
+<a id="initiatePayment(com.elarian.model.PaymentChannelCounterParty,com.elarian.model.PaymentCustomerCounterParty,com.elarian.model.Cash,com.elarian.model.PaymentMode)">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -949,10 +977,11 @@ extends java.lang.Object</pre>
 <h4>initiatePayment</h4>
 <pre class="methodSignature">public&nbsp;reactor.core.publisher.Mono&lt;<a href="model/InitiatePaymentReply.html" title="class in com.elarian.model">InitiatePaymentReply</a>&gt;&nbsp;initiatePayment&#8203;(<a href="model/PaymentChannelCounterParty.html" title="class in com.elarian.model">PaymentChannelCounterParty</a>&nbsp;debitParty,
                                                                          <a href="model/PaymentCustomerCounterParty.html" title="class in com.elarian.model">PaymentCustomerCounterParty</a>&nbsp;creditParty,
-                                                                         <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value)</pre>
+                                                                         <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value,
+                                                                         <a href="model/PaymentMode.html" title="enum in com.elarian.model">PaymentMode</a>&nbsp;mode)</pre>
 </li>
 </ul>
-<a id="initiatePayment(com.elarian.model.PaymentChannelCounterParty,com.elarian.model.PaymentPurseCounterParty,com.elarian.model.Cash)">
+<a id="initiatePayment(com.elarian.model.PaymentChannelCounterParty,com.elarian.model.PaymentPurseCounterParty,com.elarian.model.Cash,com.elarian.model.PaymentMode)">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -960,10 +989,11 @@ extends java.lang.Object</pre>
 <h4>initiatePayment</h4>
 <pre class="methodSignature">public&nbsp;reactor.core.publisher.Mono&lt;<a href="model/InitiatePaymentReply.html" title="class in com.elarian.model">InitiatePaymentReply</a>&gt;&nbsp;initiatePayment&#8203;(<a href="model/PaymentChannelCounterParty.html" title="class in com.elarian.model">PaymentChannelCounterParty</a>&nbsp;debitParty,
                                                                          <a href="model/PaymentPurseCounterParty.html" title="class in com.elarian.model">PaymentPurseCounterParty</a>&nbsp;creditParty,
-                                                                         <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value)</pre>
+                                                                         <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value,
+                                                                         <a href="model/PaymentMode.html" title="enum in com.elarian.model">PaymentMode</a>&nbsp;mode)</pre>
 </li>
 </ul>
-<a id="initiatePayment(com.elarian.model.PaymentChannelCounterParty,com.elarian.model.PaymentWalletCounterParty,com.elarian.model.Cash)">
+<a id="initiatePayment(com.elarian.model.PaymentChannelCounterParty,com.elarian.model.PaymentWalletCounterParty,com.elarian.model.Cash,com.elarian.model.PaymentMode)">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -971,10 +1001,11 @@ extends java.lang.Object</pre>
 <h4>initiatePayment</h4>
 <pre class="methodSignature">public&nbsp;reactor.core.publisher.Mono&lt;<a href="model/InitiatePaymentReply.html" title="class in com.elarian.model">InitiatePaymentReply</a>&gt;&nbsp;initiatePayment&#8203;(<a href="model/PaymentChannelCounterParty.html" title="class in com.elarian.model">PaymentChannelCounterParty</a>&nbsp;debitParty,
                                                                          <a href="model/PaymentWalletCounterParty.html" title="class in com.elarian.model">PaymentWalletCounterParty</a>&nbsp;creditParty,
-                                                                         <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value)</pre>
+                                                                         <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value,
+                                                                         <a href="model/PaymentMode.html" title="enum in com.elarian.model">PaymentMode</a>&nbsp;mode)</pre>
 </li>
 </ul>
-<a id="initiatePayment(com.elarian.model.PaymentChannelCounterParty,com.elarian.model.PaymentChannelCounterParty,com.elarian.model.Cash)">
+<a id="initiatePayment(com.elarian.model.PaymentChannelCounterParty,com.elarian.model.PaymentChannelCounterParty,com.elarian.model.Cash,com.elarian.model.PaymentMode)">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -982,7 +1013,8 @@ extends java.lang.Object</pre>
 <h4>initiatePayment</h4>
 <pre class="methodSignature">public&nbsp;reactor.core.publisher.Mono&lt;<a href="model/InitiatePaymentReply.html" title="class in com.elarian.model">InitiatePaymentReply</a>&gt;&nbsp;initiatePayment&#8203;(<a href="model/PaymentChannelCounterParty.html" title="class in com.elarian.model">PaymentChannelCounterParty</a>&nbsp;debitParty,
                                                                          <a href="model/PaymentChannelCounterParty.html" title="class in com.elarian.model">PaymentChannelCounterParty</a>&nbsp;creditParty,
-                                                                         <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value)</pre>
+                                                                         <a href="model/Cash.html" title="class in com.elarian.model">Cash</a>&nbsp;value,
+                                                                         <a href="model/PaymentMode.html" title="enum in com.elarian.model">PaymentMode</a>&nbsp;mode)</pre>
 </li>
 </ul>
 <a id="serializeNotificationReply(com.elarian.hera.proto.AppSocket.ServerToAppNotificationReply)">
