@@ -322,16 +322,32 @@ public final class Elarian extends Client<AppSocket.ServerToAppNotification, App
         return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, mode);
     }
 
+    public Mono<InitiatePaymentReply> initiatePayment(PaymentCustomerCounterParty debitParty, PaymentCustomerCounterParty creditParty, Cash value) {
+        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, PaymentMode.VIRTUAL);
+    }
+
     public Mono<InitiatePaymentReply> initiatePayment(PaymentCustomerCounterParty debitParty, PaymentPurseCounterParty creditParty, Cash value, PaymentMode mode) {
         return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, mode);
+    }
+
+    public Mono<InitiatePaymentReply> initiatePayment(PaymentCustomerCounterParty debitParty, PaymentPurseCounterParty creditParty, Cash value) {
+        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, PaymentMode.VIRTUAL);
     }
 
     public Mono<InitiatePaymentReply> initiatePayment(PaymentCustomerCounterParty debitParty, PaymentWalletCounterParty creditParty, Cash value, PaymentMode mode) {
         return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, mode);
     }
 
+    public Mono<InitiatePaymentReply> initiatePayment(PaymentCustomerCounterParty debitParty, PaymentWalletCounterParty creditParty, Cash value) {
+        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, PaymentMode.VIRTUAL);
+    }
+
     public Mono<InitiatePaymentReply> initiatePayment(PaymentCustomerCounterParty debitParty, PaymentChannelCounterParty creditParty, Cash value, PaymentMode mode) {
         return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, mode);
+    }
+
+    public Mono<InitiatePaymentReply> initiatePayment(PaymentCustomerCounterParty debitParty, PaymentChannelCounterParty creditParty, Cash value) {
+        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, PaymentMode.VIRTUAL);
     }
 
     // From purse
@@ -339,16 +355,32 @@ public final class Elarian extends Client<AppSocket.ServerToAppNotification, App
         return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, mode);
     }
 
+    public Mono<InitiatePaymentReply> initiatePayment(PaymentPurseCounterParty debitParty, PaymentCustomerCounterParty creditParty, Cash value) {
+        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, PaymentMode.VIRTUAL);
+    }
+
     public Mono<InitiatePaymentReply> initiatePayment(PaymentPurseCounterParty debitParty, PaymentPurseCounterParty creditParty, Cash value, PaymentMode mode) {
         return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, mode);
+    }
+
+    public Mono<InitiatePaymentReply> initiatePayment(PaymentPurseCounterParty debitParty, PaymentPurseCounterParty creditParty, Cash value) {
+        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, PaymentMode.VIRTUAL);
     }
 
     public Mono<InitiatePaymentReply> initiatePayment(PaymentPurseCounterParty debitParty, PaymentWalletCounterParty creditParty, Cash value, PaymentMode mode) {
         return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, mode);
     }
 
+    public Mono<InitiatePaymentReply> initiatePayment(PaymentPurseCounterParty debitParty, PaymentWalletCounterParty creditParty, Cash value) {
+        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, PaymentMode.VIRTUAL);
+    }
+
     public Mono<InitiatePaymentReply> initiatePayment(PaymentPurseCounterParty debitParty, PaymentChannelCounterParty creditParty, Cash value, PaymentMode mode) {
         return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, mode);
+    }
+
+    public Mono<InitiatePaymentReply> initiatePayment(PaymentPurseCounterParty debitParty, PaymentChannelCounterParty creditParty, Cash value) {
+        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, PaymentMode.VIRTUAL);
     }
 
     // From Wallet
@@ -356,16 +388,32 @@ public final class Elarian extends Client<AppSocket.ServerToAppNotification, App
         return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, mode);
     }
 
+    public Mono<InitiatePaymentReply> initiatePayment(PaymentWalletCounterParty debitParty, PaymentCustomerCounterParty creditParty, Cash value) {
+        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, PaymentMode.VIRTUAL);
+    }
+
     public Mono<InitiatePaymentReply> initiatePayment(PaymentWalletCounterParty debitParty, PaymentPurseCounterParty creditParty, Cash value, PaymentMode mode) {
         return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, mode);
+    }
+
+    public Mono<InitiatePaymentReply> initiatePayment(PaymentWalletCounterParty debitParty, PaymentPurseCounterParty creditParty, Cash value) {
+        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, PaymentMode.VIRTUAL);
     }
 
     public Mono<InitiatePaymentReply> initiatePayment(PaymentWalletCounterParty debitParty, PaymentWalletCounterParty creditParty, Cash value, PaymentMode mode) {
         return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, mode);
     }
 
+    public Mono<InitiatePaymentReply> initiatePayment(PaymentWalletCounterParty debitParty, PaymentWalletCounterParty creditParty, Cash value) {
+        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, PaymentMode.VIRTUAL);
+    }
+
     public Mono<InitiatePaymentReply> initiatePayment(PaymentWalletCounterParty debitParty, PaymentChannelCounterParty creditParty, Cash value, PaymentMode mode) {
         return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, mode);
+    }
+
+    public Mono<InitiatePaymentReply> initiatePayment(PaymentWalletCounterParty debitParty, PaymentChannelCounterParty creditParty, Cash value) {
+        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, PaymentMode.VIRTUAL);
     }
 
     // From Channel
@@ -373,16 +421,32 @@ public final class Elarian extends Client<AppSocket.ServerToAppNotification, App
         return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, mode);
     }
 
+    public Mono<InitiatePaymentReply> initiatePayment(PaymentChannelCounterParty debitParty, PaymentCustomerCounterParty creditParty, Cash value) {
+        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, PaymentMode.VIRTUAL);
+    }
+
     public Mono<InitiatePaymentReply> initiatePayment(PaymentChannelCounterParty debitParty, PaymentPurseCounterParty creditParty, Cash value, PaymentMode mode) {
         return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, mode);
+    }
+
+    public Mono<InitiatePaymentReply> initiatePayment(PaymentChannelCounterParty debitParty, PaymentPurseCounterParty creditParty, Cash value) {
+        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, PaymentMode.VIRTUAL);
     }
 
     public Mono<InitiatePaymentReply> initiatePayment(PaymentChannelCounterParty debitParty, PaymentWalletCounterParty creditParty, Cash value, PaymentMode mode) {
         return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, mode);
     }
 
+    public Mono<InitiatePaymentReply> initiatePayment(PaymentChannelCounterParty debitParty, PaymentWalletCounterParty creditParty, Cash value) {
+        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, PaymentMode.VIRTUAL);
+    }
+
     public Mono<InitiatePaymentReply> initiatePayment(PaymentChannelCounterParty debitParty, PaymentChannelCounterParty creditParty, Cash value, PaymentMode mode) {
         return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, mode);
+    }
+
+    public Mono<InitiatePaymentReply> initiatePayment(PaymentChannelCounterParty debitParty, PaymentChannelCounterParty creditParty, Cash value) {
+        return initiatePayment(new PaymentCounterParty(debitParty), new PaymentCounterParty(creditParty), value, PaymentMode.VIRTUAL);
     }
 
     /**
