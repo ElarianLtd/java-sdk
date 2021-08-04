@@ -3232,7 +3232,7 @@ public final class PaymentModel {
         java.lang.String key);
 
     /**
-     * <code>uint64 sequence_nr = 5;</code>
+     * <code>int64 sequence_nr = 5;</code>
      * @return The sequenceNr.
      */
     long getSequenceNr();
@@ -3331,7 +3331,7 @@ public final class PaymentModel {
             }
             case 40: {
 
-              sequenceNr_ = input.readUInt64();
+              sequenceNr_ = input.readInt64();
               break;
             }
             default: {
@@ -3552,7 +3552,7 @@ public final class PaymentModel {
     public static final int SEQUENCE_NR_FIELD_NUMBER = 5;
     private long sequenceNr_;
     /**
-     * <code>uint64 sequence_nr = 5;</code>
+     * <code>int64 sequence_nr = 5;</code>
      * @return The sequenceNr.
      */
     @java.lang.Override
@@ -3590,7 +3590,7 @@ public final class PaymentModel {
           PendingDefaultEntryHolder.defaultEntry,
           4);
       if (sequenceNr_ != 0L) {
-        output.writeUInt64(5, sequenceNr_);
+        output.writeInt64(5, sequenceNr_);
       }
       unknownFields.writeTo(output);
     }
@@ -3624,7 +3624,7 @@ public final class PaymentModel {
       }
       if (sequenceNr_ != 0L) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(5, sequenceNr_);
+          .computeInt64Size(5, sequenceNr_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -4435,7 +4435,7 @@ public final class PaymentModel {
 
       private long sequenceNr_ ;
       /**
-       * <code>uint64 sequence_nr = 5;</code>
+       * <code>int64 sequence_nr = 5;</code>
        * @return The sequenceNr.
        */
       @java.lang.Override
@@ -4443,7 +4443,7 @@ public final class PaymentModel {
         return sequenceNr_;
       }
       /**
-       * <code>uint64 sequence_nr = 5;</code>
+       * <code>int64 sequence_nr = 5;</code>
        * @param value The sequenceNr to set.
        * @return This builder for chaining.
        */
@@ -4454,7 +4454,7 @@ public final class PaymentModel {
         return this;
       }
       /**
-       * <code>uint64 sequence_nr = 5;</code>
+       * <code>int64 sequence_nr = 5;</code>
        * @return This builder for chaining.
        */
       public Builder clearSequenceNr() {
@@ -11213,7 +11213,7 @@ public final class PaymentModel {
       "om.elarian.hera.proto.LedgerBalance\022D\n\007p" +
       "ending\030\004 \003(\01323.com.elarian.hera.proto.Pa" +
       "ymentBalance.PendingEntry\022\023\n\013sequence_nr" +
-      "\030\005 \001(\004\032a\n\014PendingEntry\022\013\n\003key\030\001 \001(\t\022@\n\005v" +
+      "\030\005 \001(\003\032a\n\014PendingEntry\022\013\n\003key\030\001 \001(\t\022@\n\005v" +
       "alue\030\002 \001(\01321.com.elarian.hera.proto.Pend" +
       "ingPaymentTransaction:\0028\001\",\n\030PaymentPurs" +
       "eCounterParty\022\020\n\010purse_id\030\001 \001(\t\"C\n\031Payme" +
