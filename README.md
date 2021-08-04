@@ -1,9 +1,12 @@
 # Elarian
 
+[![Elarian](https://img.shields.io/maven-central/v/com.elarian/elarian-core)](https://search.maven.org/artifact/com.elarian/elarian-core/)
+
 >
 > The SDK provides convenient access to the Elarian APIs from applications written in Kotlin, Java, and Scala.
 >
 > ***Project Status: Still under ACTIVE DEVELOPMENT, APIs are unstable and may change at any time until release of v1.0.0.***
+
 
 ## Documentation
 Take a look at the [API docs here](https://developers.elarian.com). For detailed info on this SDK, see the [reference](https://elarianltd.github.io/java-sdk/).
