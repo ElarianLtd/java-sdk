@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -224,28 +224,36 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i2" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#connect(com.elarian.ConnectionListener,boolean)">connect</a></span>&#8203;(<a href="ConnectionListener.html" title="interface in com.elarian">ConnectionListener</a>&nbsp;listener,
+       boolean&nbsp;autoReconnect)</code></th>
+<td class="colLast">
+<div class="block">Connect to the elarian server</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>protected com.elarian.hera.proto.SimulatorSocket.ServerToSimulatorNotification</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#deserializeNotification(byte%5B%5D)">deserializeNotification</a></span>&#8203;(byte[]&nbsp;data)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#disconnect()">disconnect</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Disconnect from the elarian server</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#disconnect(java.lang.String)">disconnect</a></span>&#8203;(java.lang.String&nbsp;message)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isConnected()">isConnected</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>reactor.core.publisher.Mono&lt;<a href="model/SimulatorReply.html" title="class in com.elarian.model">SimulatorReply</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#receiveMessage(java.lang.String,com.elarian.model.MessagingChannel,java.lang.String,java.util.List)">receiveMessage</a></span>&#8203;(java.lang.String&nbsp;customerNumber,
               <a href="model/MessagingChannel.html" title="class in com.elarian.model">MessagingChannel</a>&nbsp;channelNumber,
@@ -255,7 +263,7 @@ extends java.lang.Object</pre>
 <div class="block">Receive a message</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>reactor.core.publisher.Mono&lt;<a href="model/SimulatorReply.html" title="class in com.elarian.model">SimulatorReply</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#receiveMessage(java.lang.String,com.elarian.model.MessagingChannel,java.lang.String,java.util.List,com.elarian.model.Cash)">receiveMessage</a></span>&#8203;(java.lang.String&nbsp;customerNumber,
               <a href="model/MessagingChannel.html" title="class in com.elarian.model">MessagingChannel</a>&nbsp;channelNumber,
@@ -266,7 +274,7 @@ extends java.lang.Object</pre>
 <div class="block">Receive a message</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>reactor.core.publisher.Mono&lt;<a href="model/SimulatorReply.html" title="class in com.elarian.model">SimulatorReply</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#receivePayment(java.lang.String,com.elarian.model.PaymentChannel,java.lang.String,com.elarian.model.Cash,com.elarian.model.PaymentStatus,com.elarian.model.PaymentMode)">receivePayment</a></span>&#8203;(java.lang.String&nbsp;transactionId,
               <a href="model/PaymentChannel.html" title="class in com.elarian.model">PaymentChannel</a>&nbsp;channelNumber,
@@ -278,47 +286,47 @@ extends java.lang.Object</pre>
 <div class="block">Receive payment</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#registerGlobalNotificationHandler(java.util.function.Function)">registerGlobalNotificationHandler</a></span>&#8203;(java.util.function.Function&lt;B,&#8203;reactor.core.publisher.Mono&lt;C&gt;&gt;&nbsp;handler)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>protected byte[]</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#serializeNotificationReply(com.elarian.hera.proto.SimulatorSocket.ServerToSimulatorNotificationReply)">serializeNotificationReply</a></span>&#8203;(com.elarian.hera.proto.SimulatorSocket.ServerToSimulatorNotificationReply&nbsp;data)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code>protected byte[]</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#serializeSetupPayload(com.elarian.model.ClientConfig)">serializeSetupPayload</a></span>&#8203;(<a href="model/ClientConfig.html" title="class in com.elarian.model">ClientConfig</a>&nbsp;clientOpts)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setOnCheckoutPaymentNotificationHandler(com.elarian.model.BaseNotificationHandler)">setOnCheckoutPaymentNotificationHandler</a></span>&#8203;(<a href="model/BaseNotificationHandler.html" title="interface in com.elarian.model">BaseNotificationHandler</a>&lt;<a href="model/CheckoutPaymentSimulatorNotification.html" title="class in com.elarian.model">CheckoutPaymentSimulatorNotification</a>,&#8203;<a href="model/MessageBody.html" title="class in com.elarian.model">MessageBody</a>&gt;&nbsp;onCheckoutPaymentBaseNotificationHandler)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i14" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setOnMakeVoiceCallNotificationHandler(com.elarian.model.BaseNotificationHandler)">setOnMakeVoiceCallNotificationHandler</a></span>&#8203;(<a href="model/BaseNotificationHandler.html" title="interface in com.elarian.model">BaseNotificationHandler</a>&lt;<a href="model/MakeVoiceCallSimulatorNotification.html" title="class in com.elarian.model">MakeVoiceCallSimulatorNotification</a>,&#8203;<a href="model/MessageBody.html" title="class in com.elarian.model">MessageBody</a>&gt;&nbsp;onMakeVoiceCallBaseNotificationHandler)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setOnSendChannelPaymentNotificationHandler(com.elarian.model.BaseNotificationHandler)">setOnSendChannelPaymentNotificationHandler</a></span>&#8203;(<a href="model/BaseNotificationHandler.html" title="interface in com.elarian.model">BaseNotificationHandler</a>&lt;<a href="model/SendChannelPaymentSimulatorNotification.html" title="class in com.elarian.model">SendChannelPaymentSimulatorNotification</a>,&#8203;<a href="model/MessageBody.html" title="class in com.elarian.model">MessageBody</a>&gt;&nbsp;onSendChannelPaymentBaseNotificationHandler)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i15" class="rowColor">
+<tr id="i16" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setOnSendCustomerPaymentNotificationHandler(com.elarian.model.BaseNotificationHandler)">setOnSendCustomerPaymentNotificationHandler</a></span>&#8203;(<a href="model/BaseNotificationHandler.html" title="interface in com.elarian.model">BaseNotificationHandler</a>&lt;<a href="model/SendCustomerPaymentSimulatorNotification.html" title="class in com.elarian.model">SendCustomerPaymentSimulatorNotification</a>,&#8203;<a href="model/MessageBody.html" title="class in com.elarian.model">MessageBody</a>&gt;&nbsp;onSendCustomerPaymentBaseNotificationHandler)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i16" class="altColor">
+<tr id="i17" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setOnSendMessageNotificationHandler(com.elarian.model.BaseNotificationHandler)">setOnSendMessageNotificationHandler</a></span>&#8203;(<a href="model/BaseNotificationHandler.html" title="interface in com.elarian.model">BaseNotificationHandler</a>&lt;<a href="model/SendMessageSimulatorNotification.html" title="class in com.elarian.model">SendMessageSimulatorNotification</a>,&#8203;<a href="model/MessageBody.html" title="class in com.elarian.model">MessageBody</a>&gt;&nbsp;onSendMessageBaseNotificationHandler)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i17" class="rowColor">
+<tr id="i18" class="altColor">
 <td class="colFirst"><code>reactor.core.publisher.Mono&lt;<a href="model/SimulatorReply.html" title="class in com.elarian.model">SimulatorReply</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#updatePaymentStatus(java.lang.String,com.elarian.model.PaymentStatus)">updatePaymentStatus</a></span>&#8203;(java.lang.String&nbsp;transactionId,
                    <a href="model/PaymentStatus.html" title="enum in com.elarian.model">PaymentStatus</a>&nbsp;status)</code></th>
@@ -578,12 +586,28 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>connect</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;connect&#8203;(<a href="ConnectionListener.html" title="interface in com.elarian">ConnectionListener</a>&nbsp;listener)
+<pre class="methodSignature">public&nbsp;void&nbsp;connect&#8203;(<a href="ConnectionListener.html" title="interface in com.elarian">ConnectionListener</a>&nbsp;listener)</pre>
+<div class="block">Connect to the elarian server</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>listener</code> - ConnectionListener</dd>
+</dl>
+</li>
+</ul>
+<a id="connect(com.elarian.ConnectionListener,boolean)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>connect</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;connect&#8203;(<a href="ConnectionListener.html" title="interface in com.elarian">ConnectionListener</a>&nbsp;listener,
+                    boolean&nbsp;autoReconnect)
              throws java.lang.RuntimeException</pre>
 <div class="block">Connect to the elarian server</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>listener</code> - ConnectionListener</dd>
+<dd><code>autoReconnect</code> - </dd>
 <dt><span class="throwsLabel">Throws:</span></dt>
 <dd><code>java.lang.RuntimeException</code></dd>
 </dl>

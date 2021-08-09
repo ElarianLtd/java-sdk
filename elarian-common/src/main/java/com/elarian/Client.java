@@ -73,13 +73,21 @@ abstract class Client<B, C> {
         }));
     }
 
+  /**
+   * Connect to the elarian server
+   * @param listener ConnectionListener
+   */
+    public void connect(ConnectionListener listener) {
+        connect(listener, true);
+    }
 
     /**
      * Connect to the elarian server
      * @param listener ConnectionListener
+     * @param autoReconnect
      * @throws RuntimeException
      */
-    public void connect(ConnectionListener listener) throws RuntimeException {
+    public void connect(ConnectionListener listener, boolean autoReconnect) throws RuntimeException {
         if (this.isConnected()) throw new RuntimeException("Client is already connected");
         if (listener == null) throw new RuntimeException("listener is required");
 
@@ -99,8 +107,19 @@ abstract class Client<B, C> {
                 .doOnDisconnected(
                     connection -> {
                       log("Disconnected");
-                      disconnect();
-                      listener.onClosed();
+                      if (autoReconnect) {
+                        long delay = clientOpts.connectionConfig.reconnectTimeout;
+                        log("Will attempt to reconnect in " + delay + "ms");
+                        Mono.delay(Duration.ofSeconds(delay))
+                            .subscribe(
+                                    l -> {
+                                      log("Attempting to reconnect...");
+                                      connect(listener);
+                                    });
+                      } else {
+                         disconnect();
+                         listener.onClosed();
+                      }
                     }));
 
         resume = new Resume()

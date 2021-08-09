@@ -171,6 +171,11 @@ extends java.lang.Object</pre>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#port">port</a></span></code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
+<tr class="rowColor">
+<td class="colFirst"><code>long</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#reconnectTimeout">reconnectTimeout</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
 </table>
 </li>
 </ul>
@@ -193,11 +198,12 @@ extends java.lang.Object</pre>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(long,long,boolean,java.lang.String,int)">ConnectionConfig</a></span>&#8203;(long&nbsp;lifetime,
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(long,long,boolean,java.lang.String,int,long)">ConnectionConfig</a></span>&#8203;(long&nbsp;lifetime,
                 long&nbsp;keepAlive,
                 boolean&nbsp;resumable,
                 java.lang.String&nbsp;host,
-                int&nbsp;port)</code></th>
+                int&nbsp;port,
+                long&nbsp;reconnectTimeout)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
@@ -273,10 +279,19 @@ extends java.lang.Object</pre>
 <a id="isResumable">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>isResumable</h4>
 <pre>public final&nbsp;boolean isResumable</pre>
+</li>
+</ul>
+<a id="reconnectTimeout">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>reconnectTimeout</h4>
+<pre>public final&nbsp;long reconnectTimeout</pre>
 </li>
 </ul>
 </li>
@@ -289,7 +304,7 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a id="&lt;init&gt;(long,long,boolean,java.lang.String,int)">
+<a id="&lt;init&gt;(long,long,boolean,java.lang.String,int,long)">
 <!--   -->
 </a>
 <ul class="blockList">
@@ -299,7 +314,8 @@ extends java.lang.Object</pre>
                         long&nbsp;keepAlive,
                         boolean&nbsp;resumable,
                         java.lang.String&nbsp;host,
-                        int&nbsp;port)</pre>
+                        int&nbsp;port,
+                        long&nbsp;reconnectTimeout)</pre>
 </li>
 </ul>
 <a id="&lt;init&gt;()">
