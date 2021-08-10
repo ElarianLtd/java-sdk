@@ -1,8 +1,22 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.2.6-0.2.9] - 2021-08-10
 
-## [0.0.x]
+### Added
+
+- Make reconnect timeout configurable
+- Make server host/port configurable
+- Customer utilities for tags, metadata and secondary Ids
+
+### Fixes
+
+- Reconnect timeout
+- Messaging state schema
+- Ussd input schema
+- Connection management
+
+## [0.0.0]
 
 ### Added
 
