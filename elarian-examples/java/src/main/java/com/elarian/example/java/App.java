@@ -25,7 +25,7 @@ public class App {
     app.initiatePayment(
             new PaymentPurseCounterParty(System.getenv("PURSE_ID")),
             new PaymentCustomerCounterParty(number, mpesaChannel),
-            new Cash("KES", balance), PaymentMode.HOSTED)
+            new Cash("KES", balance))
         .flatMap(
             res -> {
               if (res.status != PaymentStatus.SUCCESS

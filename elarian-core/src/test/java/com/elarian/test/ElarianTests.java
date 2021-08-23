@@ -8,7 +8,6 @@ import com.elarian.model.InitiatePaymentReply;
 import com.elarian.model.Message;
 import com.elarian.model.MessageBody;
 import com.elarian.model.PaymentCustomerCounterParty;
-import com.elarian.model.PaymentMode;
 import com.elarian.model.PaymentPurseCounterParty;
 import com.elarian.model.Reminder;
 import com.elarian.model.Tag;
@@ -86,8 +85,7 @@ public class ElarianTests {
             .initiatePayment(
                 new PaymentCustomerCounterParty(customerNumber, Fixtures.mpesaChannel),
                 new PaymentPurseCounterParty(Fixtures.PURSE_ID),
-                new Cash("KES", 100),
-                PaymentMode.HOSTED)
+                new Cash("KES", 100))
             .block(Duration.ofSeconds(5));
 
         assertNotNull(reply);

@@ -318,7 +318,7 @@ public final class Simulator extends Client<SimulatorSocket.ServerToSimulatorNot
      * @param status
      * @return
      */
-    public Mono<SimulatorReply> receivePayment(String transactionId, PaymentChannel channelNumber, String customerNumber, Cash value, PaymentStatus status, PaymentMode mode) {
+    public Mono<SimulatorReply> receivePayment(String transactionId, PaymentChannel channelNumber, String customerNumber, Cash value, PaymentStatus status) {
         SimulatorSocket.ReceivePaymentSimulatorCommand cmd = SimulatorSocket.ReceivePaymentSimulatorCommand
                 .newBuilder()
                 .setValue(CommonModel.Cash
@@ -327,7 +327,6 @@ public final class Simulator extends Client<SimulatorSocket.ServerToSimulatorNot
                         .setCurrencyCode(value.currencyCode)
                         .build())
                 .setStatusValue(status.getValue())
-                .setModeValue(mode.getValue())
                 .setTransactionId(transactionId)
                 .setChannelNumber(PaymentModel.PaymentChannelNumber
                         .newBuilder()

@@ -289,30 +289,17 @@ public final class Customer implements ICustomer {
                               balance.sequenceNr = val.getSequenceNr();
                               balance.currencyCode = val.getCurrencyCode();
 
-                              if (val.hasHosted()) {
-                                  Cash actual =
-                                          new Cash(
-                                                  val.getHosted().getActual().getCurrencyCode(),
-                                                  val.getHosted().getActual().getAmount());
-                                  Cash available =
-                                          new Cash(
-                                                  val.getHosted().getAvailable().getCurrencyCode(),
-                                                  val.getHosted().getAvailable().getAmount());
-                                  balance.hosted = new PaymentState.LedgerBalance(available, actual);
+                              if (val.hasActual()) {
+                                  balance.actual = new Cash(
+                                          val.getActual().getCurrencyCode(),
+                                          val.getActual().getAmount());
                               }
 
-                              if (val.hasVirtual()) {
-                                  Cash actual =
-                                          new Cash(
-                                                  val.getVirtual().getActual().getCurrencyCode(),
-                                                  val.getVirtual().getActual().getAmount());
-                                  Cash available =
-                                          new Cash(
-                                                  val.getVirtual().getAvailable().getCurrencyCode(),
-                                                  val.getVirtual().getAvailable().getAmount());
-                                  balance.virtual = new PaymentState.LedgerBalance(available, actual);
+                              if (val.hasAvailable()) {
+                                  balance.available = new Cash(
+                                          val.getAvailable().getCurrencyCode(),
+                                          val.getAvailable().getAmount());
                               }
-
 
                               val.getPendingMap()
                                   .forEach(
