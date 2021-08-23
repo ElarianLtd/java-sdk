@@ -3004,23 +3004,12 @@ public final class SimulatorSocket {
     com.elarian.hera.proto.CommonModel.CashOrBuilder getValueOrBuilder();
 
     /**
-     * <code>.com.elarian.hera.proto.PaymentMode mode = 5;</code>
-     * @return The enum numeric value on the wire for mode.
-     */
-    int getModeValue();
-    /**
-     * <code>.com.elarian.hera.proto.PaymentMode mode = 5;</code>
-     * @return The mode.
-     */
-    com.elarian.hera.proto.PaymentModel.PaymentMode getMode();
-
-    /**
-     * <code>.com.elarian.hera.proto.PaymentStatus status = 6;</code>
+     * <code>.com.elarian.hera.proto.PaymentStatus status = 5;</code>
      * @return The enum numeric value on the wire for status.
      */
     int getStatusValue();
     /**
-     * <code>.com.elarian.hera.proto.PaymentStatus status = 6;</code>
+     * <code>.com.elarian.hera.proto.PaymentStatus status = 5;</code>
      * @return The status.
      */
     com.elarian.hera.proto.PaymentModel.PaymentStatus getStatus();
@@ -3040,7 +3029,6 @@ public final class SimulatorSocket {
     private ReceivePaymentSimulatorCommand() {
       transactionId_ = "";
       customerNumber_ = "";
-      mode_ = 0;
       status_ = 0;
     }
 
@@ -3113,12 +3101,6 @@ public final class SimulatorSocket {
               break;
             }
             case 40: {
-              int rawValue = input.readEnum();
-
-              mode_ = rawValue;
-              break;
-            }
-            case 48: {
               int rawValue = input.readEnum();
 
               status_ = rawValue;
@@ -3284,36 +3266,17 @@ public final class SimulatorSocket {
       return getValue();
     }
 
-    public static final int MODE_FIELD_NUMBER = 5;
-    private int mode_;
-    /**
-     * <code>.com.elarian.hera.proto.PaymentMode mode = 5;</code>
-     * @return The enum numeric value on the wire for mode.
-     */
-    @java.lang.Override public int getModeValue() {
-      return mode_;
-    }
-    /**
-     * <code>.com.elarian.hera.proto.PaymentMode mode = 5;</code>
-     * @return The mode.
-     */
-    @java.lang.Override public com.elarian.hera.proto.PaymentModel.PaymentMode getMode() {
-      @SuppressWarnings("deprecation")
-      com.elarian.hera.proto.PaymentModel.PaymentMode result = com.elarian.hera.proto.PaymentModel.PaymentMode.valueOf(mode_);
-      return result == null ? com.elarian.hera.proto.PaymentModel.PaymentMode.UNRECOGNIZED : result;
-    }
-
-    public static final int STATUS_FIELD_NUMBER = 6;
+    public static final int STATUS_FIELD_NUMBER = 5;
     private int status_;
     /**
-     * <code>.com.elarian.hera.proto.PaymentStatus status = 6;</code>
+     * <code>.com.elarian.hera.proto.PaymentStatus status = 5;</code>
      * @return The enum numeric value on the wire for status.
      */
     @java.lang.Override public int getStatusValue() {
       return status_;
     }
     /**
-     * <code>.com.elarian.hera.proto.PaymentStatus status = 6;</code>
+     * <code>.com.elarian.hera.proto.PaymentStatus status = 5;</code>
      * @return The status.
      */
     @java.lang.Override public com.elarian.hera.proto.PaymentModel.PaymentStatus getStatus() {
@@ -3348,11 +3311,8 @@ public final class SimulatorSocket {
       if (value_ != null) {
         output.writeMessage(4, getValue());
       }
-      if (mode_ != com.elarian.hera.proto.PaymentModel.PaymentMode.PAYMENT_MODE_UNSPECIFIED.getNumber()) {
-        output.writeEnum(5, mode_);
-      }
       if (status_ != com.elarian.hera.proto.PaymentModel.PaymentStatus.PAYMENT_STATUS_UNSPECIFIED.getNumber()) {
-        output.writeEnum(6, status_);
+        output.writeEnum(5, status_);
       }
       unknownFields.writeTo(output);
     }
@@ -3377,13 +3337,9 @@ public final class SimulatorSocket {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(4, getValue());
       }
-      if (mode_ != com.elarian.hera.proto.PaymentModel.PaymentMode.PAYMENT_MODE_UNSPECIFIED.getNumber()) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(5, mode_);
-      }
       if (status_ != com.elarian.hera.proto.PaymentModel.PaymentStatus.PAYMENT_STATUS_UNSPECIFIED.getNumber()) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(6, status_);
+          .computeEnumSize(5, status_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -3414,7 +3370,6 @@ public final class SimulatorSocket {
         if (!getValue()
             .equals(other.getValue())) return false;
       }
-      if (mode_ != other.mode_) return false;
       if (status_ != other.status_) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -3439,8 +3394,6 @@ public final class SimulatorSocket {
         hash = (37 * hash) + VALUE_FIELD_NUMBER;
         hash = (53 * hash) + getValue().hashCode();
       }
-      hash = (37 * hash) + MODE_FIELD_NUMBER;
-      hash = (53 * hash) + mode_;
       hash = (37 * hash) + STATUS_FIELD_NUMBER;
       hash = (53 * hash) + status_;
       hash = (29 * hash) + unknownFields.hashCode();
@@ -3592,8 +3545,6 @@ public final class SimulatorSocket {
           value_ = null;
           valueBuilder_ = null;
         }
-        mode_ = 0;
-
         status_ = 0;
 
         return this;
@@ -3634,7 +3585,6 @@ public final class SimulatorSocket {
         } else {
           result.value_ = valueBuilder_.build();
         }
-        result.mode_ = mode_;
         result.status_ = status_;
         onBuilt();
         return result;
@@ -3697,9 +3647,6 @@ public final class SimulatorSocket {
         }
         if (other.hasValue()) {
           mergeValue(other.getValue());
-        }
-        if (other.mode_ != 0) {
-          setModeValue(other.getModeValue());
         }
         if (other.status_ != 0) {
           setStatusValue(other.getStatusValue());
@@ -4123,70 +4070,16 @@ public final class SimulatorSocket {
         return valueBuilder_;
       }
 
-      private int mode_ = 0;
-      /**
-       * <code>.com.elarian.hera.proto.PaymentMode mode = 5;</code>
-       * @return The enum numeric value on the wire for mode.
-       */
-      @java.lang.Override public int getModeValue() {
-        return mode_;
-      }
-      /**
-       * <code>.com.elarian.hera.proto.PaymentMode mode = 5;</code>
-       * @param value The enum numeric value on the wire for mode to set.
-       * @return This builder for chaining.
-       */
-      public Builder setModeValue(int value) {
-        
-        mode_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.com.elarian.hera.proto.PaymentMode mode = 5;</code>
-       * @return The mode.
-       */
-      @java.lang.Override
-      public com.elarian.hera.proto.PaymentModel.PaymentMode getMode() {
-        @SuppressWarnings("deprecation")
-        com.elarian.hera.proto.PaymentModel.PaymentMode result = com.elarian.hera.proto.PaymentModel.PaymentMode.valueOf(mode_);
-        return result == null ? com.elarian.hera.proto.PaymentModel.PaymentMode.UNRECOGNIZED : result;
-      }
-      /**
-       * <code>.com.elarian.hera.proto.PaymentMode mode = 5;</code>
-       * @param value The mode to set.
-       * @return This builder for chaining.
-       */
-      public Builder setMode(com.elarian.hera.proto.PaymentModel.PaymentMode value) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        
-        mode_ = value.getNumber();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>.com.elarian.hera.proto.PaymentMode mode = 5;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearMode() {
-        
-        mode_ = 0;
-        onChanged();
-        return this;
-      }
-
       private int status_ = 0;
       /**
-       * <code>.com.elarian.hera.proto.PaymentStatus status = 6;</code>
+       * <code>.com.elarian.hera.proto.PaymentStatus status = 5;</code>
        * @return The enum numeric value on the wire for status.
        */
       @java.lang.Override public int getStatusValue() {
         return status_;
       }
       /**
-       * <code>.com.elarian.hera.proto.PaymentStatus status = 6;</code>
+       * <code>.com.elarian.hera.proto.PaymentStatus status = 5;</code>
        * @param value The enum numeric value on the wire for status to set.
        * @return This builder for chaining.
        */
@@ -4197,7 +4090,7 @@ public final class SimulatorSocket {
         return this;
       }
       /**
-       * <code>.com.elarian.hera.proto.PaymentStatus status = 6;</code>
+       * <code>.com.elarian.hera.proto.PaymentStatus status = 5;</code>
        * @return The status.
        */
       @java.lang.Override
@@ -4207,7 +4100,7 @@ public final class SimulatorSocket {
         return result == null ? com.elarian.hera.proto.PaymentModel.PaymentStatus.UNRECOGNIZED : result;
       }
       /**
-       * <code>.com.elarian.hera.proto.PaymentStatus status = 6;</code>
+       * <code>.com.elarian.hera.proto.PaymentStatus status = 5;</code>
        * @param value The status to set.
        * @return This builder for chaining.
        */
@@ -4221,7 +4114,7 @@ public final class SimulatorSocket {
         return this;
       }
       /**
-       * <code>.com.elarian.hera.proto.PaymentStatus status = 6;</code>
+       * <code>.com.elarian.hera.proto.PaymentStatus status = 5;</code>
        * @return This builder for chaining.
        */
       public Builder clearStatus() {
@@ -17214,81 +17107,79 @@ public final class SimulatorSocket {
       "\004 \001(\0132\034.google.protobuf.StringValue\022*\n\004c" +
       "ost\030\005 \001(\0132\034.com.elarian.hera.proto.Cash\022" +
       "+\n\010duration\030\006 \001(\0132\031.google.protobuf.Dura" +
-      "tion\"\256\002\n\036ReceivePaymentSimulatorCommand\022" +
+      "tion\"\373\001\n\036ReceivePaymentSimulatorCommand\022" +
       "\026\n\016transaction_id\030\001 \001(\t\022D\n\016channel_numbe" +
       "r\030\002 \001(\0132,.com.elarian.hera.proto.Payment" +
       "ChannelNumber\022\027\n\017customer_number\030\003 \001(\t\022+" +
       "\n\005value\030\004 \001(\0132\034.com.elarian.hera.proto.C" +
-      "ash\0221\n\004mode\030\005 \001(\0162#.com.elarian.hera.pro" +
-      "to.PaymentMode\0225\n\006status\030\006 \001(\0162%.com.ela" +
-      "rian.hera.proto.PaymentStatus\"t\n#UpdateP" +
-      "aymentStatusSimulatorCommand\022\026\n\016transact" +
-      "ion_id\030\001 \001(\t\0225\n\006status\030\002 \001(\0162%.com.elari" +
-      "an.hera.proto.PaymentStatus\"~\n\035Simulator" +
-      "ToServerCommandReply\022\016\n\006status\030\001 \001(\010\022\023\n\013" +
-      "description\030\002 \001(\t\0228\n\007message\030\003 \001(\0132\'.com" +
-      ".elarian.hera.proto.OutboundMessage\"\357\003\n\035" +
-      "ServerToSimulatorNotification\022P\n\014send_me" +
-      "ssage\030\001 \001(\01328.com.elarian.hera.proto.Sen" +
-      "dMessageSimulatorNotificationH\000\022U\n\017make_" +
-      "voice_call\030\002 \001(\0132:.com.elarian.hera.prot" +
-      "o.MakeVoiceCallSimulatorNotificationH\000\022a" +
-      "\n\025send_customer_payment\030\003 \001(\0132@.com.elar" +
-      "ian.hera.proto.SendCustomerPaymentSimula" +
-      "torNotificationH\000\022_\n\024send_channel_paymen" +
-      "t\030\004 \001(\0132?.com.elarian.hera.proto.SendCha" +
-      "nnelPaymentSimulatorNotificationH\000\022X\n\020ch" +
-      "eckout_payment\030\005 \001(\0132<.com.elarian.hera." +
-      "proto.CheckoutPaymentSimulatorNotificati" +
-      "onH\000B\007\n\005entry\"$\n\"ServerToSimulatorNotifi" +
-      "cationReply\"\236\002\n SendMessageSimulatorNoti" +
+      "ash\0225\n\006status\030\005 \001(\0162%.com.elarian.hera.p" +
+      "roto.PaymentStatus\"t\n#UpdatePaymentStatu" +
+      "sSimulatorCommand\022\026\n\016transaction_id\030\001 \001(" +
+      "\t\0225\n\006status\030\002 \001(\0162%.com.elarian.hera.pro" +
+      "to.PaymentStatus\"~\n\035SimulatorToServerCom" +
+      "mandReply\022\016\n\006status\030\001 \001(\010\022\023\n\013description" +
+      "\030\002 \001(\t\0228\n\007message\030\003 \001(\0132\'.com.elarian.he" +
+      "ra.proto.OutboundMessage\"\357\003\n\035ServerToSim" +
+      "ulatorNotification\022P\n\014send_message\030\001 \001(\013" +
+      "28.com.elarian.hera.proto.SendMessageSim" +
+      "ulatorNotificationH\000\022U\n\017make_voice_call\030" +
+      "\002 \001(\0132:.com.elarian.hera.proto.MakeVoice" +
+      "CallSimulatorNotificationH\000\022a\n\025send_cust" +
+      "omer_payment\030\003 \001(\0132@.com.elarian.hera.pr" +
+      "oto.SendCustomerPaymentSimulatorNotifica" +
+      "tionH\000\022_\n\024send_channel_payment\030\004 \001(\0132?.c" +
+      "om.elarian.hera.proto.SendChannelPayment" +
+      "SimulatorNotificationH\000\022X\n\020checkout_paym" +
+      "ent\030\005 \001(\0132<.com.elarian.hera.proto.Check" +
+      "outPaymentSimulatorNotificationH\000B\007\n\005ent" +
+      "ry\"$\n\"ServerToSimulatorNotificationReply" +
+      "\"\236\002\n SendMessageSimulatorNotification\022\016\n" +
+      "\006org_id\030\001 \001(\t\022\023\n\013customer_id\030\002 \001(\t\022\022\n\nme" +
+      "ssage_id\030\003 \001(\t\022?\n\017customer_number\030\004 \001(\0132" +
+      "&.com.elarian.hera.proto.CustomerNumber\022" +
+      "F\n\016channel_number\030\005 \001(\0132..com.elarian.he" +
+      "ra.proto.MessagingChannelNumber\0228\n\007messa" +
+      "ge\030\006 \001(\0132\'.com.elarian.hera.proto.Outbou" +
+      "ndMessage\"\346\001\n\"MakeVoiceCallSimulatorNoti" +
       "fication\022\016\n\006org_id\030\001 \001(\t\022\023\n\013customer_id\030" +
-      "\002 \001(\t\022\022\n\nmessage_id\030\003 \001(\t\022?\n\017customer_nu" +
+      "\002 \001(\t\022\022\n\nsession_id\030\003 \001(\t\022?\n\017customer_nu" +
       "mber\030\004 \001(\0132&.com.elarian.hera.proto.Cust" +
       "omerNumber\022F\n\016channel_number\030\005 \001(\0132..com" +
       ".elarian.hera.proto.MessagingChannelNumb" +
-      "er\0228\n\007message\030\006 \001(\0132\'.com.elarian.hera.p" +
-      "roto.OutboundMessage\"\346\001\n\"MakeVoiceCallSi" +
-      "mulatorNotification\022\016\n\006org_id\030\001 \001(\t\022\023\n\013c" +
-      "ustomer_id\030\002 \001(\t\022\022\n\nsession_id\030\003 \001(\t\022?\n\017" +
-      "customer_number\030\004 \001(\0132&.com.elarian.hera" +
-      ".proto.CustomerNumber\022F\n\016channel_number\030" +
-      "\005 \001(\0132..com.elarian.hera.proto.Messaging" +
-      "ChannelNumber\"\302\003\n(SendCustomerPaymentSim" +
-      "ulatorNotification\022\016\n\006org_id\030\001 \001(\t\022\023\n\013cu" +
-      "stomer_id\030\002 \001(\t\022\016\n\006app_id\030\003 \001(\t\022C\n\006walle" +
-      "t\030\004 \001(\01321.com.elarian.hera.proto.Payment" +
-      "WalletCounterPartyH\000\022A\n\005purse\030\005 \001(\01320.co" +
-      "m.elarian.hera.proto.PaymentPurseCounter" +
-      "PartyH\000\022\026\n\016transaction_id\030\006 \001(\t\022?\n\017custo" +
-      "mer_number\030\007 \001(\0132&.com.elarian.hera.prot" +
-      "o.CustomerNumber\022D\n\016channel_number\030\010 \001(\013" +
-      "2,.com.elarian.hera.proto.PaymentChannel" +
-      "Number\022+\n\005value\030\t \001(\0132\034.com.elarian.hera" +
-      ".proto.CashB\r\n\013debit_party\"\262\003\n\'SendChann" +
-      "elPaymentSimulatorNotification\022\016\n\006org_id" +
-      "\030\001 \001(\t\022\016\n\006app_id\030\002 \001(\t\022C\n\006wallet\030\003 \001(\01321" +
-      ".com.elarian.hera.proto.PaymentWalletCou" +
-      "nterPartyH\000\022A\n\005purse\030\004 \001(\01320.com.elarian" +
-      ".hera.proto.PaymentPurseCounterPartyH\000\022\026" +
-      "\n\016transaction_id\030\005 \001(\t\0227\n\007channel\030\006 \001(\0162" +
-      "&.com.elarian.hera.proto.PaymentChannel\022" +
-      "\016\n\006source\030\007 \001(\t\022\023\n\013destination\030\010 \001(\t\022-\n\007" +
-      "account\030\t \001(\0132\034.google.protobuf.StringVa" +
-      "lue\022+\n\005value\030\n \001(\0132\034.com.elarian.hera.pr" +
-      "oto.CashB\r\n\013debit_party\"\277\003\n$CheckoutPaym" +
-      "entSimulatorNotification\022\016\n\006org_id\030\001 \001(\t" +
-      "\022\023\n\013customer_id\030\002 \001(\t\022\016\n\006app_id\030\003 \001(\t\022C\n" +
-      "\006wallet\030\004 \001(\01321.com.elarian.hera.proto.P" +
-      "aymentWalletCounterPartyH\000\022A\n\005purse\030\005 \001(" +
-      "\01320.com.elarian.hera.proto.PaymentPurseC" +
-      "ounterPartyH\000\022\026\n\016transaction_id\030\006 \001(\t\022?\n" +
-      "\017customer_number\030\007 \001(\0132&.com.elarian.her" +
-      "a.proto.CustomerNumber\022D\n\016channel_number" +
-      "\030\010 \001(\0132,.com.elarian.hera.proto.PaymentC" +
-      "hannelNumber\022+\n\005value\030\t \001(\0132\034.com.elaria" +
-      "n.hera.proto.CashB\016\n\014credit_partyb\006proto" +
-      "3"
+      "er\"\302\003\n(SendCustomerPaymentSimulatorNotif" +
+      "ication\022\016\n\006org_id\030\001 \001(\t\022\023\n\013customer_id\030\002" +
+      " \001(\t\022\016\n\006app_id\030\003 \001(\t\022C\n\006wallet\030\004 \001(\01321.c" +
+      "om.elarian.hera.proto.PaymentWalletCount" +
+      "erPartyH\000\022A\n\005purse\030\005 \001(\01320.com.elarian.h" +
+      "era.proto.PaymentPurseCounterPartyH\000\022\026\n\016" +
+      "transaction_id\030\006 \001(\t\022?\n\017customer_number\030" +
+      "\007 \001(\0132&.com.elarian.hera.proto.CustomerN" +
+      "umber\022D\n\016channel_number\030\010 \001(\0132,.com.elar" +
+      "ian.hera.proto.PaymentChannelNumber\022+\n\005v" +
+      "alue\030\t \001(\0132\034.com.elarian.hera.proto.Cash" +
+      "B\r\n\013debit_party\"\262\003\n\'SendChannelPaymentSi" +
+      "mulatorNotification\022\016\n\006org_id\030\001 \001(\t\022\016\n\006a" +
+      "pp_id\030\002 \001(\t\022C\n\006wallet\030\003 \001(\01321.com.elaria" +
+      "n.hera.proto.PaymentWalletCounterPartyH\000" +
+      "\022A\n\005purse\030\004 \001(\01320.com.elarian.hera.proto" +
+      ".PaymentPurseCounterPartyH\000\022\026\n\016transacti" +
+      "on_id\030\005 \001(\t\0227\n\007channel\030\006 \001(\0162&.com.elari" +
+      "an.hera.proto.PaymentChannel\022\016\n\006source\030\007" +
+      " \001(\t\022\023\n\013destination\030\010 \001(\t\022-\n\007account\030\t \001" +
+      "(\0132\034.google.protobuf.StringValue\022+\n\005valu" +
+      "e\030\n \001(\0132\034.com.elarian.hera.proto.CashB\r\n" +
+      "\013debit_party\"\277\003\n$CheckoutPaymentSimulato" +
+      "rNotification\022\016\n\006org_id\030\001 \001(\t\022\023\n\013custome" +
+      "r_id\030\002 \001(\t\022\016\n\006app_id\030\003 \001(\t\022C\n\006wallet\030\004 \001" +
+      "(\01321.com.elarian.hera.proto.PaymentWalle" +
+      "tCounterPartyH\000\022A\n\005purse\030\005 \001(\01320.com.ela" +
+      "rian.hera.proto.PaymentPurseCounterParty" +
+      "H\000\022\026\n\016transaction_id\030\006 \001(\t\022?\n\017customer_n" +
+      "umber\030\007 \001(\0132&.com.elarian.hera.proto.Cus" +
+      "tomerNumber\022D\n\016channel_number\030\010 \001(\0132,.co" +
+      "m.elarian.hera.proto.PaymentChannelNumbe" +
+      "r\022+\n\005value\030\t \001(\0132\034.com.elarian.hera.prot" +
+      "o.CashB\016\n\014credit_partyb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -17316,7 +17207,7 @@ public final class SimulatorSocket {
     internal_static_com_elarian_hera_proto_ReceivePaymentSimulatorCommand_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_elarian_hera_proto_ReceivePaymentSimulatorCommand_descriptor,
-        new java.lang.String[] { "TransactionId", "ChannelNumber", "CustomerNumber", "Value", "Mode", "Status", });
+        new java.lang.String[] { "TransactionId", "ChannelNumber", "CustomerNumber", "Value", "Status", });
     internal_static_com_elarian_hera_proto_UpdatePaymentStatusSimulatorCommand_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_com_elarian_hera_proto_UpdatePaymentStatusSimulatorCommand_fieldAccessorTable = new
