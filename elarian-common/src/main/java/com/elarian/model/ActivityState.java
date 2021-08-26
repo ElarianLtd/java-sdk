@@ -9,7 +9,7 @@ public final class ActivityState {
 
     public static final class Session {
         public CustomerNumber customerNumber;
-        public ActivityChannel channelNumber;
+        public String source;
         public String sessionId;
         public String appId;
         public List<Activity> activities;

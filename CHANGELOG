@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 - Remove payment mode
+- Replace ActivityChannel with source
 
 ## [0.2.6-0.2.9] - 2021-08-10
 

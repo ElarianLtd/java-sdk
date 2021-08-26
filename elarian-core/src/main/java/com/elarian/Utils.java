@@ -1,13 +1,11 @@
 package com.elarian;
 
-import com.elarian.hera.proto.ActivityModel;
 import com.elarian.hera.proto.AppSocket;
 import com.elarian.hera.proto.CommonModel;
 import com.elarian.hera.proto.MessagingModel;
 import com.elarian.hera.proto.MessagingStateOuterClass;
 import com.elarian.hera.proto.PaymentModel;
 import com.elarian.model.ActiveMessagingChannelState;
-import com.elarian.model.ActivityChannel;
 import com.elarian.model.BlockedMessagingChannelState;
 import com.elarian.model.Cash;
 import com.elarian.model.ChannelMessage;
@@ -117,10 +115,6 @@ class Utils {
             }
         }
         return target;
-    }
-
-    public static ActivityChannel makeActivityChannel(ActivityModel.ActivityChannelNumber num) {
-        return new ActivityChannel(num.getNumber(), ActivityChannel.Channel.valueOf(num.getChannelValue()));
     }
 
     public static PaymentChannel makePaymentChannel(PaymentModel.PaymentChannelNumber num) {

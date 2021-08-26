@@ -1,7 +1,6 @@
 package com.elarian;
 
 import com.elarian.model.Activity;
-import com.elarian.model.ActivityChannel;
 import com.elarian.model.ConsentAction;
 import com.elarian.model.ConsentUpdateReply;
 import com.elarian.model.CustomerNumber;
@@ -31,7 +30,7 @@ public interface ICustomer {
     Mono<MessageReply> replyToMessage(String messageId, Message message);
     Mono<MessageReply> sendMessage(MessagingChannel channel, Message message);
 
-    Mono<CustomerStateUpdateReply> updateActivity(ActivityChannel channel, Activity activity);
+    Mono<CustomerStateUpdateReply> updateActivity(String source, Activity activity);
     Mono<ConsentUpdateReply> updateMessagingConsent(MessagingChannel channel, ConsentAction action);
 
     Mono<DataValue> leaseAppData();

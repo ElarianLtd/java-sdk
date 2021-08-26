@@ -709,7 +709,7 @@ public final class Elarian extends Client<AppSocket.ServerToAppNotification, App
                         notif.getCustomerActivity().getSessionId(),
                         notif.getCustomerActivity().getActivity().getCreatedAt().getSeconds()
                 );
-                payload.channelNumber = Utils.makeActivityChannel(notif.getCustomerActivity().getChannelNumber());
+                payload.source = notif.getCustomerActivity().getSource();
                 payload.customerNumber = Utils.makeCustomerNumber(notif.getCustomerActivity().getCustomerNumber());
 
                 customer.customerNumber = payload.customerNumber;

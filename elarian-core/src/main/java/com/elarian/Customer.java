@@ -1,7 +1,6 @@
 package com.elarian;
 
 
-import com.elarian.hera.proto.ActivityModel;
 import com.elarian.hera.proto.ActivityStateOuterClass;
 import com.elarian.hera.proto.AppModel;
 import com.elarian.hera.proto.AppSocket;
@@ -10,7 +9,6 @@ import com.elarian.hera.proto.IdentityStateOuterClass;
 import com.elarian.hera.proto.MessagingModel;
 import com.elarian.hera.proto.PaymentStateOuterClass;
 import com.elarian.model.Activity;
-import com.elarian.model.ActivityChannel;
 import com.elarian.model.ActivityState;
 import com.elarian.model.Cash;
 import com.elarian.model.ConsentAction;
@@ -238,8 +236,7 @@ public final class Customer implements ICustomer {
                                   session.updatedAt = item.getUpdatedAt().getSeconds();
                                   session.customerNumber =
                                       Utils.makeCustomerNumber(item.getCustomerNumber());
-                                  session.channelNumber =
-                                      Utils.makeActivityChannel(item.getChannelNumber());
+                                  session.source = item.getSource();
                                   session.activities =
                                       item.getActivitiesList().stream()
                                           .map(
@@ -524,12 +521,12 @@ public final class Customer implements ICustomer {
     /**
      * Update customer activity
      *
-     * @param channel
+     * @param source
      * @param activity
      * @return
      */
     @Override
-    public Mono<CustomerStateUpdateReply> updateActivity(ActivityChannel channel, Activity activity) {
+    public Mono<CustomerStateUpdateReply> updateActivity(String source, Activity activity) {
 
         if (customerNumber == null) {
             throw new RuntimeException("Invalid customer. customerNumber needs to be set");
@@ -540,11 +537,7 @@ public final class Customer implements ICustomer {
                 .setSessionId(activity.sessionId)
                 .setKey(activity.key)
                 .putAllProperties(activity.properties)
-                .setChannelNumber(ActivityModel.ActivityChannelNumber
-                        .newBuilder()
-                        .setNumber(channel.number)
-                        .setChannelValue(channel.channel.getValue())
-                        .build())
+                .setSource(source)
                 .setCustomerNumber(
                         CommonModel.CustomerNumber
                                 .newBuilder()

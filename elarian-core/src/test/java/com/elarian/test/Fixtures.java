@@ -1,7 +1,6 @@
 package com.elarian.test;
 
 import com.elarian.ConnectionListener;
-import com.elarian.model.ActivityChannel;
 import com.elarian.model.MessagingChannel;
 import com.elarian.model.PaymentChannel;
 
@@ -26,7 +25,7 @@ public class Fixtures {
     public static final MessagingChannel messenngerChannel = new MessagingChannel(MESSENNGER_NUMBER, MessagingChannel.Channel.FB_MESSENGER);
     public static final MessagingChannel voiceChannel = new MessagingChannel(VOICE_NUMBER, MessagingChannel.Channel.VOICE);
     public static final PaymentChannel mpesaChannel = new PaymentChannel(MPESA_PAYBILL, PaymentChannel.Channel.CELLULAR);
-    public static final ActivityChannel activityChannel = new ActivityChannel("fake-web-app.com", ActivityChannel.Channel.WEB);
+    public static final String activitySource = "fake-web-app.com";
 
     public static final ConnectionListener connectionListener = new ConnectionListener() {
         @Override

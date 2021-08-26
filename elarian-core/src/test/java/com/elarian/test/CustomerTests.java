@@ -95,7 +95,7 @@ public class CustomerTests {
     @Order(5)
     void updateActivity() {
         Activity activity = new Activity("some-key", new HashMap<>(), "some-session");
-        CustomerStateUpdateReply reply = customer.updateActivity(Fixtures.activityChannel, activity).block(Duration.ofSeconds(5));
+        CustomerStateUpdateReply reply = customer.updateActivity(Fixtures.activitySource, activity).block(Duration.ofSeconds(5));
         assertNotNull(reply);
         assertTrue(reply.status);
     }

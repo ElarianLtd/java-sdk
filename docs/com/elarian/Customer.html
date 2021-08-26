@@ -319,7 +319,7 @@ implements <a href="ICustomer.html" title="interface in com.elarian">ICustomer</
 </tr>
 <tr id="i16" class="altColor">
 <td class="colFirst"><code>reactor.core.publisher.Mono&lt;<a href="model/CustomerStateUpdateReply.html" title="class in com.elarian.model">CustomerStateUpdateReply</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#updateActivity(com.elarian.model.ActivityChannel,com.elarian.model.Activity)">updateActivity</a></span>&#8203;(<a href="model/ActivityChannel.html" title="class in com.elarian.model">ActivityChannel</a>&nbsp;channel,
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#updateActivity(java.lang.String,com.elarian.model.Activity)">updateActivity</a></span>&#8203;(java.lang.String&nbsp;source,
               <a href="model/Activity.html" title="class in com.elarian.model">Activity</a>&nbsp;activity)</code></th>
 <td class="colLast">
 <div class="block">Update customer activity</div>
@@ -533,20 +533,20 @@ implements <a href="ICustomer.html" title="interface in com.elarian">ICustomer</
 </dl>
 </li>
 </ul>
-<a id="updateActivity(com.elarian.model.ActivityChannel,com.elarian.model.Activity)">
+<a id="updateActivity(java.lang.String,com.elarian.model.Activity)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>updateActivity</h4>
-<pre class="methodSignature">public&nbsp;reactor.core.publisher.Mono&lt;<a href="model/CustomerStateUpdateReply.html" title="class in com.elarian.model">CustomerStateUpdateReply</a>&gt;&nbsp;updateActivity&#8203;(<a href="model/ActivityChannel.html" title="class in com.elarian.model">ActivityChannel</a>&nbsp;channel,
+<pre class="methodSignature">public&nbsp;reactor.core.publisher.Mono&lt;<a href="model/CustomerStateUpdateReply.html" title="class in com.elarian.model">CustomerStateUpdateReply</a>&gt;&nbsp;updateActivity&#8203;(java.lang.String&nbsp;source,
                                                                             <a href="model/Activity.html" title="class in com.elarian.model">Activity</a>&nbsp;activity)</pre>
 <div class="block">Update customer activity</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="ICustomer.html#updateActivity(com.elarian.model.ActivityChannel,com.elarian.model.Activity)">updateActivity</a></code>&nbsp;in interface&nbsp;<code><a href="ICustomer.html" title="interface in com.elarian">ICustomer</a></code></dd>
+<dd><code><a href="ICustomer.html#updateActivity(java.lang.String,com.elarian.model.Activity)">updateActivity</a></code>&nbsp;in interface&nbsp;<code><a href="ICustomer.html" title="interface in com.elarian">ICustomer</a></code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>channel</code> - </dd>
+<dd><code>source</code> - </dd>
 <dd><code>activity</code> - </dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 </dl>

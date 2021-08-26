@@ -14,7 +14,7 @@ public final class CustomerNumber {
         FACEBOOK(1),
         CELLULAR(2),
         TELEGRAM(3),
-        WEB(4),
+        APP(4),
         EMAIL(5);
 
         private final int value;
