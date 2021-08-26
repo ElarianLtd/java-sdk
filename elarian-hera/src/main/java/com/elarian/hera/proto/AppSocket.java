@@ -43765,19 +43765,16 @@ public final class AppSocket {
     com.elarian.hera.proto.CommonModel.CustomerNumberOrBuilder getCustomerNumberOrBuilder();
 
     /**
-     * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
-     * @return Whether the channelNumber field is set.
+     * <code>string source = 2;</code>
+     * @return The source.
      */
-    boolean hasChannelNumber();
+    java.lang.String getSource();
     /**
-     * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
-     * @return The channelNumber.
+     * <code>string source = 2;</code>
+     * @return The bytes for source.
      */
-    com.elarian.hera.proto.ActivityModel.ActivityChannelNumber getChannelNumber();
-    /**
-     * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
-     */
-    com.elarian.hera.proto.ActivityModel.ActivityChannelNumberOrBuilder getChannelNumberOrBuilder();
+    com.google.protobuf.ByteString
+        getSourceBytes();
 
     /**
      * <code>string session_id = 3;</code>
@@ -43850,6 +43847,7 @@ public final class AppSocket {
       super(builder);
     }
     private CustomerActivityCommand() {
+      source_ = "";
       sessionId_ = "";
       key_ = "";
     }
@@ -43899,16 +43897,9 @@ public final class AppSocket {
               break;
             }
             case 18: {
-              com.elarian.hera.proto.ActivityModel.ActivityChannelNumber.Builder subBuilder = null;
-              if (channelNumber_ != null) {
-                subBuilder = channelNumber_.toBuilder();
-              }
-              channelNumber_ = input.readMessage(com.elarian.hera.proto.ActivityModel.ActivityChannelNumber.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(channelNumber_);
-                channelNumber_ = subBuilder.buildPartial();
-              }
+              java.lang.String s = input.readStringRequireUtf8();
 
+              source_ = s;
               break;
             }
             case 26: {
@@ -44006,30 +43997,42 @@ public final class AppSocket {
       return getCustomerNumber();
     }
 
-    public static final int CHANNEL_NUMBER_FIELD_NUMBER = 2;
-    private com.elarian.hera.proto.ActivityModel.ActivityChannelNumber channelNumber_;
+    public static final int SOURCE_FIELD_NUMBER = 2;
+    private volatile java.lang.Object source_;
     /**
-     * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
-     * @return Whether the channelNumber field is set.
+     * <code>string source = 2;</code>
+     * @return The source.
      */
     @java.lang.Override
-    public boolean hasChannelNumber() {
-      return channelNumber_ != null;
+    public java.lang.String getSource() {
+      java.lang.Object ref = source_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        source_ = s;
+        return s;
+      }
     }
     /**
-     * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
-     * @return The channelNumber.
+     * <code>string source = 2;</code>
+     * @return The bytes for source.
      */
     @java.lang.Override
-    public com.elarian.hera.proto.ActivityModel.ActivityChannelNumber getChannelNumber() {
-      return channelNumber_ == null ? com.elarian.hera.proto.ActivityModel.ActivityChannelNumber.getDefaultInstance() : channelNumber_;
-    }
-    /**
-     * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
-     */
-    @java.lang.Override
-    public com.elarian.hera.proto.ActivityModel.ActivityChannelNumberOrBuilder getChannelNumberOrBuilder() {
-      return getChannelNumber();
+    public com.google.protobuf.ByteString
+        getSourceBytes() {
+      java.lang.Object ref = source_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        source_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     public static final int SESSION_ID_FIELD_NUMBER = 3;
@@ -44206,8 +44209,8 @@ public final class AppSocket {
       if (customerNumber_ != null) {
         output.writeMessage(1, getCustomerNumber());
       }
-      if (channelNumber_ != null) {
-        output.writeMessage(2, getChannelNumber());
+      if (!getSourceBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, source_);
       }
       if (!getSessionIdBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, sessionId_);
@@ -44234,9 +44237,8 @@ public final class AppSocket {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getCustomerNumber());
       }
-      if (channelNumber_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getChannelNumber());
+      if (!getSourceBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, source_);
       }
       if (!getSessionIdBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, sessionId_);
@@ -44274,11 +44276,8 @@ public final class AppSocket {
         if (!getCustomerNumber()
             .equals(other.getCustomerNumber())) return false;
       }
-      if (hasChannelNumber() != other.hasChannelNumber()) return false;
-      if (hasChannelNumber()) {
-        if (!getChannelNumber()
-            .equals(other.getChannelNumber())) return false;
-      }
+      if (!getSource()
+          .equals(other.getSource())) return false;
       if (!getSessionId()
           .equals(other.getSessionId())) return false;
       if (!getKey()
@@ -44300,10 +44299,8 @@ public final class AppSocket {
         hash = (37 * hash) + CUSTOMER_NUMBER_FIELD_NUMBER;
         hash = (53 * hash) + getCustomerNumber().hashCode();
       }
-      if (hasChannelNumber()) {
-        hash = (37 * hash) + CHANNEL_NUMBER_FIELD_NUMBER;
-        hash = (53 * hash) + getChannelNumber().hashCode();
-      }
+      hash = (37 * hash) + SOURCE_FIELD_NUMBER;
+      hash = (53 * hash) + getSource().hashCode();
       hash = (37 * hash) + SESSION_ID_FIELD_NUMBER;
       hash = (53 * hash) + getSessionId().hashCode();
       hash = (37 * hash) + KEY_FIELD_NUMBER;
@@ -44473,12 +44470,8 @@ public final class AppSocket {
           customerNumber_ = null;
           customerNumberBuilder_ = null;
         }
-        if (channelNumberBuilder_ == null) {
-          channelNumber_ = null;
-        } else {
-          channelNumber_ = null;
-          channelNumberBuilder_ = null;
-        }
+        source_ = "";
+
         sessionId_ = "";
 
         key_ = "";
@@ -44516,11 +44509,7 @@ public final class AppSocket {
         } else {
           result.customerNumber_ = customerNumberBuilder_.build();
         }
-        if (channelNumberBuilder_ == null) {
-          result.channelNumber_ = channelNumber_;
-        } else {
-          result.channelNumber_ = channelNumberBuilder_.build();
-        }
+        result.source_ = source_;
         result.sessionId_ = sessionId_;
         result.key_ = key_;
         result.properties_ = internalGetProperties();
@@ -44576,8 +44565,9 @@ public final class AppSocket {
         if (other.hasCustomerNumber()) {
           mergeCustomerNumber(other.getCustomerNumber());
         }
-        if (other.hasChannelNumber()) {
-          mergeChannelNumber(other.getChannelNumber());
+        if (!other.getSource().isEmpty()) {
+          source_ = other.source_;
+          onChanged();
         }
         if (!other.getSessionId().isEmpty()) {
           sessionId_ = other.sessionId_;
@@ -44738,123 +44728,80 @@ public final class AppSocket {
         return customerNumberBuilder_;
       }
 
-      private com.elarian.hera.proto.ActivityModel.ActivityChannelNumber channelNumber_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          com.elarian.hera.proto.ActivityModel.ActivityChannelNumber, com.elarian.hera.proto.ActivityModel.ActivityChannelNumber.Builder, com.elarian.hera.proto.ActivityModel.ActivityChannelNumberOrBuilder> channelNumberBuilder_;
+      private java.lang.Object source_ = "";
       /**
-       * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
-       * @return Whether the channelNumber field is set.
+       * <code>string source = 2;</code>
+       * @return The source.
        */
-      public boolean hasChannelNumber() {
-        return channelNumberBuilder_ != null || channelNumber_ != null;
-      }
-      /**
-       * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
-       * @return The channelNumber.
-       */
-      public com.elarian.hera.proto.ActivityModel.ActivityChannelNumber getChannelNumber() {
-        if (channelNumberBuilder_ == null) {
-          return channelNumber_ == null ? com.elarian.hera.proto.ActivityModel.ActivityChannelNumber.getDefaultInstance() : channelNumber_;
+      public java.lang.String getSource() {
+        java.lang.Object ref = source_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          source_ = s;
+          return s;
         } else {
-          return channelNumberBuilder_.getMessage();
+          return (java.lang.String) ref;
         }
       }
       /**
-       * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
+       * <code>string source = 2;</code>
+       * @return The bytes for source.
        */
-      public Builder setChannelNumber(com.elarian.hera.proto.ActivityModel.ActivityChannelNumber value) {
-        if (channelNumberBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          channelNumber_ = value;
-          onChanged();
+      public com.google.protobuf.ByteString
+          getSourceBytes() {
+        java.lang.Object ref = source_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          source_ = b;
+          return b;
         } else {
-          channelNumberBuilder_.setMessage(value);
+          return (com.google.protobuf.ByteString) ref;
         }
-
-        return this;
       }
       /**
-       * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
+       * <code>string source = 2;</code>
+       * @param value The source to set.
+       * @return This builder for chaining.
        */
-      public Builder setChannelNumber(
-          com.elarian.hera.proto.ActivityModel.ActivityChannelNumber.Builder builderForValue) {
-        if (channelNumberBuilder_ == null) {
-          channelNumber_ = builderForValue.build();
-          onChanged();
-        } else {
-          channelNumberBuilder_.setMessage(builderForValue.build());
-        }
-
-        return this;
-      }
-      /**
-       * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
-       */
-      public Builder mergeChannelNumber(com.elarian.hera.proto.ActivityModel.ActivityChannelNumber value) {
-        if (channelNumberBuilder_ == null) {
-          if (channelNumber_ != null) {
-            channelNumber_ =
-              com.elarian.hera.proto.ActivityModel.ActivityChannelNumber.newBuilder(channelNumber_).mergeFrom(value).buildPartial();
-          } else {
-            channelNumber_ = value;
-          }
-          onChanged();
-        } else {
-          channelNumberBuilder_.mergeFrom(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
-       */
-      public Builder clearChannelNumber() {
-        if (channelNumberBuilder_ == null) {
-          channelNumber_ = null;
-          onChanged();
-        } else {
-          channelNumber_ = null;
-          channelNumberBuilder_ = null;
-        }
-
-        return this;
-      }
-      /**
-       * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
-       */
-      public com.elarian.hera.proto.ActivityModel.ActivityChannelNumber.Builder getChannelNumberBuilder() {
-        
+      public Builder setSource(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        source_ = value;
         onChanged();
-        return getChannelNumberFieldBuilder().getBuilder();
+        return this;
       }
       /**
-       * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
+       * <code>string source = 2;</code>
+       * @return This builder for chaining.
        */
-      public com.elarian.hera.proto.ActivityModel.ActivityChannelNumberOrBuilder getChannelNumberOrBuilder() {
-        if (channelNumberBuilder_ != null) {
-          return channelNumberBuilder_.getMessageOrBuilder();
-        } else {
-          return channelNumber_ == null ?
-              com.elarian.hera.proto.ActivityModel.ActivityChannelNumber.getDefaultInstance() : channelNumber_;
-        }
+      public Builder clearSource() {
+        
+        source_ = getDefaultInstance().getSource();
+        onChanged();
+        return this;
       }
       /**
-       * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
+       * <code>string source = 2;</code>
+       * @param value The bytes for source to set.
+       * @return This builder for chaining.
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          com.elarian.hera.proto.ActivityModel.ActivityChannelNumber, com.elarian.hera.proto.ActivityModel.ActivityChannelNumber.Builder, com.elarian.hera.proto.ActivityModel.ActivityChannelNumberOrBuilder> 
-          getChannelNumberFieldBuilder() {
-        if (channelNumberBuilder_ == null) {
-          channelNumberBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.elarian.hera.proto.ActivityModel.ActivityChannelNumber, com.elarian.hera.proto.ActivityModel.ActivityChannelNumber.Builder, com.elarian.hera.proto.ActivityModel.ActivityChannelNumberOrBuilder>(
-                  getChannelNumber(),
-                  getParentForChildren(),
-                  isClean());
-          channelNumber_ = null;
-        }
-        return channelNumberBuilder_;
+      public Builder setSourceBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        source_ = value;
+        onChanged();
+        return this;
       }
 
       private java.lang.Object sessionId_ = "";
@@ -66055,19 +66002,16 @@ public final class AppSocket {
     com.elarian.hera.proto.CommonModel.CustomerNumberOrBuilder getCustomerNumberOrBuilder();
 
     /**
-     * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
-     * @return Whether the channelNumber field is set.
+     * <code>string source = 2;</code>
+     * @return The source.
      */
-    boolean hasChannelNumber();
+    java.lang.String getSource();
     /**
-     * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
-     * @return The channelNumber.
+     * <code>string source = 2;</code>
+     * @return The bytes for source.
      */
-    com.elarian.hera.proto.ActivityModel.ActivityChannelNumber getChannelNumber();
-    /**
-     * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
-     */
-    com.elarian.hera.proto.ActivityModel.ActivityChannelNumberOrBuilder getChannelNumberOrBuilder();
+    com.google.protobuf.ByteString
+        getSourceBytes();
 
     /**
      * <code>string session_id = 3;</code>
@@ -66109,6 +66053,7 @@ public final class AppSocket {
       super(builder);
     }
     private CustomerActivityNotification() {
+      source_ = "";
       sessionId_ = "";
     }
 
@@ -66156,16 +66101,9 @@ public final class AppSocket {
               break;
             }
             case 18: {
-              com.elarian.hera.proto.ActivityModel.ActivityChannelNumber.Builder subBuilder = null;
-              if (channelNumber_ != null) {
-                subBuilder = channelNumber_.toBuilder();
-              }
-              channelNumber_ = input.readMessage(com.elarian.hera.proto.ActivityModel.ActivityChannelNumber.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(channelNumber_);
-                channelNumber_ = subBuilder.buildPartial();
-              }
+              java.lang.String s = input.readStringRequireUtf8();
 
+              source_ = s;
               break;
             }
             case 26: {
@@ -66245,30 +66183,42 @@ public final class AppSocket {
       return getCustomerNumber();
     }
 
-    public static final int CHANNEL_NUMBER_FIELD_NUMBER = 2;
-    private com.elarian.hera.proto.ActivityModel.ActivityChannelNumber channelNumber_;
+    public static final int SOURCE_FIELD_NUMBER = 2;
+    private volatile java.lang.Object source_;
     /**
-     * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
-     * @return Whether the channelNumber field is set.
+     * <code>string source = 2;</code>
+     * @return The source.
      */
     @java.lang.Override
-    public boolean hasChannelNumber() {
-      return channelNumber_ != null;
+    public java.lang.String getSource() {
+      java.lang.Object ref = source_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        source_ = s;
+        return s;
+      }
     }
     /**
-     * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
-     * @return The channelNumber.
+     * <code>string source = 2;</code>
+     * @return The bytes for source.
      */
     @java.lang.Override
-    public com.elarian.hera.proto.ActivityModel.ActivityChannelNumber getChannelNumber() {
-      return channelNumber_ == null ? com.elarian.hera.proto.ActivityModel.ActivityChannelNumber.getDefaultInstance() : channelNumber_;
-    }
-    /**
-     * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
-     */
-    @java.lang.Override
-    public com.elarian.hera.proto.ActivityModel.ActivityChannelNumberOrBuilder getChannelNumberOrBuilder() {
-      return getChannelNumber();
+    public com.google.protobuf.ByteString
+        getSourceBytes() {
+      java.lang.Object ref = source_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        source_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     public static final int SESSION_ID_FIELD_NUMBER = 3;
@@ -66352,8 +66302,8 @@ public final class AppSocket {
       if (customerNumber_ != null) {
         output.writeMessage(1, getCustomerNumber());
       }
-      if (channelNumber_ != null) {
-        output.writeMessage(2, getChannelNumber());
+      if (!getSourceBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, source_);
       }
       if (!getSessionIdBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, sessionId_);
@@ -66374,9 +66324,8 @@ public final class AppSocket {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getCustomerNumber());
       }
-      if (channelNumber_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getChannelNumber());
+      if (!getSourceBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, source_);
       }
       if (!getSessionIdBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, sessionId_);
@@ -66405,11 +66354,8 @@ public final class AppSocket {
         if (!getCustomerNumber()
             .equals(other.getCustomerNumber())) return false;
       }
-      if (hasChannelNumber() != other.hasChannelNumber()) return false;
-      if (hasChannelNumber()) {
-        if (!getChannelNumber()
-            .equals(other.getChannelNumber())) return false;
-      }
+      if (!getSource()
+          .equals(other.getSource())) return false;
       if (!getSessionId()
           .equals(other.getSessionId())) return false;
       if (hasActivity() != other.hasActivity()) return false;
@@ -66432,10 +66378,8 @@ public final class AppSocket {
         hash = (37 * hash) + CUSTOMER_NUMBER_FIELD_NUMBER;
         hash = (53 * hash) + getCustomerNumber().hashCode();
       }
-      if (hasChannelNumber()) {
-        hash = (37 * hash) + CHANNEL_NUMBER_FIELD_NUMBER;
-        hash = (53 * hash) + getChannelNumber().hashCode();
-      }
+      hash = (37 * hash) + SOURCE_FIELD_NUMBER;
+      hash = (53 * hash) + getSource().hashCode();
       hash = (37 * hash) + SESSION_ID_FIELD_NUMBER;
       hash = (53 * hash) + getSessionId().hashCode();
       if (hasActivity()) {
@@ -66581,12 +66525,8 @@ public final class AppSocket {
           customerNumber_ = null;
           customerNumberBuilder_ = null;
         }
-        if (channelNumberBuilder_ == null) {
-          channelNumber_ = null;
-        } else {
-          channelNumber_ = null;
-          channelNumberBuilder_ = null;
-        }
+        source_ = "";
+
         sessionId_ = "";
 
         if (activityBuilder_ == null) {
@@ -66626,11 +66566,7 @@ public final class AppSocket {
         } else {
           result.customerNumber_ = customerNumberBuilder_.build();
         }
-        if (channelNumberBuilder_ == null) {
-          result.channelNumber_ = channelNumber_;
-        } else {
-          result.channelNumber_ = channelNumberBuilder_.build();
-        }
+        result.source_ = source_;
         result.sessionId_ = sessionId_;
         if (activityBuilder_ == null) {
           result.activity_ = activity_;
@@ -66688,8 +66624,9 @@ public final class AppSocket {
         if (other.hasCustomerNumber()) {
           mergeCustomerNumber(other.getCustomerNumber());
         }
-        if (other.hasChannelNumber()) {
-          mergeChannelNumber(other.getChannelNumber());
+        if (!other.getSource().isEmpty()) {
+          source_ = other.source_;
+          onChanged();
         }
         if (!other.getSessionId().isEmpty()) {
           sessionId_ = other.sessionId_;
@@ -66846,123 +66783,80 @@ public final class AppSocket {
         return customerNumberBuilder_;
       }
 
-      private com.elarian.hera.proto.ActivityModel.ActivityChannelNumber channelNumber_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          com.elarian.hera.proto.ActivityModel.ActivityChannelNumber, com.elarian.hera.proto.ActivityModel.ActivityChannelNumber.Builder, com.elarian.hera.proto.ActivityModel.ActivityChannelNumberOrBuilder> channelNumberBuilder_;
+      private java.lang.Object source_ = "";
       /**
-       * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
-       * @return Whether the channelNumber field is set.
+       * <code>string source = 2;</code>
+       * @return The source.
        */
-      public boolean hasChannelNumber() {
-        return channelNumberBuilder_ != null || channelNumber_ != null;
-      }
-      /**
-       * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
-       * @return The channelNumber.
-       */
-      public com.elarian.hera.proto.ActivityModel.ActivityChannelNumber getChannelNumber() {
-        if (channelNumberBuilder_ == null) {
-          return channelNumber_ == null ? com.elarian.hera.proto.ActivityModel.ActivityChannelNumber.getDefaultInstance() : channelNumber_;
+      public java.lang.String getSource() {
+        java.lang.Object ref = source_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          source_ = s;
+          return s;
         } else {
-          return channelNumberBuilder_.getMessage();
+          return (java.lang.String) ref;
         }
       }
       /**
-       * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
+       * <code>string source = 2;</code>
+       * @return The bytes for source.
        */
-      public Builder setChannelNumber(com.elarian.hera.proto.ActivityModel.ActivityChannelNumber value) {
-        if (channelNumberBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          channelNumber_ = value;
-          onChanged();
+      public com.google.protobuf.ByteString
+          getSourceBytes() {
+        java.lang.Object ref = source_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          source_ = b;
+          return b;
         } else {
-          channelNumberBuilder_.setMessage(value);
+          return (com.google.protobuf.ByteString) ref;
         }
-
-        return this;
       }
       /**
-       * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
+       * <code>string source = 2;</code>
+       * @param value The source to set.
+       * @return This builder for chaining.
        */
-      public Builder setChannelNumber(
-          com.elarian.hera.proto.ActivityModel.ActivityChannelNumber.Builder builderForValue) {
-        if (channelNumberBuilder_ == null) {
-          channelNumber_ = builderForValue.build();
-          onChanged();
-        } else {
-          channelNumberBuilder_.setMessage(builderForValue.build());
-        }
-
-        return this;
-      }
-      /**
-       * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
-       */
-      public Builder mergeChannelNumber(com.elarian.hera.proto.ActivityModel.ActivityChannelNumber value) {
-        if (channelNumberBuilder_ == null) {
-          if (channelNumber_ != null) {
-            channelNumber_ =
-              com.elarian.hera.proto.ActivityModel.ActivityChannelNumber.newBuilder(channelNumber_).mergeFrom(value).buildPartial();
-          } else {
-            channelNumber_ = value;
-          }
-          onChanged();
-        } else {
-          channelNumberBuilder_.mergeFrom(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
-       */
-      public Builder clearChannelNumber() {
-        if (channelNumberBuilder_ == null) {
-          channelNumber_ = null;
-          onChanged();
-        } else {
-          channelNumber_ = null;
-          channelNumberBuilder_ = null;
-        }
-
-        return this;
-      }
-      /**
-       * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
-       */
-      public com.elarian.hera.proto.ActivityModel.ActivityChannelNumber.Builder getChannelNumberBuilder() {
-        
+      public Builder setSource(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        source_ = value;
         onChanged();
-        return getChannelNumberFieldBuilder().getBuilder();
+        return this;
       }
       /**
-       * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
+       * <code>string source = 2;</code>
+       * @return This builder for chaining.
        */
-      public com.elarian.hera.proto.ActivityModel.ActivityChannelNumberOrBuilder getChannelNumberOrBuilder() {
-        if (channelNumberBuilder_ != null) {
-          return channelNumberBuilder_.getMessageOrBuilder();
-        } else {
-          return channelNumber_ == null ?
-              com.elarian.hera.proto.ActivityModel.ActivityChannelNumber.getDefaultInstance() : channelNumber_;
-        }
+      public Builder clearSource() {
+        
+        source_ = getDefaultInstance().getSource();
+        onChanged();
+        return this;
       }
       /**
-       * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
+       * <code>string source = 2;</code>
+       * @param value The bytes for source to set.
+       * @return This builder for chaining.
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          com.elarian.hera.proto.ActivityModel.ActivityChannelNumber, com.elarian.hera.proto.ActivityModel.ActivityChannelNumber.Builder, com.elarian.hera.proto.ActivityModel.ActivityChannelNumberOrBuilder> 
-          getChannelNumberFieldBuilder() {
-        if (channelNumberBuilder_ == null) {
-          channelNumberBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.elarian.hera.proto.ActivityModel.ActivityChannelNumber, com.elarian.hera.proto.ActivityModel.ActivityChannelNumber.Builder, com.elarian.hera.proto.ActivityModel.ActivityChannelNumberOrBuilder>(
-                  getChannelNumber(),
-                  getParentForChildren(),
-                  isClean());
-          channelNumber_ = null;
-        }
-        return channelNumberBuilder_;
+      public Builder setSourceBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        source_ = value;
+        onChanged();
+        return this;
       }
 
       private java.lang.Object sessionId_ = "";
@@ -67729,135 +67623,132 @@ public final class AppSocket {
       "mer_id\030\005 \001(\0132\034.google.protobuf.StringVal" +
       "ue\"e\n\017TagCommandReply\022\016\n\006status\030\001 \001(\010\022\023\n" +
       "\013description\030\002 \001(\t\022-\n\007work_id\030\003 \001(\0132\034.go" +
-      "ogle.protobuf.StringValue\"\312\002\n\027CustomerAc" +
+      "ogle.protobuf.StringValue\"\223\002\n\027CustomerAc" +
       "tivityCommand\022?\n\017customer_number\030\001 \001(\0132&" +
-      ".com.elarian.hera.proto.CustomerNumber\022E" +
-      "\n\016channel_number\030\002 \001(\0132-.com.elarian.her" +
-      "a.proto.ActivityChannelNumber\022\022\n\nsession" +
-      "_id\030\003 \001(\t\022\013\n\003key\030\004 \001(\t\022S\n\nproperties\030\005 \003" +
-      "(\0132?.com.elarian.hera.proto.CustomerActi" +
-      "vityCommand.PropertiesEntry\0321\n\017Propertie" +
-      "sEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"o" +
-      "\n\025CustomerActivityReply\022\016\n\006status\030\001 \001(\010\022" +
-      "\023\n\013description\030\002 \001(\t\0221\n\013customer_id\030\003 \001(" +
-      "\0132\034.google.protobuf.StringValue\"\266\001\n\027Serv" +
-      "erToAppNotification\022K\n\010customer\030\001 \001(\01327." +
-      "com.elarian.hera.proto.ServerToAppCustom" +
-      "erNotificationH\000\022E\n\005purse\030\002 \001(\01324.com.el" +
-      "arian.hera.proto.ServerToAppPurseNotific" +
-      "ationH\000B\007\n\005entry\"\316\t\n\037ServerToAppCustomer" +
-      "Notification\022\016\n\006org_id\030\001 \001(\t\022\016\n\006app_id\030\002" +
-      " \001(\t\022\023\n\013customer_id\030\003 \001(\t\0226\n\010app_data\030\004 " +
-      "\001(\0132$.com.elarian.hera.proto.DataMapValu" +
-      "e\022.\n\ncreated_at\030\005 \001(\0132\032.google.protobuf." +
-      "Timestamp\022@\n\010reminder\030\006 \001(\0132,.com.elaria" +
-      "n.hera.proto.ReminderNotificationH\000\022`\n\031m" +
-      "essaging_session_started\030\007 \001(\0132;.com.ela" +
-      "rian.hera.proto.MessagingSessionStartedN" +
-      "otificationH\000\022`\n\031messaging_session_renew" +
-      "ed\030\010 \001(\0132;.com.elarian.hera.proto.Messag" +
-      "ingSessionRenewedNotificationH\000\022\\\n\027messa" +
-      "ging_session_ended\030\t \001(\01329.com.elarian.h" +
-      "era.proto.MessagingSessionEndedNotificat" +
-      "ionH\000\022^\n\030messaging_consent_update\030\n \001(\0132" +
-      ":.com.elarian.hera.proto.MessagingConsen" +
-      "tUpdateNotificationH\000\022O\n\020received_messag" +
-      "e\030\013 \001(\01323.com.elarian.hera.proto.Receive" +
-      "dMessageNotificationH\000\022K\n\016message_status" +
-      "\030\014 \001(\01321.com.elarian.hera.proto.MessageS" +
-      "tatusNotificationH\000\022X\n\025sent_message_reac" +
-      "tion\030\r \001(\01327.com.elarian.hera.proto.Sent" +
-      "MessageReactionNotificationH\000\022O\n\020receive" +
-      "d_payment\030\016 \001(\01323.com.elarian.hera.proto" +
-      ".ReceivedPaymentNotificationH\000\022K\n\016paymen" +
-      "t_status\030\017 \001(\01321.com.elarian.hera.proto." +
-      "PaymentStatusNotificationH\000\022X\n\025wallet_pa" +
-      "yment_status\030\020 \001(\01327.com.elarian.hera.pr" +
-      "oto.WalletPaymentStatusNotificationH\000\022Q\n" +
-      "\021customer_activity\030\021 \001(\01324.com.elarian.h" +
-      "era.proto.CustomerActivityNotificationH\000" +
-      "B\007\n\005entry\"\326\001\n\034ServerToAppPurseNotificati" +
-      "on\022\016\n\006org_id\030\001 \001(\t\022\016\n\006app_id\030\002 \001(\t\022\020\n\010pu" +
-      "rse_id\030\003 \001(\t\022.\n\ncreated_at\030\004 \001(\0132\032.googl" +
-      "e.protobuf.Timestamp\022K\n\016payment_status\030\005" +
-      " \001(\01321.com.elarian.hera.proto.PaymentSta" +
-      "tusNotificationH\000B\007\n\005entry\"C\n\rAppDataUpd" +
-      "ate\0222\n\004data\030\001 \001(\0132$.com.elarian.hera.pro" +
-      "to.DataMapValue\"\224\001\n\034ServerToAppNotificat" +
-      "ionReply\022:\n\013data_update\030\001 \001(\0132%.com.elar" +
-      "ian.hera.proto.AppDataUpdate\0228\n\007message\030" +
-      "\002 \001(\0132\'.com.elarian.hera.proto.OutboundM" +
-      "essage\"\265\001\n\024ReminderNotification\022:\n\010remin" +
-      "der\030\001 \001(\0132(.com.elarian.hera.proto.Custo" +
-      "merReminder\0222\n\003tag\030\002 \001(\0132%.com.elarian.h" +
-      "era.proto.CustomerIndex\022-\n\007work_id\030\003 \001(\013" +
-      "2\034.google.protobuf.StringValue\"\362\001\n#Messa" +
-      "gingSessionStartedNotification\022?\n\017custom" +
-      "er_number\030\001 \001(\0132&.com.elarian.hera.proto" +
-      ".CustomerNumber\022F\n\016channel_number\030\002 \001(\0132" +
-      "..com.elarian.hera.proto.MessagingChanne" +
-      "lNumber\022\022\n\nsession_id\030\003 \001(\t\022.\n\nexpires_a" +
-      "t\030\004 \001(\0132\032.google.protobuf.Timestamp\"\362\001\n#" +
-      "MessagingSessionRenewedNotification\022?\n\017c" +
-      "ustomer_number\030\001 \001(\0132&.com.elarian.hera." +
-      "proto.CustomerNumber\022F\n\016channel_number\030\002" +
-      " \001(\0132..com.elarian.hera.proto.MessagingC" +
-      "hannelNumber\022\022\n\nsession_id\030\003 \001(\t\022.\n\nexpi" +
-      "res_at\030\004 \001(\0132\032.google.protobuf.Timestamp" +
-      "\"\260\002\n!MessagingSessionEndedNotification\022?" +
-      "\n\017customer_number\030\001 \001(\0132&.com.elarian.he" +
-      "ra.proto.CustomerNumber\022F\n\016channel_numbe" +
-      "r\030\002 \001(\0132..com.elarian.hera.proto.Messagi" +
-      "ngChannelNumber\022\022\n\nsession_id\030\003 \001(\t\022+\n\010d" +
-      "uration\030\004 \001(\0132\031.google.protobuf.Duration" +
-      "\022A\n\006reason\030\005 \001(\01621.com.elarian.hera.prot" +
-      "o.MessagingSessionEndReason\"\263\002\n\"Messagin" +
-      "gConsentUpdateNotification\022?\n\017customer_n" +
-      "umber\030\001 \001(\0132&.com.elarian.hera.proto.Cus" +
-      "tomerNumber\022F\n\016channel_number\030\002 \001(\0132..co" +
-      "m.elarian.hera.proto.MessagingChannelNum" +
-      "ber\022>\n\006update\030\003 \001(\0162..com.elarian.hera.p" +
-      "roto.MessagingConsentUpdate\022D\n\006status\030\004 " +
-      "\001(\01624.com.elarian.hera.proto.MessagingCo" +
-      "nsentUpdateStatus\"\332\002\n\033ReceivedMessageNot" +
-      "ification\022\022\n\nmessage_id\030\001 \001(\t\022?\n\017custome" +
-      "r_number\030\002 \001(\0132&.com.elarian.hera.proto." +
-      "CustomerNumber\022F\n\016channel_number\030\003 \001(\0132." +
-      ".com.elarian.hera.proto.MessagingChannel" +
-      "Number\0229\n\005parts\030\004 \003(\0132*.com.elarian.hera" +
-      ".proto.InboundMessageBody\0220\n\nsession_id\030" +
-      "\005 \001(\0132\034.google.protobuf.StringValue\0221\n\013i" +
-      "n_reply_to\030\006 \001(\0132\034.google.protobuf.Strin" +
-      "gValue\"n\n\031MessageStatusNotification\022\022\n\nm" +
-      "essage_id\030\001 \001(\t\022=\n\006status\030\002 \001(\0162-.com.el" +
-      "arian.hera.proto.MessageDeliveryStatus\"\371" +
-      "\001\n\037SentMessageReactionNotification\022\022\n\nme" +
+      ".com.elarian.hera.proto.CustomerNumber\022\016" +
+      "\n\006source\030\002 \001(\t\022\022\n\nsession_id\030\003 \001(\t\022\013\n\003ke" +
+      "y\030\004 \001(\t\022S\n\nproperties\030\005 \003(\0132?.com.elaria" +
+      "n.hera.proto.CustomerActivityCommand.Pro" +
+      "pertiesEntry\0321\n\017PropertiesEntry\022\013\n\003key\030\001" +
+      " \001(\t\022\r\n\005value\030\002 \001(\t:\0028\001\"o\n\025CustomerActiv" +
+      "ityReply\022\016\n\006status\030\001 \001(\010\022\023\n\013description\030" +
+      "\002 \001(\t\0221\n\013customer_id\030\003 \001(\0132\034.google.prot" +
+      "obuf.StringValue\"\266\001\n\027ServerToAppNotifica" +
+      "tion\022K\n\010customer\030\001 \001(\01327.com.elarian.her" +
+      "a.proto.ServerToAppCustomerNotificationH" +
+      "\000\022E\n\005purse\030\002 \001(\01324.com.elarian.hera.prot" +
+      "o.ServerToAppPurseNotificationH\000B\007\n\005entr" +
+      "y\"\316\t\n\037ServerToAppCustomerNotification\022\016\n" +
+      "\006org_id\030\001 \001(\t\022\016\n\006app_id\030\002 \001(\t\022\023\n\013custome" +
+      "r_id\030\003 \001(\t\0226\n\010app_data\030\004 \001(\0132$.com.elari" +
+      "an.hera.proto.DataMapValue\022.\n\ncreated_at" +
+      "\030\005 \001(\0132\032.google.protobuf.Timestamp\022@\n\010re" +
+      "minder\030\006 \001(\0132,.com.elarian.hera.proto.Re" +
+      "minderNotificationH\000\022`\n\031messaging_sessio" +
+      "n_started\030\007 \001(\0132;.com.elarian.hera.proto" +
+      ".MessagingSessionStartedNotificationH\000\022`" +
+      "\n\031messaging_session_renewed\030\010 \001(\0132;.com." +
+      "elarian.hera.proto.MessagingSessionRenew" +
+      "edNotificationH\000\022\\\n\027messaging_session_en" +
+      "ded\030\t \001(\01329.com.elarian.hera.proto.Messa" +
+      "gingSessionEndedNotificationH\000\022^\n\030messag" +
+      "ing_consent_update\030\n \001(\0132:.com.elarian.h" +
+      "era.proto.MessagingConsentUpdateNotifica" +
+      "tionH\000\022O\n\020received_message\030\013 \001(\01323.com.e" +
+      "larian.hera.proto.ReceivedMessageNotific" +
+      "ationH\000\022K\n\016message_status\030\014 \001(\01321.com.el" +
+      "arian.hera.proto.MessageStatusNotificati" +
+      "onH\000\022X\n\025sent_message_reaction\030\r \001(\01327.co" +
+      "m.elarian.hera.proto.SentMessageReaction" +
+      "NotificationH\000\022O\n\020received_payment\030\016 \001(\013" +
+      "23.com.elarian.hera.proto.ReceivedPaymen" +
+      "tNotificationH\000\022K\n\016payment_status\030\017 \001(\0132" +
+      "1.com.elarian.hera.proto.PaymentStatusNo" +
+      "tificationH\000\022X\n\025wallet_payment_status\030\020 " +
+      "\001(\01327.com.elarian.hera.proto.WalletPayme" +
+      "ntStatusNotificationH\000\022Q\n\021customer_activ" +
+      "ity\030\021 \001(\01324.com.elarian.hera.proto.Custo" +
+      "merActivityNotificationH\000B\007\n\005entry\"\326\001\n\034S" +
+      "erverToAppPurseNotification\022\016\n\006org_id\030\001 " +
+      "\001(\t\022\016\n\006app_id\030\002 \001(\t\022\020\n\010purse_id\030\003 \001(\t\022.\n" +
+      "\ncreated_at\030\004 \001(\0132\032.google.protobuf.Time" +
+      "stamp\022K\n\016payment_status\030\005 \001(\01321.com.elar" +
+      "ian.hera.proto.PaymentStatusNotification" +
+      "H\000B\007\n\005entry\"C\n\rAppDataUpdate\0222\n\004data\030\001 \001" +
+      "(\0132$.com.elarian.hera.proto.DataMapValue" +
+      "\"\224\001\n\034ServerToAppNotificationReply\022:\n\013dat" +
+      "a_update\030\001 \001(\0132%.com.elarian.hera.proto." +
+      "AppDataUpdate\0228\n\007message\030\002 \001(\0132\'.com.ela" +
+      "rian.hera.proto.OutboundMessage\"\265\001\n\024Remi" +
+      "nderNotification\022:\n\010reminder\030\001 \001(\0132(.com" +
+      ".elarian.hera.proto.CustomerReminder\0222\n\003" +
+      "tag\030\002 \001(\0132%.com.elarian.hera.proto.Custo" +
+      "merIndex\022-\n\007work_id\030\003 \001(\0132\034.google.proto" +
+      "buf.StringValue\"\362\001\n#MessagingSessionStar" +
+      "tedNotification\022?\n\017customer_number\030\001 \001(\013" +
+      "2&.com.elarian.hera.proto.CustomerNumber" +
+      "\022F\n\016channel_number\030\002 \001(\0132..com.elarian.h" +
+      "era.proto.MessagingChannelNumber\022\022\n\nsess" +
+      "ion_id\030\003 \001(\t\022.\n\nexpires_at\030\004 \001(\0132\032.googl" +
+      "e.protobuf.Timestamp\"\362\001\n#MessagingSessio" +
+      "nRenewedNotification\022?\n\017customer_number\030" +
+      "\001 \001(\0132&.com.elarian.hera.proto.CustomerN" +
+      "umber\022F\n\016channel_number\030\002 \001(\0132..com.elar" +
+      "ian.hera.proto.MessagingChannelNumber\022\022\n" +
+      "\nsession_id\030\003 \001(\t\022.\n\nexpires_at\030\004 \001(\0132\032." +
+      "google.protobuf.Timestamp\"\260\002\n!MessagingS" +
+      "essionEndedNotification\022?\n\017customer_numb" +
+      "er\030\001 \001(\0132&.com.elarian.hera.proto.Custom" +
+      "erNumber\022F\n\016channel_number\030\002 \001(\0132..com.e" +
+      "larian.hera.proto.MessagingChannelNumber" +
+      "\022\022\n\nsession_id\030\003 \001(\t\022+\n\010duration\030\004 \001(\0132\031" +
+      ".google.protobuf.Duration\022A\n\006reason\030\005 \001(" +
+      "\01621.com.elarian.hera.proto.MessagingSess" +
+      "ionEndReason\"\263\002\n\"MessagingConsentUpdateN" +
+      "otification\022?\n\017customer_number\030\001 \001(\0132&.c" +
+      "om.elarian.hera.proto.CustomerNumber\022F\n\016" +
+      "channel_number\030\002 \001(\0132..com.elarian.hera." +
+      "proto.MessagingChannelNumber\022>\n\006update\030\003" +
+      " \001(\0162..com.elarian.hera.proto.MessagingC" +
+      "onsentUpdate\022D\n\006status\030\004 \001(\01624.com.elari" +
+      "an.hera.proto.MessagingConsentUpdateStat" +
+      "us\"\332\002\n\033ReceivedMessageNotification\022\022\n\nme" +
       "ssage_id\030\001 \001(\t\022?\n\017customer_number\030\002 \001(\0132" +
       "&.com.elarian.hera.proto.CustomerNumber\022" +
       "F\n\016channel_number\030\003 \001(\0132..com.elarian.he" +
-      "ra.proto.MessagingChannelNumber\0229\n\010react" +
-      "ion\030\004 \001(\0162\'.com.elarian.hera.proto.Messa" +
-      "geReaction\"\262\002\n\033ReceivedPaymentNotificati" +
-      "on\022\020\n\010purse_id\030\001 \001(\t\022\026\n\016transaction_id\030\002" +
-      " \001(\t\022?\n\017customer_number\030\003 \001(\0132&.com.elar" +
-      "ian.hera.proto.CustomerNumber\022D\n\016channel" +
-      "_number\030\004 \001(\0132,.com.elarian.hera.proto.P" +
-      "aymentChannelNumber\022+\n\005value\030\005 \001(\0132\034.com" +
-      ".elarian.hera.proto.Cash\0225\n\006status\030\006 \001(\016" +
-      "2%.com.elarian.hera.proto.PaymentStatus\"" +
-      "j\n\031PaymentStatusNotification\022\026\n\016transact" +
-      "ion_id\030\001 \001(\t\0225\n\006status\030\002 \001(\0162%.com.elari" +
-      "an.hera.proto.PaymentStatus\"\203\001\n\037WalletPa" +
-      "ymentStatusNotification\022\021\n\twallet_id\030\001 \001" +
-      "(\t\022\026\n\016transaction_id\030\002 \001(\t\0225\n\006status\030\003 \001" +
-      "(\0162%.com.elarian.hera.proto.PaymentStatu" +
-      "s\"\366\001\n\034CustomerActivityNotification\022?\n\017cu" +
-      "stomer_number\030\001 \001(\0132&.com.elarian.hera.p" +
-      "roto.CustomerNumber\022E\n\016channel_number\030\002 " +
-      "\001(\0132-.com.elarian.hera.proto.ActivityCha" +
-      "nnelNumber\022\022\n\nsession_id\030\003 \001(\t\022:\n\010activi" +
-      "ty\030\004 \001(\0132(.com.elarian.hera.proto.Custom" +
-      "erActivityb\006proto3"
+      "ra.proto.MessagingChannelNumber\0229\n\005parts" +
+      "\030\004 \003(\0132*.com.elarian.hera.proto.InboundM" +
+      "essageBody\0220\n\nsession_id\030\005 \001(\0132\034.google." +
+      "protobuf.StringValue\0221\n\013in_reply_to\030\006 \001(" +
+      "\0132\034.google.protobuf.StringValue\"n\n\031Messa" +
+      "geStatusNotification\022\022\n\nmessage_id\030\001 \001(\t" +
+      "\022=\n\006status\030\002 \001(\0162-.com.elarian.hera.prot" +
+      "o.MessageDeliveryStatus\"\371\001\n\037SentMessageR" +
+      "eactionNotification\022\022\n\nmessage_id\030\001 \001(\t\022" +
+      "?\n\017customer_number\030\002 \001(\0132&.com.elarian.h" +
+      "era.proto.CustomerNumber\022F\n\016channel_numb" +
+      "er\030\003 \001(\0132..com.elarian.hera.proto.Messag" +
+      "ingChannelNumber\0229\n\010reaction\030\004 \001(\0162\'.com" +
+      ".elarian.hera.proto.MessageReaction\"\262\002\n\033" +
+      "ReceivedPaymentNotification\022\020\n\010purse_id\030" +
+      "\001 \001(\t\022\026\n\016transaction_id\030\002 \001(\t\022?\n\017custome" +
+      "r_number\030\003 \001(\0132&.com.elarian.hera.proto." +
+      "CustomerNumber\022D\n\016channel_number\030\004 \001(\0132," +
+      ".com.elarian.hera.proto.PaymentChannelNu" +
+      "mber\022+\n\005value\030\005 \001(\0132\034.com.elarian.hera.p" +
+      "roto.Cash\0225\n\006status\030\006 \001(\0162%.com.elarian." +
+      "hera.proto.PaymentStatus\"j\n\031PaymentStatu" +
+      "sNotification\022\026\n\016transaction_id\030\001 \001(\t\0225\n" +
+      "\006status\030\002 \001(\0162%.com.elarian.hera.proto.P" +
+      "aymentStatus\"\203\001\n\037WalletPaymentStatusNoti" +
+      "fication\022\021\n\twallet_id\030\001 \001(\t\022\026\n\016transacti" +
+      "on_id\030\002 \001(\t\0225\n\006status\030\003 \001(\0162%.com.elaria" +
+      "n.hera.proto.PaymentStatus\"\277\001\n\034CustomerA" +
+      "ctivityNotification\022?\n\017customer_number\030\001" +
+      " \001(\0132&.com.elarian.hera.proto.CustomerNu" +
+      "mber\022\016\n\006source\030\002 \001(\t\022\022\n\nsession_id\030\003 \001(\t" +
+      "\022:\n\010activity\030\004 \001(\0132(.com.elarian.hera.pr" +
+      "oto.CustomerActivityb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -68090,7 +67981,7 @@ public final class AppSocket {
     internal_static_com_elarian_hera_proto_CustomerActivityCommand_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_elarian_hera_proto_CustomerActivityCommand_descriptor,
-        new java.lang.String[] { "CustomerNumber", "ChannelNumber", "SessionId", "Key", "Properties", });
+        new java.lang.String[] { "CustomerNumber", "Source", "SessionId", "Key", "Properties", });
     internal_static_com_elarian_hera_proto_CustomerActivityCommand_PropertiesEntry_descriptor =
       internal_static_com_elarian_hera_proto_CustomerActivityCommand_descriptor.getNestedTypes().get(0);
     internal_static_com_elarian_hera_proto_CustomerActivityCommand_PropertiesEntry_fieldAccessorTable = new
@@ -68204,7 +68095,7 @@ public final class AppSocket {
     internal_static_com_elarian_hera_proto_CustomerActivityNotification_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_elarian_hera_proto_CustomerActivityNotification_descriptor,
-        new java.lang.String[] { "CustomerNumber", "ChannelNumber", "SessionId", "Activity", });
+        new java.lang.String[] { "CustomerNumber", "Source", "SessionId", "Activity", });
     com.google.protobuf.DurationProto.getDescriptor();
     com.google.protobuf.TimestampProto.getDescriptor();
     com.google.protobuf.WrappersProto.getDescriptor();

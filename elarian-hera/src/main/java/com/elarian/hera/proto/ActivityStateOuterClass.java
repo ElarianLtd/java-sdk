@@ -34,19 +34,16 @@ public final class ActivityStateOuterClass {
     com.elarian.hera.proto.CommonModel.CustomerNumberOrBuilder getCustomerNumberOrBuilder();
 
     /**
-     * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
-     * @return Whether the channelNumber field is set.
+     * <code>string source = 2;</code>
+     * @return The source.
      */
-    boolean hasChannelNumber();
+    java.lang.String getSource();
     /**
-     * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
-     * @return The channelNumber.
+     * <code>string source = 2;</code>
+     * @return The bytes for source.
      */
-    com.elarian.hera.proto.ActivityModel.ActivityChannelNumber getChannelNumber();
-    /**
-     * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
-     */
-    com.elarian.hera.proto.ActivityModel.ActivityChannelNumberOrBuilder getChannelNumberOrBuilder();
+    com.google.protobuf.ByteString
+        getSourceBytes();
 
     /**
      * <code>string session_id = 3;</code>
@@ -139,6 +136,7 @@ public final class ActivityStateOuterClass {
       super(builder);
     }
     private ActivitySessionState() {
+      source_ = "";
       sessionId_ = "";
       appId_ = "";
       activities_ = java.util.Collections.emptyList();
@@ -189,16 +187,9 @@ public final class ActivityStateOuterClass {
               break;
             }
             case 18: {
-              com.elarian.hera.proto.ActivityModel.ActivityChannelNumber.Builder subBuilder = null;
-              if (channelNumber_ != null) {
-                subBuilder = channelNumber_.toBuilder();
-              }
-              channelNumber_ = input.readMessage(com.elarian.hera.proto.ActivityModel.ActivityChannelNumber.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(channelNumber_);
-                channelNumber_ = subBuilder.buildPartial();
-              }
+              java.lang.String s = input.readStringRequireUtf8();
 
+              source_ = s;
               break;
             }
             case 26: {
@@ -309,30 +300,42 @@ public final class ActivityStateOuterClass {
       return getCustomerNumber();
     }
 
-    public static final int CHANNEL_NUMBER_FIELD_NUMBER = 2;
-    private com.elarian.hera.proto.ActivityModel.ActivityChannelNumber channelNumber_;
+    public static final int SOURCE_FIELD_NUMBER = 2;
+    private volatile java.lang.Object source_;
     /**
-     * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
-     * @return Whether the channelNumber field is set.
+     * <code>string source = 2;</code>
+     * @return The source.
      */
     @java.lang.Override
-    public boolean hasChannelNumber() {
-      return channelNumber_ != null;
+    public java.lang.String getSource() {
+      java.lang.Object ref = source_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        source_ = s;
+        return s;
+      }
     }
     /**
-     * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
-     * @return The channelNumber.
+     * <code>string source = 2;</code>
+     * @return The bytes for source.
      */
     @java.lang.Override
-    public com.elarian.hera.proto.ActivityModel.ActivityChannelNumber getChannelNumber() {
-      return channelNumber_ == null ? com.elarian.hera.proto.ActivityModel.ActivityChannelNumber.getDefaultInstance() : channelNumber_;
-    }
-    /**
-     * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
-     */
-    @java.lang.Override
-    public com.elarian.hera.proto.ActivityModel.ActivityChannelNumberOrBuilder getChannelNumberOrBuilder() {
-      return getChannelNumber();
+    public com.google.protobuf.ByteString
+        getSourceBytes() {
+      java.lang.Object ref = source_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        source_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     public static final int SESSION_ID_FIELD_NUMBER = 3;
@@ -520,8 +523,8 @@ public final class ActivityStateOuterClass {
       if (customerNumber_ != null) {
         output.writeMessage(1, getCustomerNumber());
       }
-      if (channelNumber_ != null) {
-        output.writeMessage(2, getChannelNumber());
+      if (!getSourceBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, source_);
       }
       if (!getSessionIdBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, sessionId_);
@@ -551,9 +554,8 @@ public final class ActivityStateOuterClass {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(1, getCustomerNumber());
       }
-      if (channelNumber_ != null) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getChannelNumber());
+      if (!getSourceBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, source_);
       }
       if (!getSessionIdBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, sessionId_);
@@ -593,11 +595,8 @@ public final class ActivityStateOuterClass {
         if (!getCustomerNumber()
             .equals(other.getCustomerNumber())) return false;
       }
-      if (hasChannelNumber() != other.hasChannelNumber()) return false;
-      if (hasChannelNumber()) {
-        if (!getChannelNumber()
-            .equals(other.getChannelNumber())) return false;
-      }
+      if (!getSource()
+          .equals(other.getSource())) return false;
       if (!getSessionId()
           .equals(other.getSessionId())) return false;
       if (!getAppId()
@@ -629,10 +628,8 @@ public final class ActivityStateOuterClass {
         hash = (37 * hash) + CUSTOMER_NUMBER_FIELD_NUMBER;
         hash = (53 * hash) + getCustomerNumber().hashCode();
       }
-      if (hasChannelNumber()) {
-        hash = (37 * hash) + CHANNEL_NUMBER_FIELD_NUMBER;
-        hash = (53 * hash) + getChannelNumber().hashCode();
-      }
+      hash = (37 * hash) + SOURCE_FIELD_NUMBER;
+      hash = (53 * hash) + getSource().hashCode();
       hash = (37 * hash) + SESSION_ID_FIELD_NUMBER;
       hash = (53 * hash) + getSessionId().hashCode();
       hash = (37 * hash) + APP_ID_FIELD_NUMBER;
@@ -789,12 +786,8 @@ public final class ActivityStateOuterClass {
           customerNumber_ = null;
           customerNumberBuilder_ = null;
         }
-        if (channelNumberBuilder_ == null) {
-          channelNumber_ = null;
-        } else {
-          channelNumber_ = null;
-          channelNumberBuilder_ = null;
-        }
+        source_ = "";
+
         sessionId_ = "";
 
         appId_ = "";
@@ -849,11 +842,7 @@ public final class ActivityStateOuterClass {
         } else {
           result.customerNumber_ = customerNumberBuilder_.build();
         }
-        if (channelNumberBuilder_ == null) {
-          result.channelNumber_ = channelNumber_;
-        } else {
-          result.channelNumber_ = channelNumberBuilder_.build();
-        }
+        result.source_ = source_;
         result.sessionId_ = sessionId_;
         result.appId_ = appId_;
         if (activitiesBuilder_ == null) {
@@ -926,8 +915,9 @@ public final class ActivityStateOuterClass {
         if (other.hasCustomerNumber()) {
           mergeCustomerNumber(other.getCustomerNumber());
         }
-        if (other.hasChannelNumber()) {
-          mergeChannelNumber(other.getChannelNumber());
+        if (!other.getSource().isEmpty()) {
+          source_ = other.source_;
+          onChanged();
         }
         if (!other.getSessionId().isEmpty()) {
           sessionId_ = other.sessionId_;
@@ -1118,123 +1108,80 @@ public final class ActivityStateOuterClass {
         return customerNumberBuilder_;
       }
 
-      private com.elarian.hera.proto.ActivityModel.ActivityChannelNumber channelNumber_;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          com.elarian.hera.proto.ActivityModel.ActivityChannelNumber, com.elarian.hera.proto.ActivityModel.ActivityChannelNumber.Builder, com.elarian.hera.proto.ActivityModel.ActivityChannelNumberOrBuilder> channelNumberBuilder_;
+      private java.lang.Object source_ = "";
       /**
-       * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
-       * @return Whether the channelNumber field is set.
+       * <code>string source = 2;</code>
+       * @return The source.
        */
-      public boolean hasChannelNumber() {
-        return channelNumberBuilder_ != null || channelNumber_ != null;
-      }
-      /**
-       * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
-       * @return The channelNumber.
-       */
-      public com.elarian.hera.proto.ActivityModel.ActivityChannelNumber getChannelNumber() {
-        if (channelNumberBuilder_ == null) {
-          return channelNumber_ == null ? com.elarian.hera.proto.ActivityModel.ActivityChannelNumber.getDefaultInstance() : channelNumber_;
+      public java.lang.String getSource() {
+        java.lang.Object ref = source_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          source_ = s;
+          return s;
         } else {
-          return channelNumberBuilder_.getMessage();
+          return (java.lang.String) ref;
         }
       }
       /**
-       * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
+       * <code>string source = 2;</code>
+       * @return The bytes for source.
        */
-      public Builder setChannelNumber(com.elarian.hera.proto.ActivityModel.ActivityChannelNumber value) {
-        if (channelNumberBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          channelNumber_ = value;
-          onChanged();
+      public com.google.protobuf.ByteString
+          getSourceBytes() {
+        java.lang.Object ref = source_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          source_ = b;
+          return b;
         } else {
-          channelNumberBuilder_.setMessage(value);
+          return (com.google.protobuf.ByteString) ref;
         }
-
-        return this;
       }
       /**
-       * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
+       * <code>string source = 2;</code>
+       * @param value The source to set.
+       * @return This builder for chaining.
        */
-      public Builder setChannelNumber(
-          com.elarian.hera.proto.ActivityModel.ActivityChannelNumber.Builder builderForValue) {
-        if (channelNumberBuilder_ == null) {
-          channelNumber_ = builderForValue.build();
-          onChanged();
-        } else {
-          channelNumberBuilder_.setMessage(builderForValue.build());
-        }
-
-        return this;
-      }
-      /**
-       * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
-       */
-      public Builder mergeChannelNumber(com.elarian.hera.proto.ActivityModel.ActivityChannelNumber value) {
-        if (channelNumberBuilder_ == null) {
-          if (channelNumber_ != null) {
-            channelNumber_ =
-              com.elarian.hera.proto.ActivityModel.ActivityChannelNumber.newBuilder(channelNumber_).mergeFrom(value).buildPartial();
-          } else {
-            channelNumber_ = value;
-          }
-          onChanged();
-        } else {
-          channelNumberBuilder_.mergeFrom(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
-       */
-      public Builder clearChannelNumber() {
-        if (channelNumberBuilder_ == null) {
-          channelNumber_ = null;
-          onChanged();
-        } else {
-          channelNumber_ = null;
-          channelNumberBuilder_ = null;
-        }
-
-        return this;
-      }
-      /**
-       * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
-       */
-      public com.elarian.hera.proto.ActivityModel.ActivityChannelNumber.Builder getChannelNumberBuilder() {
-        
+      public Builder setSource(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        source_ = value;
         onChanged();
-        return getChannelNumberFieldBuilder().getBuilder();
+        return this;
       }
       /**
-       * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
+       * <code>string source = 2;</code>
+       * @return This builder for chaining.
        */
-      public com.elarian.hera.proto.ActivityModel.ActivityChannelNumberOrBuilder getChannelNumberOrBuilder() {
-        if (channelNumberBuilder_ != null) {
-          return channelNumberBuilder_.getMessageOrBuilder();
-        } else {
-          return channelNumber_ == null ?
-              com.elarian.hera.proto.ActivityModel.ActivityChannelNumber.getDefaultInstance() : channelNumber_;
-        }
+      public Builder clearSource() {
+        
+        source_ = getDefaultInstance().getSource();
+        onChanged();
+        return this;
       }
       /**
-       * <code>.com.elarian.hera.proto.ActivityChannelNumber channel_number = 2;</code>
+       * <code>string source = 2;</code>
+       * @param value The bytes for source to set.
+       * @return This builder for chaining.
        */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          com.elarian.hera.proto.ActivityModel.ActivityChannelNumber, com.elarian.hera.proto.ActivityModel.ActivityChannelNumber.Builder, com.elarian.hera.proto.ActivityModel.ActivityChannelNumberOrBuilder> 
-          getChannelNumberFieldBuilder() {
-        if (channelNumberBuilder_ == null) {
-          channelNumberBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.elarian.hera.proto.ActivityModel.ActivityChannelNumber, com.elarian.hera.proto.ActivityModel.ActivityChannelNumber.Builder, com.elarian.hera.proto.ActivityModel.ActivityChannelNumberOrBuilder>(
-                  getChannelNumber(),
-                  getParentForChildren(),
-                  isClean());
-          channelNumber_ = null;
-        }
-        return channelNumberBuilder_;
+      public Builder setSourceBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        source_ = value;
+        onChanged();
+        return this;
       }
 
       private java.lang.Object sessionId_ = "";
@@ -3106,19 +3053,18 @@ public final class ActivityStateOuterClass {
       "\n\024activity_state.proto\022\026com.elarian.hera" +
       ".proto\032\037google/protobuf/timestamp.proto\032" +
       "\022common_model.proto\032\024activity_model.prot" +
-      "o\"\340\002\n\024ActivitySessionState\022?\n\017customer_n" +
+      "o\"\251\002\n\024ActivitySessionState\022?\n\017customer_n" +
       "umber\030\001 \001(\0132&.com.elarian.hera.proto.Cus" +
-      "tomerNumber\022E\n\016channel_number\030\002 \001(\0132-.co" +
-      "m.elarian.hera.proto.ActivityChannelNumb" +
-      "er\022\022\n\nsession_id\030\003 \001(\t\022\016\n\006app_id\030\004 \001(\t\022<" +
-      "\n\nactivities\030\005 \003(\0132(.com.elarian.hera.pr" +
-      "oto.CustomerActivity\022.\n\ncreated_at\030\006 \001(\013" +
-      "2\032.google.protobuf.Timestamp\022.\n\nupdated_" +
-      "at\030\007 \001(\0132\032.google.protobuf.Timestamp\"\221\001\n" +
-      "\rActivityState\022>\n\010sessions\030\001 \003(\0132,.com.e" +
-      "larian.hera.proto.ActivitySessionState\022@" +
-      "\n\020customer_numbers\030\002 \003(\0132&.com.elarian.h" +
-      "era.proto.CustomerNumberb\006proto3"
+      "tomerNumber\022\016\n\006source\030\002 \001(\t\022\022\n\nsession_i" +
+      "d\030\003 \001(\t\022\016\n\006app_id\030\004 \001(\t\022<\n\nactivities\030\005 " +
+      "\003(\0132(.com.elarian.hera.proto.CustomerAct" +
+      "ivity\022.\n\ncreated_at\030\006 \001(\0132\032.google.proto" +
+      "buf.Timestamp\022.\n\nupdated_at\030\007 \001(\0132\032.goog" +
+      "le.protobuf.Timestamp\"\221\001\n\rActivityState\022" +
+      ">\n\010sessions\030\001 \003(\0132,.com.elarian.hera.pro" +
+      "to.ActivitySessionState\022@\n\020customer_numb" +
+      "ers\030\002 \003(\0132&.com.elarian.hera.proto.Custo" +
+      "merNumberb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -3132,7 +3078,7 @@ public final class ActivityStateOuterClass {
     internal_static_com_elarian_hera_proto_ActivitySessionState_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_elarian_hera_proto_ActivitySessionState_descriptor,
-        new java.lang.String[] { "CustomerNumber", "ChannelNumber", "SessionId", "AppId", "Activities", "CreatedAt", "UpdatedAt", });
+        new java.lang.String[] { "CustomerNumber", "Source", "SessionId", "AppId", "Activities", "CreatedAt", "UpdatedAt", });
     internal_static_com_elarian_hera_proto_ActivityState_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_com_elarian_hera_proto_ActivityState_fieldAccessorTable = new
